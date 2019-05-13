@@ -1,0 +1,123 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    TemplateName="PHP"
+    WorkingDir=".">
+    <Config
+        Name="Debug"
+        DebugCallbackName="xdebug"
+        Type="php"
+        OutputFile=""
+        CompilerConfigName="">
+        <Menu>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                Dialog="_php_options_form Run"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw"
+                Deletable="0">
+                <Exec
+                    CmdLine="php_execute %(SLICKEDIT_PHP_EXECUTE_ARGS)"
+                    Type="Slick-C"/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                Dialog="_php_options_form Debug"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone"
+                RunFromDir="%rw"
+                Deletable="0">
+                <Exec
+                    CmdLine="php_debug"
+                    Type="Slick-C"/>
+            </Target>
+            <Target
+                Name="PHP Options"
+                MenuCaption="PHP &amp;Options"
+                ShowOnMenu="HideIfNoCmdLine"
+                Deletable="0">
+                <Exec
+                    CmdLine="phpoptions"
+                    Type="Slick-C"/>
+            </Target>
+        </Menu>
+        <List Name="PHP Options">
+            <Item
+                Name="AppType"
+                Value="web-remote"/>
+            <Item
+                Name="DefaultFile"
+                Value=""/>
+            <Item
+                Name="ScriptArguments"
+                Value=""/>
+            <Item
+                Name="InterpreterArguments"
+                Value=""/>
+            <List Name="Map">
+                <Item
+                    Name="RemoteUrl"
+                    Value="http://devserver/RegencyWeb"/>
+                <Item
+                    Name="LocalRoot"
+                    Value="/home/gomez/projects/RegencyWeb/html"/>
+            </List>
+        </List>
+        <List Name="Xdebug Options">
+            <Item
+                Name="ServerHost"
+                Value="127.0.0.1"/>
+            <Item
+                Name="ServerPort"
+                Value="9000"/>
+            <Item
+                Name="ListenInBackground"
+                Value="1"/>
+            <Item
+                Name="StayInDebugger"
+                Value="1"/>
+            <Item
+                Name="AcceptConnections"
+                Value="prompt"/>
+            <Item
+                Name="BreakInSession"
+                Value="step-into"/>
+            <Item
+                Name="show_hidden"
+                Value="1"/>
+            <List Name="Map">
+                <Item
+                    Name="RemoteRoot"
+                    Value="/var/www/html/RegencyWeb"/>
+                <Item
+                    Name="LocalRoot"
+                    Value="/home/gomez/projects/RegencyWeb/html"/>
+            </List>
+        </List>
+    </Config>
+    <Files AutoFolders="DirectoryView">
+        <Folder Name="html">
+            <Folder Name="private">
+                <Folder Name="shared">
+                    <F N="html/private/shared/StaffFooter.php"/>
+                    <F N="html/private/shared/StaffHeader.php"/>
+                </Folder>
+                <F N="html/private/Database.php"/>
+                <F N="html/private/DbCredentials.php"/>
+                <F N="html/private/Functions.php"/>
+                <F N="html/private/Initialize.php"/>
+                <F N="html/private/Queries.php"/>
+            </Folder>
+            <Folder Name="public">
+                <Folder Name="staff">
+                    <F N="html/public/staff/index.php"/>
+                </Folder>
+                <F N="html/public/index.php"/>
+            </Folder>
+        </Folder>
+    </Files>
+</Project>
