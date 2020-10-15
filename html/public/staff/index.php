@@ -6,6 +6,7 @@
 	<div>
 	    <?php echo 'SHARED_PATH: ' . SHARED_PATH ?>
 	</div>
+    <hr />
 	<div id="content">
 		<div id="main-menu">
 			<h2>Main Menu</h2>

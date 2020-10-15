@@ -8,8 +8,7 @@
     define("PRIVATE_PATH", dirname(__FILE__));
     define("PROJECT_PATH", dirname(PRIVATE_PATH));
     define("PUBLIC_PATH", PROJECT_PATH . '/public');
-    // define("SHARED_PATH", PRIVATE_PATH . '/shared'); // Created private/shared 
-    define("SHARED_PATH", PROJECT_PATH . '/shared');
+    define("SHARED_PATH", PRIVATE_PATH . '/shared');
 
     // Assign the root URL to a PHP constant
     // * Do not need to include the domain
@@ -24,7 +23,7 @@
     define("WWW_ROOT", $doc_root);
 
     require_once('functions.php');
-//    require_once('database.php');
+    require_once('database.php');
     require_once('query_functions.php');
     require_once('validation_functions.php');
 
