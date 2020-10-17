@@ -22,7 +22,7 @@ if (!isset($page_title))
 		<navigation>
 			<ul>
 				<li>
-					<a href="<?php echo url_for('/staff/index.php'); ?>">Staff Menu (from header.php)</a>
+					<a href="<?php echo url_for('/staff/index.php'); ?>">Staff Menu</a>
 				</li>
 			</ul>
 		</navigation>
