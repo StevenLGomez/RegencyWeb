@@ -1,78 +1,151 @@
---
+
 -- Data Definition Language queries
---
 
--- Based on Python sqlite database prototyped previously
-
-DROP TABLE IF EXISTS project;
-CREATE TABLE IF NOT EXISTS project (
-    id               INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name             TEXT
-) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
-
+-- Budget categories
 DROP TABLE IF EXISTS category;
-CREATE TABLE IF NOT EXISTS category (
-    id               INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name             TEXT
-) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
+CREATE TABLE category(
+    id INTEGER NOT NULL AUTO_INCREMENT, 
+    name VARCHAR(30), 
+    note VARCHAR(100),
+    PRIMARY KEY (id)
+    ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS requestor;
-CREATE TABLE IF NOT EXISTS requestor (
-    id               INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    first            TEXT,
-    last             TEXT,
-    dept             TEXT
-) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
+-- Association expenses
+DROP TABLE IF EXISTS expense;
+CREATE TABLE expense(
+    id INTEGER NOT NULL AUTO_INCREMENT, 
+    fk_cat_id INTEGER REFERENCES category(id), 
+    dt DATE, 
+    ck_no INTEGER, 
+    payee VARCHAR(50), 
+    amount DECIMAL,
+    note VARCHAR(50), 
+    PRIMARY KEY (id)
+    ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS dept;
-CREATE TABLE IF NOT EXISTS dept (
-    id               INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name             TEXT
-) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
+-- Deprecated TABLE (export), was used to populate the original fees table
+-- DROP TABLE IF EXISTS export;
+-- CREATE TABLE export(
+--     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--     dt DATE, 
+--     ck_no INTEGER NOT NULL, 
+--     amount DECIMAL, -- SQLITE floating point fk_lot_id INTEGER NOT NULL, 
+--     fk_deposit_id INTEGER, -- Reference to the bank depositaction for deposit 
+--     note VARCHAR(50), 
+--     PRIMARY KEY(id), 
+--     FOREIGN KEY(fk_lot_id) REFERENCES lot(id), 
+--     FOREIGN KEY(fk_deposit_id) REFERENCES deposit(id)
+--     ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS url;
-CREATE TABLE IF NOT EXISTS url (
-    id               INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    ip               TEXT,
-    hostname         TEXT,
-    domain           TEXT,
-    os               TEXT,
-    service          TEXT,
-    protocol         TEXT,
-    port             TEXT
-) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
+DROP TABLE IF EXISTS lot;
+CREATE TABLE lot(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    address VARCHAR(50), 
+    note VARCHAR(50), 
+    fk_curr_owner INTEGER, 
+    PRIMARY KEY (id)
+    ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS scm;
-CREATE TABLE IF NOT EXISTS scm (
-    id               INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    fk_url_id        INTEGER, -- REFERENCES url,
-    repository       TEXT,
-    path             TEXT,
-    revision         INTEGER
-) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
+DROP TABLE IF EXISTS deposit;
+CREATE TABLE deposit(
+    id INTEGER NOT NULL, 
+    dt INTEGER, 
+    is_reconciled BOOLEAN, 
+    amount DECIMAL,
+    note VARCHAR(50), 
+    ck_no INTEGER, 
+    payee VARCHAR(50), 
+    PRIMARY KEY (id),
+    fk_cat_id INTEGER REFERENCES category(id)
+    ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS ecn;
-CREATE TABLE IF NOT EXISTS ecn(
-    id               INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    num              TEXT,
-    date             INTEGER,
-    fk_req_id        INTEGER, -- REFERENCES requestor,
-    fk_project_id    INTEGER, -- REFERENCES project,
-    fk_cat_id        INTEGER, -- REFERENCES category,
-    document         TEXT,
-    is_fw            TEXT,
-    doc_desc         TEXT,
-    fk_doc_scm       INTEGER, -- REFERENCES scm,  -- New column (location of document AFTER migrations)
-    change_desc      TEXT,
-    approval_date    INTEGER,
-    drawing_date     INTEGER,
-    ver_comp_date    INTEGER,
-    ver_needed       TEXT,
-    ewo_comp_date    INTEGER,
-    ewo_needed       TEXT,
-    fk_scm_a         INTEGER, -- REFERENCES scm,  -- New column
-    fk_scm_b         INTEGER  -- REFERENCES scm   -- New column
-) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
+DROP TABLE IF EXISTS fees;
+CREATE TABLE fees(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    dt DATE, 
+    ck_no INTEGER NOT NULL, 
+    amount DECIMAL,
+    fk_lot_id INTEGER NOT NULL, 
+    fk_deposit_id INTEGER,
+    note VARCHAR(50),
+    PRIMARY KEY (id),
+    FOREIGN KEY(fk_lot_id) REFERENCES lot(id), 
+    FOREIGN KEY(fk_deposit_id) REFERENCES deposit(id) 
+    ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
+DROP TABLE IF EXISTS owner;
+CREATE TABLE owner(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    fk_lot_id INTEGER NOT NULL, 
+    first VARCHAR(50), 
+    mi VARCHAR(5), 
+    last VARCHAR(50), 
+    first_2 VARCHAR(50), 
+    mi_2 VARCHAR(5), 
+    last_2 VARCHAR(50), 
+    address VARCHAR(50), 
+    city VARCHAR(50), 
+    state VARCHAR(50), 
+    zip VARCHAR(50), 
+    phone VARCHAR(50), 
+    email VARCHAR(50), 
+    phone_2 VARCHAR(50), 
+    email_2 VARCHAR(50), 
+    buy_date INTEGER, 
+    is_current INTEGER,
+    PRIMARY KEY (id),
+    FOREIGN KEY(fk_lot_id) REFERENCES lot(id) 
+    ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
+-- ----------------------------------------------------------------------------
+-- End of TABLEs --------------------------------------------------------------
+-- ----------------------------------------------------------------------------
+
+DROP VIEW IF EXISTS amount_paid_per_lot_v;
+CREATE VIEW amount_paid_per_lot_v AS 
+    SELECT l.id AS Lot, 
+        l.address AS Address, 
+        o.last AS Last, 
+        o.first AS First, 
+        (SELECT SUM(amount) FROM fees WHERE fk_lot_id = l.id) FROM lot l, 
+        owner o WHERE o.lot = l.id AND o.is_current = 1 
+        ORDER BY l.id
+        ;
+
+DROP VIEW IF EXISTS owner_info_v;
+CREATE VIEW owner_info_v AS 
+    SELECT l.id AS Lot, 
+        l.address AS Address, 
+        o.last AS Last, 
+        o.first AS First FROM lot l, 
+        owner o WHERE o.lot = l.id AND o.is_current = 1 
+        ORDER BY l.id
+        ;
+
+DROP VIEW IF EXISTS owner_mailing_export_v;
+CREATE VIEW owner_mailing_export_v AS 
+    SELECT l.id AS Lot, 
+        o.is_current AS Curr, 
+        o.last AS Last, 
+        o.first AS First, 
+        o.address AS Owner_Add, 
+        o.city AS Owner_City, 
+        o.state AS O_St, 
+        o.zip AS O_Zip, 
+        l.address AS Lot_Add, 
+        o.phone AS Phone, 
+        o.email, 
+        o.buy_date, 
+        (SELECT SUM(amount) FROM fees WHERE fk_lot_id = l.id) AS Total FROM owner AS o, 
+        lot AS l WHERE o.lot = l.id AND is_current = 1 ORDER BY Total DESC, 
+        l.id, 
+        buy_date
+        ;
+
+-- ----------------------------------------------------------------------------
+-- End of VIEWs  --------------------------------------------------------------
+-- ----------------------------------------------------------------------------
+
+DROP TRIGGER IF EXISTS test_trigger;
+CREATE TRIGGER test_trigger AFTER UPDATE OF is_current ON owner BEGIN UPDATE lot SET fk_curr_owner = new.id WHERE id = new.lot;
 
