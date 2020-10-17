@@ -1,3 +1,0 @@
-
-Income Placeholder
-

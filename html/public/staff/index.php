@@ -25,9 +25,6 @@
                     <a href="<?php echo url_for('/staff/fees/index.php'); ?>">Fees</a>
                 </li>
                 <li>
-                    <a href="<?php echo url_for('/staff/income/index.php'); ?>">Income</a>
-                </li>
-                <li>
                     <a href="<?php echo url_for('/staff/owners/index.php'); ?>">Owners</a>
                 </li>
             </ul>
