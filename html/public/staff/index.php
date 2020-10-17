@@ -16,10 +16,19 @@
             <h2>Main Menu</h2>
             <ul>
                 <li>
-                    <a href="<?php echo url_for('/staff/subjects/index.php'); ?>">Subjects</a>
+                    <a href="<?php echo url_for('/staff/deposits/index.php'); ?>">Deposits</a>
                 </li>
                 <li>
-                    <a href="<?php echo url_for('/staff/pages/index.php'); ?>">Pages</a>
+                    <a href="<?php echo url_for('/staff/expenses/index.php'); ?>">Expenses</a>
+                </li>
+                <li>
+                    <a href="<?php echo url_for('/staff/fees/index.php'); ?>">Fees</a>
+                </li>
+                <li>
+                    <a href="<?php echo url_for('/staff/income/index.php'); ?>">Income</a>
+                </li>
+                <li>
+                    <a href="<?php echo url_for('/staff/owners/index.php'); ?>">Owners</a>
                 </li>
             </ul>
         </div>
