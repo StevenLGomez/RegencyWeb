@@ -18,31 +18,18 @@ CREATE TABLE expense(
     dt DATE, 
     ck_no INTEGER, 
     payee VARCHAR(50), 
-    amount DECIMAL,
+    amount DECIMAL(10,2),
     note VARCHAR(50), 
     PRIMARY KEY (id)
     ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
--- Deprecated TABLE (export), was used to populate the original fees table
--- DROP TABLE IF EXISTS export;
--- CREATE TABLE export(
---     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
---     dt DATE, 
---     ck_no INTEGER NOT NULL, 
---     amount DECIMAL, -- SQLITE floating point fk_lot_id INTEGER NOT NULL, 
---     fk_deposit_id INTEGER, -- Reference to the bank depositaction for deposit 
---     note VARCHAR(50), 
---     PRIMARY KEY(id), 
---     FOREIGN KEY(fk_lot_id) REFERENCES lot(id), 
---     FOREIGN KEY(fk_deposit_id) REFERENCES deposit(id)
---     ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
-
 DROP TABLE IF EXISTS lot;
 CREATE TABLE lot(
     id INTEGER NOT NULL AUTO_INCREMENT,
+    num INTEGER,
     address VARCHAR(50), 
-    note VARCHAR(50), 
     fk_curr_owner INTEGER, 
+    note VARCHAR(50),
     PRIMARY KEY (id)
     ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
