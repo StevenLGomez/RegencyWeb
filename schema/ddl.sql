@@ -14,13 +14,14 @@ CREATE TABLE category(
 DROP TABLE IF EXISTS expense;
 CREATE TABLE expense(
     id INTEGER NOT NULL AUTO_INCREMENT, 
-    fk_cat_id INTEGER REFERENCES category(id), 
+    fk_cat_id INTEGER, 
     dt DATE, 
     ck_no INTEGER, 
     payee VARCHAR(50), 
     amount DECIMAL(10,2),
     note VARCHAR(50), 
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY(fk_cat_id) REFERENCES category(id) 
     ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS lot;
@@ -36,6 +37,7 @@ CREATE TABLE lot(
 DROP TABLE IF EXISTS deposit;
 CREATE TABLE deposit(
     id INTEGER NOT NULL, 
+    fk_cat_id INTEGER,
     dt INTEGER, 
     is_reconciled BOOLEAN, 
     amount DECIMAL,
@@ -43,7 +45,7 @@ CREATE TABLE deposit(
     ck_no INTEGER, 
     payee VARCHAR(50), 
     PRIMARY KEY (id),
-    fk_cat_id INTEGER REFERENCES category(id)
+    FOREIGN KEY(fk_cat_id) REFERENCES category(id) 
     ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS fees;
