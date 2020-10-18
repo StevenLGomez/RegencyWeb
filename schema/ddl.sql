@@ -65,12 +65,12 @@ CREATE TABLE fees(
 DROP TABLE IF EXISTS owner;
 CREATE TABLE owner(
     id INTEGER NOT NULL AUTO_INCREMENT,
-    fk_lot_id INTEGER NOT NULL, 
+    fk_lot_id INTEGER, 
     first VARCHAR(50), 
-    mi VARCHAR(5), 
+    mi VARCHAR(50), 
     last VARCHAR(50), 
     first_2 VARCHAR(50), 
-    mi_2 VARCHAR(5), 
+    mi_2 VARCHAR(50), 
     last_2 VARCHAR(50), 
     address VARCHAR(50), 
     city VARCHAR(50), 
@@ -82,8 +82,8 @@ CREATE TABLE owner(
     email_2 VARCHAR(50), 
     buy_date DATE, 
     is_current BOOLEAN,
-    PRIMARY KEY (id),
-    FOREIGN KEY(fk_lot_id) REFERENCES lot(id) 
+    PRIMARY KEY (id)
+    -- FOREIGN KEY(fk_lot_id) REFERENCES lot(id) 
     ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
 -- ----------------------------------------------------------------------------
