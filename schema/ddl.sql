@@ -38,9 +38,9 @@ DROP TABLE IF EXISTS deposit;
 CREATE TABLE deposit(
     id INTEGER NOT NULL, 
     fk_cat_id INTEGER,
-    dt INTEGER, 
+    dt DATE, 
     is_reconciled BOOLEAN, 
-    amount DECIMAL,
+    amount DECIMAL(10,2),
     note VARCHAR(50), 
     ck_no INTEGER, 
     payee VARCHAR(50), 
