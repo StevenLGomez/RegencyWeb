@@ -27,6 +27,9 @@
                 <li>
                     <a href="<?php echo url_for('/staff/owners/index.php'); ?>">Owners</a>
                 </li>
+                <li>
+                    <a href="<?php echo url_for('/staff/categories/index.php'); ?>">Categories</a>
+                </li>
             </ul>
         </div>
     </div>
