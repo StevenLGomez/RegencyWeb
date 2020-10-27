@@ -1,36 +1,54 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
+<?php $subject_set = find_all_deposits(); ?>
+
 <?php $page_title = 'Manage Deposits'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-    <hr />
-    <div>
-    <?php echo 'WWW_ROOT: ' . WWW_ROOT ?><br />
-    <?php echo url_for('stylesheets/staff.css'); ?><br />
-    <?php echo 'SHARED_PATH: ' . SHARED_PATH ?><br />
-    </div>
-    <hr />
-
     <div id="content">
-        <div id="deposits-menu">
-            <h2>Manage Deposits</h2>
-            <ul>
-                <li>
-                    Option 1
-                </li>
-                <li>
-                    Option 2
-                </li>
-                <li>
-                    Option 3
-                </li>
-                <li>
-                    Option 4
-                </li>
-                <li>
-                    Option 5
-                </li>
-            </ul>
+        <div id="ecn-menu">
+            <h2>Budget Categories</h2>
+
+            <hr />
+            <div class="actions"> 
+                <a class="action" href="<?php echo url_for('/staff/categories/index.php'); ?>">Create New Category</a>
+            </div>
+            <hr />
+
+            <table class="list">
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Check</th>
+                    <th>Payee</th>
+                    <th>Amount</th>
+                    <th>Note</th>
+                    <th>&nbsp</th>
+                    <th>&nbsp</th>
+                    <th>&nbsp</th>
+                </tr>
+
+                <?php while($subject = mysqli_fetch_assoc($subject_set)) { ?>
+
+                    <tr>
+                        <td><?php echo htmlsc($subject['id']); ?></td>
+                        <td><?php echo htmlsc($subject['dt']); ?></td>
+                        <td><?php echo htmlsc($subject['ck_no']); ?></td>
+                        <td><?php echo htmlsc($subject['payee']); ?></td>
+                        <td><?php echo htmlsc($subject['amount']); ?></td>
+                        <td><?php echo htmlsc($subject['note']); ?></td>
+                        <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . htmlsc(u($subject['id']))); ?>">Edit</a></td>
+                    </tr>
+
+                <?php } ?>
+
+            </table>
+
+            <?php mysqli_free_result($subject_set); ?>
+
+
+
+
         </div>
     </div>
 

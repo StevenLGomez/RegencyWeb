@@ -11,7 +11,7 @@
 
             <hr />
             <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/categories/index.php'); ?>">Categories</a>
+                <a class="action" href="<?php echo url_for('/staff/categories/index.php'); ?>">Create New Category</a>
             </div>
             <hr />
 
@@ -29,9 +29,7 @@
                     <tr>
                         <td><?php echo htmlsc($subject['id']); ?></td>
                         <td><?php echo htmlsc($subject['name']); ?></td>
-                        <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . htmlsc(u($subject['id']))); ?>">View</a></td>
                         <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . htmlsc(u($subject['id']))); ?>">Edit</a></td>
-                        <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . htmlsc(u($subject['id']))); ?>">Delete</a></td>
                     </tr>
 
                 <?php } ?>
