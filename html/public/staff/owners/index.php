@@ -1,9 +1,11 @@
 
 <?php require_once('../../../private/initialize.php'); ?>
 
+<!-- Queries used on this page -->
 <?php $lot_set = find_all_lots(); ?>
 <?php $owner_set = find_all_owners(); ?>
 
+<!-- Assign page title & include header -->
 <?php $page_title = 'Manage Owners'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
@@ -13,7 +15,7 @@
 
             <hr />
             <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/categories/index.php'); ?>">Create New Category</a>
+                <a class="action" href="<?php echo url_for('/staff/categories/index.php'); ?>">Create New Owner</a>
             </div>
             <hr />
             <h3>Search Criteria</h3>
