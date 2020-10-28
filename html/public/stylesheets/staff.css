@@ -4,18 +4,18 @@ html {
 }
 
 body {
-  height: 980px;
+  height: 1000px;
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
 header {
-  width: 980px;
+  width: 1000px;
   height: 40px;
   margin: 0 0 10px 0;
   padding: 0;
-  background: #0055DD;
+  background: #08F114;
   color: white;
 }
 
@@ -28,14 +28,14 @@ header h1 {
 }
 
 navigation {
-  width: 980px;
+  width: 1000px;
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
 navigation ul {
-  width: 980px;
+  width: 1000px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -57,8 +57,9 @@ footer {
   height: 20px;
   margin: 0 0 10px 0;
   padding: 10px 20px;
-  background: #0055DD;
+  background: #08F114;
   color: white;
+  text-align: center;
 }
 
 /* Actions */
@@ -84,8 +85,8 @@ table.list tr td {
 }
 
 table.list tr th {
-  border: 1px solid #0055DD;
-  background: #0055DD;
+  border: 1px solid #08F114;
+  background: #08F114;
   color: white;
   text-align: left;
 }
