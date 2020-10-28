@@ -329,7 +329,7 @@
   function find_all_lots() {
     global $db;
 
-    $sql = "SELECT * FROM lot ";
+    $sql = "SELECT * FROM lot ORDER BY address";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -340,7 +340,8 @@
   function find_all_owners() {
     global $db;
 
-    $sql = "SELECT * FROM owner LIMIT 15";
+    // $sql = "SELECT * FROM owner LIMIT 15";
+    $sql = "SELECT * FROM owner ORDER BY last";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);

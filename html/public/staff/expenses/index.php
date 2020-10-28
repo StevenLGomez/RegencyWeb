@@ -7,7 +7,7 @@
 <?php include(SHARED_PATH . '/header.php'); ?>
 
     <div id="content">
-        <div id="ecn-menu">
+        <div id="regency-menu">
             <h2>Budget Categories</h2>
 
             <hr />
