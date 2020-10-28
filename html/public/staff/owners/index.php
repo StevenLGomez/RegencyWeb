@@ -1,7 +1,7 @@
 
 <?php require_once('../../../private/initialize.php'); ?>
 
-<?php $subject_set = find_all_owners(); ?>
+<?php $lot_set = find_all_lots(); ?>
 
 <?php $page_title = 'Manage Owners'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
@@ -16,36 +16,27 @@
             </div>
             <hr />
 
-            <table class="list">
-                <tr>
-                    <th>ID</th>
-                    <th>address</th>
-                    <th>city</th>
-                    <th>state</th>
-                    <th>last</th>
-                    <th>first</th>
-                    <th>mi</th>
-                    <th>&nbsp</th>
-                </tr>
 
-                <?php while($subject = mysqli_fetch_assoc($subject_set)) { ?>
+            <h3>Owner Search</h3>
 
-                    <tr>
-                        <td><?php echo htmlsc($subject['id']); ?></td>
-                        <td><?php echo htmlsc($subject['address']); ?></td>
-                        <td><?php echo htmlsc($subject['city']); ?></td>
-                        <td><?php echo htmlsc($subject['state']); ?></td>
-                        <td><?php echo htmlsc($subject['last']); ?></td>
-                        <td><?php echo htmlsc($subject['first']); ?></td>
-                        <td><?php echo htmlsc($subject['mi']); ?></td>
-                        <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . htmlsc(u($subject['id']))); ?>">Edit</a></td>
-                    </tr>
+            <!-- The pull down select item -->
+            <div class="actions"> 
+                <label for "lot">By Address</label>
+                <select name="lot" id="lot">
+                    <option value=""</option>
 
-                <?php } ?>
+                    <?php while($lot = mysqli_fetch_assoc($lot_set)) { ?>
+                        <option value="<?php htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['address']); ?></option>
+                    <?php } ?>
 
-            </table>
+                </select>
+            </div>
+            <hr />
+            <?php mysqli_free_result($lot_set); ?>
+            <!-- END The pull down select item -->
 
-            <?php mysqli_free_result($subject_set); ?>
+            <hr />
+
 
         </div>
     </div>

@@ -325,6 +325,17 @@
     return $result;
   }
 
+  // Lots         =============================================================
+  function find_all_lots() {
+    global $db;
+
+    $sql = "SELECT * FROM lot ";
+    //echo $sql;
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
+
   // Owners       =============================================================
   function find_all_owners() {
     global $db;
