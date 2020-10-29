@@ -59,15 +59,40 @@
 
             </form>
 
-            <?php 
-                  if ($lot_is_selected)
-                  {
-                      echo '<hr />'; 
-                      echo '<h3> Owner History for Lot#: ' . $lot_id . '</h3>'; 
-                      echo '<hr />'; 
-                  }
-             ?>
+            <!-- This section only entered after an Address has been selected -->
+            <?php if ($lot_is_selected) { ?>
+            <?php $owner_query = find_owners_by_lot($lot_id); ?>
+               <hr />
+               <h3> Owner History for Lot#: <?php echo $lot_id ?> </h3> 
+                  <table class="list">
+                      <tr>
+                          <th>First</th>
+                          <th>MI</th>
+                          <th>Last</th>
+                          <th>Address</th>
+                          <th>City</th>
+                          <th>State</th>
+                          <th>Zip</th>
+                          <th>Current</th>
+                      </tr>
 
+                <?php while($owner = mysqli_fetch_assoc($owner_query)) { ?>
+                    <tr>
+                        <td><?php echo htmlsc($owner['first']); ?>    </td>
+                        <td><?php echo htmlsc($owner['mi']); ?>       </td>
+                        <td><?php echo htmlsc($owner['last']); ?>     </td>
+                        <td><?php echo htmlsc($owner['address']); ?>  </td>
+                        <td><?php echo htmlsc($owner['city']); ?>     </td>
+                        <td><?php echo htmlsc($owner['state']); ?>    </td>
+                        <td><?php echo htmlsc($owner['zip']); ?>      </td>
+                        <td><?php echo $owner['is_current'] == 1 ? 'Yes' : 'No'; ?></td>
+                    </tr>
+                <?php } /* Bottom of while loop */ ?>
+
+                  </table>
+                  <?php mysqli_free_result($owner_query); ?>
+
+            <?php } /* if ($lot_is_selected) */  ?>
 
         </div>
     </div>
