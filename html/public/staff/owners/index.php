@@ -2,46 +2,32 @@
 <?php 
     require_once('../../../private/initialize.php');
 
-    $is_submit = 'No';
-    $has_lot = 'No';
+    $lot_is_selected = False;
 
     if (is_post_request())
     {
-        if (isset($_POST['submit']))
+        if (isset($_POST['address_id']))
         {
-            $is_submit = 'Yes';
-        }
-
-        if (isset($_POST['lot']))
-        {
-            $lot_id = $_POST['lot'];
-            $has_lot = 'Yes';
-        }
-        else
-        {
+            $lot_id = $_POST['address_id'];
+            $lot_is_selected = True;
         }
     }
     else
     {
+        $lot_id = '';
     }
 
-    $lot_set = find_all_lots();
+    $lot_query = find_all_lots();
 
 ?>
 
 <!-- Assign page title (used in header) & include header -->
-<?php $page_title = 'Manage Owners'; ?>
+<?php $page_title = 'Search Owners'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
     <div id="content">
         <div id="regency-menu">
-            <h2>Owner History Management</h2>
-            <hr />
-                <?php echo 'Is Submit :' . $is_submit . '<br />'; ?>
-                <?php echo 'Post variables: ' . $_POST['lot'] . '<br />'; ?>
-                <?php echo 'has_lot :' . $has_lot . '<br />'; ?>
-                <?php echo 'lot_id :' . $lot_id . '<br />'; ?>
-            <hr />
+            <h2>Owner Management</h2>
 
             <!-- This div is a placeholder, not expected to work properly at the moment -->
             <div class="actions"> 
@@ -55,30 +41,32 @@
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
-                    <label for "lot">By Address</label>
-                    <select name="lot" id="lot">
+                    <label for "address_id">Address History</label>
+                    <select name="address_id" id="address_id">
 
-                        <?php while($lot = mysqli_fetch_assoc($lot_set)) { ?>
-                            <option value="<?php htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['address']); ?></option>
+                        <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
+                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['address']); ?></option>
                         <?php } ?>
 
                     </select>
                 </div>
-                <hr />
-                <?php mysqli_free_result($lot_set); ?>
+                <?php mysqli_free_result($lot_query); ?>
                 <!-- END The ADDRESS pull down select item -->
 
                 <div id="operations">
-                    <input type="submit" name="submit" value="Make it so..." />
+                    <input type="submit" name="submit" value="Perform Search" />
                 </div>
 
             </form>
 
-
-
-
-
-
+            <?php 
+                  if ($lot_is_selected)
+                  {
+                      echo '<hr />'; 
+                      echo '<h3> Owner History for Lot#: ' . $lot_id . '</h3>'; 
+                      echo '<hr />'; 
+                  }
+             ?>
 
 
         </div>
