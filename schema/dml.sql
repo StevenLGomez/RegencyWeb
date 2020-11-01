@@ -1617,5 +1617,30 @@ INSERT INTO `owner` (id, fk_lot_id, first, mi, last, first_2, mi_2, last_2, addr
  (148, 58, 'Benjamin', '', 'Suntrup', '', '', '', '754 Saint Louis Inn Rd', 'Saint Clair', 'MO', '63077', '', '', '', '', '2019-08-16', 1);
 COMMIT;
 
+-- 20201101 - Owner changes for 2020 - Items below are duplicates to sqlite entries made after creation of MariaDB 
+--            Corrections made for lot => fk_lot_id and YYYYMMDD => YYYY-MM-DD
+
+-- Lot # 15 1172 Monza Drive
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 15 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(15,  'Jonathan','','Hibbeler','','','','1172 Monza Drive','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2020-03-25',1);
+
+-- Lot # 24 3278 Hyatt Court
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 24 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(24,  'Andrea','','Phillips','','','','3278 Hyatt Court','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2020-10-09',1);
+
+-- Lot # 67 1417 Westin Drive
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 67 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(67,  'Ebel','Samuel','Benitez','Osiris','I','Morales','1417 Westin Drive','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2020-08-07',1);
+
+-- Lot # 51 3220 Windwood Trails Drive
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 51 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(51,  'Timothy','A','Petrillo','Emily','L','Petrillo','3220 Windwood Trails Drive','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2020-07-21',1);
+
+
+
 
 
