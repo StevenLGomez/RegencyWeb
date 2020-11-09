@@ -115,6 +115,21 @@
             </Folder>
             <Folder Name="public">
                 <Folder Name="staff">
+                    <Folder Name="categories">
+                        <F N="html/public/staff/categories/index.php"/>
+                    </Folder>
+                    <Folder Name="deposits">
+                        <F N="html/public/staff/deposits/index.php"/>
+                    </Folder>
+                    <Folder Name="expenses">
+                        <F N="html/public/staff/expenses/index.php"/>
+                    </Folder>
+                    <Folder Name="fees">
+                        <F N="html/public/staff/fees/index.php"/>
+                    </Folder>
+                    <Folder Name="owners">
+                        <F N="html/public/staff/owners/index.php"/>
+                    </Folder>
                     <F N="html/public/staff/index.php"/>
                 </Folder>
                 <F N="html/public/index.php"/>
