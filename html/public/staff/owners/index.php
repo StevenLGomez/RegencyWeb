@@ -2,7 +2,9 @@
 <?php 
     require_once('../../../private/initialize.php');
 
+    // Set defaults for local variables
     $lot_is_selected = False;
+    $lot_id = '';
 
     if (is_post_request())
     {
@@ -11,10 +13,6 @@
             $lot_id = $_POST['address_id'];
             $lot_is_selected = True;
         }
-    }
-    else
-    {
-        $lot_id = '';
     }
 
     $lot_query = find_all_lots();
