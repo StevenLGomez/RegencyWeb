@@ -27,6 +27,28 @@
         <div id="regency-menu">
             <h2>Owner Management</h2>
 
+            <!-- Show diagnostic information -->
+            <hr />
+            <div>
+
+            <!-- Show lot selected information -->
+            <?php echo '$lot_is_selected: ' ?>
+            <?php if ($lot_is_selected) {
+                echo 'True';
+            }
+            else
+            {
+                echo 'False';
+            }
+            ?>
+            <?php echo '<br />'; ?>
+
+            <?php echo '$lot_id: ' . $lot_id; ?>
+
+
+            </div>
+            <hr />
+
             <!-- This div is a placeholder, not expected to work properly at the moment -->
             <div class="actions"> 
                 <a class="action" href="<?php echo url_for('/staff/categories/index.php'); ?>">Create New Owner</a>
