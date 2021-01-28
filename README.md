@@ -16,4 +16,17 @@
 [Good PHP debugging link:](https://stackify.com/php-debugging-guide/)
 
 
+~~~~~ {.ditaa .no-separation}
+                                  
++-----------------+       +--------+           +--------------------+
+| markdown source |------>| mdddia |------*--->| processed markdown |
++-----------------+       +--------+      |    +--------------------+
+                              |           \--->| image files        |
+                    +------------------+       +--------------------+
+                    | diagram creation |
+                    +------------------+
+                    | ditaa/dot/rdfdot |
+                    +------------------+
+~~~~~
+
 
