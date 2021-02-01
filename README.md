@@ -155,6 +155,7 @@ Placeholder diagram for workflow
 <a name="referenes_sp_1"></a>
 ### PHP Support Information Links
 
-Good PHP debugging link [here](https://stackify.com/php-debugging-guide/)
+Good PHP debugging link [here](https://stackify.com/php-debugging-guide/)  
+Check out Laravel PHP Framwork [here](https://laravel.com)  
 
 ---
