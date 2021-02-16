@@ -4,6 +4,7 @@
 <?php include(SHARED_PATH . '/header.php'); ?>
 
     <hr />
+    <hr />
     <div>
     <?php echo 'WWW_ROOT: ' . WWW_ROOT ?><br />
     <?php echo url_for('stylesheets/staff.css'); ?><br />
