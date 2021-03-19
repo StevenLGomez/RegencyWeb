@@ -4,6 +4,16 @@
 -- 
 -- Sanity check using:
 -- SELECT * FROM `deposit` WHERE dt > '2020-11-01';
+
+-- To accomodate DDL differences between sqlite & MySQL:
+--     Transaction -> Deposit
+--     trans       -> deposit
+--     fk_trans_id -> fk_deposit_id
+--     date        -> dt
+--     date        -> dt
+--     YYYYMMDD    -> 'YYYY-MM-DD'
+--     Remove 'type' field from deposit
+--     Add 'id' value to deposit
  
 -- 2020-11-05 Transaction 117
 INSERT INTO deposit (id, dt, is_reconciled) VALUES(117, '2020-11-02', 0); -- Transaction 117
@@ -79,6 +89,17 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2020
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2020-12-01',   210,  40,  68, 121,  '');
 
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 121) WHERE id = 121;
+
+-- 2021-02-15 Deposit 122
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (122, '2021-02-15', 0); -- Deposit 122
+
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021-01-07',  5651,  40,   4, 122,   '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021-02-04',  1906,  40,   7, 122,   '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021-01-11',  5279, 160,  25, 122,   '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2020-12-29',  1306,  40,  39, 122,   '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2020-12-29',   104,  40,  65, 122,   '');
+
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 122)  WHERE id = 122; 
 
 
 
