@@ -101,5 +101,13 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2020
 
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 122)  WHERE id = 122; 
 
+-- 2021-03-31 Deposit 123
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (123, '2021-03-31', 0); -- Deposit 123
 
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021-02-19',  1946,  240,   2, 123,   '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021-02-19',  410006014,   40,  21, 123,   'US Title File# 2041021-01227');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021-03-10',  116490,   40,  42, 123,   'Main Street Renewal LLC, Vendor# v0009294');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021-03-02',  123898,   40,  60, 123,   'Investors Title, File# 692085');
+
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 123)  WHERE id = 123; 
 
