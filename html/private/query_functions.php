@@ -19,7 +19,7 @@
   function find_all_deposits() {
     global $db;
 
-    $sql = "SELECT * FROM deposit WHERE dt > '2015-01-01' ";
+    $sql = "SELECT * FROM deposit WHERE dt > '2020-01-01' ";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -30,7 +30,7 @@
   function find_all_expenses() {
     global $db;
 
-    $sql = "SELECT * FROM expense WHERE dt > '2015-01-01' ";
+    $sql = "SELECT * FROM expense WHERE dt > '2020-01-01' ";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -41,7 +41,7 @@
   function find_all_fees() {
     global $db;
 
-    $sql = "SELECT * FROM fees WHERE dt > '2019-01-01' ";
+    $sql = "SELECT * FROM fees WHERE dt > '2020-01-01' ";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);

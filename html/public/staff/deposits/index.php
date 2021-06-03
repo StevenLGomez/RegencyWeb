@@ -7,7 +7,7 @@
 
     <div id="content">
         <div id="regency-menu">
-            <h2>Budget Categories</h2>
+            <h2>Deposit History</h2>
 
             <hr />
             <div class="actions"> 
