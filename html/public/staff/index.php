@@ -3,14 +3,16 @@
 <?php $page_title = 'Staff Menu'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-    <hr />
-    <hr />
-    <div>
-    <?php echo 'WWW_ROOT: ' . WWW_ROOT ?><br />
-    <?php echo url_for('stylesheets/staff.css'); ?><br />
-    <?php echo 'SHARED_PATH: ' . SHARED_PATH ?><br />
-    </div>
-    <hr />
+    <?php 
+    if ($diagnostics_enabled) {
+        echo '<hr />';
+        echo 'WWW_ROOT: ' . WWW_ROOT . '<br />';
+        echo url_for('stylesheets/staff.css'); 
+        echo '<br />';
+        echo 'SHARED_PATH: ' . SHARED_PATH ;
+        echo '<hr />';
+    }
+    ?> 
 
     <div id="content">
         <div id="main-menu">

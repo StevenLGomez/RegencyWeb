@@ -27,27 +27,29 @@
         <div id="regency-menu">
             <h2>Owner Management</h2>
 
+
             <!-- Show diagnostic information -->
-            <hr />
-            <div>
+            <?php
+            if ( $diagnostics_enabled) {
+                echo '<hr />';
+                echo '<div>';
 
-            <!-- Show lot selected information -->
-            <?php echo '$lot_is_selected: ' ?>
-            <?php if ($lot_is_selected) {
-                echo 'True';
-            }
-            else
-            {
-                echo 'False';
-            }
-            ?>
-            <?php echo '<br />'; ?>
+                // Show lot selected information
+                echo '$lot_is_selected: '; 
+                if ($lot_is_selected) {
+                    echo 'True';
+                }
+                else
+                {
+                    echo 'False';
+                }
+                echo '<br />';
+                echo '$lot_id: ' . $lot_id;
 
-            <?php echo '$lot_id: ' . $lot_id; ?>
+                echo '</div>';
+                echo '<hr />';
+                } ?>
 
-
-            </div>
-            <hr />
 
             <!-- This div is a placeholder, not expected to work properly at the moment -->
             <div class="actions"> 
