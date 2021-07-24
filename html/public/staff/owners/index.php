@@ -27,7 +27,6 @@
         <div id="regency-menu">
             <h2>Owner Management</h2>
 
-
             <!-- Show diagnostic information -->
             <?php
             if ( $diagnostics_enabled) {
@@ -50,15 +49,15 @@
                 echo '<hr />';
                 } ?>
 
-
-            <!-- This div is a placeholder, not expected to work properly at the moment -->
+            <!-- Provide link to enter new Owner information -->
             <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/categories/index.php'); ?>">Create New Owner</a>
+                <a class="action" href="<?php echo url_for('/staff/owners/create.php'); ?>">Create New Owner</a>
             </div>
             <hr />
 
             <h3>Search Criteria</h3>
 
+            <!-- Form for Searching by Lot Address -->
             <form action="" method="post">
 
                 <!-- The ADDRESS pull down select item -->
@@ -78,8 +77,17 @@
                 <div id="operations">
                     <input type="submit" name="submit" value="Perform Search" />
                 </div>
+            <!-- ************************************************************ -->
 
+            <!-- Form for Searching by Lot Address -->
+            <form action="" method="post">
+                <div>
+                    <hr />
+                    <?php echo 'Placeholder for search by Last Name' ?>
+                    <hr />
+                </div>
             </form>
+            <!-- ************************************************************ -->
 
             <!-- This section only entered after an Address has been selected -->
             <?php if ($lot_is_selected) { ?>
@@ -115,6 +123,7 @@
                   <?php mysqli_free_result($owner_query); ?>
 
             <?php } /* if ($lot_is_selected) */  ?>
+            <!-- ************************************************************ -->
 
         </div>
     </div>
