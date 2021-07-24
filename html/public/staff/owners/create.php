@@ -15,7 +15,6 @@ if ( $diagnostics_enabled) {
    } ?>
 <!-- *************************** -->
 
-
     <!-- Assign page title (used in header) & include header -->
     <?php $page_title = 'Create New Owner'; ?>
     <?php include(SHARED_PATH . '/header.php'); ?>
@@ -39,6 +38,14 @@ if ( $diagnostics_enabled) {
                     <dt>Last</dt>
                     <dd><input type="text" name ="menu_name" value="<?php echo 'Lincoln'; ?>" /> </dd>
                 </dl>
+                <dl>
+                    <dt>Phone</dt>
+                    <dd><input type="text" name ="menu_name" value="<?php echo ''; ?>" /> </dd>
+                </dl>
+                <dl>
+                    <dt>email</dt>
+                    <dd><input type="text" name ="menu_name" value="<?php echo ''; ?>" /> </dd>
+                </dl>
 
             <h3>Secondary Owner</h3>
                 <dl>
@@ -52,6 +59,14 @@ if ( $diagnostics_enabled) {
                 <dl>
                     <dt>Last</dt>
                     <dd><input type="text" name ="menu_name" value="<?php echo 'Earhardt'; ?>" /> </dd>
+                </dl>
+                <dl>
+                    <dt>Phone</dt>
+                    <dd><input type="text" name ="menu_name" value="<?php echo ''; ?>" /> </dd>
+                </dl>
+                <dl>
+                    <dt>email</dt>
+                    <dd><input type="text" name ="menu_name" value="<?php echo ''; ?>" /> </dd>
                 </dl>
 
             <hr />
