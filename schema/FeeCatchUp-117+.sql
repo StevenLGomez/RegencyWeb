@@ -117,4 +117,11 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 124)  WHERE id = 124; 
 
 
+-- 2021-10-18 Deposit 125
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (125, '2021-10-18', 0); -- Deposit 125
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021-08-23',  173980,   80,  6, 125,   'Title Partners Agency, LLC 21-292361-CR/54');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021-09-09',  22906,   40,  39, 125,   'Synergy Title SYN2116592');
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 125)  WHERE id = 125; 
+
+
 
