@@ -1646,6 +1646,11 @@ UPDATE owner SET first = 'Samuel', mi = 'Rodriguez', last = 'Benitez Ebel' WHERE
 
 UPDATE owner SET email = '' WHERE fk_lot_id = 51 AND (last = 'Liley' OR last = 'Gerler');
 
+-- Lot # 40 3253 Hyatt Court 
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 40 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(40,  'Thiara','Jasbir','Singh','','','','3253 Hyatt Court','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2020-12-29',1);
+
 -- 20211108 - Owner changes for 2021 - Items below are duplicates of sqlite entries made to get 2021 fee letters finished
 --            Corrections made for lot => fk_lot_id and YYYYMMDD => YYYY-MM-DD
 
