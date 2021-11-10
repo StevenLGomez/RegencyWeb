@@ -28,83 +28,83 @@ if ( $diagnostics_enabled) {
             <form action="<?php echo ''; ?>" method="post">
                 <dl>
                     <dt>First</dt>
-                    <dd><input type="text" name ="menu_name" value="<?php echo 'Abraham'; ?>" /> </dd>
+                    <dd><input type="text" name="first" value="<?php echo 'Abraham'; ?>" /> </dd>
                 </dl>
                 <dl>
                     <dt>Middle</dt>
-                    <dd><input type="text" name ="menu_name" value="<?php echo 'Bob'; ?>" /> </dd>
+                    <dd><input type="text" name="mi" value="<?php echo 'Bob'; ?>" /> </dd>
                 </dl>
                 <dl>
                     <dt>Last</dt>
-                    <dd><input type="text" name ="menu_name" value="<?php echo 'Lincoln'; ?>" /> </dd>
+                    <dd><input type="text" name="last" value="<?php echo 'Lincoln'; ?>" /> </dd>
                 </dl>
                 <dl>
                     <dt>Phone</dt>
-                    <dd><input type="text" name ="menu_name" value="<?php echo ''; ?>" /> </dd>
+                    <dd><input type="text" name="phone" value="<?php echo ''; ?>" /> </dd>
                 </dl>
                 <dl>
                     <dt>email</dt>
-                    <dd><input type="text" name ="menu_name" value="<?php echo ''; ?>" /> </dd>
+                    <dd><input type="text" name="email" value="<?php echo ''; ?>" /> </dd>
                 </dl>
 
             <h3>Secondary Owner</h3>
                 <dl>
                     <dt>First</dt>
-                    <dd><input type="text" name ="menu_name" value="<?php echo 'Amelia'; ?>" /> </dd>
+                    <dd><input type="text" name="first_2" value="<?php echo 'Amelia'; ?>" /> </dd>
                 </dl>
                 <dl>
                     <dt>Middle</dt>
-                    <dd><input type="text" name ="menu_name" value="<?php echo 'J'; ?>" /> </dd>
+                    <dd><input type="text" name="mi_2" value="<?php echo 'J'; ?>" /> </dd>
                 </dl>
                 <dl>
                     <dt>Last</dt>
-                    <dd><input type="text" name ="menu_name" value="<?php echo 'Earhardt'; ?>" /> </dd>
+                    <dd><input type="text" name="last_2" value="<?php echo 'Earhardt'; ?>" /> </dd>
                 </dl>
                 <dl>
                     <dt>Phone</dt>
-                    <dd><input type="text" name ="menu_name" value="<?php echo ''; ?>" /> </dd>
+                    <dd><input type="text" name="phone_2" value="<?php echo ''; ?>" /> </dd>
                 </dl>
                 <dl>
                     <dt>email</dt>
-                    <dd><input type="text" name ="menu_name" value="<?php echo ''; ?>" /> </dd>
+                    <dd><input type="text" name="email_2" value="<?php echo ''; ?>" /> </dd>
                 </dl>
 
             <hr />
             <dl>
                 <dt>Closing Date</dt>
-                <dd><input type="text" name ="menu_name" value="<?php echo '20210722'; ?>" /> </dd>
+                <dd><input type="text" name="buy_date" value="<?php echo '2021-07-22'; ?>" /> </dd>
             </dl>
 
             <dl>
                 <dt>Lot ID</dt>
-                <dd><input type="integer" name ="menu_name" value="<?php echo '25'; ?>" /> </dd>
+                <dd><input type="integer" name="fk_lot_id" value="<?php echo '25'; ?>" /> </dd>
             </dl>
 
             <dl>
                 <dt>Current Owner?</dt>
-                <dd><input type="checkbox" name ="menu_name" value="checked" /> </dd>
+                <dd><input type="checkbox" name="is_current" value="checked" /> </dd>
             </dl>
 
             <hr />
             <h3>Address</h3>
             <dl>
                 <dt>Same as lot?</dt>
-                <dd><input type="checkbox" name ="menu_name" value="checked" /> </dd>
+                <dd><input type="checkbox" name="same_as_lot" value="checked" /> </dd>
             </dl>
 
             <dl>
                 <dt>City</dt>
-                <dd><input type="text" name ="menu_name" value="<?php echo 'Saint Peters'; ?>" /> </dd>
+                <dd><input type="text" name="city" value="<?php echo 'Saint Peters'; ?>" /> </dd>
             </dl>
 
             <dl>
                 <dt>State</dt>
-                <dd><input type="text" name ="menu_name" value="<?php echo 'Missouri'; ?>" /> </dd>
+                <dd><input type="text" name="state" value="<?php echo 'Missouri'; ?>" /> </dd>
             </dl>
 
             <dl>
                 <dt>Zip</dt>
-                <dd><input type="text" name ="menu_name" value="<?php echo '63303'; ?>" /> </dd>
+                <dd><input type="text" name="zip" value="<?php echo '63303'; ?>" /> </dd>
             </dl>
 
             <div id="operations">
