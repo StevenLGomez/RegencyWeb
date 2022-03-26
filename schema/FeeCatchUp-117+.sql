@@ -185,3 +185,20 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2021
 
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 128)  WHERE id = 128; 
 
+-- 2022-03-26 Deposit 129
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (129, '2022-01-18', 0); -- Deposit 129
+
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022-02-14',   170,   40,   3, 129, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022-01-29',  1003,   40,  15, 129, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022-03-02',     1,   40,  24, 129, 'No number on check');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022-03-07',  194155, 40,  55, 129, 'Title Partners Agency, 22-303944-SRH/93');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022-02-10',  0016,   40,  65, 129, '');
+
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 129)  WHERE id = 129; 
+
+
+
+
+
+
+
