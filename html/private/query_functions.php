@@ -83,6 +83,22 @@
     return $result;
   }
 
+  function find_owners_by_last($last_name) {
+    global $db;
+
+    $sql = "SELECT * FROM owner "; 
+    $sql .= "WHERE last='" . db_escape($db, $last_name) . "' ";
+    $sql .= "LIMIT 1;";
+    //echo $sql;
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
+
+
+
+
+
 
 ?>
 
