@@ -1,6 +1,7 @@
 
 # Regency Estates Web Site Development Documentation #
 
+<a name="toc"></a>
 ## Table of contents
 1. [Introduction](#introduction)
 
@@ -23,6 +24,7 @@
 6. [Owner Management](#owner)
     1. [Owner Page Variables](#owner_sp_1)
     2. [Owner Workflow](#owner_sp_2)
+	2. [Add Owner Screen Layout](#owner_sp_3)
 
 7. [References](#references)
     1. [PHP Debugging](#referenes_sp_1)
@@ -53,6 +55,8 @@ Placeholder diagram for workflow
 | markdown source |------>| mdddia |------*--->| processed markdown |
 +-----------------+       +--------+      |    +--------------------+
 ~~~~~
+
+[**^ Top ^**](#toc)
 
 ---
 <a name="deposit"></a>
@@ -89,6 +93,7 @@ cond(yes) >io->e
 cond(no) ->sub1(right)->op1
 ```
 
+[**^ Top ^**](#toc)
 
 ---
 <a name="expense"></a>
@@ -111,6 +116,8 @@ Placeholder diagram for workflow
 +-----------------+       +--------+      |    +--------------------+
 ~~~~~
 
+[**^ Top ^**](#toc)
+
 ---
 <a name="fee"></a>
 ### Fee Management
@@ -131,6 +138,8 @@ Placeholder diagram for workflow
 | markdown source |------>| mdddia |------*--->| processed markdown |
 +-----------------+       +--------+      |    +--------------------+
 ~~~~~
+
+[**^ Top ^**](#toc)
 
 ---
 <a name="owner"></a>
@@ -163,6 +172,30 @@ Placeholder diagram for workflow
                     +------------------+
 ~~~~~
 
+<a name="owner_sp_3"></a>
+**Add Owner Screen Layout**
+
+|                | Primary Owner   | Secondary Owner |
+| :-------       | :----------     | :-------------  |
+| First Name     | Abraham         | Amelia          |
+| Middle         |                 | Mary            |
+| Last  Name     | Lincoln         | Earhart         |
+| Phone          | 636-404-1920    | 1-900-123-4567  |
+| Email          | abe@lincoln.com | findme@aol.com  |
+|                |                 |                 |
+| Buy Date       | 2022-05-01      |                 |
+| Current Owner  | No              |                 |
+| Is Rental      | Yes             |                 |
+| Address        | 101 Main Street |                 |
+| City           | Long Beach      |                 |
+| State          | CA              |                 |
+| Zip            | 90815           |                 |
+|                |                 |                 |
+|                | **Submit**      |                 |
+
+
+[**^ Top ^**](#toc)
+
 ---
 <a name="references"></a>
 ## References
@@ -173,4 +206,7 @@ Placeholder diagram for workflow
 Good PHP debugging link [here](https://stackify.com/php-debugging-guide/)  
 Check out Laravel PHP Framwork [here](https://laravel.com)  
 
+[**^ Top ^**](#toc)
+
 ---
+
