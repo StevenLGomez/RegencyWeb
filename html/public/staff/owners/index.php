@@ -52,6 +52,7 @@
             <!-- Provide link to enter new Owner information -->
             <div class="actions"> 
                 <a class="action" href="<?php echo url_for('/staff/owners/create.php'); ?>">Create New Owner</a>
+                <a class="action" href="<?php echo url_for('/staff/owners/show.php'); ?>">Show Single Owner</a>
             </div>
             <hr />
 
