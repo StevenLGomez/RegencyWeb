@@ -1,3 +1,4 @@
+
 <!doctype html>
 
 <html lang="en">
@@ -8,6 +9,6 @@
 
 	<body>
 		<h1>Regency Estates: Coming Soon</h1>
-	
+         <a href="./staff/index.php">Prototype Menu</a>
 	</body>
 </html>

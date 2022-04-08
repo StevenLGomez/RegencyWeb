@@ -6,12 +6,21 @@
     $lot_is_selected = False;
     $lot_id = '';
 
+    $last_name_was_entered = False;
+    $last_name = '';
+
     if (is_post_request())
     {
         if (isset($_POST['address_id']))
         {
             $lot_id = $_POST['address_id'];
             $lot_is_selected = True;
+        }
+
+        if (isset($_POST['last_name']))
+        {
+            $last_name = $_POST['last_name'];
+            $last_name_was_entered = True;
         }
     }
 
@@ -45,18 +54,33 @@
                 echo '<br />';
                 echo '$lot_id: ' . $lot_id;
 
+                echo '<br />';
+
+                // Show Last Name entry information
+                echo '$last_name_was_entered: ';
+                if ($last_name_was_entered) {
+                    echo 'True';
+                }
+                else
+                {
+                    echo 'False';
+                }
+                echo '<br />';
+                echo '$last_name: ' . $last_name;
+
+
                 echo '</div>';
                 echo '<hr />';
                 } ?>
 
             <!-- Provide link to enter new Owner information -->
             <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/owners/create.php'); ?>">Create New Owner</a>
+                <a class="action" href="<?php echo url_for('/staff/owners/create.php'); ?>">Create New Owner</a><br />
                 <a class="action" href="<?php echo url_for('/staff/owners/show.php'); ?>">Show Single Owner</a>
             </div>
             <hr />
 
-            <h3>Search Criteria</h3>
+            <h3>Search By Lot Address</h3>
 
             <!-- Form for Searching by Lot Address -->
             <form action="" method="post">
@@ -76,21 +100,33 @@
                 <!-- END The ADDRESS pull down select item -->
 
                 <div id="operations">
-                    <input type="submit" name="submit" value="Perform Search" />
-                </div>
-            <!-- ************************************************************ -->
-
-            <!-- Form for Searching by Lot Address -->
-            <form action="" method="post">
-                <div>
-                    <hr />
-                    <?php echo 'Placeholder for search by Last Name' ?>
-                    <hr />
+                    <input type="submit" name="submit" value="Search by Address" />
                 </div>
             </form>
             <!-- ************************************************************ -->
 
+            <!-- Form for Searching by Last name -->
+            <hr />
+            <h3>Search By Last Name</h3>
+
+            <form action="" method="post">
+
+                <!-- The Last Name Entry Box -->
+                <div class="actions"> 
+                    <label for "last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name"><br /><br />
+                </div>
+                <!-- END The Last Name Entry Box -->
+
+                <div id="operations">
+                    <input type="submit" name="submit" value="Search by Last" />
+                </div>
+            </form>
+            <!-- ************************************************************ -->
+
+            <!-- ************************************************************ -->
             <!-- This section only entered after an Address has been selected -->
+            <!-- ************************************************************ -->
             <?php if ($lot_is_selected) { ?>
             <?php $owner_query = find_owners_by_lot($lot_id); ?>
                <hr />
@@ -125,6 +161,43 @@
 
             <?php } /* if ($lot_is_selected) */  ?>
             <!-- ************************************************************ -->
+
+            <!-- ************************************************************ -->
+            <!-- This section only entered after a Last Name has been entered -->
+            <!-- ************************************************************ -->
+            <?php if ($last_name_was_entered) { ?>
+
+            <?php $owner_query = find_owners_by_last($last_name); ?>
+               <hr />
+               <?php echo '<h3> Search Results for: ' . $last_name . '</h3>'; ?>
+
+
+                  <table class="list">
+                      <tr>
+                          <th>First</th>
+                          <th>MI</th>
+                          <th>Last</th>
+                          <th>Address</th>
+                          <th>City</th>
+                          <th>State</th>
+                          <th>Zip</th>
+                          <th>Current</th>
+                      </tr>
+
+
+
+
+
+
+
+
+
+
+                  </table>
+
+                  <?php mysqli_free_result($owner_query); ?>
+
+            <?php } /* if ($last_name_was_entered) */  ?>
 
         </div>
     </div>
