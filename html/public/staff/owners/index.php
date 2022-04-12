@@ -55,6 +55,7 @@
                 echo '$lot_id: ' . $lot_id;
 
                 echo '<br />';
+                echo '<br />';
 
                 // Show Last Name entry information
                 echo '$last_name_was_entered: ';
@@ -67,7 +68,6 @@
                 }
                 echo '<br />';
                 echo '$last_name: ' . $last_name;
-
 
                 echo '</div>';
                 echo '<hr />';
