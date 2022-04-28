@@ -69,9 +69,13 @@
                 echo '<br />';
                 echo '$last_name: ' . $last_name;
 
+                echo '<br />';
+                echo url_for('/staff/owners/create.php'); 
+
                 echo '</div>';
                 echo '<hr />';
                 } ?>
+            <!-- *************************** -->
 
             <!-- Provide link to enter new Owner information -->
             <div class="actions"> 
@@ -79,14 +83,14 @@
             </div>
             <hr />
 
-            <h3>Search By Address</h3>
+            <h3>Show History For Address</h3>
 
             <!-- Form for Searching by Address -->
             <form action="" method="post">
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
-                    <label for "address_id">Address History</label>
+                    <label for "address_id">History For:</label>
                     <select name="address_id" id="address_id">
 
                         <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
@@ -99,7 +103,7 @@
                 <!-- END The ADDRESS pull down select item -->
 
                 <div id="operations">
-                    <input type="submit" name="submit" value="Search by Address" />
+                    <input type="submit" name="submit" value="Display History" />
                 </div>
             </form>
             <!-- ============================================================ -->
@@ -108,7 +112,7 @@
             <hr />
             <h3>Search By Last Name</h3>
 
-            <form action="" method="post">
+            <form action="<?php echo url_for('/staff/owners/create.php'); ?>" method="post">
 
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
@@ -170,10 +174,9 @@
                <hr />
                <?php echo '<h3> Search Results for: ' . $last_name . '</h3>'; ?>
 
-
                   <table class="list">
                       <tr>
-                          <th>-----</th>
+                          <th></th>
                           <th>Primary Owner</th>
                           <th>Secondary Owner</th>
                       </tr>
@@ -181,92 +184,84 @@
                     <?php $owner = mysqli_fetch_assoc($owner_query); ?>
 
                       <tr>
-                          <td>First Name</td>
+                          <td><b>First Name</b></td>
                           <td><?php echo htmlsc($owner['first']); ?>    </td>
                           <td><?php echo htmlsc($owner['first_2']); ?>    </td>
                       </tr>
 
                       <tr>
-                          <td>Middle</td>
+                          <td><b>Middle</b></td>
                           <td><?php echo htmlsc($owner['mi']); ?>    </td>
                           <td><?php echo htmlsc($owner['mi_2']); ?>    </td>
                       </tr>
 
                       <tr>
-                          <td>Last Name</td>
+                          <td><b>Last Name</b></td>
                           <td><?php echo htmlsc($owner['last']); ?>    </td>
                           <td><?php echo htmlsc($owner['last_2']); ?>    </td>
                       </tr>
 
                       <tr>
-                          <td>Phone</td>
+                          <td><b>Phone</b></td>
                           <td><?php echo htmlsc($owner['phone']); ?>    </td>
                           <td><?php echo htmlsc($owner['phone_2']); ?>    </td>
                       </tr>
 
                       <tr>
-                          <td>Email</td>
+                          <td><b>Email</b></td>
                           <td><?php echo htmlsc($owner['email']); ?>    </td>
                           <td><?php echo htmlsc($owner['email_2']); ?>    </td>
                       </tr>
 
+                      <!-- Add empty row for a spacer -->
                       <tr>
-                          <td></td>
                           <td></td>
                           <td></td>
                       </tr>
 
                       <tr>
-                          <td>Lot #</td>
+                          <td><b>Lot #</b></td>
                           <td><?php echo htmlsc($owner['fk_lot_id']); ?>    </td>
-                          <td>-</td>
                       </tr>
 
                       <tr>
-                          <td>Buy Date</td>
+                          <td><b>Buy Date</b></td>
                           <td><?php echo htmlsc($owner['buy_date']); ?>    </td>
-                          <td>-</td>
                       </tr>
 
                       <tr>
-                          <td>Current Owner</td>
+                          <td><b>Current Owner?</b></td>
                           <td><?php echo $owner['is_current'] == 1 ? 'Yes' : 'No'; ?></td>
-                          <td>-</td>
                       </tr>
 
                       <tr>
-                          <td>Is Rental</td>
+                          <td><b>Is Rental?</b></td>
                           <td>TBD</td>
-                          <td>-</td>
                       </tr>
 
                       <tr>
-                          <td>Address</td>
+                          <td><b>Address</b></td>
                           <td><?php echo htmlsc($owner['address']); ?>    </td>
-                          <td>-</td>
                       </tr>
 
                       <tr>
-                          <td>City</td>
+                          <td><b>City</b></td>
                           <td><?php echo htmlsc($owner['city']); ?>    </td>
-                          <td>-</td>
                       </tr>
 
                       <tr>
-                          <td>State</td>
+                          <td><b>State</b></td>
                           <td><?php echo htmlsc($owner['state']); ?>    </td>
-                          <td>-</td>
                       </tr>
 
                       <tr>
-                          <td>Zip</td>
+                          <td><b>Zip</b></td>
                           <td><?php echo htmlsc($owner['zip']); ?>    </td>
-                          <td>-</td>
                       </tr>
 
                       <tr>
-                          <td>Notes</td>
-                          <td>TBD</td>
+                          <td><b>Notes</b></td>
+                          <td>Enjoys skydiving</td>
                       </tr>
 
                   </table>
