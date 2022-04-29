@@ -95,7 +95,7 @@
     return $result;
   }
 
-  function find_owners_by_last($last_name) {
+  function find_owner_by_last($last_name) {
     global $db;
 
     $sql = "SELECT * FROM owner "; 

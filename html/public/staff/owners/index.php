@@ -77,12 +77,28 @@
                 } ?>
             <!-- *************************** -->
 
-            <!-- Provide link to enter new Owner information -->
-            <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/owners/create.php'); ?>">Create New Owner</a><br />
-            </div>
             <hr />
+            <!-- Form for Searching by Last name -->
+            <h3>Search By Last Name</h3>
 
+            <form action="<?php echo url_for('/staff/owners/create.php?last_name=' . htmlsc(u($last_name))); ?>" method="get">
+
+                <!-- The Last Name Entry Box -->
+                <div class="actions"> 
+                    <label for "last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name"><br /><br />
+                </div>
+                <!-- END The Last Name Entry Box -->
+
+                <div id="operations">
+                    <input type="submit" name="view_owner" value="View" />
+                    <input type="submit" name="edit_owner" value="Edit" />
+                    <input type="submit" name="create_owner" value="Create" />
+                </div>
+            </form>
+            <!-- ============================================================ -->
+
+            <hr />
             <h3>Show History For Address</h3>
 
             <!-- Form for Searching by Address -->
@@ -108,25 +124,13 @@
             </form>
             <!-- ============================================================ -->
 
-            <!-- Form for Searching by Last name -->
-            <hr />
-            <h3>Search By Last Name</h3>
 
-            <form action="<?php echo url_for('/staff/owners/create.php?last_name=' . htmlsc(u($last_name))); ?>" method="get">
 
-                <!-- The Last Name Entry Box -->
-                <div class="actions"> 
-                    <label for "last_name">Last Name</label>
-                    <input type="text" id="last_name" name="last_name"><br /><br />
-                </div>
-                <!-- END The Last Name Entry Box -->
 
-                <div id="operations">
-                    <input type="submit" name="view_owner" value="View" />
-                    <input type="submit" name="edit_owner" value="Edit" />
-                </div>
-            </form>
-            <!-- ============================================================ -->
+
+
+
+
 
             <!-- ************************************************************ -->
             <!-- This section only entered after an Address has been selected -->
