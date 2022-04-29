@@ -1,19 +1,32 @@
 <?php 
     require_once('../../../private/initialize.php');
 
-    if(is_post_request())
+    $editing_existing_owner = False;
+    $creating_new_owner = False;
+    $view_owner_info = False;
+
+    if (is_get_request())
     {
-        if (isset($_POST['last_name']))
+        if (isset($_GET['view_owner']))
         {
-            // $page['primary_last'] = $_POST['last_name'];
-            $page['primary_last'] = 'Garfunkel';
-            $last_name_was_entered = True;
+            $primary_last = $_GET['last_name'];
+            $view_owner_info = True;
         }
+
+        if (isset($_GET['edit_owner']))
+        {
+            $primary_last = $_GET['last_name'];
+            $editing_existing_owner = True;
+        }
+    }
+    elseif (is_post_request())
+    {
+        $creating_new_owner = True;
 
         $page=[];
         $page['primary_first']=$_POST['primary_first'] ?? '';
         $page['primary_middle']=$_POST['primary_middle'] ?? '';
-        // $page['primary_last']=$_POST['primary_last'] ?? '';
+        $page['primary_last']=$_POST['primary_last'] ?? '';
         $page['primary_phone']=$_POST['primary_phone'] ?? '';
         $page['primary_email']=$_POST['primary_email'] ?? '';
 
@@ -61,7 +74,18 @@
 ?>
 
     <!-- Assign page title (used in header) & include header -->
-    <?php $page_title='Create Owner'; ?>
+    <?php if($editing_existing_owner) {
+        $page_title='Edit Owner';
+        }
+        elseif ($creating_new_owner)
+        {
+            $page_title='Create Owner';
+        }
+        else
+        {
+            $page_title='View Owner';
+        }
+        ?>
     <?php include(SHARED_PATH . '/header.php'); ?>
 
     <!-- Show diagnostic information -->
@@ -73,6 +97,7 @@
        echo 'Primary First Name:   '; echo htmlsc($page['primary_first']); echo '<br />';
        echo 'Primary Middle:       '; echo htmlsc($page['primary_middle']); echo '<br />';
        echo 'Primary Last Name:    '; echo htmlsc($page['primary_last']); echo '<br />';
+       echo 'Primary Last Name:    '; echo htmlsc($primary_last); echo '<br />';
        echo 'Primary Phone:        '; echo htmlsc($page['primary_phone']); echo '<br />';
        echo 'Primary Email:        '; echo htmlsc($page['primary_email']); echo '<br />';
        echo '<br />';
@@ -92,7 +117,6 @@
        echo 'Owner Zip:            '; echo htmlsc($page['owner_zip']); echo '<br />';
        echo 'Notes:                '; echo htmlsc($page['owner_notes']); echo '<br />';
        echo '<br />';
-       echo 'Last name entered?    '; echo htmlsc($last_name_was_entered);
 
        echo '</div>';
        echo '<hr />';
@@ -102,9 +126,22 @@
     <div id="content">
         <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
         <div id="regency-menu">
-           <h2>Create Owner</h2>
 
-            <form action="" method=POST>
+        <!-- Assign page title (used in header) & include header -->
+        <?php if($editing_existing_owner) {
+            echo '<h2>Edit Owner</h2>';
+            }
+            elseif ($creating_new_owner)
+            {
+                echo '<h2>Create Owner</h2>';
+            }
+            else
+            {
+                echo '<h2>View Owner</h2>';
+            }
+            ?>
+
+            <form action="" method="post">
                 <table class="list">
 
                         <th></th>

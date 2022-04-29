@@ -112,7 +112,7 @@
             <hr />
             <h3>Search By Last Name</h3>
 
-            <form action="<?php echo url_for('/staff/owners/create.php'); ?>" method="post">
+            <form action="<?php echo url_for('/staff/owners/create.php?last_name=' . htmlsc(u($last_name))); ?>" method="get">
 
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
@@ -122,7 +122,8 @@
                 <!-- END The Last Name Entry Box -->
 
                 <div id="operations">
-                    <input type="submit" name="submit" value="Search by Last" />
+                    <input type="submit" name="view_owner" value="View" />
+                    <input type="submit" name="edit_owner" value="Edit" />
                 </div>
             </form>
             <!-- ============================================================ -->
