@@ -86,6 +86,11 @@ CREATE TABLE owner(
     -- FOREIGN KEY(fk_lot_id) REFERENCES lot(id) 
     ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
+-- The following were entered 2022-04-30 to add columns to owner table:
+ALTER TABLE owner ADD COLUMN is_rental BOOLEAN;
+ALTER TABLE owner ADD COLUMN notes VARCHAR(50);
+ALTER TABLE owner DROP COLUMN is_in_subdv;
+
 -- ----------------------------------------------------------------------------
 -- End of TABLEs --------------------------------------------------------------
 -- ----------------------------------------------------------------------------
