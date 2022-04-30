@@ -46,8 +46,8 @@
 
     $page['lot_number']='';
     $page['purchase_date']='';
-    $page['is_current']='1';
-    $page['is_rental']='1';
+    $page['is_current']='0';
+    $page['is_rental']='0';
     $page['owner_address']='';
     $page['owner_city']='';
     $page['owner_state']='';
@@ -86,7 +86,7 @@
         $page['owner_city']=$owner['city'] ?? '';
         $page['owner_state']=$owner['state'] ?? '';
         $page['owner_zip']=$owner['zip'] ?? '';
-        $page['owner_notes']=$owner['Polly wolly doodle all the day'];
+        $page['owner_notes']=$owner['notes'];
 
     }
 
@@ -128,8 +128,8 @@
        echo '<br />';
        echo 'Lot Number:           '; echo htmlsc($page['lot_number']); echo '<br />';
        echo 'Purchase Date:        '; echo htmlsc($page['purchase_date']); echo '<br />';
-       echo 'Current Owner?:       '; echo htmlsc($page['is_current']); echo '<br />';
-       echo 'Is Rental?:           '; echo htmlsc($page['is_rental']); echo '<br />';
+       echo 'Current Owner?        '; if($owner['is_current'] == 1) {echo 'Yes';} else {echo 'No';} echo '<br />';
+       echo 'Is Rental?            '; if($owner['is_rental'] == 1) {echo 'Yes';} else {echo 'No';} echo '<br />';
        echo 'Owner Address:        '; echo htmlsc($page['owner_address']); echo '<br />';
        echo 'Owner City:           '; echo htmlsc($page['owner_city']); echo '<br />';
        echo 'Owner State:          '; echo htmlsc($page['owner_state']); echo '<br />';
@@ -205,7 +205,7 @@
                 </tr>
 
                 <tr>
-                    <td><b>Purchase Date</b></td>
+                    <td><b>Purchase Date (YYYY-MM-DD)</b></td>
                     <td><input type="text" name="purchase_date" value="<?php echo htmlsc($page['purchase_date']); ?>" /></td>
                 </tr>
 

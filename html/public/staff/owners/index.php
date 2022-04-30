@@ -144,11 +144,10 @@
                           <th>First</th>
                           <th>MI</th>
                           <th>Last</th>
-                          <th>Address</th>
-                          <th>City</th>
-                          <th>State</th>
-                          <th>Zip</th>
+                          <th>Buy Date</th>
+                          <th>Owner Address</th>
                           <th>Current</th>
+                          <th>Rental</th>
                       </tr>
 
                 <?php while($owner = mysqli_fetch_assoc($owner_query)) { ?>
@@ -156,11 +155,10 @@
                         <td><?php echo htmlsc($owner['first']); ?>    </td>
                         <td><?php echo htmlsc($owner['mi']); ?>       </td>
                         <td><?php echo htmlsc($owner['last']); ?>     </td>
+                        <td><?php echo htmlsc($owner['buy_date']); ?>     </td>
                         <td><?php echo htmlsc($owner['address']); ?>  </td>
-                        <td><?php echo htmlsc($owner['city']); ?>     </td>
-                        <td><?php echo htmlsc($owner['state']); ?>    </td>
-                        <td><?php echo htmlsc($owner['zip']); ?>      </td>
                         <td><?php echo $owner['is_current'] == 1 ? 'Yes' : 'No'; ?></td>
+                        <td><?php echo $owner['is_rental'] == 1 ? 'Yes' : 'No'; ?></td>
                     </tr>
                 <?php } /* Bottom of while loop */ ?>
 
