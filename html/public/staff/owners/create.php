@@ -87,6 +87,9 @@
         $owner_zip=$owner['zip'] ?? '';
         $owner_notes=$owner['notes'];
 
+        # Replace this with query 'search_address_from_lot'
+        $property_address = '1313 Mockingbird Lane';
+
     }
 
 ?>
@@ -126,6 +129,7 @@
        echo 'Secondary Email:      '; echo htmlsc($secondary_email); echo '<br />';
        echo '<br />';
        echo 'Lot Number:           '; echo htmlsc($lot_number); echo '<br />';
+       echo 'Property Address:     '; echo htmlsc($property_address); echo '<br />';
        echo 'Purchase Date:        '; echo htmlsc($purchase_date); echo '<br />';
        echo 'Current Owner?        '; if($owner['is_current'] == 1) {echo 'Yes';} else {echo 'No';} echo '<br />';
        echo 'Is Rental?            '; if($owner['is_rental'] == 1) {echo 'Yes';} else {echo 'No';} echo '<br />';
@@ -201,6 +205,11 @@
                 <tr>
                     <td><b>Lot #</b></td>
                     <td><input type="text" name="lot_number" value="<?php echo htmlsc($lot_number); ?>" /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Property Address</b></td>
+                    <td><input type="text" name="property_address" value="<?php echo htmlsc($property_address); ?>" /></td>
                 </tr>
 
                 <tr>
