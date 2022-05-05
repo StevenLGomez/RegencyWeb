@@ -81,7 +81,7 @@
             <!-- Form for Searching by Last name -->
             <h3>Search By Last Name</h3>
 
-            <form action="<?php echo url_for('/staff/owners/create.php?last_name=' . htmlsc(u($last_name))); ?>" method="get">
+            <form action="<?php echo url_for('/staff/owners/create.php?last_name=' . htmlsc(urlencode($last_name))); ?>" method="get">
 
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 

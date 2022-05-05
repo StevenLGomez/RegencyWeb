@@ -37,7 +37,7 @@
                         <td><?php echo htmlsc($subject['payee']); ?></td>
                         <td><?php echo htmlsc($subject['amount']); ?></td>
                         <td><?php echo htmlsc($subject['note']); ?></td>
-                        <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . htmlsc(u($subject['id']))); ?>">Edit</a></td>
+                        <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . htmlsc(urlencode($subject['id']))); ?>">Edit</a></td>
                     </tr>
 
                 <?php } ?>
