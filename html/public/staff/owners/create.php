@@ -87,8 +87,10 @@
         $owner_zip=$owner['zip'] ?? '';
         $owner_notes=$owner['notes'];
 
-        # Replace this with query 'search_address_from_lot'
-        $property_address = '1313 Mockingbird Lane';
+        # Run query for get the property address of this Lot Id
+        $property_set = find_address_by_lot_id($lot_number); 
+        $property_address = mysqli_fetch_assoc($property_set);
+        mysqli_free_result($property_set);
 
     }
 
