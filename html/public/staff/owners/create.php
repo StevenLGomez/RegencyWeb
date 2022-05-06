@@ -149,6 +149,7 @@
        echo '</div>';
        echo '<hr />';
        } ?>
+    <!-- End diagnostic information -->
     <!-- *************************** -->
 
     <div id="content">
@@ -270,17 +271,14 @@
             <?php if($edit_existing_owner) 
             {
                 echo '<input type="submit" value="Apply Changes"/>';
-                // echo '<h2>Edit Owner</h2>';
             }
             elseif ($create_new_owner)
             {
                 echo '<input type="submit" value="Add Owner"/>';
-                // echo '<h2>Create Owner</h2>';
             }
             else
             {
                 echo '<input type="submit" value="Return To Search"/>';
-                // echo '<h2>View Owner</h2>';
             }
             ?>
             <br />

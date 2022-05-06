@@ -62,12 +62,10 @@
   function find_address_by_lot_id($lot_id) {
       global $db;
 
-      $lot_integer = (int) $lot_id;
-
       $sql = "SELECT address FROM lot ";
-      $sql .= "WHERE id = '" . db_escape($db, $lot_integer) . "' ";
-      // $sql .= "LIMIT 1";
-      echo $sql;
+      $sql .= "WHERE id = '" . db_escape($db, $lot_id) . "' ";
+      $sql .= "LIMIT 1";
+      // echo $sql;
       $result = mysqli_query($db, $sql);
       confirm_result_set($result);
       return $result;
