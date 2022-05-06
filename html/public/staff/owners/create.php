@@ -89,7 +89,10 @@
 
         # Run query for get the property address of this Lot Id
         $property_set = find_address_by_lot_id($lot_number); 
-        $property_address = mysqli_fetch_assoc($property_set);
+        $address_result = mysqli_fetch_assoc($property_set);
+        $property_address = $address_result['address'];
+
+        # $property_set can be cleared, result is in $property_address
         mysqli_free_result($property_set);
 
     }
