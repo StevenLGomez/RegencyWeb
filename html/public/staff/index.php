@@ -34,6 +34,15 @@
                     <a href="<?php echo url_for('/staff/owners/index.php'); ?>">Owners</a>
                 </li>
             </ul>
+
+            <form action="" method="post">
+            <fieldset>
+                Enable Diagnostic Output
+                <input type="hidden" name="diagnostic_toggle" value="0" />
+                <input type="checkbox" name="diagnostic_toggle" value="1"<?php if($diagnostics_enabled) {echo " checked";} ?> />
+                <button type = "submit">Apply</button>
+            </fieldset>
+            </form>
         </div>
     </div>
 
