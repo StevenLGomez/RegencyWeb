@@ -1,4 +1,18 @@
-<?php require_once('../../private/initialize.php'); ?>
+<?php 
+    require_once('../../private/initialize.php'); 
+
+    $post_requested = False;
+    $toggled = False;
+
+    if (is_post_request()) {
+        $post_requested = True;
+
+        if (isset($_POST['diagnostic_toggle'])) {
+            $toggled = True;
+        }
+    }
+
+?>
 
 <?php $page_title = 'Staff Menu'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
@@ -10,6 +24,9 @@
         echo url_for('stylesheets/staff.css'); 
         echo '<br />';
         echo 'SHARED_PATH: ' . SHARED_PATH ;
+        echo '<br />';
+        echo 'A post request was made: '; if ($post_requested) {echo 'True';} else { echo 'False';} echo '<br />'; 
+        echo 'Toggle was posted: '; if ($toggled) {echo 'True';} else { echo 'False';} echo '<br />'; 
         echo '<hr />';
     }
     ?> 
