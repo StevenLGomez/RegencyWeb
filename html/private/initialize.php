@@ -29,7 +29,11 @@
 
     $db = db_connect();
     $errors = [];
-    $diagnostics_enabled = True;
+
+    // Global variable
+    // global $diagnostics_enabled = True;
+    global $diagnostics_enabled;
+    global $diagnostics_enabled = True;
 
 ?>
 

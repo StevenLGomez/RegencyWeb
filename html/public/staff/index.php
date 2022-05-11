@@ -8,8 +8,18 @@
         $post_requested = True;
 
         if (isset($_POST['diagnostic_toggle'])) {
-            $toggled = True;
+
+            if ($diagnostic_toggle == 1) {
+                $GLOBALS['$diagnostics_enabled'] = True;
+                $toggled = True;
+            }
+            else
+            {
+                $GLOBALS['$diagnostics_enabled'] = False;
+                $toggled = False;
+            }
         }
+        $GLOBALS['$diagnostics_enabled'] = False;
     }
 
 ?>
@@ -26,6 +36,7 @@
         echo 'SHARED_PATH: ' . SHARED_PATH ;
         echo '<br />';
         echo 'A post request was made: '; if ($post_requested) {echo 'True';} else { echo 'False';} echo '<br />'; 
+        echo '$diagnostic_toggle: '; echo $diagnostic_toggle; echo '<br />'; 
         echo 'Toggle was posted: '; if ($toggled) {echo 'True';} else { echo 'False';} echo '<br />'; 
         echo '<hr />';
     }
