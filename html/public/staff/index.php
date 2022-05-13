@@ -4,22 +4,35 @@
     $post_requested = False;
     $toggled = False;
 
+    $you_made_it_here = False;
+
     if (is_post_request()) {
         $post_requested = True;
 
         if (isset($_POST['diagnostic_toggle'])) {
+            $you_made_it_here = True;
 
-            if ($diagnostic_toggle == 1) {
-                $GLOBALS['$diagnostics_enabled'] = True;
-                $toggled = True;
-            }
-            else
-            {
-                $GLOBALS['$diagnostics_enabled'] = False;
-                $toggled = False;
-            }
+            $toggle = $_POST['diagnostic_toggle'];
+
+            //if ($toggle === 1) {
+            //    toggled = True;
+            //}
+            //else
+            //{
+            //    toggled = False;
+            //}
+
+            //if ($diagnostic_toggle == 1) {
+            //    $GLOBALS['$diagnostics_enabled'] = True;
+            //    $toggled = True;
+            //}
+            //else
+            //{
+            //    $GLOBALS['$diagnostics_enabled'] = False;
+            //    $toggled = False;
+            //}
         }
-        $GLOBALS['$diagnostics_enabled'] = False;
+        // $GLOBALS['$diagnostics_enabled'] = False;
     }
 
 ?>
@@ -37,7 +50,10 @@
         echo '<br />';
         echo 'A post request was made: '; if ($post_requested) {echo 'True';} else { echo 'False';} echo '<br />'; 
         echo '$diagnostic_toggle: '; echo $diagnostic_toggle; echo '<br />'; 
-        echo 'Toggle was posted: '; if ($toggled) {echo 'True';} else { echo 'False';} echo '<br />'; 
+        //echo 'Toggled : '; if ($toggled === '1') {echo 'True';} else { echo 'False';} echo '<br />'; 
+        //echo 'toggle : '; echo $toggle; echo '<br />'; 
+        echo 'toggle : ' . $toggle . 'frogs'; echo '<br />'; 
+        echo 'you_made_it_here:  '; if ($you_made_it_here) {echo 'True'; } else {echo 'False';} echo '<br />';
         echo '<hr />';
     }
     ?> 
