@@ -1,38 +1,22 @@
 <?php 
     require_once('../../private/initialize.php'); 
 
-    $post_requested = False;
-    $toggled = False;
-
-    $you_made_it_here = False;
+    // The following breaks the page
+    // global $diagnostics_enabled
+    // The $diagnostics_enabled settings work, but only on this page...
 
     if (is_post_request()) {
-        $post_requested = True;
 
-        if (isset($_POST['diagnostic_toggle'])) {
-            $you_made_it_here = True;
+        if (isset($_POST['diagnostic_setting'])) {
 
-            $toggle = $_POST['diagnostic_toggle'];
-
-            //if ($toggle === 1) {
-            //    toggled = True;
-            //}
-            //else
-            //{
-            //    toggled = False;
-            //}
-
-            //if ($diagnostic_toggle == 1) {
-            //    $GLOBALS['$diagnostics_enabled'] = True;
-            //    $toggled = True;
-            //}
-            //else
-            //{
-            //    $GLOBALS['$diagnostics_enabled'] = False;
-            //    $toggled = False;
-            //}
+            if ( (int)$_POST['diagnostic_setting'] === 1 ) {
+                $diagnostics_enabled = True;
+            }
+            else
+            {
+                $diagnostics_enabled = False;
+            }
         }
-        // $GLOBALS['$diagnostics_enabled'] = False;
     }
 
 ?>
@@ -44,16 +28,6 @@
     if ($diagnostics_enabled) {
         echo '<hr />';
         echo 'WWW_ROOT: ' . WWW_ROOT . '<br />';
-        echo url_for('stylesheets/staff.css'); 
-        echo '<br />';
-        echo 'SHARED_PATH: ' . SHARED_PATH ;
-        echo '<br />';
-        echo 'A post request was made: '; if ($post_requested) {echo 'True';} else { echo 'False';} echo '<br />'; 
-        echo '$diagnostic_toggle: '; echo $diagnostic_toggle; echo '<br />'; 
-        //echo 'Toggled : '; if ($toggled === '1') {echo 'True';} else { echo 'False';} echo '<br />'; 
-        //echo 'toggle : '; echo $toggle; echo '<br />'; 
-        echo 'toggle : ' . $toggle . 'frogs'; echo '<br />'; 
-        echo 'you_made_it_here:  '; if ($you_made_it_here) {echo 'True'; } else {echo 'False';} echo '<br />';
         echo '<hr />';
     }
     ?> 
@@ -82,8 +56,8 @@
             <form action="" method="post">
             <fieldset>
                 Enable Diagnostic Output
-                <input type="hidden" name="diagnostic_toggle" value="0" />
-                <input type="checkbox" name="diagnostic_toggle" value="1"<?php if($diagnostics_enabled) {echo " checked";} ?> />
+                <input type="hidden" name="diagnostic_setting" value="0" />
+                <input type="checkbox" name="diagnostic_setting" value="1"<?php if($diagnostics_enabled) {echo " checked";} ?> />
                 <button type = "submit">Apply</button>
             </fieldset>
             </form>

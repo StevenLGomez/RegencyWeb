@@ -241,22 +241,22 @@
 
                 <tr>
                     <td><b>Owner Address</b></td>
-                    <td><input type="text" name="owner_address" value="<?php echo htmlsc($owner_address); ?>" /></td>
+                    <td><input type="text" name="owner_address" value="<?php if($is_rental == "1") {echo htmlsc($owner_address);} ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Owner City</b></td>
-                    <td><input type="text" name="owner_city" value="<?php echo htmlsc($owner_city); ?>" /></td>
+                    <td><input type="text" name="owner_city" value="<?php if($is_rental == "1") {echo htmlsc($owner_city);} ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Owner State</b></td>
-                    <td><input type="text" name="owner_state" value="<?php echo htmlsc($owner_state); ?>" /></td>
+                    <td><input type="text" name="owner_state" value="<?php if($is_rental == "1") {echo htmlsc($owner_state);} ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Owner Zip</b></td>
-                    <td><input type="text" name="owner_zip" value="<?php echo htmlsc($owner_zip); ?>" /></td>
+                    <td><input type="text" name="owner_zip" value="<?php if($is_rental == "1") {echo htmlsc($owner_zip);} ?>" /></td>
                 </tr>
 
                 <tr>
