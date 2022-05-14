@@ -9,6 +9,8 @@
     $last_name_was_entered = False;
     $last_name = '';
 
+    // $searching_rental_owners = False;
+
     if (is_post_request())
     {
         if (isset($_POST['address_id']))
@@ -97,6 +99,18 @@
                 </div>
             </form>
             <!-- ============================================================ -->
+            <hr />
+
+            <!-- Form for Searching for Rental owners -->
+            <h3>Display Rental Owners</h3>
+            <form action="" method="post">
+
+                <div id="operations">
+                    <input type="submit" name="view_rentals" value="View Rentals" />
+                </div>
+            </form>
+            <!-- ============================================================ -->
+
 
             <hr />
             <h3>Show History For Address</h3>
@@ -123,14 +137,6 @@
                 </div>
             </form>
             <!-- ============================================================ -->
-
-
-
-
-
-
-
-
 
             <!-- ************************************************************ -->
             <!-- This section only entered after an Address has been selected -->

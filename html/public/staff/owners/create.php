@@ -81,13 +81,14 @@
         $purchase_date=$owner['buy_date'] ?? '';
         $is_current=$owner['is_current'] ?? '';
         $is_rental=False;
+
         $owner_address=$owner['address'] ?? '';
         $owner_city=$owner['city'] ?? '';
         $owner_state=$owner['state'] ?? '';
         $owner_zip=$owner['zip'] ?? '';
         $owner_notes=$owner['notes'];
 
-        # Run query for get the property address of this Lot Id
+        # Run query to get the property address of this Lot Id
         $property_set = find_address_by_lot_id($lot_number); 
         $address_result = mysqli_fetch_assoc($property_set);
         $property_address = $address_result['address'];
@@ -279,6 +280,7 @@
             else
             {
                 echo '<input type="submit" value="Return To Search"/>';
+                <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
             }
             ?>
             <br />
