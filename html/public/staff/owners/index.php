@@ -79,15 +79,12 @@
                 } ?>
             <!-- *************************** -->
 
-            <hr />
             <!-- Form for Searching by Last name -->
-            <h3>Search By Last Name</h3>
-
             <form action="<?php echo url_for('/staff/owners/create.php?last_name=' . htmlsc(urlencode($last_name))); ?>" method="get">
-
+            <fieldset>
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
-                    <label for "last_name">Last Name</label>
+                    <label for "last_name">Search By Last Name</label>
                     <input type="text" id="last_name" name="last_name"><br /><br />
                 </div>
                 <!-- END The Last Name Entry Box -->
@@ -97,30 +94,29 @@
                     <input type="submit" name="edit_owner" value="Edit" />
                     <input type="submit" name="create_owner" value="Create" />
                 </div>
+
+            </fieldset>
             </form>
             <!-- ============================================================ -->
-            <hr />
 
             <!-- Form for Searching for Rental owners -->
-            <h3>Display Rental Owners</h3>
             <form action="" method="post">
-
+            <fieldset>
                 <div id="operations">
+                    <label for "view_rentals">View Renting Owners</label>
                     <input type="submit" name="view_rentals" value="View Rentals" />
                 </div>
+            </fieldset>
             </form>
             <!-- ============================================================ -->
-
-
-            <hr />
-            <h3>Show History For Address</h3>
 
             <!-- Form for Searching by Address -->
             <form action="" method="post">
+            <fieldset>
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
-                    <label for "address_id">History For:</label>
+                    <label for "address_id">Show Owner History For:</label>
                     <select name="address_id" id="address_id">
 
                         <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
@@ -135,6 +131,8 @@
                 <div id="operations">
                     <input type="submit" name="submit" value="Display History" />
                 </div>
+
+            </fieldset>
             </form>
             <!-- ============================================================ -->
 

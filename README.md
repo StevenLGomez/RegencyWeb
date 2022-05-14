@@ -147,14 +147,20 @@ Placeholder diagram for workflow
 
 <a name="owner_sp_1"></a>
 **Variables for public/staff/owners/index.php**
-| Template Variable | New author value | Existing author value |
-| :---------------- | :--------------- | :-------------------- |
-| $pageTitle        | 'Search Owners'  | 'Edit Author'         |
-| $action           | 'addform'        | 'editform'            |
-| $name             | ''(empty string) | Existing name         |
-| $email            | ''(empty string) | Existing email addr   |
-| $id               | ''(empty string) | Existing Author ID    |
-| $button           | 'Add Author'     | 'Update Author'       |
+| Function         | type           | name              | value            |                       |
+| :----------      |  :----------   | :---------------- | :--------------- | :-------------------- |
+| __Full View__    |                |                   |                  |                       |
+|                  | "input"        | view_owner        | View             |                       |
+|                  | "input"        | edit_owner        | Edit             |                       |
+|                  | "input"        | create_owner      | Create           |                       |
+| __View Rentals__ |                |                   |                  |                       |
+|                  | "input"        | view_rentals      | View Rentals     |                       |
+|                  |                |                   |                  |                       |
+| __Lot History__  |                |                   |                  |                       |
+|                  | "select"       | "address_id"      | "address_id"     |                       |
+|                  | "submit"       | "submit"          | Display History  |                       |
+|                  |                |                   |                  |                       |
+|                  |                |                   |                  |                       |
 
 
 <a name="owner_sp_2"></a>
