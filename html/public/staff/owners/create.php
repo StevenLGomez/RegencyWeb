@@ -136,7 +136,7 @@
        echo '<br />';
        echo 'Lot Number:           '; echo htmlsc($lot_number); echo '<br />';
        echo 'Property Address:     '; echo htmlsc($property_address); echo '<br />';
-       echo 'Purchase Date:        '; echo htmlsc($purchase_date); echo '<br />';
+       echo 'Purchased:            '; echo htmlsc($purchase_date); echo '<br />';
        echo 'Current Owner?        '; if($owner['is_current'] == 1) {echo 'Yes';} else {echo 'No';} echo '<br />';
        echo 'Is Rental?            '; if($owner['is_rental'] == 1) {echo 'Yes';} else {echo 'No';} echo '<br />';
        echo 'Owner Address:        '; echo htmlsc($owner_address); echo '<br />';
@@ -220,7 +220,7 @@
                 </tr>
 
                 <tr>
-                    <td><b>Purchase Date (YYYY-MM-DD)</b></td>
+                    <td><b>Purchased (YYYY-MM-DD)</b></td>
                     <td><input type="text" name="purchase_date" value="<?php echo htmlsc($purchase_date); ?>" /></td>
                 </tr>
 
@@ -280,10 +280,10 @@
             else
             {
                 echo '<input type="submit" value="Return To Search"/>';
-                <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
             }
             ?>
             <br />
+            <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
 
         </form>
         <!-- ============================================================ -->

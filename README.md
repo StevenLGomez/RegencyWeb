@@ -150,6 +150,7 @@ Placeholder diagram for workflow
 | Function         | type           | name              | value            |                       |
 | :----------      |  :----------   | :---------------- | :--------------- | :-------------------- |
 | __Full View__    |                |                   |                  |                       |
+|                  | "text"         | "last_name"       |                  |                       |
 |                  | "input"        | view_owner        | View             |                       |
 |                  | "input"        | edit_owner        | Edit             |                       |
 |                  | "input"        | create_owner      | Create           |                       |
@@ -181,23 +182,27 @@ Placeholder diagram for workflow
 <a name="owner_sp_3"></a>
 **Add Owner Screen Layout**
 
-|                | Primary Owner   | Secondary Owner |
-| :-------       | :----------     | :-------------  |
-| First Name     | Abraham         | Amelia          |
-| Middle         |                 | Mary            |
-| Last  Name     | Lincoln         | Earhart         |
-| Phone          | 636-404-1920    | 1-900-123-4567  |
-| Email          | abe@lincoln.com | findme@aol.com  |
-|                |                 |                 |
-| Buy Date       | 2022-05-01      |                 |
-| Current Owner  | No              |                 |
-| Is Rental      | Yes             |                 |
-| Address        | 101 Main Street |                 |
-| City           | Long Beach      |                 |
-| State          | CA              |                 |
-| Zip            | 90815           |                 |
-|                |                 |                 |
-|                | **Submit**      |                 |
+|                        | Primary Owner    | Secondary Owner |
+| :-------               | :----------      | :-------------  |
+| First Name             | Abraham          | Amelia          |
+| Middle                 |                  | Mary            |
+| Last  Name             | Lincoln          | Earhart         |
+| Phone                  | 636-404-1920     | 1-900-123-4567  |
+| Email                  | abe@lincoln.com  | findme@aol.com  |
+|                        |                  |                 |
+| Lot #                  |                  |                 |
+| Property Address       | 3759 Hyatt Court |                 |
+| Purchased (YYYY_MM_DD) | 2202-05-01       |                 |
+| Buy Date               | 2022-05-01       |                 |
+| Current Owner          | X                |                 |
+| Is Rental              | O                |                 |
+| Address                | 101 Main Street  |                 |
+| City                   | Long Beach       |                 |
+| State                  | CA               |                 |
+| Zip                    | 90815            |                 |
+| Notes                  |                  |                 |
+|                        |                  |                 |
+| **Action**             |                  |                 |
 
 
 [**^ Top ^**](#toc)

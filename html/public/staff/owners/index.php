@@ -3,9 +3,12 @@
     require_once('../../../private/initialize.php');
 
     // Set defaults for local variables
+    $search_mode = False;
+
     $lot_is_selected = False;
     $lot_id = '';
 
+    $fake_last_name_was_entered = False;
     $last_name_was_entered = False;
     $last_name = '';
 
@@ -24,6 +27,11 @@
             $last_name = $_POST['last_name'];
             $last_name_was_entered = True;
         }
+    }
+    else
+    {
+        // If nothing was posted, this page returns to Search Mode
+        $search_mode = True;
     }
 
     $lot_query = find_all_lots();
@@ -79,17 +87,19 @@
                 } ?>
             <!-- *************************** -->
 
+        <?php if ($search_mode) { ?>
             <!-- Form for Searching by Last name -->
+
             <form action="<?php echo url_for('/staff/owners/create.php?last_name=' . htmlsc(urlencode($last_name))); ?>" method="get">
             <fieldset>
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
                     <label for "last_name">Search By Last Name</label>
-                    <input type="text" id="last_name" name="last_name"><br /><br />
+                    <input type="text" id="last_name" name="last_name">
                 </div>
                 <!-- END The Last Name Entry Box -->
 
-                <div id="operations">
+                <div id="actions">
                     <input type="submit" name="view_owner" value="View" />
                     <input type="submit" name="edit_owner" value="Edit" />
                     <input type="submit" name="create_owner" value="Create" />
@@ -102,7 +112,7 @@
             <!-- Form for Searching for Rental owners -->
             <form action="" method="post">
             <fieldset>
-                <div id="operations">
+                <div id="actions">
                     <label for "view_rentals">View Renting Owners</label>
                     <input type="submit" name="view_rentals" value="View Rentals" />
                 </div>
@@ -128,13 +138,29 @@
                 <?php mysqli_free_result($lot_query); ?>
                 <!-- END The ADDRESS pull down select item -->
 
-                <div id="operations">
+                <div id="actions">
                     <input type="submit" name="submit" value="Display History" />
                 </div>
 
             </fieldset>
             </form>
             <!-- ============================================================ -->
+
+        <?php 
+        } /* if ($search_mode) */
+        else if ($last_name_was_entered)
+        {
+            echo 'You need the full form here';
+        }
+        else
+        { /* Handle post cases here */
+            echo '<h2>Howdy</h2>';
+        } /* End of case ??? */ ?>
+
+
+
+
+
 
             <!-- ************************************************************ -->
             <!-- This section only entered after an Address has been selected -->
@@ -175,7 +201,7 @@
             <!-- ************************************************************ -->
             <!-- This section only entered after a Last Name has been entered -->
             <!-- ************************************************************ -->
-            <?php if ($last_name_was_entered) { ?>
+            <?php if ($fake_last_name_was_entered) { ?>
 
             <?php $owner_query = find_owners_by_last($last_name); ?>
                <hr />
