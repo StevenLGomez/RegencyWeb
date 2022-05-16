@@ -5,28 +5,70 @@
     // Set defaults for local variables
     $search_mode = False;
 
+    // Variables to control actions requiring Full Owner Form
+    $full_owner_form_required = False;
+    $view_existing_owner = False;
+    $edit_existing_owner = False;
+    $create_new_owner = False;
+
+    // Variables to control actions requiring Owner Information List
+    $owner_list_required = False;
+    $searching_rental_owners = False;
+    $searching_history = False;
+
+    // The following variables to be obsoleted
     $lot_is_selected = False;
     $lot_id = '';
-
     $fake_last_name_was_entered = False;
     $last_name_was_entered = False;
     $last_name = '';
 
-    // $searching_rental_owners = False;
 
     if (is_post_request())
     {
-        if (isset($_POST['address_id']))
-        {
-            $lot_id = $_POST['address_id'];
-            $lot_is_selected = True;
+        // This group requires the Full Owner Form
+        if (isset($_POST['view_owner'])) {
+            $full_owner_form_required = True;
+            $view_existing_owner = True;
+            $primary_last = $_POST['last_name'];
         }
 
-        if (isset($_POST['last_name']))
-        {
-            $last_name = $_POST['last_name'];
-            $last_name_was_entered = True;
+        if (isset($_POST['edit_owner'])) {
+            $full_owner_form_required = True;
+            $edit_existing_owner = True;
+            $primary_last = $_POST['last_name'];
         }
+
+        if (isset($_POST['create_owner'])) {
+            $full_owner_form_required = True;
+            $create_new_owner = True;
+        }
+        // End of group requiring the Full Owner Form
+
+        // This group requires the queried list of owner information
+        if (isset($_POST['view_rentals'])) {
+            $owner_list_required = True;
+            $searching_rental_owners = True;
+        }
+
+        if (isset($_POST['address_id'])) {
+            $owner_list_required = True;
+            $searching_history = True;
+            $lot_id = $_POST['address_id'];
+        }
+
+        //if (isset($_POST['address_id']))
+        //{
+        //    $lot_id = $_POST['address_id'];
+        //    $lot_is_selected = True;
+        //}
+
+        //if (isset($_POST['last_name']))
+        //{
+        //    $last_name = $_POST['last_name'];
+        //    $last_name_was_entered = True;
+        //}
+        // End of group requiring the queried list of owner information
     }
     else
     {
@@ -52,9 +94,8 @@
                 echo '<hr />';
                 echo '<div>';
 
-                // Show lot selected information
-                echo '$lot_is_selected: '; 
-                if ($lot_is_selected) {
+                echo '$view_existing_owner: '; 
+                if ($view_existing_owner) {
                     echo 'True';
                 }
                 else
@@ -62,14 +103,9 @@
                     echo 'False';
                 }
                 echo '<br />';
-                echo '$lot_id: ' . $lot_id;
 
-                echo '<br />';
-                echo '<br />';
-
-                // Show Last Name entry information
-                echo '$last_name_was_entered: ';
-                if ($last_name_was_entered) {
+                echo '$edit_existing_owner: '; 
+                if ($edit_existing_owner) {
                     echo 'True';
                 }
                 else
@@ -77,20 +113,49 @@
                     echo 'False';
                 }
                 echo '<br />';
-                echo '$last_name: ' . $last_name;
 
+                echo '$create_new_owner: '; 
+                if ($create_new_owner) {
+                    echo 'True';
+                }
+                else
+                {
+                    echo 'False';
+                }
                 echo '<br />';
-                echo url_for('/staff/owners/create.php'); 
 
-                echo '</div>';
-                echo '<hr />';
-                } ?>
-            <!-- *************************** -->
+//                echo '<br />';
+//                echo '$lot_id: ' . $lot_id;
+//
+//                echo '<br />';
+//                echo '<br />';
+//
+//                // Show Last Name entry information
+//                echo '$last_name_was_entered: ';
+//                if ($last_name_was_entered) {
+//                    echo 'True';
+//                }
+//                else
+//                {
+//                    echo 'False';
+//                }
+//                echo '<br />';
+//                echo '$last_name: ' . $last_name;
+//
+//                echo '</div>';
+//                echo '<hr />';
 
+                echo '<!-- End of diagnostic information -->';
+                echo '<!-- *************************** -->';
+            } ?>
+
+        <!-- ============================================================ -->
+        <!-- This is the beginning of the "Default Owner Page "           -->
+        <!-- ============================================================ -->
         <?php if ($search_mode) { ?>
             <!-- Form for Searching by Last name -->
 
-            <form action="<?php echo url_for('/staff/owners/create.php?last_name=' . htmlsc(urlencode($last_name))); ?>" method="get">
+            <form action="" method="post">
             <fieldset>
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
@@ -145,21 +210,34 @@
             </fieldset>
             </form>
             <!-- ============================================================ -->
+        <?php } /* if ($search_mode) */ ?>
+        <!-- ============================================================ -->
+        <!-- This is the end of the "Default Owner Page " =============== -->
+        <!-- ============================================================ -->
 
-        <?php 
-        } /* if ($search_mode) */
-        else if ($last_name_was_entered)
-        {
-            echo 'You need the full form here';
-        }
-        else
-        { /* Handle post cases here */
-            echo '<h2>Howdy</h2>';
-        } /* End of case ??? */ ?>
+        <!-- Owner Form display has been requested -->
+        <?php if ($full_owner_form_required) { ?>
+
+            <h2>Full owner form required here.</h2>
+
+            <?php if ($view_existing_owner) {echo 'View Existing Owner: ' . $primary_last;} echo ' <br />'; ?>
+            <?php if ($edit_existing_owner) {echo 'Edit Existing Owner: ' . $primary_last;} echo ' <br />'; ?>
+            <?php if ($create_new_owner) {echo 'Create New Owner';} echo ' <br />'; ?>
+
+        <?php } /* if ($full_owner_form_required) */ ?>
+        <!-- ============================================================ -->
 
 
+        <!-- List of Owner Information has been requested -->
+        <?php if ($owner_list_required) { ?>
 
+            <h2>Owner list required here.</h2>
 
+            <?php if ($searching_rental_owners) {echo 'Searching Rentals';} echo ' <br />'; ?>
+            <?php if ($searching_history) {echo 'Searching History: ' . $lot_id;} echo ' <br />'; ?>
+
+        <?php } /* if ($owner_list_required) */ ?>
+        <!-- ============================================================ -->
 
 
             <!-- ************************************************************ -->
