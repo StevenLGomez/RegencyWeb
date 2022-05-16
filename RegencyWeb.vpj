@@ -127,8 +127,9 @@
                         <F N="html/public/staff/fees/index.php"/>
                     </Folder>
                     <Folder Name="owners">
-                        <F N="html/public/staff/owners/create.php"/>
+                        <F N="html/public/staff/owners/form.php"/>
                         <F N="html/public/staff/owners/index.php"/>
+                        <F N="html/public/staff/owners/list.php"/>
                     </Folder>
                     <F N="html/public/staff/index.php"/>
                 </Folder>

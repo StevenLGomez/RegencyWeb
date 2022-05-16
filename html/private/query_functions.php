@@ -119,5 +119,18 @@
     return $result;
   }
 
+  function search_renting_owners() {
+    global $db;
+
+    $sql = "SELECT * FROM owner "; 
+    $sql .= "WHERE is_rental = 1";
+    //echo $sql;
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+  }
+
+
+
 ?>
 

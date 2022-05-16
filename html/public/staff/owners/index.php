@@ -10,19 +10,16 @@
     $view_existing_owner = False;
     $edit_existing_owner = False;
     $create_new_owner = False;
+    $last_name = '';
 
     // Variables to control actions requiring Owner Information List
     $owner_list_required = False;
     $searching_rental_owners = False;
     $searching_history = False;
-
-    // The following variables to be obsoleted
-    $lot_is_selected = False;
     $lot_id = '';
-    $fake_last_name_was_entered = False;
-    $last_name_was_entered = False;
-    $last_name = '';
 
+    // Default value for Page Title
+    $page_title = 'Search Owners';
 
     if (is_post_request())
     {
@@ -30,18 +27,24 @@
         if (isset($_POST['view_owner'])) {
             $full_owner_form_required = True;
             $view_existing_owner = True;
-            $primary_last = $_POST['last_name'];
+            $requested_name = $_POST['last_name'];
+
+            $page_title = 'View Owner Information';
         }
 
         if (isset($_POST['edit_owner'])) {
             $full_owner_form_required = True;
             $edit_existing_owner = True;
-            $primary_last = $_POST['last_name'];
+            $requested_name = $_POST['last_name'];
+
+            $page_title = 'Edit Owner Information';
         }
 
         if (isset($_POST['create_owner'])) {
             $full_owner_form_required = True;
             $create_new_owner = True;
+
+            $page_title = 'Create New Owner';
         }
         // End of group requiring the Full Owner Form
 
@@ -49,26 +52,17 @@
         if (isset($_POST['view_rentals'])) {
             $owner_list_required = True;
             $searching_rental_owners = True;
+
+            $page_title = 'Rental Properties';
         }
 
         if (isset($_POST['address_id'])) {
             $owner_list_required = True;
             $searching_history = True;
             $lot_id = $_POST['address_id'];
+
+            $page_title = 'Property History';
         }
-
-        //if (isset($_POST['address_id']))
-        //{
-        //    $lot_id = $_POST['address_id'];
-        //    $lot_is_selected = True;
-        //}
-
-        //if (isset($_POST['last_name']))
-        //{
-        //    $last_name = $_POST['last_name'];
-        //    $last_name_was_entered = True;
-        //}
-        // End of group requiring the queried list of owner information
     }
     else
     {
@@ -80,18 +74,18 @@
 
 ?>
 
-<!-- Assign page title (used in header) & include header -->
-<?php $page_title = 'Search Owners'; ?>
+<!-- Include HTML header here, note $page_title must be previously defined -->
 <?php include(SHARED_PATH . '/header.php'); ?>
 
     <div id="content">
         <div id="regency-menu">
             <h2>Owner Management</h2>
 
-            <!-- Show diagnostic information -->
             <?php
+
             if ( $diagnostics_enabled) {
                 echo '<hr />';
+                echo '<!-- Show diagnostic information -->';
                 echo '<div>';
 
                 echo '$view_existing_owner: '; 
@@ -124,29 +118,11 @@
                 }
                 echo '<br />';
 
-//                echo '<br />';
-//                echo '$lot_id: ' . $lot_id;
-//
-//                echo '<br />';
-//                echo '<br />';
-//
-//                // Show Last Name entry information
-//                echo '$last_name_was_entered: ';
-//                if ($last_name_was_entered) {
-//                    echo 'True';
-//                }
-//                else
-//                {
-//                    echo 'False';
-//                }
-//                echo '<br />';
-//                echo '$last_name: ' . $last_name;
-//
-//                echo '</div>';
-//                echo '<hr />';
+                echo '<hr />';
 
                 echo '<!-- End of diagnostic information -->';
                 echo '<!-- *************************** -->';
+                echo '</div>';
             } ?>
 
         <!-- ============================================================ -->
@@ -216,174 +192,17 @@
         <!-- ============================================================ -->
 
         <!-- Owner Form display has been requested -->
-        <?php if ($full_owner_form_required) { ?>
-
-            <h2>Full owner form required here.</h2>
-
-            <?php if ($view_existing_owner) {echo 'View Existing Owner: ' . $primary_last;} echo ' <br />'; ?>
-            <?php if ($edit_existing_owner) {echo 'Edit Existing Owner: ' . $primary_last;} echo ' <br />'; ?>
-            <?php if ($create_new_owner) {echo 'Create New Owner';} echo ' <br />'; ?>
-
-        <?php } /* if ($full_owner_form_required) */ ?>
-        <!-- ============================================================ -->
-
+        <?php if ($full_owner_form_required) 
+        {
+            include('./form.php'); 
+        } /* if ($full_owner_form_required) */ ?>
+        <!-- Bottom of Owner Form include =============================== -->
 
         <!-- List of Owner Information has been requested -->
         <?php if ($owner_list_required) { ?>
-
-            <h2>Owner list required here.</h2>
-
-            <?php if ($searching_rental_owners) {echo 'Searching Rentals';} echo ' <br />'; ?>
-            <?php if ($searching_history) {echo 'Searching History: ' . $lot_id;} echo ' <br />'; ?>
-
+            <?php include('./list.php'); ?>
         <?php } /* if ($owner_list_required) */ ?>
         <!-- ============================================================ -->
-
-
-            <!-- ************************************************************ -->
-            <!-- This section only entered after an Address has been selected -->
-            <!-- ************************************************************ -->
-            <?php if ($lot_is_selected) { ?>
-            <?php $owner_query = find_owners_by_lot($lot_id); ?>
-               <hr />
-               <h3> Owner History for Lot#: <?php echo $lot_id ?> </h3> 
-                  <table class="list">
-                      <tr>
-                          <th>First</th>
-                          <th>MI</th>
-                          <th>Last</th>
-                          <th>Buy Date</th>
-                          <th>Owner Address</th>
-                          <th>Current</th>
-                          <th>Rental</th>
-                      </tr>
-
-                <?php while($owner = mysqli_fetch_assoc($owner_query)) { ?>
-                    <tr>
-                        <td><?php echo htmlsc($owner['first']); ?>    </td>
-                        <td><?php echo htmlsc($owner['mi']); ?>       </td>
-                        <td><?php echo htmlsc($owner['last']); ?>     </td>
-                        <td><?php echo htmlsc($owner['buy_date']); ?>     </td>
-                        <td><?php echo htmlsc($owner['address']); ?>  </td>
-                        <td><?php echo $owner['is_current'] == 1 ? 'Yes' : 'No'; ?></td>
-                        <td><?php echo $owner['is_rental'] == 1 ? 'Yes' : 'No'; ?></td>
-                    </tr>
-                <?php } /* Bottom of while loop */ ?>
-
-                  </table>
-                  <?php mysqli_free_result($owner_query); ?>
-
-            <?php } /* if ($lot_is_selected) */  ?>
-            <!-- ============================================================ -->
-
-            <!-- ************************************************************ -->
-            <!-- This section only entered after a Last Name has been entered -->
-            <!-- ************************************************************ -->
-            <?php if ($fake_last_name_was_entered) { ?>
-
-            <?php $owner_query = find_owners_by_last($last_name); ?>
-               <hr />
-               <?php echo '<h3> Search Results for: ' . $last_name . '</h3>'; ?>
-
-                  <table class="list">
-                      <tr>
-                          <th></th>
-                          <th>Primary Owner</th>
-                          <th>Secondary Owner</th>
-                      </tr>
-
-                    <?php $owner = mysqli_fetch_assoc($owner_query); ?>
-
-                      <tr>
-                          <td><b>First Name</b></td>
-                          <td><?php echo htmlsc($owner['first']); ?>    </td>
-                          <td><?php echo htmlsc($owner['first_2']); ?>    </td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Middle</b></td>
-                          <td><?php echo htmlsc($owner['mi']); ?>    </td>
-                          <td><?php echo htmlsc($owner['mi_2']); ?>    </td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Last Name</b></td>
-                          <td><?php echo htmlsc($owner['last']); ?>    </td>
-                          <td><?php echo htmlsc($owner['last_2']); ?>    </td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Phone</b></td>
-                          <td><?php echo htmlsc($owner['phone']); ?>    </td>
-                          <td><?php echo htmlsc($owner['phone_2']); ?>    </td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Email</b></td>
-                          <td><?php echo htmlsc($owner['email']); ?>    </td>
-                          <td><?php echo htmlsc($owner['email_2']); ?>    </td>
-                      </tr>
-
-                      <!-- Add empty row for a spacer -->
-                      <tr>
-                          <td></td>
-                          <td></td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Lot #</b></td>
-                          <td><?php echo htmlsc($owner['fk_lot_id']); ?>    </td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Buy Date</b></td>
-                          <td><?php echo htmlsc($owner['buy_date']); ?>    </td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Current Owner?</b></td>
-                          <td><?php echo $owner['is_current'] == 1 ? 'Yes' : 'No'; ?></td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Is Rental?</b></td>
-                          <td>TBD</td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Address</b></td>
-                          <td><?php echo htmlsc($owner['address']); ?>    </td>
-                      </tr>
-
-                      <tr>
-                          <td><b>City</b></td>
-                          <td><?php echo htmlsc($owner['city']); ?>    </td>
-                      </tr>
-
-                      <tr>
-                          <td><b>State</b></td>
-                          <td><?php echo htmlsc($owner['state']); ?>    </td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Zip</b></td>
-                          <td><?php echo htmlsc($owner['zip']); ?>    </td>
-                      </tr>
-
-                      <tr>
-                          <td><b>Notes</b></td>
-                          <td>Enjoys skydiving</td>
-                      </tr>
-
-                  </table>
-
-                  <?php mysqli_free_result($owner_query); ?>
-
-            <?php } /* if ($last_name_was_entered) */  ?>
-            <!-- ============================================================ -->
-
-            <br />
-            <br />
 
         </div>
     </div>
