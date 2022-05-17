@@ -215,6 +215,8 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022
 
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 132)  WHERE id = 132; 
 
+-- 2022-05-16 Deposit # 129 had incorrect date, fixing here
+UPDATE deposit SET dt = '2022-03-28'  WHERE id = 129; 
 
 
 
