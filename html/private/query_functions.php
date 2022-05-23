@@ -174,7 +174,8 @@
       }
       else
       {
-          // INSERT failes !
+          // INSERT failed !
+          echo 'Insert Failed :(';
           echo mysqli_error($db);
           db_disconnect($db);
           exit;

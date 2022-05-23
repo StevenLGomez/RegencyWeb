@@ -157,7 +157,7 @@
 
             if ($create_new_owner)
             {
-                echo '<input type="submit" value="Add Owner"/>';
+                echo '<input type="submit" name="add_owner_from_form" value="Add Owner"/>';
             }
             ?>
 
