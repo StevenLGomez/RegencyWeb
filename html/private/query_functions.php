@@ -133,11 +133,11 @@
   function insert_owner($owner) {
       global $db;
 
-      $errors = validate_owner($owner);
-      if(!empty($errors))
-      {
-          return $errors;
-      }
+      //$errors = validate_owner($owner);
+      //if(!empty($errors))
+      //{
+      //    return $errors;
+      //}
 
       $sql = "INSERT INTO owner ";
       $sql .= "(fk_lot_id, first, mi, last, first_2, mi_2, last_2, ";
@@ -164,7 +164,10 @@
       $sql .= "'" . db_escape($db, $owner['is_rental']) . "'";
       $sql .= ")";
 
-      // echo $sql;
+      echo $sql;
+      return $sql
+
+      //exit;
 
       // For INSERT statements $result is True or False
       $result = mysqli_query($db, $sql);

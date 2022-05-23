@@ -4,29 +4,48 @@
     <!-- ************************************************************ -->
 
     <?php 
-        // Initialize owner array as blank for all cases
-        $owner = [];
-        $owner['primary_first'] ='';
-        $owner['primary_middle'] ='';
-        $owner['primary_last'] ='';
-        $owner['primary_phone'] ='';
-        $owner['primary_email'] ='';
+        if ($add_owner_from_form)
+        {
+            echo 'Adding from form ';
+            $result = insert_owner($owner);
+            $result = insert_owner($owner);
+            echo $result;
+            //if ($result === True) {
+            //    echo 'Submit returned True';
+            //    $new_id = mysqli_insert_id($db);
+            // }
+            //else
+            //{
+            //    echo 'Submit returned False';
+            //    $errors = $result;
+            //}
+        }
+        else
+        {
+            // Initialize owner array as blank if not needed
+            $owner = [];
+            $owner['primary_first'] ='';
+            $owner['primary_middle'] ='';
+            $owner['primary_last'] ='';
+            $owner['primary_phone'] ='';
+            $owner['primary_email'] ='';
 
-        $owner['secondary_first'] ='';
-        $owner['secondary_middle'] ='';
-        $owner['secondary_last'] ='';
-        $owner['secondary_phone'] ='';
-        $owner['secondary_email'] ='';
+            $owner['secondary_first'] ='';
+            $owner['secondary_middle'] ='';
+            $owner['secondary_last'] ='';
+            $owner['secondary_phone'] ='';
+            $owner['secondary_email'] ='';
 
-        $owner['fk_lot_id'] ='';
-        $owner['purchase_date'] ='';
-        $owner['is_current'] ='0';
-        $owner['is_rental'] ='0';
-        $owner['owner_address'] ='';
-        $owner['owner_city'] ='';
-        $owner['owner_state'] ='';
-        $owner['owner_zip'] ='';
-        $owner['owner_notes'] ='';
+            $owner['fk_lot_id'] ='';
+            $owner['purchase_date'] ='';
+            $owner['is_current'] ='0';
+            $owner['is_rental'] ='0';
+            $owner['owner_address'] ='';
+            $owner['owner_city'] ='';
+            $owner['owner_state'] ='';
+            $owner['owner_zip'] ='';
+            $owner['owner_notes'] ='';
+        }
 
         // Query existing information if viewing or editing - overwrites blank values above
         if ($view_existing_owner || $edit_existing_owner) 
