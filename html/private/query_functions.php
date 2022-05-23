@@ -130,7 +130,7 @@
     return $result;
   }
 
-  function insert_owner($owner) {
+  function insert_new_owner($owner) {
       global $db;
 
       //$errors = validate_owner($owner);
@@ -165,8 +165,8 @@
       $sql .= ")";
 
       echo $sql;
-      return $sql
 
+      //return $sql;
       //exit;
 
       // For INSERT statements $result is True or False

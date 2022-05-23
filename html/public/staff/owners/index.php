@@ -10,6 +10,7 @@
     $view_existing_owner = False;
     $edit_existing_owner = False;
     $create_new_owner = False;
+    $display_new_owner = False;
     $last_name = '';
 
     // Variables to control actions requiring Owner Information List
@@ -49,19 +50,21 @@
         // End of group requiring the Full Owner Form
 
         // This group supports actions request from the Owner Form
-        //if (isset($_POST['add_owner_from_form'])) {
-        //    echo 'Adding from form ';
-        //    $result = insert_owner($owner);
-        //    if ($result === True) {
-        //        echo 'Submit returned True';
-        //        $new_id = mysqli_insert_id($db);
-        //    }
-        //    else
-        //    {
-        //        echo 'Submit returned False';
-        //        $errors = $result;
-        //    }
-        // }
+        if (isset($_POST['add_owner_from_form'])) {
+            echo 'Adding from form ';
+            $full_owner_form_required = True;
+            $display_new_owner = True;
+            $result = insert_new_owner($owner);
+            if ($result === True) {
+                echo 'Submit returned True';
+                $new_id = mysqli_insert_id($db);
+            }
+            else
+            {
+                echo 'Submit returned False';
+                $errors = $result;
+            }
+        }
         // End of group of actions requested from the Owner Form
 
         // This group requires the queried list of owner information

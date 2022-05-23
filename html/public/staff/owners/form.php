@@ -4,12 +4,11 @@
     <!-- ************************************************************ -->
 
     <?php 
-        if ($add_owner_from_form)
+        if ($display_new_owner)
         {
-            echo 'Adding from form ';
-            $result = insert_owner($owner);
-            $result = insert_owner($owner);
-            echo $result;
+            echo 'display_new_owner from form ';
+            //$result = insert_new_owner($owner);
+            //echo $result;
             //if ($result === True) {
             //    echo 'Submit returned True';
             //    $new_id = mysqli_insert_id($db);
@@ -24,20 +23,20 @@
         {
             // Initialize owner array as blank if not needed
             $owner = [];
-            $owner['primary_first'] ='';
-            $owner['primary_middle'] ='';
-            $owner['primary_last'] ='';
-            $owner['primary_phone'] ='';
+            $owner['first'] ='';
+            $owner['mi'] ='';
+            $owner['last'] ='';
+            $owner['phone'] ='';
             $owner['primary_email'] ='';
 
-            $owner['secondary_first'] ='';
-            $owner['secondary_middle'] ='';
-            $owner['secondary_last'] ='';
-            $owner['secondary_phone'] ='';
-            $owner['secondary_email'] ='';
+            $owner['first_2'] ='';
+            $owner['mi_2'] ='';
+            $owner['last_2'] ='';
+            $owner['phone_2'] ='';
+            $owner['email_2'] ='';
 
             $owner['fk_lot_id'] ='';
-            $owner['purchase_date'] ='';
+            $owner['buy_date'] ='';
             $owner['is_current'] ='0';
             $owner['is_rental'] ='0';
             $owner['owner_address'] ='';
@@ -80,32 +79,32 @@
 
                 <tr>
                     <td><b>First Name</b></td>
-                    <td><input type="text" name="primary_first" value="<?php echo htmlsc($owner['first']); ?>" /></td>
-                    <td><input type="text" name="secondary_first" value="<?php echo htmlsc($owner['first_2']); ?>" /></td>
+                    <td><input type="text" name="first" value="<?php echo htmlsc($owner['first']); ?>" /></td>
+                    <td><input type="text" name="first_2" value="<?php echo htmlsc($owner['first_2']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Middle</b></td>
-                    <td><input type="text" name="primary_middle" value="<?php echo htmlsc($owner['mi']); ?>" /></td>
-                    <td><input type="text" name="secondary_middle" value="<?php echo htmlsc($owner['mi_2']); ?>" /></td>
+                    <td><input type="text" name="mi" value="<?php echo htmlsc($owner['mi']); ?>" /></td>
+                    <td><input type="text" name="mi_2" value="<?php echo htmlsc($owner['mi_2']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Last Name</b></td>
-                    <td><input type="text" name="primary_last" value="<?php echo htmlsc($owner['last']); ?>" /></td>
-                    <td><input type="text" name="secondary_last" value="<?php echo htmlsc($owner['last_2']); ?>" /></td>
+                    <td><input type="text" name="last" value="<?php echo htmlsc($owner['last']); ?>" /></td>
+                    <td><input type="text" name="last_2" value="<?php echo htmlsc($owner['last_2']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Phone</b></td>
-                    <td><input type="text" name="primary_phone" value="<?php echo htmlsc($owner['phone']); ?>" /></td>
-                    <td><input type="text" name="secondary_phone" value="<?php echo htmlsc($owner['phone_2']); ?>" /></td>
+                    <td><input type="text" name="phone" value="<?php echo htmlsc($owner['phone']); ?>" /></td>
+                    <td><input type="text" name="phone_2" value="<?php echo htmlsc($owner['phone_2']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Email</b></td>
                     <td><input type="text" name="primary_email" value="<?php echo htmlsc($owner['email']); ?>" /></td>
-                    <td><input type="text" name="secondary_email" value="<?php echo htmlsc($owner['email_2']); ?>" /></td>
+                    <td><input type="text" name="email_2" value="<?php echo htmlsc($owner['email_2']); ?>" /></td>
                 </tr>
 
                 <tr>
@@ -120,7 +119,7 @@
 
                 <tr>
                     <td><b>Purchased (YYYY-MM-DD)</b></td>
-                    <td><input type="text" name="purchase_date" value="<?php echo htmlsc($owner['buy_date']); ?>" /></td>
+                    <td><input type="text" name="buy_date" value="<?php echo htmlsc($owner['buy_date']); ?>" /></td>
                 </tr>
 
                 <tr>
