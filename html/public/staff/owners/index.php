@@ -51,9 +51,10 @@
 
         // This group supports actions request from the Owner Form
         if (isset($_POST['add_owner_from_form'])) {
-            echo 'Adding from form ';
+            echo 'Adding from form, > '; echo $owner['first']; echo ' <';
             $full_owner_form_required = True;
             $display_new_owner = True;
+
             $result = insert_new_owner($owner);
             if ($result === True) {
                 echo 'Submit returned True';
