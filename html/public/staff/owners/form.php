@@ -4,47 +4,28 @@
     <!-- ************************************************************ -->
 
     <?php 
-        if ($display_new_owner)
-        {
-            echo 'display_new_owner from form ';
-            //$result = insert_new_owner($owner);
-            //echo $result;
-            //if ($result === True) {
-            //    echo 'Submit returned True';
-            //    $new_id = mysqli_insert_id($db);
-            // }
-            //else
-            //{
-            //    echo 'Submit returned False';
-            //    $errors = $result;
-            //}
-        }
-        else
-        {
-            // Initialize owner array as blank if not needed
-            $owner = [];
-            $owner['first'] ='';
-            $owner['mi'] ='';
-            $owner['last'] ='';
-            $owner['phone'] ='';
-            $owner['primary_email'] ='';
+        // Initialize owner array as blank if not needed
+        $first ='';
+        $mi ='';
+        $last ='';
+        $phone ='';
+        $primary_email ='';
 
-            $owner['first_2'] ='';
-            $owner['mi_2'] ='';
-            $owner['last_2'] ='';
-            $owner['phone_2'] ='';
-            $owner['email_2'] ='';
+        $first_2 ='';
+        $mi_2 ='';
+        $last_2 ='';
+        $phone_2 ='';
+        $email_2 ='';
 
-            $owner['fk_lot_id'] ='';
-            $owner['buy_date'] ='';
-            $owner['is_current'] ='0';
-            $owner['is_rental'] ='0';
-            $owner['owner_address'] ='';
-            $owner['owner_city'] ='';
-            $owner['owner_state'] ='';
-            $owner['owner_zip'] ='';
-            $owner['owner_notes'] ='';
-        }
+        $fk_lot_id ='';
+        $buy_date ='';
+        $is_current ='0';
+        $is_rental ='0';
+        $owner_address ='';
+        $owner_city ='';
+        $owner_state ='';
+        $owner_zip ='';
+        $owner_notes ='';
 
         // Query existing information if viewing or editing - overwrites blank values above
         if ($view_existing_owner || $edit_existing_owner) 
@@ -55,15 +36,38 @@
             // The queried set can be cleared since it is now in $owner
             mysqli_free_result($owner_set); 
 
-            # Run query to get the property address of this Lot Id
+            // Run query to get the property address of this Lot Id
             $property_set = find_address_by_lot_id($owner['fk_lot_id']); 
             $address_result = mysqli_fetch_assoc($property_set);
             $property_address = $address_result['address'];
 
             echo $property_address;
 
-            # $property_set can be cleared, result is in $property_address
+            // $property_set can be cleared, result is in $property_address
             mysqli_free_result($property_set);
+
+            // Populate the local variables with the values pulled from the queries made above
+            $first = $owner['first'];
+            $mi = $owner['mi'];
+            $last = $owner['last'];
+            $phone = $owner['phone'];
+            $primary_email = $owner['email'];
+
+            $first_2 = $owner['first_2'];
+            $mi_2 = $owner['mi_2'];
+            $last_2 = $owner['last_2'];
+            $phone_2 = $owner['phone_2'];
+            $email_2 = $owner['email_2'];
+
+            $fk_lot_id = $owner['fk_lot_id'];
+            $buy_date = $owner['buy_date'];
+            $is_current = $owner['is_current'];
+            $is_rental = $owner['is_rental'];
+            $owner_address = $owner['owner_address'];
+            $owner_city = $owner['owner_city'];
+            $owner_state = $owner['owner_state'];
+            $owner_zip = $owner['owner_zip'];
+            $owner_notes = $owner['owner_notes'];
         }
     ?>
 
@@ -79,37 +83,37 @@
 
                 <tr>
                     <td><b>First Name</b></td>
-                    <td><input type="text" name="first" value="<?php echo htmlsc($owner['first']); ?>" /></td>
-                    <td><input type="text" name="first_2" value="<?php echo htmlsc($owner['first_2']); ?>" /></td>
+                    <td><input type="text" name="first" value="<?php echo htmlsc($first); ?>" /></td>
+                    <td><input type="text" name="first_2" value="<?php echo htmlsc($first_2); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Middle</b></td>
-                    <td><input type="text" name="mi" value="<?php echo htmlsc($owner['mi']); ?>" /></td>
-                    <td><input type="text" name="mi_2" value="<?php echo htmlsc($owner['mi_2']); ?>" /></td>
+                    <td><input type="text" name="mi" value="<?php echo htmlsc($mi); ?>" /></td>
+                    <td><input type="text" name="mi_2" value="<?php echo htmlsc($mi_2); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Last Name</b></td>
-                    <td><input type="text" name="last" value="<?php echo htmlsc($owner['last']); ?>" /></td>
-                    <td><input type="text" name="last_2" value="<?php echo htmlsc($owner['last_2']); ?>" /></td>
+                    <td><input type="text" name="last" value="<?php echo htmlsc($last); ?>" /></td>
+                    <td><input type="text" name="last_2" value="<?php echo htmlsc($last_2); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Phone</b></td>
-                    <td><input type="text" name="phone" value="<?php echo htmlsc($owner['phone']); ?>" /></td>
-                    <td><input type="text" name="phone_2" value="<?php echo htmlsc($owner['phone_2']); ?>" /></td>
+                    <td><input type="text" name="phone" value="<?php echo htmlsc($phone); ?>" /></td>
+                    <td><input type="text" name="phone_2" value="<?php echo htmlsc($phone_2); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Email</b></td>
-                    <td><input type="text" name="primary_email" value="<?php echo htmlsc($owner['email']); ?>" /></td>
-                    <td><input type="text" name="email_2" value="<?php echo htmlsc($owner['email_2']); ?>" /></td>
+                    <td><input type="text" name="primary_email" value="<?php echo htmlsc($email); ?>" /></td>
+                    <td><input type="text" name="email_2" value="<?php echo htmlsc($email_2); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Lot #</b></td>
-                    <td><input type="text" name="lot_number" value="<?php echo htmlsc($owner['fk_lot_id']); ?>" /></td>
+                    <td><input type="text" name="lot_number" value="<?php echo htmlsc($fk_lot_id); ?>" /></td>
                 </tr>
 
                 <tr>
@@ -119,7 +123,7 @@
 
                 <tr>
                     <td><b>Purchased (YYYY-MM-DD)</b></td>
-                    <td><input type="text" name="buy_date" value="<?php echo htmlsc($owner['buy_date']); ?>" /></td>
+                    <td><input type="text" name="buy_date" value="<?php echo htmlsc($buy_date); ?>" /></td>
                 </tr>
 
                 <tr>

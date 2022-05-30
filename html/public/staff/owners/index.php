@@ -55,6 +55,31 @@
             $full_owner_form_required = True;
             $display_new_owner = True;
 
+            // Read the values posted from the form (recreate a local copy of $owner)
+            $owner = [];
+            $owner['first'] = $_POST['first'] ?? '';
+            $owner['mi'] = $_POST['mi'] ?? '';
+            $owner['last'] = $_POST['last'] ?? '';
+            $owner['phone'] = $_POST['phone'] ?? '';
+            $owner['email'] = $_POST['email'] ?? '';
+
+            $owner['first_2'] = $_POST['first_2'] ?? '';
+            $owner['mi_2'] = $_POST['mi_2'] ?? '';
+            $owner['last_2'] = $_POST['last_2'] ?? '';
+            $owner['phone_2'] = $_POST['phone_2'] ?? '';
+            $owner['email_2'] = $_POST['email_2'] ?? '';
+
+            $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
+            $owner['buy_date'] = $_POST['buy_date'] ?? '';
+            $owner['is_current'] = $_POST['is_current'] ?? '';
+            $owner['is_rental'] = $_POST['is_rental'] ?? '';
+            $owner['owner_address'] = $_POST['owner_address'] ?? '';
+            $owner['owner_city'] = $_POST['owner_city'] ?? '';
+            $owner['owner_state'] = $_POST['owner_state'] ?? '';
+            $owner['owner_zip'] = $_POST['owner_zip'] ?? '';
+            $owner['owner_notes'] = $_POST['owner_notes'] ?? '';
+
+
             $result = insert_new_owner($owner);
             if ($result === True) {
                 echo 'Submit returned True';
