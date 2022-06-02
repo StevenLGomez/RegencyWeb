@@ -4,7 +4,7 @@
     <!-- ************************************************************ -->
 
     <?php 
-        // Initialize owner array as blank if not needed
+        // Start by initializing all local variables as empty
         $first ='';
         $mi ='';
         $last ='';

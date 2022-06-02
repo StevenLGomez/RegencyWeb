@@ -51,7 +51,6 @@
 
         // This group supports actions request from the Owner Form
         if (isset($_POST['add_owner_from_form'])) {
-            echo 'Adding from form, > '; echo $owner['first']; echo ' <';
             $full_owner_form_required = True;
             $display_new_owner = True;
 
@@ -69,7 +68,8 @@
             $owner['phone_2'] = $_POST['phone_2'] ?? '';
             $owner['email_2'] = $_POST['email_2'] ?? '';
 
-            $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
+            // $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
+            $owner['fk_lot_id'] = 39;
             $owner['buy_date'] = $_POST['buy_date'] ?? '';
             $owner['is_current'] = $_POST['is_current'] ?? '';
             $owner['is_rental'] = $_POST['is_rental'] ?? '';

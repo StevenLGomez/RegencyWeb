@@ -133,18 +133,18 @@
   function insert_new_owner($owner) {
       global $db;
 
-      //$errors = validate_owner($owner);
-      //if(!empty($errors))
-      //{
-      //    return $errors;
-      //}
+      $errors = validate_owner($owner);
+      if(!empty($errors))
+      {
+          return $errors;
+      }
 
       $sql = "INSERT INTO owner ";
       $sql .= "(fk_lot_id, first, mi, last, first_2, mi_2, last_2, ";
       $sql .= "address, city, state, zip, phone, email, phone_2, ";
       $sql .= "email_2, buy_date, is_current, is_rental) ";
       $sql .= "VALUES (";
-      $sql .= "'" . db_escape($db, $owner['fk_lot_id']) . "',";
+      $sql .= db_escape($db, (int)$owner['fk_lot_id']) . ",";
       $sql .= "'" . db_escape($db, $owner['first']) . "',";
       $sql .= "'" . db_escape($db, $owner['mi']) . "',";
       $sql .= "'" . db_escape($db, $owner['last']) . "',";
