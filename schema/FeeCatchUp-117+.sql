@@ -218,6 +218,14 @@ UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 
 -- 2022-05-16 Deposit # 129 had incorrect date, fixing here
 UPDATE deposit SET dt = '2022-03-28'  WHERE id = 129; 
 
+-- 2022-08-31 Deposit 133
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (133, '2022-08-31', 0); -- Deposit 133
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022-06-08',   14487,  80,  9, 133, 'Pinnacle Title PTA-14360-22/68');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022-07-29',   85457,  80, 34, 133, 'Alliance Title 15514ATG');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022-08-02',   72734,  40, 58, 133, 'Vision Title BL-22-24586W');
+
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 133)  WHERE id = 133; 
+
 
 
 
