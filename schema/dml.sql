@@ -1646,5 +1646,49 @@ UPDATE owner SET first = 'Samuel', mi = 'Rodriguez', last = 'Benitez Ebel' WHERE
 
 UPDATE owner SET email = '' WHERE fk_lot_id = 51 AND (last = 'Liley' OR last = 'Gerler');
 
+-- Lot # 40 3253 Hyatt Court 
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 40 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(40,  'Thiara','Jasbir','Singh','','','','3253 Hyatt Court','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2020-12-29',1);
+
+-- 20211108 - Owner changes for 2021 - Items below are duplicates of sqlite entries made to get 2021 fee letters finished
+--            Corrections made for lot => fk_lot_id and YYYYMMDD => YYYY-MM-DD
+
+-- VALUES(51,  'Timothy','A','Petrillo','Emily','L','Petrillo','3220 Windwood Trails Drive','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2020-07-21',1);
+-- INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+
+-- Lot 21 3284 Hyatt Court
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 21 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(21,  'Sandra','K','Darr','','','','3284 Hyatt Court','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2021-02-24',1);
+
+-- Lot 60 10 Ritz Court
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 60 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(60,  'Kimberly','M','Donihue','','','','10 Ritz Court','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2021-03-08',1);
+
+UPDATE owner SET email = '' WHERE fk_lot_id = 60 AND last = 'Koontz';
+
+-- Lot 28 3270 Hyatt Court
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 28 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(28,  'Cassie','','Hoffman','','','','3270 Hyatt Court','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2021-04-26',1);
+
+-- Lot 6 1157 Monza Drive
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 6 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(6,  'Sherri','','Gleason','','','','1157 Monza Drive','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2021-08-27',1);
+
+-- Lot 39 3251 Hyatt Court
+UPDATE owner SET is_current = 0 WHERE fk_lot_id = 39 AND is_current = 1;
+INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current) 
+VALUES(39,  'Elizabeth','','Pagano','Paula','C','Pagano','3251 Hyatt Court','Saint Peters','MO','63303',NULL,NULL,NULL,NULL,'2021-09-10',1);
+
+-- Lot 42 3257 Hyatt Court
+UPDATE owner SET first = 'Alto Asset Company 4 LLC' WHERE fk_lot_id = 42 AND is_current = 1;
+
+-- Lot 58 3275 Hyatt Court
+UPDATE owner SET first_2 = 'Courtney', last_2 = 'Suntrup', city = 'Saint Peters' WHERE fk_lot_id = 58 AND is_current = 1;
+
 
 
