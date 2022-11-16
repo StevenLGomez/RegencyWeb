@@ -41,7 +41,7 @@
   function find_all_fees() {
     global $db;
 
-    $sql = "SELECT * FROM fees WHERE dt > '2020-01-01' ";
+    $sql = "SELECT * FROM fees WHERE dt > '2021-01-01' ";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -86,7 +86,7 @@
   function find_owners_by_lot($lot_id) {
     global $db;
 
-    $sql = "SELECT * FROM owner "; 
+    $sql = "SELECT * FROM owner ";
     $sql .= "WHERE fk_lot_id='" . db_escape($db, $lot_id) . "' ";
     $sql .= "ORDER BY buy_date;";
     //echo $sql;
@@ -98,7 +98,7 @@
   function find_owner_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM owner "; 
+    $sql = "SELECT * FROM owner ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
     $sql .= "LIMIT 1;";
     //echo $sql;
@@ -110,7 +110,7 @@
   function find_owner_by_last($last_name) {
     global $db;
 
-    $sql = "SELECT * FROM owner "; 
+    $sql = "SELECT * FROM owner ";
     $sql .= "WHERE last='" . db_escape($db, $last_name) . "' ";
     $sql .= "LIMIT 1;";
     //echo $sql;
@@ -122,7 +122,7 @@
   function search_renting_owners() {
     global $db;
 
-    $sql = "SELECT * FROM owner "; 
+    $sql = "SELECT * FROM owner ";
     $sql .= "WHERE is_rental = 1";
     //echo $sql;
     $result = mysqli_query($db, $sql);
