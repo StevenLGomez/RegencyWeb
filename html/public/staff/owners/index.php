@@ -3,39 +3,138 @@
     require_once('../../../private/initialize.php');
 
     // Set defaults for local variables
-    $lot_is_selected = False;
+    $search_mode = False;
+
+    // Variables to control actions requiring Full Owner Form
+    $full_owner_form_required = False;
+    $view_existing_owner = False;
+    $edit_existing_owner = False;
+    $create_new_owner = False;
+    $display_new_owner = False;
+    $last_name = '';
+
+    // Variables to control actions requiring Owner Information List
+    $owner_list_required = False;
+    $searching_rental_owners = False;
+    $searching_history = False;
     $lot_id = '';
+
+    // Default value for Page Title
+    $page_title = 'Search Owners';
 
     if (is_post_request())
     {
-        if (isset($_POST['address_id']))
-        {
-            $lot_id = $_POST['address_id'];
-            $lot_is_selected = True;
+        // This group requires the Full Owner Form
+        if (isset($_POST['view_owner'])) {
+            $full_owner_form_required = True;
+            $view_existing_owner = True;
+            $requested_name = $_POST['last_name'];
+
+            $page_title = 'View Owner Information';
         }
+
+        if (isset($_POST['edit_owner'])) {
+            $full_owner_form_required = True;
+            $edit_existing_owner = True;
+            $requested_name = $_POST['last_name'];
+
+            $page_title = 'Edit Owner Information';
+        }
+
+        if (isset($_POST['create_owner'])) {
+            $full_owner_form_required = True;
+            $create_new_owner = True;
+
+            $page_title = 'Create New Owner';
+        }
+        // End of group requiring the Full Owner Form
+
+        // This group supports actions request from the Owner Form
+        if (isset($_POST['add_owner_from_form'])) {
+            $full_owner_form_required = True;
+            $display_new_owner = True;
+
+            // Read the values posted from the form (recreate a local copy of $owner)
+            $owner = [];
+            $owner['first'] = $_POST['first'] ?? '';
+            $owner['mi'] = $_POST['mi'] ?? '';
+            $owner['last'] = $_POST['last'] ?? '';
+            $owner['phone'] = $_POST['phone'] ?? '';
+            $owner['email'] = $_POST['email'] ?? '';
+
+            $owner['first_2'] = $_POST['first_2'] ?? '';
+            $owner['mi_2'] = $_POST['mi_2'] ?? '';
+            $owner['last_2'] = $_POST['last_2'] ?? '';
+            $owner['phone_2'] = $_POST['phone_2'] ?? '';
+            $owner['email_2'] = $_POST['email_2'] ?? '';
+
+            // $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
+            $owner['fk_lot_id'] = 39;
+            $owner['buy_date'] = $_POST['buy_date'] ?? '';
+            $owner['is_current'] = $_POST['is_current'] ?? '';
+            $owner['is_rental'] = $_POST['is_rental'] ?? '';
+            $owner['owner_address'] = $_POST['owner_address'] ?? '';
+            $owner['owner_city'] = $_POST['owner_city'] ?? '';
+            $owner['owner_state'] = $_POST['owner_state'] ?? '';
+            $owner['owner_zip'] = $_POST['owner_zip'] ?? '';
+            $owner['owner_notes'] = $_POST['owner_notes'] ?? '';
+
+
+            $result = insert_new_owner($owner);
+            if ($result === True) {
+                echo 'Submit returned True';
+                $new_id = mysqli_insert_id($db);
+            }
+            else
+            {
+                echo 'Submit returned False';
+                $errors = $result;
+            }
+        }
+        // End of group of actions requested from the Owner Form
+
+        // This group requires the queried list of owner information
+        if (isset($_POST['view_rentals'])) {
+            $owner_list_required = True;
+            $searching_rental_owners = True;
+
+            $page_title = 'Rental Properties';
+        }
+
+        if (isset($_POST['address_id'])) {
+            $owner_list_required = True;
+            $searching_history = True;
+            $lot_id = $_POST['address_id'];
+
+            $page_title = 'Property History';
+        }
+    }
+    else
+    {
+        // If nothing was posted, this page returns to Search Mode
+        $search_mode = True;
     }
 
     $lot_query = find_all_lots();
 
 ?>
 
-<!-- Assign page title (used in header) & include header -->
-<?php $page_title = 'Search Owners'; ?>
+<!-- Include HTML header here, note $page_title must be previously defined -->
 <?php include(SHARED_PATH . '/header.php'); ?>
 
     <div id="content">
         <div id="regency-menu">
             <h2>Owner Management</h2>
 
-            <!-- Show diagnostic information -->
             <?php
+
             if ( $diagnostics_enabled) {
                 echo '<hr />';
+                echo '<!-- Show diagnostic information -->';
                 echo '<div>';
 
-                // Show lot selected information
-                echo '$lot_is_selected: '; 
-                if ($lot_is_selected) {
+                echo '$view_existing_owner: '; 
+                if ($view_existing_owner) {
                     echo 'True';
                 }
                 else
@@ -43,26 +142,78 @@
                     echo 'False';
                 }
                 echo '<br />';
-                echo '$lot_id: ' . $lot_id;
 
-                echo '</div>';
+                echo '$edit_existing_owner: '; 
+                if ($edit_existing_owner) {
+                    echo 'True';
+                }
+                else
+                {
+                    echo 'False';
+                }
+                echo '<br />';
+
+                echo '$create_new_owner: '; 
+                if ($create_new_owner) {
+                    echo 'True';
+                }
+                else
+                {
+                    echo 'False';
+                }
+                echo '<br />';
+
                 echo '<hr />';
-                } ?>
 
-            <!-- Provide link to enter new Owner information -->
-            <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/owners/create.php'); ?>">Create New Owner</a>
-            </div>
-            <hr />
+                echo '<!-- End of diagnostic information -->';
+                echo '<!-- *************************** -->';
+                echo '</div>';
+            } ?>
 
-            <h3>Search Criteria</h3>
+        <!-- ============================================================ -->
+        <!-- This is the beginning of the "Default Owner Page "           -->
+        <!-- ============================================================ -->
+        <?php if ($search_mode) { ?>
+            <!-- Form for Searching by Last name -->
 
-            <!-- Form for Searching by Lot Address -->
             <form action="" method="post">
+            <fieldset>
+                <!-- The Last Name Entry Box -->
+                <div class="actions"> 
+                    <label for "last_name">Search By Last Name</label>
+                    <input type="text" id="last_name" name="last_name">
+                </div>
+                <!-- END The Last Name Entry Box -->
+
+                <div id="actions">
+                    <!-- These inputs instruct form.php which action to make available -->
+                    <input type="submit" name="view_owner" value="View" />
+                    <input type="submit" name="edit_owner" value="Edit" />
+                    <input type="submit" name="create_owner" value="Create" />
+                </div>
+
+            </fieldset>
+            </form>
+            <!-- ============================================================ -->
+
+            <!-- Form for Searching for Rental owners -->
+            <form action="" method="post">
+            <fieldset>
+                <div id="actions">
+                    <label for "view_rentals">View Renting Owners</label>
+                    <input type="submit" name="view_rentals" value="View Rentals" />
+                </div>
+            </fieldset>
+            </form>
+            <!-- ============================================================ -->
+
+            <!-- Form for Searching by Address -->
+            <form action="" method="post">
+            <fieldset>
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
-                    <label for "address_id">Address History</label>
+                    <label for "address_id">Show Owner History For:</label>
                     <select name="address_id" id="address_id">
 
                         <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
@@ -74,56 +225,30 @@
                 <?php mysqli_free_result($lot_query); ?>
                 <!-- END The ADDRESS pull down select item -->
 
-                <div id="operations">
-                    <input type="submit" name="submit" value="Perform Search" />
+                <div id="actions">
+                    <input type="submit" name="submit" value="Display History" />
                 </div>
-            <!-- ************************************************************ -->
 
-            <!-- Form for Searching by Lot Address -->
-            <form action="" method="post">
-                <div>
-                    <hr />
-                    <?php echo 'Placeholder for search by Last Name' ?>
-                    <hr />
-                </div>
+            </fieldset>
             </form>
-            <!-- ************************************************************ -->
+            <!-- ============================================================ -->
+        <?php } /* if ($search_mode) */ ?>
+        <!-- ============================================================ -->
+        <!-- This is the end of the "Default Owner Page " =============== -->
+        <!-- ============================================================ -->
 
-            <!-- This section only entered after an Address has been selected -->
-            <?php if ($lot_is_selected) { ?>
-            <?php $owner_query = find_owners_by_lot($lot_id); ?>
-               <hr />
-               <h3> Owner History for Lot#: <?php echo $lot_id ?> </h3> 
-                  <table class="list">
-                      <tr>
-                          <th>First</th>
-                          <th>MI</th>
-                          <th>Last</th>
-                          <th>Address</th>
-                          <th>City</th>
-                          <th>State</th>
-                          <th>Zip</th>
-                          <th>Current</th>
-                      </tr>
+        <!-- Owner Form display has been requested -->
+        <?php if ($full_owner_form_required) 
+        {
+            include('./form.php'); 
+        } /* if ($full_owner_form_required) */ ?>
+        <!-- Bottom of Owner Form include =============================== -->
 
-                <?php while($owner = mysqli_fetch_assoc($owner_query)) { ?>
-                    <tr>
-                        <td><?php echo htmlsc($owner['first']); ?>    </td>
-                        <td><?php echo htmlsc($owner['mi']); ?>       </td>
-                        <td><?php echo htmlsc($owner['last']); ?>     </td>
-                        <td><?php echo htmlsc($owner['address']); ?>  </td>
-                        <td><?php echo htmlsc($owner['city']); ?>     </td>
-                        <td><?php echo htmlsc($owner['state']); ?>    </td>
-                        <td><?php echo htmlsc($owner['zip']); ?>      </td>
-                        <td><?php echo $owner['is_current'] == 1 ? 'Yes' : 'No'; ?></td>
-                    </tr>
-                <?php } /* Bottom of while loop */ ?>
-
-                  </table>
-                  <?php mysqli_free_result($owner_query); ?>
-
-            <?php } /* if ($lot_is_selected) */  ?>
-            <!-- ************************************************************ -->
+        <!-- List of Owner Information has been requested -->
+        <?php if ($owner_list_required) { ?>
+            <?php include('./list.php'); ?>
+        <?php } /* if ($owner_list_required) */ ?>
+        <!-- ============================================================ -->
 
         </div>
     </div>

@@ -1,6 +1,7 @@
 
 # Regency Estates Web Site Development Documentation #
 
+<a name="toc"></a>
 ## Table of contents
 1. [Introduction](#introduction)
 
@@ -23,6 +24,7 @@
 6. [Owner Management](#owner)
     1. [Owner Page Variables](#owner_sp_1)
     2. [Owner Workflow](#owner_sp_2)
+	2. [Add Owner Screen Layout](#owner_sp_3)
 
 7. [References](#references)
     1. [PHP Debugging](#referenes_sp_1)
@@ -53,6 +55,8 @@ Placeholder diagram for workflow
 | markdown source |------>| mdddia |------*--->| processed markdown |
 +-----------------+       +--------+      |    +--------------------+
 ~~~~~
+
+[**^ Top ^**](#toc)
 
 ---
 <a name="deposit"></a>
@@ -89,6 +93,7 @@ cond(yes) >io->e
 cond(no) ->sub1(right)->op1
 ```
 
+[**^ Top ^**](#toc)
 
 ---
 <a name="expense"></a>
@@ -111,6 +116,8 @@ Placeholder diagram for workflow
 +-----------------+       +--------+      |    +--------------------+
 ~~~~~
 
+[**^ Top ^**](#toc)
+
 ---
 <a name="fee"></a>
 ### Fee Management
@@ -132,20 +139,29 @@ Placeholder diagram for workflow
 +-----------------+       +--------+      |    +--------------------+
 ~~~~~
 
+[**^ Top ^**](#toc)
+
 ---
 <a name="owner"></a>
 ## Owner Management
 
 <a name="owner_sp_1"></a>
 **Variables for public/staff/owners/index.php**
-| Template Variable | New author value | Existing author value |
-| :---------------- | :--------------- | :-------------------- |
-| $pageTitle        | 'Search Owners'  | 'Edit Author'         |
-| $action           | 'addform'        | 'editform'            |
-| $name             | ''(empty string) | Existing name         |
-| $email            | ''(empty string) | Existing email addr   |
-| $id               | ''(empty string) | Existing Author ID    |
-| $button           | 'Add Author'     | 'Update Author'       |
+| Function         | type           | name              | value            |                       |
+| :----------      |  :----------   | :---------------- | :--------------- | :-------------------- |
+| __Full View__    |                |                   |                  |                       |
+|                  | "text"         | "last_name"       |                  |                       |
+|                  | "input"        | view_owner        | View             |                       |
+|                  | "input"        | edit_owner        | Edit             |                       |
+|                  | "input"        | create_owner      | Create           |                       |
+| __View Rentals__ |                |                   |                  |                       |
+|                  | "input"        | view_rentals      | View Rentals     |                       |
+|                  |                |                   |                  |                       |
+| __Lot History__  |                |                   |                  |                       |
+|                  | "select"       | "address_id"      | "address_id"     |                       |
+|                  | "submit"       | "submit"          | Display History  |                       |
+|                  |                |                   |                  |                       |
+|                  |                |                   |                  |                       |
 
 
 <a name="owner_sp_2"></a>
@@ -163,6 +179,36 @@ Placeholder diagram for workflow
                     +------------------+
 ~~~~~
 
+<a name="owner_sp_3"></a>
+**Add Owner Screen Layout**
+
+|                        | Primary Owner    | Secondary Owner |
+| :-------               | :----------      | :-------------  |
+| First Name             | Abraham          | Amelia          |
+| Middle                 |                  | Mary            |
+| Last  Name             | Lincoln          | Earhart         |
+| Phone                  | 636-404-1920     | 1-900-123-4567  |
+| Email                  | abe@lincoln.com  | findme@aol.com  |
+|                        |                  |                 |
+| Lot #                  |                  |                 |
+| Property Address       | 3759 Hyatt Court |                 |
+| Purchased (YYYY_MM_DD) | 2022-05-01       |                 |
+| Buy Date               | 2022-05-01       |                 |
+| Current Owner          | X                |                 |
+| Is Rental              | O                |                 |
+| Address                | 101 Main Street  |                 |
+| City                   | Long Beach       |                 |
+| State                  | CA               |                 |
+| Zip                    | 90815            |                 |
+| Notes                  |                  |                 |
+|                        |                  |                 |
+| **Action**             |                  |                 |
+
+Failure from first INSERT attempt   
+Adding from form INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current, is_rental) VALUES ('''''''''''''''''''''''''''''''''''')Insert Failed :(Column count doesn't match value count at row 1
+
+[**^ Top ^**](#toc)
+
 ---
 <a name="references"></a>
 ## References
@@ -173,4 +219,7 @@ Placeholder diagram for workflow
 Good PHP debugging link [here](https://stackify.com/php-debugging-guide/)  
 Check out Laravel PHP Framwork [here](https://laravel.com)  
 
+[**^ Top ^**](#toc)
+
 ---
+

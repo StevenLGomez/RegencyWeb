@@ -106,6 +106,12 @@ function has_valid_email_format($value)
     return preg_match($email_regex, $value) === 1;
 }
 
+function has_valid_date_format($value)
+{
+    $date_regex = '/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/';
+    return preg_match($date_regex, $value) === 1;
+}
+
 // has_unique_page_menu_name('History')
 // * Validates uniqueness of pages.menu_name
 // * For new records, provide only the menu_name.
@@ -125,5 +131,23 @@ function has_unique_page_menu_name($menu_name, $current_id = "0")
 
     return $page_count === 0;
 }
+
+// Function to validate the long list of Owner Table entries
+function validate_owner($owner)
+{
+    // Confirm a last name was entered, required even if a Title Company 
+    if (is_blank($owner['last']))
+    {
+        return 'Last name required';
+    }
+
+    // Confirm valid date format
+    if ( ! has_valid_date_format($owner['buy_date']))
+    {
+        return 'Invalid date format, must be YYYY-MM-DD';
+    }
+
+}
+
 ?>
 
