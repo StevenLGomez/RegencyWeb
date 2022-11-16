@@ -3,7 +3,7 @@
     <!-- Owner form sub-page - included when needed                   -->
     <!-- ************************************************************ -->
 
-    <?php 
+    <?php
         // Start by initializing all local variables as empty
         $first ='';
         $mi ='';
@@ -28,20 +28,20 @@
         $owner_notes ='';
 
         // Query existing information if viewing or editing - overwrites blank values above
-        if ($view_existing_owner || $edit_existing_owner) 
+        if ($view_existing_owner || $edit_existing_owner)
         {
             $owner_set = find_owner_by_last($requested_name);
             $owner = mysqli_fetch_assoc($owner_set);
 
             // The queried set can be cleared since it is now in $owner
-            mysqli_free_result($owner_set); 
+            mysqli_free_result($owner_set);
 
             // Run query to get the property address of this Lot Id
-            $property_set = find_address_by_lot_id($owner['fk_lot_id']); 
+            $property_set = find_address_by_lot_id($owner['fk_lot_id']);
             $address_result = mysqli_fetch_assoc($property_set);
             $property_address = $address_result['address'];
 
-            echo $property_address;
+            echo 'Property Address: ' . $property_address;
 
             // $property_set can be cleared, result is in $property_address
             mysqli_free_result($property_set);
@@ -77,39 +77,64 @@
         <form action="" method="post">
             <table class="list">
 
-                <th></th>
                 <th>Primary Owner</th>
-                <th>Secondary Owner</th>
+                <th></th>
 
                 <tr>
                     <td><b>First Name</b></td>
                     <td><input type="text" name="first" value="<?php echo htmlsc($first); ?>" /></td>
-                    <td><input type="text" name="first_2" value="<?php echo htmlsc($first_2); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Middle</b></td>
                     <td><input type="text" name="mi" value="<?php echo htmlsc($mi); ?>" /></td>
-                    <td><input type="text" name="mi_2" value="<?php echo htmlsc($mi_2); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Last Name</b></td>
                     <td><input type="text" name="last" value="<?php echo htmlsc($last); ?>" /></td>
-                    <td><input type="text" name="last_2" value="<?php echo htmlsc($last_2); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Phone</b></td>
                     <td><input type="text" name="phone" value="<?php echo htmlsc($phone); ?>" /></td>
-                    <td><input type="text" name="phone_2" value="<?php echo htmlsc($phone_2); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Email</b></td>
                     <td><input type="text" name="primary_email" value="<?php echo htmlsc($email); ?>" /></td>
+                </tr>
+
+                <th>Secondary Owner</th>
+                <th></th>
+
+                <tr>
+                    <td><b>First Name</b></td>
+                    <td><input type="text" name="first_2" value="<?php echo htmlsc($first_2); ?>" /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Middle</b></td>
+                    <td><input type="text" name="mi_2" value="<?php echo htmlsc($mi_2); ?>" /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Last Name</b></td>
+                    <td><input type="text" name="last_2" value="<?php echo htmlsc($last_2); ?>" /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Phone</b></td>
+                    <td><input type="text" name="phone_2" value="<?php echo htmlsc($phone_2); ?>" /></td>
+                </tr>
+
+                <tr>
+                    <td><b>Email</b></td>
                     <td><input type="text" name="email_2" value="<?php echo htmlsc($email_2); ?>" /></td>
                 </tr>
+
+                <th>Property Information</th>
+                <th></th>
 
                 <tr>
                     <td><b>Lot #</b></td>
@@ -142,6 +167,9 @@
                     </td>
                 </tr>
 
+                <th>Rental Property Information</th>
+                <th></th>
+
                 <tr>
                     <td><b>Owner Address</b></td>
                     <td><input type="text" name="owner_address" value="<?php if($is_rental == "1") {echo htmlsc($owner_address);} ?>" /></td>
@@ -171,8 +199,8 @@
 
             <!-- Provide submit buttons specific for selected action -->
             <br />
-            <?php 
-            if($edit_existing_owner) 
+            <?php
+            if($edit_existing_owner)
             {
                 echo '<input type="submit" value="Apply Changes"/>';
             }
