@@ -1,52 +1,20 @@
 
-# Regency Estates Web Site Development Documentation #
-
-<a name="toc"></a>
-## Table of contents
-1. [Introduction](#introduction)
-
-2. [Category](#category)
-    1. [Category Page Variables](#category_sp_1)
-    2. [Category Workflow](#category_sp_2)
-
-3. [Deposit](#deposit)
-    1. [Deposit Page Variables](#deposit_sp_1)
-    2. [Deposit Workflow](#deposit_sp_2)
-
-4. [Expense](#expense)
-    1. [Expense Page Variables](#expense_sp_1)
-    2. [Expense Workflow](#expense_sp_2)
-
-5. [Fee](#fee)
-    1. [Fee Page Variables](#fee_sp_1)
-    2. [Fee Workflow](#fee_sp_2)
-
-6. [Owner Management](#owner)
-    1. [Owner Page Variables](#owner_sp_1)
-    2. [Owner Workflow](#owner_sp_2)
-	2. [Add Owner Screen Layout](#owner_sp_3)
-
-7. [References](#references)
-    1. [PHP Debugging](#referenes_sp_1)
+# Regency Estates Web Site Development Documentation 
 
 ---
-<a name="Introduction"></a>
 ### Introduction
 This is the development repository for Regency Estates Homeowners Association
 management web site.
 
 ---
-<a name="category"></a>
 ### Category Management
 
-<a name="category_sp_1"></a>
 **Variables for public/staff/categories/index.php**
 Placeholder table for variables
 | Template Variable | New author value | Existing author value |
 | :---------------- | :--------------- | :-------------------- |
 | $pageTitle        | 'Search Owners'  | 'Edit Author'         |
 
-<a name="category_sp_2"></a>
 ### Category Workflow
 Placeholder diagram for workflow 
 ~~~~~ {.ditaa .no-separation}
@@ -56,47 +24,19 @@ Placeholder diagram for workflow
 +-----------------+       +--------+      |    +--------------------+
 ~~~~~
 
-[**^ Top ^**](#toc)
-
 ---
-<a name="deposit"></a>
 ### Deposit Management
 
-<a name="deposit_sp_1"></a>
 **Variables for public/staff/deposit/index.php**
 Placeholder table for variables
 | Template Variable | New author value | Existing author value |
 | :---------------- | :--------------- | :-------------------- |
 | $pageTitle        | 'Search Owners'  | 'Edit Author'         |
 
-<a name="deposit_sp_2"></a>
 ### Deposit Workflow
 Placeholder diagram for workflow 
-~~~~~ {.ditaa .no-separation}
-                                  
-+-----------------+       +--------+           +--------------------+
-| markdown source |------>| mdddia |------*--->| processed markdown |
-+-----------------+       +--------+      |    +--------------------+
-~~~~~
-
-```flow
-st=>start: Start:>http://www.google.com[blank]
-e=end:>http://www.google.com
-op1=operation: My Operation
-sub1=subroutine: My Subroutine
-cond=>condition: Yes
-or No?:>http://www.google.com
-io=>inputout: catch something...
-
-st->op1->cond
-cond(yes) >io->e
-cond(no) ->sub1(right)->op1
-```
-
-[**^ Top ^**](#toc)
 
 ---
-<a name="expense"></a>
 ### Expense Management
 
 <a name="expense_sp_1"></a>
@@ -106,108 +46,21 @@ Placeholder table for variables
 | :---------------- | :--------------- | :-------------------- |
 | $pageTitle        | 'Search Owners'  | 'Edit Author'         |
 
-<a name="expense_sp_2"></a>
 ### Expense Workflow
 Placeholder diagram for workflow 
-~~~~~ {.ditaa .no-separation}
-                                  
-+-----------------+       +--------+           +--------------------+
-| markdown source |------>| mdddia |------*--->| processed markdown |
-+-----------------+       +--------+      |    +--------------------+
-~~~~~
-
-[**^ Top ^**](#toc)
 
 ---
-<a name="fee"></a>
 ### Fee Management
 
-<a name="fee_sp_1"></a>
 **Variables for public/staff/fees/index.php**
 Placeholder table for variables
 | Template Variable | New author value | Existing author value |
 | :---------------- | :--------------- | :-------------------- |
 | $pageTitle        | 'Search Owners'  | 'Edit Author'         |
 
-<a name="fee_sp_2"></a>
 ### Fee Workflow
 Placeholder diagram for workflow 
-~~~~~ {.ditaa .no-separation}
-                                  
-+-----------------+       +--------+           +--------------------+
-| markdown source |------>| mdddia |------*--->| processed markdown |
-+-----------------+       +--------+      |    +--------------------+
-~~~~~
 
-[**^ Top ^**](#toc)
-
----
-<a name="owner"></a>
-## Owner Management
-
-<a name="owner_sp_1"></a>
-**Variables for public/staff/owners/index.php**
-| Function         | type           | name              | value            |                       |
-| :----------      |  :----------   | :---------------- | :--------------- | :-------------------- |
-| __Full View__    |                |                   |                  |                       |
-|                  | "text"         | "last_name"       |                  |                       |
-|                  | "input"        | view_owner        | View             |                       |
-|                  | "input"        | edit_owner        | Edit             |                       |
-|                  | "input"        | create_owner      | Create           |                       |
-| __View Rentals__ |                |                   |                  |                       |
-|                  | "input"        | view_rentals      | View Rentals     |                       |
-|                  |                |                   |                  |                       |
-| __Lot History__  |                |                   |                  |                       |
-|                  | "select"       | "address_id"      | "address_id"     |                       |
-|                  | "submit"       | "submit"          | Display History  |                       |
-|                  |                |                   |                  |                       |
-|                  |                |                   |                  |                       |
-
-
-<a name="owner_sp_2"></a>
-**Owner Workflow**
-~~~~~ {.ditaa .no-separation}
-                                  
-+-----------------+       +--------+           +--------------------+
-| markdown source |------>| mdddia |------*--->| processed markdown |
-+-----------------+       +--------+      |    +--------------------+
-                              |           \--->| image files        |
-                    +------------------+       +--------------------+
-                    | diagram creation |
-                    +------------------+
-                    | ditaa/dot/rdfdot |
-                    +------------------+
-~~~~~
-
-<a name="owner_sp_3"></a>
-**Add Owner Screen Layout**
-
-|                        | Primary Owner    | Secondary Owner |
-| :-------               | :----------      | :-------------  |
-| First Name             | Abraham          | Amelia          |
-| Middle                 |                  | Mary            |
-| Last  Name             | Lincoln          | Earhart         |
-| Phone                  | 636-404-1920     | 1-900-123-4567  |
-| Email                  | abe@lincoln.com  | findme@aol.com  |
-|                        |                  |                 |
-| Lot #                  |                  |                 |
-| Property Address       | 3759 Hyatt Court |                 |
-| Purchased (YYYY_MM_DD) | 2022-05-01       |                 |
-| Buy Date               | 2022-05-01       |                 |
-| Current Owner          | X                |                 |
-| Is Rental              | O                |                 |
-| Address                | 101 Main Street  |                 |
-| City                   | Long Beach       |                 |
-| State                  | CA               |                 |
-| Zip                    | 90815            |                 |
-| Notes                  |                  |                 |
-|                        |                  |                 |
-| **Action**             |                  |                 |
-
-Failure from first INSERT attempt   
-Adding from form INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current, is_rental) VALUES ('''''''''''''''''''''''''''''''''''')Insert Failed :(Column count doesn't match value count at row 1
-
-[**^ Top ^**](#toc)
 
 ---
 <a name="references"></a>

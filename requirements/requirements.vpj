@@ -1,0 +1,99 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    TemplateName="Python - Empty Project"
+    WorkingDir=".">
+    <Files>
+        <Folder
+            Name="categories"
+            Filters=""
+            GUID="{20644E70-7955-4AD4-8B44-424C0592F260}">
+            <F N="categories/README.md"/>
+        </Folder>
+        <Folder
+            Name="deposits"
+            Filters=""
+            GUID="{2742375A-96DB-4B6C-A0A9-7F07C0006401}">
+            <F N="deposits/README.md"/>
+        </Folder>
+        <Folder
+            Name="expenses"
+            Filters=""
+            GUID="{9B191170-69B4-41A4-A3F1-BA36924CA19B}">
+            <F N="expenses/README.md"/>
+        </Folder>
+        <Folder
+            Name="fees"
+            Filters=""
+            GUID="{B9369D0C-009A-4823-BF6A-674AE4696A73}"/>
+        <Folder
+            Name="owners"
+            Filters="*.md"
+            GUID="{47ABD4E9-9391-4056-9AA9-0EF0AB5CAA6E}">
+            <F N="owners/README.md"/>
+        </Folder>
+    </Files>
+    <Config
+        Name="Debug"
+        DebugCallbackName="dap"
+        Type="python"
+        OutputFile=""
+        AppType="python"
+        CompilerConfigName="">
+        <Menu>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                Dialog="_python_options_form Run"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw"
+                Deletable="0">
+                <Exec CmdLine='"%(SLICKEDIT_PYTHON_EXE)" %(SLICKEDIT_PYTHON_EXECUTE_ARGS) "%f" %~other'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                Dialog="_python_options_form Debug"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveNone"
+                RunFromDir="%rw"
+                Deletable="0">
+                <Exec
+                    CmdLine="python_debug"
+                    Type="Slick-C"/>
+            </Target>
+            <Target
+                Name="Python Options"
+                MenuCaption="Python &amp;Options"
+                ShowOnMenu="HideIfNoCmdLine"
+                Deletable="0">
+                <Exec
+                    CmdLine="pythonoptions"
+                    Type="Slick-C"/>
+            </Target>
+        </Menu>
+        <List Name="Python Options">
+            <Item
+                Name="DefaultFile"
+                Value=""/>
+        </List>
+        <List Name="pydbgp Options">
+            <Item
+                Name="ServerHost"
+                Value="127.0.0.1"/>
+            <Item
+                Name="ServerPort"
+                Value="0"/>
+            <Item
+                Name="ListenInBackground"
+                Value="1"/>
+            <Item
+                Name="show_hidden"
+                Value="0"/>
+        </List>
+    </Config>
+    <List Name="RTE">
+    </List>
+</Project>

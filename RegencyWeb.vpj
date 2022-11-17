@@ -108,7 +108,7 @@
                 <F N="html/private/database.php"/>
                 <F N="html/private/db_credentials.php"/>
                 <F N="html/private/functions.php"/>
-                <F N="html/private/Initialize.php"/>
+                <F N="html/private/initialize.php"/>
                 <F N="html/private/query_functions.php"/>
                 <F N="html/private/validation_functions.php"/>
             </Folder>
