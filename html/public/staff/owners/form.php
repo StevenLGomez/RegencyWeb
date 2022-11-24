@@ -137,13 +137,13 @@
                 <th></th>
 
                 <tr>
-                    <td><b>Lot #</b></td>
-                    <td><input type="text" name="lot_number" value="<?php echo htmlsc($fk_lot_id); ?>" /></td>
+                    <td><b>Property Address</b></td>
+                    <td><input type="text" name="property_address" value="<?php echo htmlsc($property_address); ?>" /></td>
                 </tr>
 
                 <tr>
-                    <td><b>Property Address</b></td>
-                    <td><input type="text" name="property_address" value="<?php echo htmlsc($property_address); ?>" /></td>
+                    <td><b>Lot #</b></td>
+                    <td><input type="text" name="lot_number" value="<?php echo htmlsc($fk_lot_id); ?>" /></td>
                 </tr>
 
                 <tr>
