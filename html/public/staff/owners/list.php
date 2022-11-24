@@ -6,7 +6,8 @@
     <?php if ($searching_history) 
     {
         $owner_query = find_owners_by_lot($lot_id); 
-        echo '<h3>Owner History for Lot: ' . $lot_id . '</h3>';
+        $property_address = get_address_for_lot($lot_id);
+        echo '<h3>Owner History for: Lot # ' . $lot_id . ', ' . $property_address . '</h3>';
     } /* if ($searching_history) */  ?>
 
     <?php if ($searching_rental_owners) 
@@ -21,7 +22,6 @@
             <th>MI</th>
             <th>Last</th>
             <th>Buy Date</th>
-            <th>Owner Address</th>
             <th>Current</th>
             <th>Rental</th>
         </tr>
@@ -32,7 +32,6 @@
             <td><?php echo htmlsc($owner['mi']); ?>       </td>
             <td><?php echo htmlsc($owner['last']); ?>     </td>
             <td><?php echo htmlsc($owner['buy_date']); ?>     </td>
-            <td><?php echo htmlsc($owner['address']); ?>  </td>
             <td><?php echo $owner['is_current'] == 1 ? 'Yes' : 'No'; ?></td>
             <td><?php echo $owner['is_rental'] == 1 ? 'Yes' : 'No'; ?></td>
         </tr>

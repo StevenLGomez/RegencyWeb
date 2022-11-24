@@ -101,10 +101,20 @@
             $page_title = 'Rental Properties';
         }
 
+        // Search history by address was requested
         if (isset($_POST['address_id'])) {
             $owner_list_required = True;
             $searching_history = True;
             $lot_id = $_POST['address_id'];
+
+            $page_title = 'Property History';
+        }
+
+        // Search history by lot number was requested
+        if (isset($_POST['lot_number'])) {
+            $owner_list_required = True;
+            $searching_history = True;
+            $lot_id = $_POST['lot_number'];
 
             $page_title = 'Property History';
         }
@@ -115,7 +125,8 @@
         $search_mode = True;
     }
 
-    $lot_query = find_all_lots();
+    $address_query = create_address_list();
+    $lot_query = create_lot_list();
 
 ?>
 
@@ -174,6 +185,63 @@
         <!-- This is the beginning of the "Default Owner Page "           -->
         <!-- ============================================================ -->
         <?php if ($search_mode) { ?>
+
+            <!-- Start of Show Owner History section =================== -->
+            <h3>Show Owner History</h3>
+
+            <!-- Form for Searching by Address -->
+            <form action="" method="post">
+            <fieldset>
+
+                <!-- The ADDRESS pull down select item -->
+                <div class="actions"> 
+                    <label for "address_id">By Address:</label>
+                    <select name="address_id" id="address_id">
+
+                        <?php while($lot = mysqli_fetch_assoc($address_query)) { ?>
+                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['address']); ?></option>
+                        <?php } ?>
+
+                    </select>
+                </div>
+                <?php mysqli_free_result($address_query); ?>
+                <!-- END The ADDRESS pull down select item -->
+
+                <div id="actions">
+                    <input type="submit" name="submit" value="Show Address History" />
+                </div>
+
+            </fieldset>
+            </form>
+
+            <!-- Form for Searching by Lot # -->
+            <form action="" method="post">
+            <fieldset>
+
+                <!-- The LOT pull down select item -->
+                <div class="actions"> 
+                    <label for "lot_number">By Lot#:</label>
+                    <select name="lot_number" id="lot_number">
+
+                        <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
+                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['id']); ?></option>
+                        <?php } ?>
+
+                    </select>
+                </div>
+                <?php mysqli_free_result($lot_query); ?>
+                <!-- END The ADDRESS pull down select item -->
+
+                <div id="actions">
+                    <input type="submit" name="submit" value="Show Lot History" />
+                </div>
+
+            </fieldset>
+            </form>
+            <!-- ============================================================ -->
+            <!-- End of Search Property History Section ===================== -->
+            <hr />
+
             <!-- Form for Searching by Last name -->
 
             <form action="" method="post">
@@ -207,32 +275,10 @@
             </form>
             <!-- ============================================================ -->
 
-            <!-- Form for Searching by Address -->
-            <form action="" method="post">
-            <fieldset>
 
-                <!-- The ADDRESS pull down select item -->
-                <div class="actions"> 
-                    <label for "address_id">Show Owner History For:</label>
-                    <select name="address_id" id="address_id">
-
-                        <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
-                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['address']); ?></option>
-                        <?php } ?>
-
-                    </select>
-                </div>
-                <?php mysqli_free_result($lot_query); ?>
-                <!-- END The ADDRESS pull down select item -->
-
-                <div id="actions">
-                    <input type="submit" name="submit" value="Display History" />
-                </div>
-
-            </fieldset>
-            </form>
-            <!-- ============================================================ -->
         <?php } /* if ($search_mode) */ ?>
+
+
         <!-- ============================================================ -->
         <!-- This is the end of the "Default Owner Page " =============== -->
         <!-- ============================================================ -->
