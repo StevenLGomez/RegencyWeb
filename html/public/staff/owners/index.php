@@ -187,11 +187,11 @@
         <?php if ($search_mode) { ?>
 
             <!-- Start of Show Owner History section =================== -->
-            <h3>Show Owner History</h3>
 
             <!-- Form for Searching by Address -->
             <form action="" method="post">
             <fieldset>
+                <h3>Show Owner History</h3>
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
@@ -208,7 +208,7 @@
                 <!-- END The ADDRESS pull down select item -->
 
                 <div id="actions">
-                    <input type="submit" name="submit" value="Show Address History" />
+                    <input type="submit" name="submit" value="Show History" />
                 </div>
 
             </fieldset>
@@ -233,7 +233,7 @@
                 <!-- END The ADDRESS pull down select item -->
 
                 <div id="actions">
-                    <input type="submit" name="submit" value="Show Lot History" />
+                    <input type="submit" name="submit" value="Show History" />
                 </div>
 
             </fieldset>
@@ -242,10 +242,58 @@
             <!-- End of Search Property History Section ===================== -->
             <hr />
 
-            <!-- Form for Searching by Last name -->
+            <!-- ============================================================ -->
+            <!-- Form for Viewing existing owner by Last name -->
 
             <form action="" method="post">
             <fieldset>
+                <h3>View Owner Information</h3>
+                <!-- The Last Name Entry Box -->
+                <div class="actions"> 
+                    <label for "last_name">Enter Last Name</label>
+                    <input type="text" id="last_name" name="last_name">
+                    <input type="submit" name="view_owner" value="View" />
+                </div>
+                <!-- END The Last Name Entry Box -->
+
+            </fieldset>
+            </form>
+            <!-- ============================================================ -->
+            <hr />
+
+            <!-- ============================================================ -->
+            <!-- Form for Creating new owner-->
+
+            <form action="" method="post">
+            <fieldset>
+                <!-- Create New Owner -->
+                <h3>Create New Owner</h3>
+                <div class="actions"> 
+                    <input type="submit" name="create_owner" value="Create" />
+                </div>
+            </fieldset>
+                <!-- END The Create New Owner Entry Box -->
+
+            </form>
+            <!-- ============================================================ -->
+            <hr />
+
+            <!-- ============================================================ -->
+            <!-- Form for Searching for Rental owners -->
+            <form action="" method="post">
+            <fieldset>
+                <h3>View Rental Properties</h3>
+                <div id="actions">
+                    <input type="submit" name="view_rentals" value="View Rentals" />
+                </div>
+            </fieldset>
+            </form>
+            <!-- ============================================================ -->
+            <hr />
+
+            <form action="" method="post">
+            <fieldset>
+                <h3>Spare Section</h3>
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
                     <label for "last_name">Search By Last Name</label>
@@ -255,7 +303,6 @@
 
                 <div id="actions">
                     <!-- These inputs instruct form.php which action to make available -->
-                    <input type="submit" name="view_owner" value="View" />
                     <input type="submit" name="edit_owner" value="Edit" />
                     <input type="submit" name="create_owner" value="Create" />
                 </div>
@@ -263,18 +310,6 @@
             </fieldset>
             </form>
             <!-- ============================================================ -->
-
-            <!-- Form for Searching for Rental owners -->
-            <form action="" method="post">
-            <fieldset>
-                <div id="actions">
-                    <label for "view_rentals">View Renting Owners</label>
-                    <input type="submit" name="view_rentals" value="View Rentals" />
-                </div>
-            </fieldset>
-            </form>
-            <!-- ============================================================ -->
-
 
         <?php } /* if ($search_mode) */ ?>
 
