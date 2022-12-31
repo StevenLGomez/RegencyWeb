@@ -41,8 +41,6 @@
             $address_result = mysqli_fetch_assoc($property_set);
             $property_address = $address_result['address'];
 
-            echo 'Property Address: ' . $property_address;
-
             // $property_set can be cleared, result is in $property_address
             mysqli_free_result($property_set);
 
@@ -73,6 +71,10 @@
 
     <div id="content">
         <div id="regency-menu">
+
+        <b>Property Address:&nbsp;</b> <?php echo $property_address; ?>
+        <br />
+        <b>Lot #:&nbsp;</b> <?php echo $fk_lot_id; ?>
 
         <form action="" method="post">
             <table class="list">

@@ -247,7 +247,7 @@
 
             <form action="" method="post">
             <fieldset>
-                <h3>View Owner Information</h3>
+                <h3>Search By Last Name</h3>
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
                     <label for "last_name">Enter Last Name</label>

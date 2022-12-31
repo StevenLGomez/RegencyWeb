@@ -17,28 +17,57 @@
     } /* if ($searching_rental_owners) */  ?>
 
     <table class="list">
-        <tr>
-            <th>First</th>
-            <th>MI</th>
-            <th>Last</th>
-            <th>Buy Date</th>
-            <th>Current</th>
-            <th>Rental</th>
-        </tr>
 
         <?php while($owner = mysqli_fetch_assoc($owner_query)) { ?>
+        <tr>
+            <td><b>ID:</b> <?php echo $owner['id']; ?></td>
+        </tr>
         <tr>
             <td><?php echo htmlsc($owner['first']); ?>    </td>
             <td><?php echo htmlsc($owner['mi']); ?>       </td>
             <td><?php echo htmlsc($owner['last']); ?>     </td>
-            <td><?php echo htmlsc($owner['buy_date']); ?>     </td>
-            <td><?php echo $owner['is_current'] == 1 ? 'Yes' : 'No'; ?></td>
-            <td><?php echo $owner['is_rental'] == 1 ? 'Yes' : 'No'; ?></td>
+            <td><b>PH:</b><?php echo ' ' . htmlsc($owner['phone']); ?>     </td>
+            <td><b>Email:</b><?php echo ' ' . htmlsc($owner['email']); ?>     </td>
         </tr>
+
+        <!-- If a secondary owner has been entered (last_2 has length of at least 1 char), display it  -->
+        <?php if (strlen($owner['last_2']) >= 1) { ?>
+        <tr>
+            <td><?php echo htmlsc($owner['first_2']); ?>    </td>
+            <td><?php echo htmlsc($owner['mi_2']); ?>       </td>
+            <td><?php echo htmlsc($owner['last_2']); ?>     </td>
+            <td><b>PH:</b><?php echo ' ' . htmlsc($owner['phone_2']); ?>     </td>
+            <td><b>Email:</b><?php echo ' ' . htmlsc($owner['email_2']); ?>     </td>
+        </tr>
+        <?php } /* Bottom of if statement */ ?>
+        <!-- End of check for secondary owner -->
+
+        <tr>
+            <td><b>Purchased:</b><?php echo ' ' . htmlsc($owner['buy_date']); ?>     </td>
+            <td><b>Current:&nbsp;</b><?php echo $owner['is_current'] == 1 ? 'Yes' : 'No'; ?></td>
+        </tr>
+
+        <tr>
+            <td><b>Rental:&nbsp;</b><?php echo $owner['is_rental'] == 1 ? 'Yes' : 'No'; ?></td>
+        </tr>
+
+        <tr>
+            <td><b>&nbsp;</b></td>
+        </tr>
+
+
+
+
         <?php } /* Bottom of while loop */ ?>
 
     </table>
+
     <?php mysqli_free_result($owner_query); ?>
+
+    <br />
+    <br />
+    <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
+    <br />
 
     <!-- ============================================================ -->
 
