@@ -16,9 +16,12 @@
         echo '<h3>Rental Property Information</h3>';
     } /* if ($searching_rental_owners) */  ?>
 
+
+    <!-- For each item in list, loop to display the relevant information -->
+    <?php while($owner = mysqli_fetch_assoc($owner_query)) { ?>
+
     <table class="list">
 
-        <?php while($owner = mysqli_fetch_assoc($owner_query)) { ?>
         <tr>
             <td><b>ID:</b> <?php echo $owner['id']; ?></td>
         </tr>
@@ -51,20 +54,15 @@
             <td><b>Rental:&nbsp;</b><?php echo $owner['is_rental'] == 1 ? 'Yes' : 'No'; ?></td>
         </tr>
 
-        <tr>
-            <td><b>&nbsp;</b></td>
-        </tr>
-
-
-
-
-        <?php } /* Bottom of while loop */ ?>
-
     </table>
+
+    <hr /> <!-- Add a separator for each subtable -->
+
+    <?php } /* Bottom of while loop */ ?>
+
 
     <?php mysqli_free_result($owner_query); ?>
 
-    <br />
     <br />
     <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
     <br />

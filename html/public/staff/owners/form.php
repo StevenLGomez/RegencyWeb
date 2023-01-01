@@ -214,7 +214,6 @@
             ?>
 
             <br />
-            <br />
             <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
 
         </form>

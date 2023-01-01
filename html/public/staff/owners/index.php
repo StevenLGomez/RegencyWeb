@@ -289,27 +289,6 @@
             </fieldset>
             </form>
             <!-- ============================================================ -->
-            <hr />
-
-            <form action="" method="post">
-            <fieldset>
-                <h3>Spare Section</h3>
-                <!-- The Last Name Entry Box -->
-                <div class="actions"> 
-                    <label for "last_name">Search By Last Name</label>
-                    <input type="text" id="last_name" name="last_name">
-                </div>
-                <!-- END The Last Name Entry Box -->
-
-                <div id="actions">
-                    <!-- These inputs instruct form.php which action to make available -->
-                    <input type="submit" name="edit_owner" value="Edit" />
-                    <input type="submit" name="create_owner" value="Create" />
-                </div>
-
-            </fieldset>
-            </form>
-            <!-- ============================================================ -->
 
         <?php } /* if ($search_mode) */ ?>
 
