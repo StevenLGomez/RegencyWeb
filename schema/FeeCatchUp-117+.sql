@@ -308,6 +308,19 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022
 
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 137)  WHERE id = 137; 
 
+-- START of 2023 ------------------------------------------------------------------------------------------------
+-- 2023-02-25 Deposit 138
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (138, '2023-02-25', 0); -- Deposit 138
+
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022-12-31',   5791,  40,  4, 138, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2022-12-18',    798,  40,  8, 138, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-02-08',    547, 200, 14, 138, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-01-16',    254,  40, 48, 138, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-01-24', 145061,  80, 24, 138, 'Integrity Title STL-72589-22/44');
+
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 138)  WHERE id = 138; 
+
+
 
 
 
