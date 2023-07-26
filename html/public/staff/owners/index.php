@@ -101,10 +101,20 @@
             $page_title = 'Rental Properties';
         }
 
+        // Search history by address was requested
         if (isset($_POST['address_id'])) {
             $owner_list_required = True;
             $searching_history = True;
             $lot_id = $_POST['address_id'];
+
+            $page_title = 'Property History';
+        }
+
+        // Search history by lot number was requested
+        if (isset($_POST['lot_number'])) {
+            $owner_list_required = True;
+            $searching_history = True;
+            $lot_id = $_POST['lot_number'];
 
             $page_title = 'Property History';
         }
@@ -115,7 +125,8 @@
         $search_mode = True;
     }
 
-    $lot_query = find_all_lots();
+    $address_query = create_address_list();
+    $lot_query = create_lot_list();
 
 ?>
 
@@ -174,50 +185,46 @@
         <!-- This is the beginning of the "Default Owner Page "           -->
         <!-- ============================================================ -->
         <?php if ($search_mode) { ?>
-            <!-- Form for Searching by Last name -->
 
-            <form action="" method="post">
-            <fieldset>
-                <!-- The Last Name Entry Box -->
-                <div class="actions"> 
-                    <label for "last_name">Search By Last Name</label>
-                    <input type="text" id="last_name" name="last_name">
-                </div>
-                <!-- END The Last Name Entry Box -->
-
-                <div id="actions">
-                    <!-- These inputs instruct form.php which action to make available -->
-                    <input type="submit" name="view_owner" value="View" />
-                    <input type="submit" name="edit_owner" value="Edit" />
-                    <input type="submit" name="create_owner" value="Create" />
-                </div>
-
-            </fieldset>
-            </form>
-            <!-- ============================================================ -->
-
-            <!-- Form for Searching for Rental owners -->
-            <form action="" method="post">
-            <fieldset>
-                <div id="actions">
-                    <label for "view_rentals">View Renting Owners</label>
-                    <input type="submit" name="view_rentals" value="View Rentals" />
-                </div>
-            </fieldset>
-            </form>
-            <!-- ============================================================ -->
+            <!-- Start of Show Owner History section =================== -->
 
             <!-- Form for Searching by Address -->
             <form action="" method="post">
             <fieldset>
+                <h3>Show Owner History</h3>
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
-                    <label for "address_id">Show Owner History For:</label>
+                    <label for "address_id">By Address:</label>
                     <select name="address_id" id="address_id">
 
-                        <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
+                        <?php while($lot = mysqli_fetch_assoc($address_query)) { ?>
                             <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['address']); ?></option>
+                        <?php } ?>
+
+                    </select>
+                </div>
+                <?php mysqli_free_result($address_query); ?>
+                <!-- END The ADDRESS pull down select item -->
+
+                <div id="actions">
+                    <input type="submit" name="submit" value="Show History" />
+                </div>
+
+            </fieldset>
+            </form>
+
+            <!-- Form for Searching by Lot # -->
+            <form action="" method="post">
+            <fieldset>
+
+                <!-- The LOT pull down select item -->
+                <div class="actions"> 
+                    <label for "lot_number">By Lot#:</label>
+                    <select name="lot_number" id="lot_number">
+
+                        <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
+                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['id']); ?></option>
                         <?php } ?>
 
                     </select>
@@ -226,13 +233,66 @@
                 <!-- END The ADDRESS pull down select item -->
 
                 <div id="actions">
-                    <input type="submit" name="submit" value="Display History" />
+                    <input type="submit" name="submit" value="Show History" />
                 </div>
 
             </fieldset>
             </form>
             <!-- ============================================================ -->
+            <!-- End of Search Property History Section ===================== -->
+            <hr />
+
+            <!-- ============================================================ -->
+            <!-- Form for Viewing existing owner by Last name -->
+
+            <form action="" method="post">
+            <fieldset>
+                <h3>Search By Last Name</h3>
+                <!-- The Last Name Entry Box -->
+                <div class="actions"> 
+                    <label for "last_name">Enter Last Name</label>
+                    <input type="text" id="last_name" name="last_name">
+                    <input type="submit" name="view_owner" value="View" />
+                </div>
+                <!-- END The Last Name Entry Box -->
+
+            </fieldset>
+            </form>
+            <!-- ============================================================ -->
+            <hr />
+
+            <!-- ============================================================ -->
+            <!-- Form for Creating new owner-->
+
+            <form action="" method="post">
+            <fieldset>
+                <!-- Create New Owner -->
+                <h3>Create New Owner</h3>
+                <div class="actions"> 
+                    <input type="submit" name="create_owner" value="Create" />
+                </div>
+            </fieldset>
+                <!-- END The Create New Owner Entry Box -->
+
+            </form>
+            <!-- ============================================================ -->
+            <hr />
+
+            <!-- ============================================================ -->
+            <!-- Form for Searching for Rental owners -->
+            <form action="" method="post">
+            <fieldset>
+                <h3>View Rental Properties</h3>
+                <div id="actions">
+                    <input type="submit" name="view_rentals" value="View Rentals" />
+                </div>
+            </fieldset>
+            </form>
+            <!-- ============================================================ -->
+
         <?php } /* if ($search_mode) */ ?>
+
+
         <!-- ============================================================ -->
         <!-- This is the end of the "Default Owner Page " =============== -->
         <!-- ============================================================ -->
