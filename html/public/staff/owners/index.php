@@ -68,8 +68,8 @@
             $owner['phone_2'] = $_POST['phone_2'] ?? '';
             $owner['email_2'] = $_POST['email_2'] ?? '';
 
-            // $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
-            $owner['fk_lot_id'] = 39;
+            // $owner['fk_lot_id'] = 39;
+            $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
             $owner['buy_date'] = $_POST['buy_date'] ?? '';
             $owner['is_current'] = $_POST['is_current'] ?? '';
             $owner['is_rental'] = $_POST['is_rental'] ?? '';
