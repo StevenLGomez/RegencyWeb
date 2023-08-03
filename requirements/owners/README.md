@@ -19,8 +19,8 @@ __Create Owner Form Layout___
 | Email                     | amlost@some.net  |
 |                           |                  |
 | __Property Information__  |                  |
-| Lot #                     |                  |
 | Property Address          | 3759 Hyatt Court |
+| Lot #                     |                  |
 | Purchased (YYYY_MM_DD)    | 2022-05-01       |
 | Current Owner             | X                |
 | Is Rental                 | O                |
@@ -62,7 +62,13 @@ __Owner Workflow__
 
 __Current Status__
 
-Failure from first INSERT attempt   
-Adding from form INSERT INTO owner (fk_lot_id, first, mi, last, first_2, mi_2, last_2, address, city, state, zip, phone, email, phone_2, email_2, buy_date, is_current, is_rental) VALUES ('''''''''''''''''''''''''''''''''''')Insert Failed :(Column count doesn't match value count at row 1
+Recently corrected syntax error that prevented new owner entries from being accepted by database.   
+
+TODO List   
+- [ ] Create trigger to handle previous current owner cancellation when entering a new one.
+- [ ] Review Owner Variables currently used
+- [ ] Document Owner workflow
+- [ ] Determine missing requirements
+
 
 
