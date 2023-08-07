@@ -129,10 +129,10 @@ function validate_owner($owner)
     }
 
     // Confirm Lot # is within range
-    //if ( $owner['fk_lot_id'] == 0 || $owner['fk_lot_id'] > 68 )
-    //{
-    //    return 'Lot # is out of range, must be 1 - 68';
-    //}
+    if ( $owner['fk_lot_id'] == 0 || $owner['fk_lot_id'] > 68 )
+    {
+        return 'Lot # is out of range, must be 1 - 68';
+    }
 
 }
 
