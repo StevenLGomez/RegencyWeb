@@ -21,19 +21,15 @@
     <?php while($owner = mysqli_fetch_assoc($owner_query)) { ?>
 
     <table class="list">
-        <tr>
-            <td><b>ID:</b> <?php echo $owner['id']; ?>
-            </td>
-        </tr>
-            <tr>
-            <td>
-            <?php echo htmlsc($owner['first']); ?>    </td>
-            <td><?php echo htmlsc($owner['mi']); ?>
-            </td>
-            <td>
-        <?php echo htmlsc($owner['last']); ?>     </td>
 
-        <td><b>PH:</b><?php echo ' ' . htmlsc($owner['phone']); ?>     </td>
+        <tr>
+            <td><b>ID:</b> <?php echo $owner['id']; ?></td>
+        </tr>
+        <tr>
+            <td><?php echo htmlsc($owner['first']); ?>    </td>
+            <td><?php echo htmlsc($owner['mi']); ?>       </td>
+            <td><?php echo htmlsc($owner['last']); ?>     </td>
+            <td><b>PH:</b><?php echo ' ' . htmlsc($owner['phone']); ?>     </td>
             <td><b>Email:</b><?php echo ' ' . htmlsc($owner['email']); ?>     </td>
         </tr>
 
@@ -50,18 +46,19 @@
         <!-- End of check for secondary owner -->
 
         <tr>
-            <td><b>Purchased:</b><?php echo ' ' . htmlsc($owner['buy_date']); ?>  </td>
+            <td><b>Purchased:</b><?php echo ' ' . htmlsc($owner['buy_date']); ?>     </td>
             <td><b>Current:&nbsp;</b><?php echo $owner['is_current'] == 1 ? 'Yes' : 'No'; ?></td>
-            </tr>
+        </tr>
 
         <tr>
             <td><b>Rental:&nbsp;</b><?php echo $owner['is_rental'] == 1 ? 'Yes' : 'No'; ?></td>
         </tr>
-        </table>
 
+    </table>
     <hr /> <!-- Add a separator for each subtable -->
 
     <?php } /* Bottom of while loop */ ?>
+
     <?php mysqli_free_result($owner_query); ?>
 
     <br />

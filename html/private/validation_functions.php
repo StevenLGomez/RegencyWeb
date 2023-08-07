@@ -112,6 +112,7 @@ function has_valid_date_format($value)
     return preg_match($date_regex, $value) === 1;
 }
 
+
 // Function to validate the long list of Owner Table entries
 function validate_owner($owner)
 {
@@ -126,6 +127,12 @@ function validate_owner($owner)
     {
         return 'Invalid date format, must be YYYY-MM-DD';
     }
+
+    // Confirm Lot # is within range
+    //if ( $owner['fk_lot_id'] == 0 || $owner['fk_lot_id'] > 68 )
+    //{
+    //    return 'Lot # is out of range, must be 1 - 68';
+    //}
 
 }
 

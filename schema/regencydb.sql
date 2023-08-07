@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 27, 2022 at 04:18 AM
+-- Generation Time: Jul 26, 2023 at 04:01 AM
 -- Server version: 10.3.17-MariaDB
 -- PHP Version: 7.4.11
 
@@ -208,7 +208,10 @@ INSERT INTO `deposit` (`id`, `fk_cat_id`, `dt`, `is_reconciled`, `amount`, `note
 (134, NULL, '2022-10-05', 0, '80.00', NULL, NULL, NULL),
 (135, NULL, '2022-11-25', 0, '480.00', NULL, NULL, NULL),
 (136, NULL, '2022-12-02', 0, '720.00', NULL, NULL, NULL),
-(137, NULL, '2022-12-27', 0, '600.00', NULL, NULL, NULL);
+(137, NULL, '2022-12-27', 0, '600.00', NULL, NULL, NULL),
+(138, NULL, '2023-02-25', 0, '400.00', NULL, NULL, NULL),
+(139, NULL, '2023-04-11', 0, '105.00', NULL, NULL, NULL),
+(140, NULL, '2023-07-25', 0, '80.00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -473,7 +476,29 @@ INSERT INTO `expense` (`id`, `fk_cat_id`, `dt`, `ck_no`, `payee`, `amount`, `not
 (242, 9, '2019-11-29', 1274, 'OfficeMax', '23.00', 'Printing, supplies'),
 (243, 2, '2019-12-19', 1275, 'Darla Yoakum', '200.00', 'Oct & Nov Basin mowing'),
 (244, 4, '2020-02-21', 1276, 'State Farm', '1316.00', 'Liability Insurance'),
-(245, 5, '2020-04-29', 1277, 'Postmaster', '168.00', 'PO Box renewal fee');
+(245, 5, '2020-04-29', 1277, 'Postmaster', '168.00', 'PO Box renewal fee'),
+(246, 2, '2020-07-18', 1278, 'Darla Yoakum', '300.00', 'Apr, May, June Mowing'),
+(247, 6, '2020-09-01', 0, 'Missouri Secretary of State', '10.50', 'Annual Renewal'),
+(248, 2, '2020-10-05', 1279, 'Darla Yoakum', '200.00', 'July & August Mowing'),
+(249, 5, '2020-11-03', 1280, 'Postmaster', '33.00', 'Postage Stamps'),
+(250, 2, '2020-11-20', 1281, 'Darla Yoakum', '300.00', 'Sept, Oct, Nov Mowing'),
+(251, 4, '2021-02-15', 1282, 'State Farm', '1316.00', 'Liability Insurance'),
+(252, 5, '2021-04-01', 1283, 'Postmaster', '168.00', 'PO Box Renewal'),
+(253, 5, '2021-04-01', 1284, 'Postmaster', '36.00', 'PO Box Renewal (price increase)'),
+(254, 2, '2021-06-03', 1285, 'Darla Yoakum', '300.00', 'Mar, Apr, May Mowing'),
+(255, 2, '2021-08-23', 1286, 'Darla Yoakum', '256.50', 'Jun, Jul Mowing & herbicide'),
+(256, 6, '2021-10-16', 0, 'Missouri Secretary of State', '15.50', 'Annual Renewal'),
+(257, 2, '2021-11-08', 1287, 'Darla Yoakum', '200.00', 'Aug & Sept Mowing'),
+(258, 5, '2021-11-10', 1288, 'Postmaster', '46.40', 'Postage Stamps'),
+(259, 2, '2021-12-20', 1289, 'Darla Yoakum', '200.00', 'Oct & Nov Mowing'),
+(260, 4, '2022-03-19', 1290, 'State Farm', '1316.00', 'Liability Insurance'),
+(261, 5, '2022-04-09', 1297, 'Postmaster', '232.00', 'PO Box Renewal'),
+(262, 2, '2022-05-17', 1298, 'Darla Yoakum', '375.00', 'Mar, Apr, May Mowing'),
+(263, 2, '2022-09-12', 1299, 'Darla Yoakum', '375.00', 'Jun, Jul, Aug Mowing'),
+(264, 6, '2022-09-24', 1300, 'Missouri Secretary of State', '15.50', 'Annual Filing Fee'),
+(265, 5, '2022-11-07', 0, 'Postmaster', '36.00', 'Postage Stamps (debit card)'),
+(266, 5, '2022-11-14', 0, 'Office Depot', '174.86', 'Print Supplies (debit card)'),
+(267, 2, '2022-12-29', 1301, 'Darla Yoakum', '375.00', 'Sep, Oct, Nov Mowing');
 
 -- --------------------------------------------------------
 
@@ -1658,7 +1683,15 @@ INSERT INTO `fees` (`id`, `dt`, `ck_no`, `amount`, `fk_lot_id`, `fk_deposit_id`,
 (1330, '2022-11-29', 1767, '40.00', 47, 137, ''),
 (1331, '2022-11-28', 1382, '40.00', 56, 137, ''),
 (1332, '2022-12-07', 3079, '40.00', 63, 137, ''),
-(1333, '2022-11-30', 9052, '40.00', 66, 137, '');
+(1333, '2022-11-30', 9052, '40.00', 66, 137, ''),
+(1343, '2022-12-31', 5791, '40.00', 4, 138, ''),
+(1344, '2022-12-18', 798, '40.00', 8, 138, ''),
+(1345, '2023-02-08', 547, '200.00', 14, 138, ''),
+(1346, '2023-01-16', 254, '40.00', 48, 138, ''),
+(1347, '2023-01-24', 145061, '80.00', 24, 138, 'Integrity Title STL-72589-22/44'),
+(1350, '2022-02-23', 5282, '80.00', 25, 139, ''),
+(1351, '2022-02-17', 18852, '25.00', 46, 139, ''),
+(1353, '2023-05-10', 6071, '80.00', 41, 140, '');
 
 -- --------------------------------------------------------
 
@@ -1855,7 +1888,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (71, 46, 'Adam', 'B', 'Murray', 'Mandy', 'L', 'Murray', '3208 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2009-05-21', 0, NULL, NULL),
 (72, 46, 'Denise', 'L', 'Shy', '', '', '', '3208 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2005-04-11', 0, NULL, NULL),
 (73, 47, 'Tim', '', 'Galmore', '', '', '', '3204 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL),
-(74, 47, 'Peer Properties LLC', '', '', '', '', '', '158 Grange Hill Lane', 'Saint Charles', 'MO', '63304', NULL, NULL, NULL, NULL, '2005-06-09', 1, NULL, NULL),
+(74, 47, '', '', 'Peer Properties LLC', '', '', '', '1093 Arbor Grove Court', 'Chesterfield', 'MO', '63005-4984', '314-657-2558', 'jeffpeer15@yahoo.com', '', '', '2005-06-09', 1, 1, 'SCC DB outdated, manual update, added ph & email'),
 (75, 47, '', '', 'Lanpar Corporation', '', '', '', '3204 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2005-04-11', 0, NULL, NULL),
 (76, 48, 'Keith', 'L', 'Vollmer', 'Joann', '', 'Vollmer', '3200 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, 'jvollmer41@yahoo.com', NULL, NULL, '1990-01-01', 1, NULL, NULL),
 (77, 49, 'William', 'L', 'Bostwick', '', '', '', '1401 Westin Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
@@ -1931,7 +1964,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (147, 31, 'Frank', '', 'Degenhardt', '', '', '', '3264 Hyatt Court', 'Saint Peters', 'MO', '63303', '', '', '', '', '2019-06-13', 1, NULL, NULL),
 (148, 58, 'Benjamin', '', 'Suntrup', 'Courtney', '', 'Suntrup', '3275 Hyatt Court', 'Saint Peters', 'MO', '63303', '', '', '', '', '2019-08-16', 1, NULL, NULL),
 (149, 15, 'Jonathan', '', 'Hibbeler', '', '', '', '1172 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2020-03-25', 1, NULL, NULL),
-(150, 24, 'Andrea', '', 'Phillips', '', '', '', '3278 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2020-10-09', 1, NULL, NULL),
+(150, 24, 'Andrea', '', 'Phillips', '', '', '', '3278 Hyatt Court', 'Saint Peters', 'MO', '63303', '636-875-3648', 'andrearuthphillips@gmail.com', NULL, NULL, '2020-10-09', 1, NULL, NULL),
 (151, 67, 'Samuel', 'Rodriguez', 'Benitez Ebel', 'Osiris', 'I', 'Morales', '1417 Westin Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2020-08-07', 1, NULL, NULL),
 (152, 51, 'Timothy', 'A', 'Petrillo', 'Emily', 'L', 'Petrillo', '3220 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2020-07-21', 1, NULL, NULL),
 (155, 21, 'Sandra', 'K', 'Darr', '', '', '', '3284 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-02-24', 1, NULL, NULL),
@@ -1999,13 +2032,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=268;
 
 --
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1229;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1354;
 
 --
 -- AUTO_INCREMENT for table `lot`

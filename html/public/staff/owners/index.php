@@ -68,8 +68,8 @@
             $owner['phone_2'] = $_POST['phone_2'] ?? '';
             $owner['email_2'] = $_POST['email_2'] ?? '';
 
-            // $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
-            $owner['fk_lot_id'] = 39;
+            // $owner['fk_lot_id'] = 39;
+            $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
             $owner['buy_date'] = $_POST['buy_date'] ?? '';
             $owner['is_current'] = $_POST['is_current'] ?? '';
             $owner['is_rental'] = $_POST['is_rental'] ?? '';
@@ -186,12 +186,13 @@
         <!-- ============================================================ -->
         <?php if ($search_mode) { ?>
 
-            <!-- Start of Show Owner History section =================== -->
+            <!-- Start of Searach Owner History section =================== -->
 
+            <!-- ============================================================ -->
             <!-- Form for Searching by Address -->
             <form action="" method="post">
             <fieldset>
-                <h3>Show Owner History</h3>
+                <h3>View Owner History</h3>
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
@@ -203,17 +204,16 @@
                         <?php } ?>
 
                     </select>
+                    <input type="submit" name="submit" value="View By Address" />
                 </div>
                 <?php mysqli_free_result($address_query); ?>
                 <!-- END The ADDRESS pull down select item -->
 
-                <div id="actions">
-                    <input type="submit" name="submit" value="Show History" />
-                </div>
-
             </fieldset>
             </form>
+            <!-- ============================================================ -->
 
+            <!-- ============================================================ -->
             <!-- Form for Searching by Lot # -->
             <form action="" method="post">
             <fieldset>
@@ -228,17 +228,15 @@
                         <?php } ?>
 
                     </select>
+                    <input type="submit" name="submit" value="View By Lot" />
                 </div>
                 <?php mysqli_free_result($lot_query); ?>
-                <!-- END The ADDRESS pull down select item -->
-
-                <div id="actions">
-                    <input type="submit" name="submit" value="Show History" />
-                </div>
+                <!-- END The LOT pull down select item and button -->
 
             </fieldset>
             </form>
             <!-- ============================================================ -->
+
             <!-- End of Search Property History Section ===================== -->
             <hr />
 
@@ -262,6 +260,19 @@
             <hr />
 
             <!-- ============================================================ -->
+            <!-- Form for Searching for Rental owners -->
+            <form action="" method="post">
+            <fieldset>
+                <h3>View Rental Properties</h3>
+                <div id="actions">
+                    <input type="submit" name="view_rentals" value="View Rentals" />
+                </div>
+            </fieldset>
+            </form>
+            <!-- ============================================================ -->
+            <hr />
+
+            <!-- ============================================================ -->
             <!-- Form for Creating new owner-->
 
             <form action="" method="post">
@@ -276,22 +287,8 @@
 
             </form>
             <!-- ============================================================ -->
-            <hr />
-
-            <!-- ============================================================ -->
-            <!-- Form for Searching for Rental owners -->
-            <form action="" method="post">
-            <fieldset>
-                <h3>View Rental Properties</h3>
-                <div id="actions">
-                    <input type="submit" name="view_rentals" value="View Rentals" />
-                </div>
-            </fieldset>
-            </form>
-            <!-- ============================================================ -->
 
         <?php } /* if ($search_mode) */ ?>
-
 
         <!-- ============================================================ -->
         <!-- This is the end of the "Default Owner Page " =============== -->

@@ -188,7 +188,7 @@
       $sql .= "'" . db_escape($db, $owner['buy_date']) . "',";
       $sql .= "'" . db_escape($db, $owner['is_current']) . "',";
       $sql .= "'" . db_escape($db, $owner['is_rental']) . "'";
-      $sql .= ")";
+      $sql .= ");";
 
       echo $sql;
 
@@ -210,7 +210,6 @@
           exit;
       }
   }
-
 
 ?>
 
