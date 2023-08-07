@@ -186,7 +186,7 @@
         <!-- ============================================================ -->
         <?php if ($search_mode) { ?>
 
-            <!-- Start of Searach Owner History section =================== -->
+            <!-- Start of Search Owner History section =================== -->
 
             <!-- ============================================================ -->
             <!-- Form for Searching by Address -->
