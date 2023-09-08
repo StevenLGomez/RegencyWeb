@@ -169,10 +169,12 @@
       // is the new 'current owner'.
       if ($owner['is_current'] == 1)
       {
+          //$sql = "UPDATE owner SET is_current = 0 WHERE fk_lot_id = 9;";
           $sql = "UPDATE owner ";
           $sql .= "SET is_current = 0 ";
           $sql .= "WHERE fk_lot_id = ";
-          // $sql .= "db_escape($db, (int)$owner['fk_lot_id']);"
+          $sql .= db_escape($db, (int)$owner['fk_lot_id']);
+          $sql .= ";";
 
           $is_current_result = mysqli_query($db, $sql);
 
