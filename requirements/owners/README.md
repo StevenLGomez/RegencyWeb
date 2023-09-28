@@ -1,7 +1,49 @@
 
 # Owner Management Requirements
 
-__Create Owner Form Layout___
+## Owner Management
+
+__Actions Supported: public/staff/owners/index.php__
+| Function          | type           | name              | value            |                       |
+| :----------       |  :----------   | :---------------- | :--------------- | :-------------------- |
+| __Owner History__ |                |                   |                  |                       |
+| By Address        |                |                   |                  |                       |
+| By Lot            |                |                   |                  |                       |
+|                   |                |                   |                  |                       |
+| __By Last Name__  |                |                   |                  |                       |
+| Enter Last Name   |                |                   |                  |                       |
+|                   |                |                   |                  |                       |
+| __View Rentals__  |                |                   |                  |                       |
+| View              |                |                   |                  |                       |
+|                   |                |                   |                  |                       |
+| __New Owner__     |                |                   |                  |                       |
+| Create            |                |                   |                  |                       |
+|                   |                |                   |                  |                       |
+|                   |                |                   |                  |                       |
+
+
+
+__Variables for public/staff/owners/index.php__
+| Function         | type           | name              | value            |                       |
+| :----------      |  :----------   | :---------------- | :--------------- | :-------------------- |
+| __Full View__    |                |                   |                  |                       |
+|                  | "text"         | "last_name"       |                  |                       |
+|                  | "input"        | view_owner        | View             |                       |
+|                  | "input"        | edit_owner        | Edit             |                       |
+|                  | "input"        | create_owner      | Create           |                       |
+| __View Rentals__ |                |                   |                  |                       |
+|                  | "input"        | view_rentals      | View Rentals     |                       |
+|                  |                |                   |                  |                       |
+| __Lot History__  |                |                   |                  |                       |
+|                  | "select"       | "address_id"      | "address_id"     |                       |
+|                  | "submit"       | "submit"          | Display History  |                       |
+|                  |                |                   |                  |                       |
+|                  |                |                   |                  |                       |
+
+
+---
+
+__Create Owner Form Layout__
 
 | __Primary Owner__         |                  |
 | :-------                  | :----------      |
@@ -36,36 +78,13 @@ __Create Owner Form Layout___
 | __Action__                |                  |
 
 ---
-## Owner Management
-
-__Variables for public/staff/owners/index.php__
-| Function         | type           | name              | value            |                       |
-| :----------      |  :----------   | :---------------- | :--------------- | :-------------------- |
-| __Full View__    |                |                   |                  |                       |
-|                  | "text"         | "last_name"       |                  |                       |
-|                  | "input"        | view_owner        | View             |                       |
-|                  | "input"        | edit_owner        | Edit             |                       |
-|                  | "input"        | create_owner      | Create           |                       |
-| __View Rentals__ |                |                   |                  |                       |
-|                  | "input"        | view_rentals      | View Rentals     |                       |
-|                  |                |                   |                  |                       |
-| __Lot History__  |                |                   |                  |                       |
-|                  | "select"       | "address_id"      | "address_id"     |                       |
-|                  | "submit"       | "submit"          | Display History  |                       |
-|                  |                |                   |                  |                       |
-|                  |                |                   |                  |                       |
-
-
 __Owner Workflow__
 
 
 
-__Current Status__
 
-Recently corrected syntax error that prevented new owner entries from being accepted by database.   
-
-TODO List   
-- [ ] Create trigger to handle previous current owner cancellation when entering a new one.
+__TODO List__   
+- [X] Create logic to handle previous current owner cancellation when entering a new one.
 - [ ] Review Owner Variables currently used
 - [ ] Document Owner workflow
 - [ ] Determine missing requirements

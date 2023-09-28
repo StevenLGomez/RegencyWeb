@@ -145,7 +145,7 @@
 
                 <tr>
                     <td><b>Lot #</b></td>
-                    <td><input type="text" name="lot_number" value="<?php echo htmlsc($fk_lot_id); ?>" /></td>
+                    <td><input type="text" name="fk_lot_id" value="<?php echo htmlsc($fk_lot_id); ?>" /></td>
                 </tr>
 
                 <tr>

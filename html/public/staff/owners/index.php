@@ -186,13 +186,13 @@
         <!-- ============================================================ -->
         <?php if ($search_mode) { ?>
 
-            <!-- Start of Searach Owner History section =================== -->
+            <!-- Start of Search Owner History section =================== -->
 
             <!-- ============================================================ -->
             <!-- Form for Searching by Address -->
             <form action="" method="post">
             <fieldset>
-                <h3>View Owner History</h3>
+                <h4>Owner History</h4>
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
@@ -245,10 +245,10 @@
 
             <form action="" method="post">
             <fieldset>
-                <h3>Search By Last Name</h3>
+                <h4>By Last Name</h4>
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
-                    <label for "last_name">Enter Last Name</label>
+                    <label for "last_name">Last Name</label>
                     <input type="text" id="last_name" name="last_name">
                     <input type="submit" name="view_owner" value="View" />
                 </div>
@@ -263,9 +263,9 @@
             <!-- Form for Searching for Rental owners -->
             <form action="" method="post">
             <fieldset>
-                <h3>View Rental Properties</h3>
+                <h4>View Rentals</h4>
                 <div id="actions">
-                    <input type="submit" name="view_rentals" value="View Rentals" />
+                    <input type="submit" name="view_rentals" value="View" />
                 </div>
             </fieldset>
             </form>
@@ -278,7 +278,7 @@
             <form action="" method="post">
             <fieldset>
                 <!-- Create New Owner -->
-                <h3>Create New Owner</h3>
+                <h4>New Owner</h4>
                 <div class="actions"> 
                     <input type="submit" name="create_owner" value="Create" />
                 </div>

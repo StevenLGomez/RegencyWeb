@@ -165,6 +165,33 @@
           return $errors;
       }
 
+      // Insert logic to remove all previous 'current owner' tags if this addition
+      // is the new 'current owner'.
+      if ($owner['is_current'] == 1)
+      {
+          //$sql = "UPDATE owner SET is_current = 0 WHERE fk_lot_id = 9;";
+          $sql = "UPDATE owner ";
+          $sql .= "SET is_current = 0 ";
+          $sql .= "WHERE fk_lot_id = ";
+          $sql .= db_escape($db, (int)$owner['fk_lot_id']);
+          $sql .= ";";
+
+          $is_current_result = mysqli_query($db, $sql);
+
+          if ($is_current_result) {
+              echo 'Clearing of old is_current succeded';
+          }
+          else
+          {
+              // Cleanup failed !
+              echo 'Clearing is_current Failed :(';
+              echo mysqli_error($db);
+              db_disconnect($db);
+              exit;
+          }
+      }
+
+      // Create query for adding this new owner
       $sql = "INSERT INTO owner ";
       $sql .= "(fk_lot_id, first, mi, last, first_2, mi_2, last_2, ";
       $sql .= "address, city, state, zip, phone, email, phone_2, ";
