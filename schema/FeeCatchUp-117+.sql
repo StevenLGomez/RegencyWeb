@@ -333,7 +333,10 @@ INSERT INTO deposit (id, dt, is_reconciled) VALUES (140, '2023-07-25', 0); -- De
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-05-10',   6071,  80, 41, 140, '');
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 140)  WHERE id = 140;
 
-
+-- 2023-10-04 Deposit 141
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (141, '2023-10-04', 0); -- Deposit 141
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-08-04',  19037,  40, 65, 141, 'Select Title Group - 3524786312');
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 141)  WHERE id = 141;
 
 
 
