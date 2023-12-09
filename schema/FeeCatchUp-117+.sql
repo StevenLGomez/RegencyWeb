@@ -367,6 +367,21 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023
 
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 142)  WHERE id = 142;
 
+-- 2023-12-12 Deposit 143
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (143, '2023-12-12', 0); -- Deposit 143
+
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-11-26',    2034,  40,  1, 143, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-11-28',    3191,  40, 16, 143, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-11-29',    3026,  40, 19, 143, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-12-04',    4070,  40, 21, 143, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-11-25',     105,  40, 22, 143, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-12-01',       0,  40, 33, 143, 'Cash payment');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-11-27',   18864,  15, 46, 143, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-12-01',    3197,  40, 49, 143, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-12-07',      54,  40, 54, 143, '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-11-28',     275,  40, 60, 143, '');
+
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 143)  WHERE id = 143;
 
 
 
