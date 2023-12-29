@@ -38,3 +38,19 @@ INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
     ('2022-11-14',    0, 'Office Depot',                174.86,   5, 'Print Supplies (debit card)'),
     ('2022-12-29', 1301, 'Darla Yoakum',                375.00,   2, 'Sep, Oct, Nov Mowing');
 COMMIT;
+
+-- 2023 Expenses
+START TRANSACTION;
+INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
+    ('2023-02-25', 1302, 'State Farm',                 1264.00,   4, 'Liability Insurance'),
+    ('2023-04-19',    0, 'Postmaster',                  248.00,   5, 'PO Box Renewal (debit)'),
+    ('2023-05-29', 1303, 'Darla Yoakum',                125.00,   2, 'Apr 2023 mowing'),
+    ('2023-07-05', 1304, 'Darla Yoakum',                500.00,   2, '3 Mowings & spray'),
+    ('2023-09-05', 1305, 'Darla Yoakum',                125.00,   2, 'July Mowing'),
+    ('2023-09-10',    0, 'Missouri Secretary of State',  15.55,   6, 'Annual Filing Fee (debit)'),
+    ('2023-11-18',    0, 'Postmaster',                   26.40,   5, 'Postage Stamps (debit)'),
+    ('2023-12-27', 1306, 'Darla Yoakum',                375.00,   2, 'Sep, Oct, Nov Mowing');
+COMMIT;
+
+
+
