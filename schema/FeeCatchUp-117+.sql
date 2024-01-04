@@ -8,7 +8,7 @@
 -- To accomodate DDL differences between sqlite & MySQL:
 --     Transaction -> Deposit
 --     trans       -> deposit
---     fk_trans_id -> fk_deposit_id
+--     fk trans id -> fk_deposit_id
 --     date        -> dt
 --     date        -> dt
 --     YYYYMMDD    -> 'YYYY-MM-DD'
@@ -395,8 +395,9 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023
 
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 144)   WHERE id = 144; 
 
--- 2023-12-27 Deposit 145 
-INSERT INTO deposit (id, dt, is_reconciled) VALUES (145,  '2023-12-27', 0); -- Deposit 145 
+-- START of 2024 ------------------------------------------------------------------------------------------------
+-- 2024-01-02 Deposit 145 
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (145,  '2024-01-02', 0); -- Deposit 145 
 
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-11-23',      0,  40,  3, 145,  '');
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-12-18',    800,  40,  8, 145,  '');
@@ -408,4 +409,10 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023
 
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 145)  WHERE id = 145;
   
+-- 2024-01-03 Deposit 146
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (146, '2024-01-03', 0); -- Deposit 146
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-12-23',    429,  40, 52, 146,  '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-12-29',    171,  40, 68, 146,  '');
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 146)  WHERE id = 146;
+
 
