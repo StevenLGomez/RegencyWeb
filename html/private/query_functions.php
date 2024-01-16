@@ -26,17 +26,6 @@
     return $result;
   }
 
-  // Expenses     =============================================================
-  function find_all_expenses() {
-    global $db;
-
-    $sql = "SELECT * FROM expense WHERE dt > '2020-01-01' ";
-    //echo $sql;
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    return $result;
-  }
-
   // Fees         =============================================================
   function find_all_fees() {
     global $db;
