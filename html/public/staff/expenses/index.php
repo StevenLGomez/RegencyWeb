@@ -1,7 +1,7 @@
 
 <?php require_once('../../../private/initialize.php'); ?>
 
-<?php $subject_set = find_all_expenses(); ?>
+<?php $expense_set = find_all_expenses('2023'); ?>
 
 <?php $page_title = 'Manage Expenses'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
@@ -26,24 +26,122 @@
                     <th>&nbsp</th>
                 </tr>
 
-                <?php while($subject = mysqli_fetch_assoc($subject_set)) { ?>
+                <?php while($expense_row = mysqli_fetch_assoc($expense_set)) { ?>
 
                     <tr>
-                        <td><?php echo htmlsc($subject['dt']); ?></td>
-                        <td><?php echo htmlsc($subject['payee']); ?></td>
-                        <td><?php echo htmlsc($subject['ck_no']); ?></td>
-                        <td><?php echo htmlsc($subject['amount']); ?></td>
-                        <td><?php echo htmlsc($subject['fk_cat_id']); ?></td>
-                        <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . htmlsc(urlencode($subject['id']))); ?>">Edit</a></td>
+                        <td><?php echo htmlsc($expense_row['dt']); ?></td>
+                        <td><?php echo htmlsc($expense_row['payee']); ?></td>
+                        <td><?php echo htmlsc($expense_row['ck_no']); ?></td>
+                        <td><?php echo htmlsc($expense_row['amount']); ?></td>
+                        <td><?php echo htmlsc($expense_row['fk_cat_id']); ?></td>
+                        <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . htmlsc(urlencode($expense_row['id']))); ?>">Edit</a></td>
                     </tr>
 
                 <?php } ?>
 
             </table>
 
-            <?php mysqli_free_result($subject_set); ?>
+            <?php mysqli_free_result($expense_set); ?>
+            <br /><hr /><br />
 
-        </div>
+            <table class="list">
+                <tr>
+                    <th>Year</th>
+                    <th>Mowing</th>
+                    <th>Maintenance</th>
+                    <th>Insurance</th>
+                    <th>Postage</th>
+                    <th>State Fees</th>
+                    <th>Bank Charge</th>
+                    <th>Returned Check Fees</th>
+                    <th>Supplies</th>
+                    <th>&nbsp</th>
+                </tr>
+
+                <?php
+                // Expense categories: 2 (mowing) -> 9 (supplies)
+
+                $start_year = 2004;   // First year included in original database conversions.
+                $latest_year = 2024;  // Current year  TODO investigate method to automate this date.
+
+                ?>
+
+                <?php for ($year_index = $start_year; $year_index <= $latest_year; $year_index++) { ?>
+                    <tr>
+                        <!-- Date column -->
+                        <td>
+                            <?php echo htmlsc($year_index); ?>
+                        </td>
+
+                        <!-- Mowing column, index 2 -->
+                        <?php
+                        $sum_result = find_expense_sum($year_index, '2');
+                        $cell_value = mysqli_fetch_assoc($sum_result);
+                        ?>
+                        <td><?php echo htmlsc($cell_value['sum']); ?></td>
+                        <?php mysqli_free_result($sum_result); ?>
+
+                        <!-- Maintenance column, index 3 -->
+                        <?php
+                        $sum_result = find_expense_sum($year_index, '3');
+                        $cell_value = mysqli_fetch_assoc($sum_result);
+                        ?>
+                        <td><?php echo htmlsc($cell_value['sum']); ?></td>
+                        <?php mysqli_free_result($sum_result); ?>
+
+                        <!-- Insurance column, index 4 -->
+                        <?php
+                        $sum_result = find_expense_sum($year_index, '4');
+                        $cell_value = mysqli_fetch_assoc($sum_result);
+                        ?>
+                        <td><?php echo htmlsc($cell_value['sum']); ?></td>
+                        <?php mysqli_free_result($sum_result); ?>
+
+                        <!-- Postage column, index 5 -->
+                        <?php
+                        $sum_result = find_expense_sum($year_index, '5');
+                        $cell_value = mysqli_fetch_assoc($sum_result);
+                        ?>
+                        <td><?php echo htmlsc($cell_value['sum']); ?></td>
+                        <?php mysqli_free_result($sum_result); ?>
+
+                        <!-- State Fees column, index 6 -->
+                        <?php
+                        $sum_result = find_expense_sum($year_index, '6');
+                        $cell_value = mysqli_fetch_assoc($sum_result);
+                        ?>
+                        <td><?php echo htmlsc($cell_value['sum']); ?></td>
+                        <?php mysqli_free_result($sum_result); ?>
+
+                        <!-- Bank Charge column, index 7 -->
+                        <?php
+                        $sum_result = find_expense_sum($year_index, '7');
+                        $cell_value = mysqli_fetch_assoc($sum_result);
+                        ?>
+                        <td><?php echo htmlsc($cell_value['sum']); ?></td>
+                        <?php mysqli_free_result($sum_result); ?>
+
+                        <!-- Returned Check column, index 8 -->
+                        <?php
+                        $sum_result = find_expense_sum($year_index, '8');
+                        $cell_value = mysqli_fetch_assoc($sum_result);
+                        ?>
+                        <td><?php echo htmlsc($cell_value['sum']); ?></td>
+                        <?php mysqli_free_result($sum_result); ?>
+
+                        <!-- Supplies column, index 9 -->
+                        <?php
+                        $sum_result = find_expense_sum($year_index, '9');
+                        $cell_value = mysqli_fetch_assoc($sum_result);
+                        ?>
+                        <td><?php echo htmlsc($cell_value['sum']); ?></td>
+                        <?php mysqli_free_result($sum_result); ?>
+
+                    <?php } ?>
+
+            </table>
+
+            <br /><hr /><br />
     </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>
