@@ -17,7 +17,6 @@
 
             <table class="list">
                 <tr>
-                    <th>ID</th>
                     <th>Date</th>
                     <th>Check</th>
                     <th>Payee</th>
@@ -31,7 +30,6 @@
                 <?php while($subject = mysqli_fetch_assoc($subject_set)) { ?>
 
                     <tr>
-                        <td><?php echo htmlsc($subject['id']); ?></td>
                         <td><?php echo htmlsc($subject['dt']); ?></td>
                         <td><?php echo htmlsc($subject['ck_no']); ?></td>
                         <td><?php echo htmlsc($subject['payee']); ?></td>

@@ -47,6 +47,7 @@
             <table class="list">
                 <tr>
                     <th>Year</th>
+                    <th>-</th>
                     <th>Mowing</th>
                     <th>Maintenance</th>
                     <th>Insurance</th>
@@ -55,7 +56,8 @@
                     <th>Bank Charge</th>
                     <th>Returned Check Fees</th>
                     <th>Supplies</th>
-                    <th>&nbsp</th>
+                    <th>-</th>
+                    <th>Totals</th>
                 </tr>
 
                 <?php
@@ -68,15 +70,21 @@
 
                 <?php for ($year_index = $start_year; $year_index <= $latest_year; $year_index++) { ?>
                     <tr>
+                        <?php $yearly_total = 0.00; ?>
+
                         <!-- Date column -->
                         <td>
                             <?php echo htmlsc($year_index); ?>
                         </td>
 
+                        <!-- Spacer column to provide spacing between year -->
+                        <td></td>
+
                         <!-- Mowing column, index 2 -->
                         <?php
                         $sum_result = find_expense_sum($year_index, '2');
                         $cell_value = mysqli_fetch_assoc($sum_result);
+                        $yearly_total = $yearly_total + $cell_value['sum'];
                         ?>
                         <td><?php echo htmlsc($cell_value['sum']); ?></td>
                         <?php mysqli_free_result($sum_result); ?>
@@ -85,6 +93,7 @@
                         <?php
                         $sum_result = find_expense_sum($year_index, '3');
                         $cell_value = mysqli_fetch_assoc($sum_result);
+                        $yearly_total = $yearly_total + $cell_value['sum'];
                         ?>
                         <td><?php echo htmlsc($cell_value['sum']); ?></td>
                         <?php mysqli_free_result($sum_result); ?>
@@ -93,6 +102,7 @@
                         <?php
                         $sum_result = find_expense_sum($year_index, '4');
                         $cell_value = mysqli_fetch_assoc($sum_result);
+                        $yearly_total = $yearly_total + $cell_value['sum'];
                         ?>
                         <td><?php echo htmlsc($cell_value['sum']); ?></td>
                         <?php mysqli_free_result($sum_result); ?>
@@ -101,6 +111,7 @@
                         <?php
                         $sum_result = find_expense_sum($year_index, '5');
                         $cell_value = mysqli_fetch_assoc($sum_result);
+                        $yearly_total = $yearly_total + $cell_value['sum'];
                         ?>
                         <td><?php echo htmlsc($cell_value['sum']); ?></td>
                         <?php mysqli_free_result($sum_result); ?>
@@ -109,6 +120,7 @@
                         <?php
                         $sum_result = find_expense_sum($year_index, '6');
                         $cell_value = mysqli_fetch_assoc($sum_result);
+                        $yearly_total = $yearly_total + $cell_value['sum'];
                         ?>
                         <td><?php echo htmlsc($cell_value['sum']); ?></td>
                         <?php mysqli_free_result($sum_result); ?>
@@ -117,6 +129,7 @@
                         <?php
                         $sum_result = find_expense_sum($year_index, '7');
                         $cell_value = mysqli_fetch_assoc($sum_result);
+                        $yearly_total = $yearly_total + $cell_value['sum'];
                         ?>
                         <td><?php echo htmlsc($cell_value['sum']); ?></td>
                         <?php mysqli_free_result($sum_result); ?>
@@ -125,6 +138,7 @@
                         <?php
                         $sum_result = find_expense_sum($year_index, '8');
                         $cell_value = mysqli_fetch_assoc($sum_result);
+                        $yearly_total = $yearly_total + $cell_value['sum'];
                         ?>
                         <td><?php echo htmlsc($cell_value['sum']); ?></td>
                         <?php mysqli_free_result($sum_result); ?>
@@ -133,9 +147,16 @@
                         <?php
                         $sum_result = find_expense_sum($year_index, '9');
                         $cell_value = mysqli_fetch_assoc($sum_result);
+                        $yearly_total = $yearly_total + $cell_value['sum'];
                         ?>
                         <td><?php echo htmlsc($cell_value['sum']); ?></td>
                         <?php mysqli_free_result($sum_result); ?>
+
+                        <!-- Spacer column to provide spacing before totals -->
+                        <td></td>
+
+                        <!-- Spacer column to provide spacing between year -->
+                        <td><?php echo $yearly_total; ?></td>
 
                     <?php } ?>
 

@@ -19,7 +19,7 @@
   function find_all_deposits() {
     global $db;
 
-    $sql = "SELECT * FROM deposit WHERE dt > '2021-01-01' ";
+    $sql = "SELECT * FROM deposit WHERE dt > '2023-01-01' ";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
