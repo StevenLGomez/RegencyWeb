@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 26, 2023 at 04:01 AM
+-- Generation Time: Jan 18, 2024 at 04:03 AM
 -- Server version: 10.3.17-MariaDB
 -- PHP Version: 7.4.11
 
@@ -211,7 +211,13 @@ INSERT INTO `deposit` (`id`, `fk_cat_id`, `dt`, `is_reconciled`, `amount`, `note
 (137, NULL, '2022-12-27', 0, '600.00', NULL, NULL, NULL),
 (138, NULL, '2023-02-25', 0, '400.00', NULL, NULL, NULL),
 (139, NULL, '2023-04-11', 0, '105.00', NULL, NULL, NULL),
-(140, NULL, '2023-07-25', 0, '80.00', NULL, NULL, NULL);
+(140, NULL, '2023-07-25', 0, '80.00', NULL, NULL, NULL),
+(141, NULL, '2023-10-04', 0, '40.00', NULL, NULL, NULL),
+(142, NULL, '2023-12-02', 0, '1080.00', NULL, NULL, NULL),
+(143, NULL, '2023-12-12', 0, '375.00', NULL, NULL, NULL),
+(144, NULL, '2023-12-15', 0, '160.00', NULL, NULL, NULL),
+(145, NULL, '2024-01-02', 0, '280.00', NULL, NULL, NULL),
+(146, NULL, '2024-01-03', 0, '80.00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -381,8 +387,8 @@ INSERT INTO `expense` (`id`, `fk_cat_id`, `dt`, `ck_no`, `payee`, `amount`, `not
 (147, 7, '2013-07-01', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge'),
 (148, 7, '2012-07-02', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge'),
 (149, 7, '2004-07-31', NULL, 'Bank charge', '1.50', 'Bank Service Charge'),
-(150, 7, '2004-07-07', NULL, 'Bank charge', '40.00', 'Chargeback Item'),
-(151, 7, '2004-07-07', NULL, 'Bank charge', '10.00', 'Chargeback Fee'),
+(150, 8, '2004-07-07', NULL, 'Bank charge', '40.00', 'Chargeback Item'),
+(151, 8, '2004-07-07', NULL, 'Bank charge', '10.00', 'Chargeback Fee'),
 (152, 7, '2012-06-01', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge'),
 (153, 7, '2013-06-01', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge'),
 (154, 7, '2004-06-30', NULL, 'Bank charge', '17.00', 'Bank Service Charge'),
@@ -498,7 +504,18 @@ INSERT INTO `expense` (`id`, `fk_cat_id`, `dt`, `ck_no`, `payee`, `amount`, `not
 (264, 6, '2022-09-24', 1300, 'Missouri Secretary of State', '15.50', 'Annual Filing Fee'),
 (265, 5, '2022-11-07', 0, 'Postmaster', '36.00', 'Postage Stamps (debit card)'),
 (266, 5, '2022-11-14', 0, 'Office Depot', '174.86', 'Print Supplies (debit card)'),
-(267, 2, '2022-12-29', 1301, 'Darla Yoakum', '375.00', 'Sep, Oct, Nov Mowing');
+(267, 2, '2022-12-29', 1301, 'Darla Yoakum', '375.00', 'Sep, Oct, Nov Mowing'),
+(268, 4, '2023-02-25', 1302, 'State Farm', '1264.00', 'Liability Insurance'),
+(269, 5, '2023-04-19', 0, 'Postmaster', '248.00', 'PO Box Renewal (debit)'),
+(270, 2, '2023-05-29', 1303, 'Darla Yoakum', '125.00', 'Apr 2023 mowing'),
+(271, 2, '2023-07-05', 1304, 'Darla Yoakum', '500.00', '3 Mowings & spray'),
+(272, 2, '2023-09-05', 1305, 'Darla Yoakum', '125.00', 'July Mowing'),
+(273, 6, '2023-09-10', 0, 'Missouri Secretary of State', '15.55', 'Annual Filing Fee (debit)'),
+(274, 5, '2023-11-18', 0, 'Postmaster', '26.40', 'Postage Stamps (debit)'),
+(275, 2, '2023-12-27', 1306, 'Darla Yoakum', '375.00', 'Sep, Oct, Nov Mowing'),
+(276, 7, '2014-10-01', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge'),
+(277, 7, '2014-11-03', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge'),
+(278, 7, '2014-12-01', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge');
 
 -- --------------------------------------------------------
 
@@ -1691,7 +1708,56 @@ INSERT INTO `fees` (`id`, `dt`, `ck_no`, `amount`, `fk_lot_id`, `fk_deposit_id`,
 (1347, '2023-01-24', 145061, '80.00', 24, 138, 'Integrity Title STL-72589-22/44'),
 (1350, '2022-02-23', 5282, '80.00', 25, 139, ''),
 (1351, '2022-02-17', 18852, '25.00', 46, 139, ''),
-(1353, '2023-05-10', 6071, '80.00', 41, 140, '');
+(1353, '2023-05-10', 6071, '80.00', 41, 140, ''),
+(1355, '2023-08-04', 19037, '40.00', 65, 141, 'Select Title Group - 3524786312'),
+(1381, '2023-11-02', 375756, '40.00', 42, 142, 'Mainstreet Renewal - Amherst Residential LLC'),
+(1382, '2023-11-22', 10059, '40.00', 6, 142, ''),
+(1383, '2023-11-28', 4646, '40.00', 10, 142, ''),
+(1384, '2023-11-27', 8296, '40.00', 11, 142, ''),
+(1385, '2023-11-23', 3654, '40.00', 12, 142, ''),
+(1386, '2023-11-22', 1054, '80.00', 15, 142, ''),
+(1387, '2023-11-20', 4920, '40.00', 17, 142, ''),
+(1388, '2023-11-21', 9868, '40.00', 18, 142, ''),
+(1389, '2023-11-27', 5987, '40.00', 20, 142, ''),
+(1390, '2023-11-22', 110, '40.00', 30, 142, ''),
+(1391, '2023-11-25', 3456, '40.00', 31, 142, ''),
+(1392, '2023-11-24', 151, '40.00', 32, 142, ''),
+(1393, '2023-12-01', 5865, '40.00', 35, 142, ''),
+(1394, '2023-11-24', 1019, '80.00', 36, 142, ''),
+(1395, '2023-11-25', 2654, '40.00', 37, 142, ''),
+(1396, '2023-11-23', 5062, '40.00', 38, 142, ''),
+(1397, '2023-11-20', 5454, '40.00', 40, 142, ''),
+(1398, '2023-11-21', 3700, '40.00', 44, 142, ''),
+(1399, '2023-11-25', 5341, '40.00', 45, 142, ''),
+(1400, '2023-11-21', 1918, '40.00', 47, 142, ''),
+(1401, '2023-11-20', 6638, '40.00', 50, 142, ''),
+(1402, '2023-11-30', 3516, '40.00', 53, 142, ''),
+(1403, '2023-11-25', 5433, '40.00', 61, 142, ''),
+(1404, '2023-11-27', 1305, '40.00', 64, 142, ''),
+(1405, '2023-11-27', 9197, '40.00', 66, 142, ''),
+(1416, '2023-11-26', 2034, '40.00', 1, 143, ''),
+(1417, '2023-11-28', 3191, '40.00', 16, 143, ''),
+(1418, '2023-11-29', 3026, '40.00', 19, 143, ''),
+(1419, '2023-12-04', 4070, '40.00', 21, 143, ''),
+(1420, '2023-11-25', 105, '40.00', 22, 143, ''),
+(1421, '2023-12-01', 0, '40.00', 33, 143, 'Cash payment'),
+(1422, '2023-11-27', 18864, '15.00', 46, 143, ''),
+(1423, '2023-12-01', 3197, '40.00', 49, 143, ''),
+(1424, '2023-12-07', 54, '40.00', 54, 143, ''),
+(1425, '2023-11-28', 275, '40.00', 60, 143, ''),
+(1438, '2023-12-11', 5852, '40.00', 4, 144, ''),
+(1439, '2023-12-12', 2157, '40.00', 7, 144, ''),
+(1440, '2023-12-10', 2207, '40.00', 23, 144, ''),
+(1441, '2023-12-05', 1384, '40.00', 56, 144, ''),
+(1449, '2023-11-23', 0, '40.00', 3, 145, ''),
+(1450, '2023-12-18', 800, '40.00', 8, 145, ''),
+(1451, '2023-12-13', 9740, '40.00', 13, 145, ''),
+(1452, '2023-12-14', 6732, '40.00', 34, 145, ''),
+(1453, '2023-12-28', 1071, '40.00', 58, 145, ''),
+(1454, '2023-12-20', 32315, '40.00', 59, 145, 'Synergy Title - FILE: SYN2319413'),
+(1455, '2023-12-17', 3093, '40.00', 63, 145, ''),
+(1458, '2023-12-23', 429, '40.00', 52, 146, ''),
+(1459, '2023-12-29', 171, '40.00', 68, 146, '');
 
 -- --------------------------------------------------------
 
@@ -2032,13 +2098,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=268;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=279;
 
 --
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1354;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1460;
 
 --
 -- AUTO_INCREMENT for table `lot`
@@ -2050,7 +2116,7 @@ ALTER TABLE `lot`
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- Constraints for dumped tables
