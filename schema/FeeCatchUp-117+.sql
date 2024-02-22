@@ -417,6 +417,8 @@ UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 
 
 -- 2024-02-22 Deposit 147
 INSERT INTO deposit (id, dt, is_reconciled) VALUES (147, '2024-02-22', 0); -- Deposit 147
-INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-01-24',   10377,  40, 14, 147,  '');
-INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-12-29',    171,  40, 68, 147,  '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2024-01-24',   1037,  40, 14, 147,  '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2024-01-10',   5285,  40, 25, 147,  '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-12-01',    516, 160, 29, 147,  '');
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2024-01-18',   5085,  80, 51, 147,  '');
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 147)  WHERE id = 147;
