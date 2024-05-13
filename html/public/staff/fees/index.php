@@ -12,7 +12,7 @@
 
             <hr />
             <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/categories/index.php'); ?>">Create New Category</a>
+                <a class="action" href="<?php echo url_for('/staff/fees/index.php'); ?>">Create New Fee Entry</a>
             </div>
             <hr />
 
