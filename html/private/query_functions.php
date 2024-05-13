@@ -103,7 +103,7 @@
 
     $sql = "SELECT * FROM owner ";
     $sql .= "WHERE fk_lot_id='" . db_escape($db, $lot_id) . "' ";
-    $sql .= "ORDER BY buy_date;";
+    $sql .= "ORDER BY buy_date DESC;";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
