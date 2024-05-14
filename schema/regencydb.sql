@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 18, 2024 at 04:03 AM
+-- Generation Time: May 14, 2024 at 01:47 AM
 -- Server version: 10.3.17-MariaDB
 -- PHP Version: 7.4.11
 
@@ -217,7 +217,8 @@ INSERT INTO `deposit` (`id`, `fk_cat_id`, `dt`, `is_reconciled`, `amount`, `note
 (143, NULL, '2023-12-12', 0, '375.00', NULL, NULL, NULL),
 (144, NULL, '2023-12-15', 0, '160.00', NULL, NULL, NULL),
 (145, NULL, '2024-01-02', 0, '280.00', NULL, NULL, NULL),
-(146, NULL, '2024-01-03', 0, '80.00', NULL, NULL, NULL);
+(146, NULL, '2024-01-03', 0, '80.00', NULL, NULL, NULL),
+(147, NULL, '2024-02-22', 0, '320.00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1757,7 +1758,11 @@ INSERT INTO `fees` (`id`, `dt`, `ck_no`, `amount`, `fk_lot_id`, `fk_deposit_id`,
 (1454, '2023-12-20', 32315, '40.00', 59, 145, 'Synergy Title - FILE: SYN2319413'),
 (1455, '2023-12-17', 3093, '40.00', 63, 145, ''),
 (1458, '2023-12-23', 429, '40.00', 52, 146, ''),
-(1459, '2023-12-29', 171, '40.00', 68, 146, '');
+(1459, '2023-12-29', 171, '40.00', 68, 146, ''),
+(1464, '2024-01-24', 1037, '40.00', 14, 147, ''),
+(1465, '2024-01-10', 5285, '40.00', 25, 147, ''),
+(1466, '2023-12-01', 516, '160.00', 29, 147, ''),
+(1467, '2024-01-18', 5085, '80.00', 51, 147, '');
 
 -- --------------------------------------------------------
 
@@ -1882,7 +1887,7 @@ CREATE TABLE `owner` (
 
 INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`, `last_2`, `address`, `city`, `state`, `zip`, `phone`, `email`, `phone_2`, `email_2`, `buy_date`, `is_current`, `is_rental`, `notes`) VALUES
 (1, 1, '', '', 'HUD (Foreclosure)', '', '', '', '3241 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, '', NULL, NULL, '2011-09-22', 0, NULL, NULL),
-(2, 1, 'Fred', '', 'Colley', 'Laura', 'E', 'Colley', '4136 Hobnail Drive', 'Saint Charles', 'MO', '63304', NULL, 'fred_colley@yahoo.com', NULL, NULL, '2011-09-22', 1, NULL, NULL),
+(2, 1, 'Fred', '', 'Colley', 'Laura', 'E', 'Colley', '2234 Saint Somewhere Drive', 'Hardeeville', 'SC', '29927', '314-707-9944', 'fred_colley@yahoo.com', NULL, 'colleyfli@aol.com', '2013-06-18', 1, 1, NULL),
 (3, 1, 'Mark', 'B', 'Boudreaux', '', '', '', '3241 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, '', NULL, NULL, '1990-01-01', 0, NULL, NULL),
 (4, 2, 'Janice', 'L', 'Wing', '', '', '', '3245 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, 'kwing356@yahoo.com', NULL, NULL, '2011-03-31', 1, NULL, NULL),
 (5, 2, 'Renee', '', 'Hill', '', '', '', '3245 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, '', NULL, NULL, '1990-01-01', 0, NULL, NULL),
@@ -1894,23 +1899,23 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (11, 6, 'Martin', '', 'Tesson', '', '', '', '1157 Monza Drive', 'Saint Peters', 'MO', '63303', '314-587-9324', NULL, NULL, NULL, '2008-12-16', 0, NULL, NULL),
 (12, 6, 'Travis', '', 'Renner', '', '', '', '1157 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2003-01-03', 0, NULL, NULL),
 (13, 7, 'Jeffery', 'R', 'Arle', 'Karen', 'E', 'Arle', '1161 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
-(14, 8, 'Joshua', '', 'McClure', 'Sabrina', '', 'McClure', '1165 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2005-10-28', 0, NULL, NULL),
+(14, 8, 'Joshua', '', 'McClure', 'Sabrina', '', 'McClure', '1165 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2006-06-16', 0, NULL, NULL),
 (15, 8, 'Joel', 'O', 'Hackstadt', '', '', '', '1165 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2009-05-28', 1, NULL, NULL),
-(16, 8, 'Marilyn', 'K', 'Beck', '', '', '', '1165 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 0, NULL, NULL),
-(17, 8, '', '', 'Cody Properties LLC', '', '', '', '1165 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL),
-(18, 9, 'Harold', 'E', 'Kunze', 'Edna', 'Lee', 'Kunze', '1169 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2005-05-19', 1, NULL, NULL),
+(16, 8, 'Marilyn', 'K', 'Beck', '', '', '', '1165 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1995-06-01', 0, NULL, NULL),
+(17, 8, '', '', 'Cody Properties LLC', '', '', '', '1165 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2009-03-19', 0, NULL, NULL),
+(18, 9, 'Harold', 'E', 'Kunze', 'Edna', 'Lee', 'Kunze', '1169 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2005-05-19', 0, NULL, NULL),
 (19, 9, 'Devin', '', 'Johnson', 'Amy', '', 'Johnson', '1169 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 0, NULL, NULL),
-(20, 10, 'Robert', '', 'Martin', 'Annette', '', 'Martin', '1173 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, 'ruger@att.net', NULL, NULL, '2007-04-30', 1, NULL, NULL),
-(21, 10, 'Joseph', 'C', 'Knarr', 'Dlaudia', '', 'Knarr', '1173 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, 'ruger@att.net', NULL, NULL, '1990-01-01', 0, NULL, NULL),
+(20, 10, 'Robert', '', 'Martin', 'Annette', '', 'Martin', '1173 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, 'ruger@att.net', NULL, NULL, '2007-05-08', 1, NULL, NULL),
+(21, 10, 'Joseph', 'C', 'Knarr', 'Claudia', '', 'Knarr', '1173 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, '', NULL, NULL, '1990-01-01', 0, NULL, NULL),
 (22, 11, 'Karen', 'A', 'Vossenkemper', '', '', '', '1177 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, 'vossenkemperkaren2@gmail.com', NULL, NULL, '1990-01-01', 1, NULL, NULL),
 (23, 12, 'Rena', 'Sue', 'Carman', '', '', '', '1181 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1999-01-01', 0, NULL, NULL),
-(24, 13, 'Thomas', 'P', 'Downing', '', '', '', '6209 Mid Rivers Mall Dr Suite 181', 'Saint Charles', 'MO', '63304', NULL, NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
+(24, 13, 'Thomas', 'P', 'Downing', '', '', '', '6209 Mid Rivers Mall Dr Suite 181', 'Saint Charles', 'MO', '63304', NULL, NULL, NULL, NULL, '1990-01-01', 1, 1, '1180 Monza Drive'),
 (25, 14, 'Ruth', 'L', 'Perryman', '', '', '', '1176 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 0, NULL, NULL),
 (26, 15, 'Jamie', '', 'Johnson', '', '', '', '1172 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2011-10-04', 0, NULL, NULL),
 (27, 15, 'Neil', 'R', 'Baldwin', '', '', '', '1172 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2007-03-26', 0, NULL, NULL),
 (28, 15, 'Michael', 'W', 'Jackson', '', '', '', '1172 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 0, NULL, NULL),
 (29, 16, 'Enrico', '', 'Baysic', '', '', '', '1168 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
-(30, 17, 'Vester', '', 'Adams', 'Joyce', 'M', 'Adams', '1164 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, 'jmadams1042@sbcglobal.net', NULL, NULL, '1990-01-01', 1, NULL, NULL),
+(30, 17, 'Vester', '', 'Adams', 'Joyce', 'M', 'Adams', '1164 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, 'jmadams1042@sbcglobal.net', NULL, NULL, '1990-01-01', 0, NULL, 'page.adams@yahoo.com 636-219-2158'),
 (31, 18, 'Harry', 'L', 'Eggleston', 'Doris', 'D', 'Eggleston', '1160 Monza Drive', 'Saint Peters', 'MO', '63303', '636-441-1910', NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
 (32, 19, 'Herbert', 'S', 'Parks', 'Paula', 'S', 'Parks', '3244 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2006-10-29', 1, NULL, NULL),
 (33, 19, 'Mark', 'L', 'Dawson', 'Jayne', 'S', 'Dawson', '3244 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 0, NULL, NULL),
@@ -1975,7 +1980,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (92, 58, 'Carole', '', 'Frawley', '', '', '', '3275 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2009-02-28', 0, NULL, NULL),
 (93, 58, 'Kyle', '', 'Aumiller', '', '', '', '3275 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2012-10-25', 0, NULL, NULL),
 (94, 58, 'Virginia', '', 'Manno', 'Paul', '', 'Manno', '3275 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 0, NULL, NULL),
-(95, 59, 'Michael', 'A', 'Bridgett', 'Margaret', 'S', 'Bridgett', '12 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
+(95, 59, 'Michael', 'A', 'Bridgett', 'Margaret', 'S', 'Bridgett', '12 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 0, NULL, NULL),
 (96, 60, 'Dennis', 'G', 'Pohlmann', '', '', '', '10 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, 'd.pohlman@sbcglobal.net', NULL, NULL, '2007-05-04', 0, NULL, NULL),
 (97, 60, 'Darren', '', 'Koontz', '', '', '', '10 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, '', NULL, NULL, '1990-01-01', 0, NULL, NULL),
 (98, 61, 'Rico', '', 'Carenza', '', '', '', '8 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
@@ -1984,7 +1989,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (101, 63, 'Thomas', 'S', 'White', 'Elizabeth', 'A', 'White', '4 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, 'gobucks1965@yahoo.com', NULL, 'buckeyenuts729@yahoo.com', '1990-01-01', 1, NULL, NULL),
 (102, 64, 'Michael', 'F', 'Gardner', 'Connie', 'L', 'Gardner', '3263 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
 (103, 65, 'Mark', 'R', 'Lohrman', 'Clara', 'R', 'Lohrman', '3259 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, 'jiryis06@yahoo.com', NULL, NULL, '2007-03-02', 0, NULL, NULL),
-(104, 65, 'Geries', '', 'Shaheen', 'Amanda', '', 'Shaheen', '3259 Hyatt Court', 'Saint Peters', 'MO', '63303', '217-828-2220', 'jiryis06@yahoo.com', NULL, 'jiryis06@gmail.com', '2012-07-03', 1, NULL, NULL),
+(104, 65, 'Geries', '', 'Shaheen', 'Amanda', '', 'Shaheen', '3259 Hyatt Court', 'Saint Peters', 'MO', '63303', '217-828-2220', 'jiryis06@yahoo.com', NULL, 'jiryis06@gmail.com', '2012-07-03', 0, NULL, NULL),
 (105, 65, 'Christopher', 'C', 'Money', 'Carrie', 'J', 'Money', '3259 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, 'jiryis06@yahoo.com', NULL, NULL, NULL, 0, NULL, NULL),
 (106, 66, 'Christine', 'M', 'Eck', '', '', '', '1425 Westin Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
 (107, 67, 'William', '', 'Wurm', '', '', '', '1417 Westin Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2008-09-26', 0, NULL, NULL),
@@ -2012,7 +2017,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (129, 50, 'Vivian', 'E', 'Johnson', '', '', '', '3216 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2014-12-22', 1, NULL, NULL),
 (130, 60, 'Jessica', '', 'Krems', 'Jonathan', '', 'Krems', '10 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2015-08-19', 0, NULL, NULL),
 (131, NULL, 'Regency Title Group,  LLC', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(132, 14, 'Todd', '', 'Fischer', '', '', '', '1176 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2015-12-30', 1, NULL, NULL),
+(132, 14, 'Todd', '', 'Fischer', 'Mary', 'Kate', 'Fischer', '1176 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2015-12-30', 1, NULL, NULL),
 (133, 15, 'Collin', '', 'Liliensiek', 'Kimberly', '', 'Liliensiek', '1172 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2016-04-01', 0, NULL, NULL),
 (134, 32, 'Lloyd', '', 'McCowen', '', '', '', '3262 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2016-11-10', 1, NULL, NULL),
 (135, 23, 'Shane', '', 'Sullivan', '', '', '', '3280 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2016-05-11', 1, NULL, NULL),
@@ -2020,7 +2025,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (137, 6, 'Geoffrey', '', 'Gerling', '', '', '', '1157 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2016-07-29', 0, NULL, NULL),
 (138, 58, 'Whitney', '', 'Moore', '', '', '', '3275 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2016-11-07', 0, NULL, NULL),
 (139, 42, 'Alto Asset Company 4 LLC', '', '', '', '', '', '5001 Plaza on the Lake STE 200', 'Austin', 'TX', '78746', NULL, NULL, NULL, NULL, '2017-08-30', 1, NULL, NULL),
-(140, 3, 'Timothy', '', 'Steinbrenner', '', '', '', '3249 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2017-09-22', 1, NULL, NULL),
+(140, 3, 'Timothy', '', 'Steinbrenner', '', '', '', '3249 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2017-09-22', 0, NULL, NULL),
 (141, 34, 'William', '', 'Bryan', 'Amanda', '', 'Bryan', '3258 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2017-10-02', 1, NULL, NULL),
 (142, 24, 'Matthew', '', 'Menendez', 'Caroline', 'K', 'Menendez', '3278 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2017-12-14', 0, NULL, NULL),
 (143, 55, 'David', '', 'Whitlock', 'Jessica', '', 'Whitlock', '1848 Char Street', 'Arnold', 'MO', '63028', NULL, NULL, NULL, NULL, '2018-03-16', 1, NULL, NULL),
@@ -2038,7 +2043,12 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (158, 28, 'Cassie', '', 'Hoffman', '', '', '', '3270 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-04-26', 1, NULL, NULL),
 (160, 6, 'Sherri', '', 'Gleason', '', '', '', '1157 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-08-27', 1, NULL, NULL),
 (162, 39, 'Elizabeth', '', 'Pagano', 'Paula', 'C', 'Pagano', '3251 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-09-10', 1, NULL, NULL),
-(164, 40, 'Thiara', 'Jasbir', 'Singh', '', '', '', '3253 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2020-12-29', 1, NULL, NULL);
+(164, 40, 'Thiara', 'Jasbir', 'Singh', '', '', '', '3253 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2020-12-29', 1, NULL, NULL),
+(175, 17, 'Jaime', 'Lee', 'Gilmet', 'Sean', 'Eric', 'Hoeh', '', '', '', '', '', '', '', '', '2024-05-23', 1, 0, NULL),
+(176, 59, 'Timothy', '', 'Grieb', 'Linda', '', 'Grieb', '', '', '', '', '', '', '', '', '2023-12-20', 1, 0, NULL),
+(177, 65, 'Matthew', 'J', 'Matyi', 'Jessica', '', 'Waller', '', '', '', '', '', '', '', '', '2023-08-04', 1, 0, NULL),
+(178, 3, 'Shane', '', 'Blackledge', 'Amber', '', 'Blackledge', '', '', '', '', '', '', '', '', '2022-10-25', 1, 0, NULL),
+(179, 9, 'Lindsay', '', 'Pallarito', 'Cole', 'Andrew', 'Metcalf', '', '', '', '', '', '', '', '', '2022-06-08', 1, 0, NULL);
 
 --
 -- Indexes for dumped tables
@@ -2104,7 +2114,7 @@ ALTER TABLE `expense`
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1460;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1468;
 
 --
 -- AUTO_INCREMENT for table `lot`
@@ -2116,7 +2126,7 @@ ALTER TABLE `lot`
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
 -- Constraints for dumped tables
