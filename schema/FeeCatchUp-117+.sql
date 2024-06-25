@@ -422,3 +422,10 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2024
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2023-12-01',    516, 160, 29, 147,  '');
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2024-01-18',   5085,  80, 51, 147,  '');
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 147)  WHERE id = 147;
+
+-- 2024-06-10 Deposit 148
+INSERT INTO deposit (id, dt, is_reconciled) VALUES (148, '2024-06-10', 0); -- Deposit 148
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, note) VALUES('2024-05-23',  33593,  40, 17, 148,  'Synergy Title, File: SYN2419842');
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 148)  WHERE id = 148;
+
+
