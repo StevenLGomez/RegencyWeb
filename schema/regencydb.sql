@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 15, 2024 at 05:55 PM
+-- Generation Time: Jun 27, 2024 at 06:57 PM
 -- Server version: 10.3.17-MariaDB
 -- PHP Version: 7.4.11
 
@@ -218,7 +218,8 @@ INSERT INTO `deposit` (`id`, `fk_cat_id`, `dt`, `is_reconciled`, `amount`, `note
 (144, NULL, '2023-12-15', 0, '160.00', NULL, NULL, NULL),
 (145, NULL, '2024-01-02', 0, '280.00', NULL, NULL, NULL),
 (146, NULL, '2024-01-03', 0, '80.00', NULL, NULL, NULL),
-(147, NULL, '2024-02-22', 0, '320.00', NULL, NULL, NULL);
+(147, NULL, '2024-02-22', 0, '320.00', NULL, NULL, NULL),
+(148, NULL, '2024-06-10', 0, '40.00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -504,7 +505,7 @@ INSERT INTO `expense` (`id`, `fk_cat_id`, `dt`, `ck_no`, `payee`, `amount`, `not
 (263, 2, '2022-09-12', 1299, 'Darla Yoakum', '375.00', 'Jun, Jul, Aug Mowing'),
 (264, 6, '2022-09-24', 1300, 'Missouri Secretary of State', '15.50', 'Annual Filing Fee'),
 (265, 5, '2022-11-07', 0, 'Postmaster', '36.00', 'Postage Stamps (debit card)'),
-(266, 5, '2022-11-14', 0, 'Office Depot', '174.86', 'Print Supplies (debit card)'),
+(266, 9, '2022-11-14', 0, 'Office Depot', '174.86', 'Print Supplies (debit card)'),
 (267, 2, '2022-12-29', 1301, 'Darla Yoakum', '375.00', 'Sep, Oct, Nov Mowing'),
 (268, 4, '2023-02-25', 1302, 'State Farm', '1264.00', 'Liability Insurance'),
 (269, 5, '2023-04-19', 0, 'Postmaster', '248.00', 'PO Box Renewal (debit)'),
@@ -516,7 +517,9 @@ INSERT INTO `expense` (`id`, `fk_cat_id`, `dt`, `ck_no`, `payee`, `amount`, `not
 (275, 2, '2023-12-27', 1306, 'Darla Yoakum', '375.00', 'Sep, Oct, Nov Mowing'),
 (276, 7, '2014-10-01', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge'),
 (277, 7, '2014-11-03', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge'),
-(278, 7, '2014-12-01', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge');
+(278, 7, '2014-12-01', NULL, 'Bank charge', '3.00', 'Returning Check Images Monthly Charge'),
+(279, 4, '2024-04-01', 1302, 'State Farm', '1380.00', 'Liability Insurance'),
+(280, 5, '2024-04-15', 0, 'Postmaster', '256.00', 'PO Box Renewal (debit)');
 
 -- --------------------------------------------------------
 
@@ -1762,7 +1765,8 @@ INSERT INTO `fees` (`id`, `dt`, `ck_no`, `amount`, `fk_lot_id`, `fk_deposit_id`,
 (1464, '2024-01-24', 1037, '40.00', 14, 147, ''),
 (1465, '2024-01-10', 5285, '40.00', 25, 147, ''),
 (1466, '2023-12-01', 516, '160.00', 29, 147, ''),
-(1467, '2024-01-18', 5085, '80.00', 51, 147, '');
+(1467, '2024-01-18', 5085, '80.00', 51, 147, ''),
+(1469, '2024-05-23', 33593, '40.00', 17, 148, 'Synergy Title, File: SYN2419842');
 
 -- --------------------------------------------------------
 
@@ -2025,7 +2029,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (137, 6, 'Geoffrey', '', 'Gerling', '', '', '', '1157 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2016-07-29', 0, NULL, NULL),
 (138, 58, 'Whitney', '', 'Moore', '', '', '', '3275 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2016-11-07', 0, NULL, NULL),
 (139, 42, 'Alto Asset Company 4 LLC', '', '', '', '', '', '5001 Plaza on the Lake STE 200', 'Austin', 'TX', '78746', NULL, NULL, NULL, NULL, '2017-08-30', 1, NULL, NULL),
-(140, 3, 'Timothy', '', 'Steinbrenner', '', '', '', '3249 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2017-09-22', 0, NULL, NULL),
+(140, 3, 'Timothy', '', 'Steinbrenner', '', '', '', '3249 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, '636-317-7550', NULL, '2017-09-22', 0, NULL, NULL),
 (141, 34, 'William', '', 'Bryan', 'Amanda', '', 'Bryan', '3258 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2017-10-02', 1, NULL, NULL),
 (142, 24, 'Matthew', '', 'Menendez', 'Caroline', 'K', 'Menendez', '3278 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2017-12-14', 0, NULL, NULL),
 (143, 55, 'David', '', 'Whitlock', 'Jessica', '', 'Whitlock', '1848 Char Street', 'Arnold', 'MO', '63028', NULL, NULL, NULL, NULL, '2018-03-16', 1, NULL, NULL),
@@ -2040,7 +2044,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (152, 51, 'Timothy', 'A', 'Petrillo', 'Emily', 'L', 'Petrillo', '3220 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2020-07-21', 1, NULL, NULL),
 (155, 21, 'Sandra', 'K', 'Darr', '', '', '', '3284 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-02-24', 1, NULL, NULL),
 (156, 60, 'Kimberly', 'M', 'Donihue', '', '', '', '10 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-03-08', 1, NULL, NULL),
-(158, 28, 'Cassie', '', 'Hoffman', '', '', '', '3270 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-04-26', 1, NULL, NULL),
+(158, 28, 'Cassie', '', 'Hoffman', '', '', '', '3270 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-04-26', 0, NULL, NULL),
 (160, 6, 'Sherri', '', 'Gleason', '', '', '', '1157 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-08-27', 1, NULL, NULL),
 (162, 39, 'Elizabeth', '', 'Pagano', 'Paula', 'C', 'Pagano', '3251 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-09-10', 1, NULL, NULL),
 (164, 40, 'Thiara', 'Jasbir', 'Singh', '', '', '', '3253 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2020-12-29', 1, NULL, NULL),
@@ -2058,7 +2062,8 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (186, 27, 'Nathaniel', 'R', 'Orlando', '', '', '', '', '', '', '', '', '', '', '', '2022-04-06', 1, 0, NULL),
 (187, 29, 'Ryan', 'D', 'Harris', 'Lisa', 'A', 'Harris', '', '', '', '', '', '', '', '', '1990-01-01', 0, 0, NULL),
 (188, 30, 'James', 'P', 'Rable', 'Andrea', 'N', 'Rable', '', '', '', '', '', '', '', '', '1998-03-01', 0, 0, NULL),
-(189, 30, 'David', 'W', 'Mitchell', '', '', '', '', '', '', '', '', '', '', '', '1990-01-01', 0, 0, NULL);
+(189, 30, 'David', 'W', 'Mitchell', '', '', '', '', '', '', '', '', '', '', '', '1990-01-01', 0, 0, NULL),
+(190, 28, 'Marie-Therese', 'Cerre', 'Kish', '', '', '', '', '', '', '', '', '', '', '', '2024-06-27', 1, 0, NULL);
 
 --
 -- Indexes for dumped tables
@@ -2118,13 +2123,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=279;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
 
 --
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1468;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1470;
 
 --
 -- AUTO_INCREMENT for table `lot`
@@ -2136,7 +2141,7 @@ ALTER TABLE `lot`
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- Constraints for dumped tables
