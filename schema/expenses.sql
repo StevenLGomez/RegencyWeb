@@ -52,5 +52,12 @@ INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
     ('2023-12-27', 1306, 'Darla Yoakum',                375.00,   2, 'Sep, Oct, Nov Mowing');
 COMMIT;
 
+-- 2024 Expenses (Through June 2024)
+START TRANSACTION;
+INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
+    ('2024-04-01', 1302, 'State Farm',                 1380.00,   4, 'Liability Insurance'),
+    ('2024-04-15',    0, 'Postmaster',                  256.00,   5, 'PO Box Renewal (debit)');
+COMMIT;
+
 
 
