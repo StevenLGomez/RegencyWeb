@@ -136,5 +136,8 @@
                 <F N="html/public/index.php"/>
             </Folder>
         </Folder>
+        <Folder Name="schema">
+            <F N="schema/assessment.sql"/>
+        </Folder>
     </Files>
 </Project>
