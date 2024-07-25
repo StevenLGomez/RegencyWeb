@@ -91,6 +91,16 @@ ALTER TABLE owner ADD COLUMN is_rental BOOLEAN;
 ALTER TABLE owner ADD COLUMN notes VARCHAR(50);
 ALTER TABLE owner DROP COLUMN is_in_subdv;
 
+-- Added 2024-07-25 for tracking total fee amount as sum of all assessments.
+DROP TABLE IF EXISTS assessment;
+CREATE TABLE assessment(
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    yr INTEGER,
+    amount DECIMAL(10,2),
+    note VARCHAR(256),
+    PRIMARY KEY (id)
+    ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
+
 -- ----------------------------------------------------------------------------
 -- End of TABLEs --------------------------------------------------------------
 -- ----------------------------------------------------------------------------
