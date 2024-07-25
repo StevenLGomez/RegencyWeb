@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 27, 2024 at 06:57 PM
+-- Generation Time: Jul 25, 2024 at 08:03 PM
 -- Server version: 10.3.17-MariaDB
 -- PHP Version: 7.4.11
 
@@ -21,6 +21,51 @@ SET time_zone = "+00:00";
 --
 -- Database: `regencydb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assessment`
+--
+
+CREATE TABLE `assessment` (
+  `id` int(11) NOT NULL,
+  `yr` int(11) DEFAULT NULL,
+  `amount` decimal(10,2) DEFAULT NULL,
+  `note` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `assessment`
+--
+
+INSERT INTO `assessment` (`id`, `yr`, `amount`, `note`) VALUES
+(27, 1999, '0.00', 'Actual original assement was $75, but is not included in DB calculations'),
+(28, 2000, '40.00', ''),
+(29, 2001, '40.00', ''),
+(30, 2002, '40.00', ''),
+(31, 2003, '40.00', ''),
+(32, 2004, '40.00', ''),
+(33, 2005, '40.00', ''),
+(34, 2006, '40.00', ''),
+(35, 2007, '40.00', ''),
+(36, 2008, '40.00', ''),
+(37, 2009, '50.00', ''),
+(38, 2010, '50.00', ''),
+(39, 2011, '50.00', ''),
+(40, 2012, '50.00', ''),
+(41, 2013, '50.00', ''),
+(42, 2014, '50.00', ''),
+(43, 2015, '40.00', ''),
+(44, 2016, '40.00', ''),
+(45, 2017, '40.00', ''),
+(46, 2018, '40.00', ''),
+(47, 2019, '40.00', ''),
+(48, 2020, '40.00', ''),
+(49, 2021, '40.00', ''),
+(50, 2022, '40.00', ''),
+(51, 2023, '40.00', ''),
+(52, 2024, '40.00', '');
 
 -- --------------------------------------------------------
 
@@ -219,7 +264,8 @@ INSERT INTO `deposit` (`id`, `fk_cat_id`, `dt`, `is_reconciled`, `amount`, `note
 (145, NULL, '2024-01-02', 0, '280.00', NULL, NULL, NULL),
 (146, NULL, '2024-01-03', 0, '80.00', NULL, NULL, NULL),
 (147, NULL, '2024-02-22', 0, '320.00', NULL, NULL, NULL),
-(148, NULL, '2024-06-10', 0, '40.00', NULL, NULL, NULL);
+(148, NULL, '2024-06-10', 0, '40.00', NULL, NULL, NULL),
+(149, NULL, '2024-07-19', 0, '80.00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1766,7 +1812,8 @@ INSERT INTO `fees` (`id`, `dt`, `ck_no`, `amount`, `fk_lot_id`, `fk_deposit_id`,
 (1465, '2024-01-10', 5285, '40.00', 25, 147, ''),
 (1466, '2023-12-01', 516, '160.00', 29, 147, ''),
 (1467, '2024-01-18', 5085, '80.00', 51, 147, ''),
-(1469, '2024-05-23', 33593, '40.00', 17, 148, 'Synergy Title, File: SYN2419842');
+(1469, '2024-05-23', 33593, '40.00', 17, 148, 'Synergy Title, File: SYN2419842'),
+(1472, '2024-06-27', 68006888, '80.00', 28, 149, 'Leaders Title Company, LLC, File No. LW240274');
 
 -- --------------------------------------------------------
 
@@ -2070,6 +2117,12 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 --
 
 --
+-- Indexes for table `assessment`
+--
+ALTER TABLE `assessment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -2114,6 +2167,12 @@ ALTER TABLE `owner`
 --
 
 --
+-- AUTO_INCREMENT for table `assessment`
+--
+ALTER TABLE `assessment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -2129,7 +2188,7 @@ ALTER TABLE `expense`
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1470;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1473;
 
 --
 -- AUTO_INCREMENT for table `lot`
