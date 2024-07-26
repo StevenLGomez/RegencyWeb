@@ -138,6 +138,7 @@
         </Folder>
         <Folder Name="schema">
             <F N="schema/assessment.sql"/>
+            <F N="schema/views.sql"/>
         </Folder>
     </Files>
 </Project>
