@@ -101,6 +101,11 @@ CREATE TABLE assessment(
     PRIMARY KEY (id)
     ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
+-- The following were entered 2022-08-20 to aid in creating mail merge info:
+ALTER TABLE lot ADD COLUMN city VARCHAR(50);
+ALTER TABLE lot ADD COLUMN state VARCHAR(50);
+ALTER TABLE lot ADD COLUMN zip VARCHAR(50);
+
 -- ----------------------------------------------------------------------------
 -- End of TABLEs --------------------------------------------------------------
 -- ----------------------------------------------------------------------------

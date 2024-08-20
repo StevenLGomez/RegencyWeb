@@ -1693,12 +1693,17 @@ UPDATE owner SET first_2 = 'Courtney', last_2 = 'Suntrup', city = 'Saint Peters'
 --- Start of troubleshooting Owner page
 
 -- Tried directly entering Orlando, fk_lot_id was incorrect
-UPDATE owner SET fk_lot_id = 27 WHERE last = "Orlando";
-UPDATE owner SET is_current = 0 WHERE fk_lot_id = 27 AND last = "Diarra";  -- No trigger exists to do this
+-- UPDATE owner SET fk_lot_id = 27 WHERE last = "Orlando";
+-- UPDATE owner SET is_current = 0 WHERE fk_lot_id = 27 AND last = "Diarra";  -- No trigger exists to do this
 
 -- Tried directly entering Orlando, fk_lot_id was incorrect, NOT BEING SAVED correctly
-UPDATE owner SET fk_lot_id = 54 WHERE last = "Weaver";
-UPDATE owner SET is_current = 0 WHERE fk_lot_id = 54 AND last = "Schoem";  -- No trigger exists to do this
+-- UPDATE owner SET fk_lot_id = 54 WHERE last = "Weaver";
+-- UPDATE owner SET is_current = 0 WHERE fk_lot_id = 54 AND last = "Schoem";  -- No trigger exists to do this
 
--- Needs work, snapshotting VM
+-- NOTE - implementation above being completed without triggers.
+
+-- Adding city state and zip to lot table for mail merge
+UPDATE lot SET city = "Saint Peters";
+UPDATE lot SET state = "Missouri";
+UPDATE lot SET zip = "63303";
 

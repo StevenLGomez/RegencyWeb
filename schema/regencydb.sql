@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 25, 2024 at 08:03 PM
+-- Generation Time: Aug 20, 2024 at 10:24 PM
 -- Server version: 10.3.17-MariaDB
 -- PHP Version: 7.4.11
 
@@ -1826,82 +1826,85 @@ CREATE TABLE `lot` (
   `num` int(11) DEFAULT NULL,
   `address` varchar(50) DEFAULT NULL,
   `fk_curr_owner` int(11) DEFAULT NULL,
-  `note` varchar(50) DEFAULT NULL
+  `note` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `zip` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `lot`
 --
 
-INSERT INTO `lot` (`id`, `num`, `address`, `fk_curr_owner`, `note`) VALUES
-(1, 3241, '3241 Windwood Trails Drive', 2, NULL),
-(2, 3245, '3245 Windwood Trails Drive', 4, NULL),
-(3, 3249, '3249 Windwood Trails Drive', 7, NULL),
-(4, 1148, '1148 Monza Drive', 8, NULL),
-(5, 1153, '1153 Monza Drive', 124, NULL),
-(6, 1157, '1157 Monza Drive', 11, NULL),
-(7, 1161, '1161 Monza Drive', 13, NULL),
-(8, 1165, '1165 Monza Drive', 15, NULL),
-(9, 1169, '1169 Monza Drive', 18, NULL),
-(10, 1173, '1173 Monza Drive', 20, NULL),
-(11, 1177, '1177 Monza Drive', 22, NULL),
-(12, 1181, '1181 Monza Drive', 23, NULL),
-(13, 1180, '1180 Monza Drive', 24, NULL),
-(14, 1176, '1176 Monza Drive', 25, NULL),
-(15, 1172, '1172 Monza Drive', 26, NULL),
-(16, 1168, '1168 Monza Drive', 29, NULL),
-(17, 1164, '1164 Monza Drive', 30, NULL),
-(18, 1160, '1160 Monza Drive', 31, NULL),
-(19, 3244, '3244 Windwood Trails Drive', 32, NULL),
-(20, 3240, '3240 Windwood Trails Drive', 34, NULL),
-(21, 3284, '3284 Hyatt Court', 35, NULL),
-(22, 3282, '3282 Hyatt Court', 37, NULL),
-(23, 3280, '3280 Hyatt Court', 38, NULL),
-(24, 3278, '3278 Hyatt Court', 39, NULL),
-(25, 3276, '3276 Hyatt Court', 40, NULL),
-(26, 3274, '3274 Hyatt Court', 41, NULL),
-(27, 3272, '3272 Hyatt Court', 43, NULL),
-(28, 3270, '3270 Hyatt Court', 44, NULL),
-(29, 3268, '3268 Hyatt Court', 46, NULL),
-(30, 3266, '3266 Hyatt Court', 146, NULL),
-(31, 3264, '3264 Hyatt Court', 147, NULL),
-(32, 3262, '3262 Hyatt Court', 50, NULL),
-(33, 3260, '3260 Hyatt Court', 52, NULL),
-(34, 3258, '3258 Hyatt Court', 53, NULL),
-(35, 3256, '3256 Hyatt Court', 57, NULL),
-(36, 3254, '3254 Hyatt Court', 58, NULL),
-(37, 3252, '3252 Hyatt Court', 60, NULL),
-(38, 3250, '3250 Hyatt Court', 61, NULL),
-(39, 3251, '3251 Hyatt Court', 63, NULL),
-(40, 3253, '3253 Hyatt Court', 64, NULL),
-(41, 3255, '3255 Hyatt Court', 65, NULL),
-(42, 3257, '3257 Hyatt Court', 139, NULL),
-(43, 1424, '1424 Westin Drive', 145, NULL),
-(44, 1416, '1416 Westin Drive', 68, NULL),
-(45, 1408, '1408 Westin Drive', 69, NULL),
-(46, 3208, '3208 Windwood Trails Drive', 70, NULL),
-(47, 3241, '3204 Windwood Trails Drive', 74, NULL),
-(48, 3200, '3200 Windwood Trails Drive', 76, NULL),
-(49, 1401, '1401 Westin Drive', 77, NULL),
-(50, 3216, '3216 Windwood Trails Drive', 78, NULL),
-(51, 3220, '3220 Windwood Trails Drive', 81, NULL),
-(52, 3224, '3224 Windwood Trails Drive', 84, NULL),
-(53, 3228, '3228 Windwood Trails Drive', 85, NULL),
-(54, 3232, '3232 Windwood Trails Drive', 87, NULL),
-(55, 3287, '3287 Hyatt Court', 89, NULL),
-(56, 3283, '3283 Hyatt Court', 90, NULL),
-(57, 3279, '3279 Hyatt Court', 91, NULL),
-(58, 3275, '3275 Hyatt Court', 148, NULL),
-(59, 12, '12 Ritz Court', 95, NULL),
-(60, 10, '10 Ritz Court', 96, NULL),
-(61, 8, '8 Ritz Court', 98, NULL),
-(62, 6, '6 Ritz Court', 99, NULL),
-(63, 4, '4 Ritz Court', 101, NULL),
-(64, 3263, '3263 Hyatt Court', 102, NULL),
-(65, 3259, '3259 Hyatt Court', 104, NULL),
-(66, 1425, '1425 Westin Drive', 106, NULL),
-(67, 1417, '1417 Westin Drive', 107, NULL),
-(68, 1409, '1409 Westin Drive', 111, NULL);
+INSERT INTO `lot` (`id`, `num`, `address`, `fk_curr_owner`, `note`, `city`, `state`, `zip`) VALUES
+(1, 3241, '3241 Windwood Trails Drive', 2, NULL, 'Saint Peters', 'Missouri', '63303'),
+(2, 3245, '3245 Windwood Trails Drive', 4, NULL, 'Saint Peters', 'Missouri', '63303'),
+(3, 3249, '3249 Windwood Trails Drive', 7, NULL, 'Saint Peters', 'Missouri', '63303'),
+(4, 1148, '1148 Monza Drive', 8, NULL, 'Saint Peters', 'Missouri', '63303'),
+(5, 1153, '1153 Monza Drive', 124, NULL, 'Saint Peters', 'Missouri', '63303'),
+(6, 1157, '1157 Monza Drive', 11, NULL, 'Saint Peters', 'Missouri', '63303'),
+(7, 1161, '1161 Monza Drive', 13, NULL, 'Saint Peters', 'Missouri', '63303'),
+(8, 1165, '1165 Monza Drive', 15, NULL, 'Saint Peters', 'Missouri', '63303'),
+(9, 1169, '1169 Monza Drive', 18, NULL, 'Saint Peters', 'Missouri', '63303'),
+(10, 1173, '1173 Monza Drive', 20, NULL, 'Saint Peters', 'Missouri', '63303'),
+(11, 1177, '1177 Monza Drive', 22, NULL, 'Saint Peters', 'Missouri', '63303'),
+(12, 1181, '1181 Monza Drive', 23, NULL, 'Saint Peters', 'Missouri', '63303'),
+(13, 1180, '1180 Monza Drive', 24, NULL, 'Saint Peters', 'Missouri', '63303'),
+(14, 1176, '1176 Monza Drive', 25, NULL, 'Saint Peters', 'Missouri', '63303'),
+(15, 1172, '1172 Monza Drive', 26, NULL, 'Saint Peters', 'Missouri', '63303'),
+(16, 1168, '1168 Monza Drive', 29, NULL, 'Saint Peters', 'Missouri', '63303'),
+(17, 1164, '1164 Monza Drive', 30, NULL, 'Saint Peters', 'Missouri', '63303'),
+(18, 1160, '1160 Monza Drive', 31, NULL, 'Saint Peters', 'Missouri', '63303'),
+(19, 3244, '3244 Windwood Trails Drive', 32, NULL, 'Saint Peters', 'Missouri', '63303'),
+(20, 3240, '3240 Windwood Trails Drive', 34, NULL, 'Saint Peters', 'Missouri', '63303'),
+(21, 3284, '3284 Hyatt Court', 35, NULL, 'Saint Peters', 'Missouri', '63303'),
+(22, 3282, '3282 Hyatt Court', 37, NULL, 'Saint Peters', 'Missouri', '63303'),
+(23, 3280, '3280 Hyatt Court', 38, NULL, 'Saint Peters', 'Missouri', '63303'),
+(24, 3278, '3278 Hyatt Court', 39, NULL, 'Saint Peters', 'Missouri', '63303'),
+(25, 3276, '3276 Hyatt Court', 40, NULL, 'Saint Peters', 'Missouri', '63303'),
+(26, 3274, '3274 Hyatt Court', 41, NULL, 'Saint Peters', 'Missouri', '63303'),
+(27, 3272, '3272 Hyatt Court', 43, NULL, 'Saint Peters', 'Missouri', '63303'),
+(28, 3270, '3270 Hyatt Court', 44, NULL, 'Saint Peters', 'Missouri', '63303'),
+(29, 3268, '3268 Hyatt Court', 46, NULL, 'Saint Peters', 'Missouri', '63303'),
+(30, 3266, '3266 Hyatt Court', 146, NULL, 'Saint Peters', 'Missouri', '63303'),
+(31, 3264, '3264 Hyatt Court', 147, NULL, 'Saint Peters', 'Missouri', '63303'),
+(32, 3262, '3262 Hyatt Court', 50, NULL, 'Saint Peters', 'Missouri', '63303'),
+(33, 3260, '3260 Hyatt Court', 52, NULL, 'Saint Peters', 'Missouri', '63303'),
+(34, 3258, '3258 Hyatt Court', 53, NULL, 'Saint Peters', 'Missouri', '63303'),
+(35, 3256, '3256 Hyatt Court', 57, NULL, 'Saint Peters', 'Missouri', '63303'),
+(36, 3254, '3254 Hyatt Court', 58, NULL, 'Saint Peters', 'Missouri', '63303'),
+(37, 3252, '3252 Hyatt Court', 60, NULL, 'Saint Peters', 'Missouri', '63303'),
+(38, 3250, '3250 Hyatt Court', 61, NULL, 'Saint Peters', 'Missouri', '63303'),
+(39, 3251, '3251 Hyatt Court', 63, NULL, 'Saint Peters', 'Missouri', '63303'),
+(40, 3253, '3253 Hyatt Court', 64, NULL, 'Saint Peters', 'Missouri', '63303'),
+(41, 3255, '3255 Hyatt Court', 65, NULL, 'Saint Peters', 'Missouri', '63303'),
+(42, 3257, '3257 Hyatt Court', 139, NULL, 'Saint Peters', 'Missouri', '63303'),
+(43, 1424, '1424 Westin Drive', 145, NULL, 'Saint Peters', 'Missouri', '63303'),
+(44, 1416, '1416 Westin Drive', 68, NULL, 'Saint Peters', 'Missouri', '63303'),
+(45, 1408, '1408 Westin Drive', 69, NULL, 'Saint Peters', 'Missouri', '63303'),
+(46, 3208, '3208 Windwood Trails Drive', 70, NULL, 'Saint Peters', 'Missouri', '63303'),
+(47, 3241, '3204 Windwood Trails Drive', 74, NULL, 'Saint Peters', 'Missouri', '63303'),
+(48, 3200, '3200 Windwood Trails Drive', 76, NULL, 'Saint Peters', 'Missouri', '63303'),
+(49, 1401, '1401 Westin Drive', 77, NULL, 'Saint Peters', 'Missouri', '63303'),
+(50, 3216, '3216 Windwood Trails Drive', 78, NULL, 'Saint Peters', 'Missouri', '63303'),
+(51, 3220, '3220 Windwood Trails Drive', 81, NULL, 'Saint Peters', 'Missouri', '63303'),
+(52, 3224, '3224 Windwood Trails Drive', 84, NULL, 'Saint Peters', 'Missouri', '63303'),
+(53, 3228, '3228 Windwood Trails Drive', 85, NULL, 'Saint Peters', 'Missouri', '63303'),
+(54, 3232, '3232 Windwood Trails Drive', 87, NULL, 'Saint Peters', 'Missouri', '63303'),
+(55, 3287, '3287 Hyatt Court', 89, NULL, 'Saint Peters', 'Missouri', '63303'),
+(56, 3283, '3283 Hyatt Court', 90, NULL, 'Saint Peters', 'Missouri', '63303'),
+(57, 3279, '3279 Hyatt Court', 91, NULL, 'Saint Peters', 'Missouri', '63303'),
+(58, 3275, '3275 Hyatt Court', 148, NULL, 'Saint Peters', 'Missouri', '63303'),
+(59, 12, '12 Ritz Court', 95, NULL, 'Saint Peters', 'Missouri', '63303'),
+(60, 10, '10 Ritz Court', 96, NULL, 'Saint Peters', 'Missouri', '63303'),
+(61, 8, '8 Ritz Court', 98, NULL, 'Saint Peters', 'Missouri', '63303'),
+(62, 6, '6 Ritz Court', 99, NULL, 'Saint Peters', 'Missouri', '63303'),
+(63, 4, '4 Ritz Court', 101, NULL, 'Saint Peters', 'Missouri', '63303'),
+(64, 3263, '3263 Hyatt Court', 102, NULL, 'Saint Peters', 'Missouri', '63303'),
+(65, 3259, '3259 Hyatt Court', 104, NULL, 'Saint Peters', 'Missouri', '63303'),
+(66, 1425, '1425 Westin Drive', 106, NULL, 'Saint Peters', 'Missouri', '63303'),
+(67, 1417, '1417 Westin Drive', 107, NULL, 'Saint Peters', 'Missouri', '63303'),
+(68, 1409, '1409 Westin Drive', 111, NULL, 'Saint Peters', 'Missouri', '63303');
 
 -- --------------------------------------------------------
 
@@ -2110,7 +2113,39 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (187, 29, 'Ryan', 'D', 'Harris', 'Lisa', 'A', 'Harris', '', '', '', '', '', '', '', '', '1990-01-01', 0, 0, NULL),
 (188, 30, 'James', 'P', 'Rable', 'Andrea', 'N', 'Rable', '', '', '', '', '', '', '', '', '1998-03-01', 0, 0, NULL),
 (189, 30, 'David', 'W', 'Mitchell', '', '', '', '', '', '', '', '', '', '', '', '1990-01-01', 0, 0, NULL),
-(190, 28, 'Marie-Therese', 'Cerre', 'Kish', '', '', '', '', '', '', '', '', '', '', '', '2024-06-27', 1, 0, NULL);
+(190, 28, 'Marie-Therese', 'Cerre', 'Kish', '', '', '', '', '', '', '', '', '', '', '', '2024-06-27', 1, 0, NULL),
+(191, 54, 'Shannon', 'R', 'Weaver', '', '', '', '', '', '', '', '', '', '', '', '2022-04-04', 1, 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `owner_mailing_export_v`
+-- (See below for the actual view)
+--
+CREATE TABLE `owner_mailing_export_v` (
+`Lot` int(11)
+,`Curr` tinyint(1)
+,`Last` varchar(50)
+,`First` varchar(50)
+,`Owner_Add` varchar(50)
+,`Owner_City` varchar(50)
+,`O_St` varchar(50)
+,`O_Zip` varchar(50)
+,`Lot_Add` varchar(50)
+,`Phone` varchar(15)
+,`email` varchar(50)
+,`buy_date` date
+,`Total` decimal(32,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `owner_mailing_export_v`
+--
+DROP TABLE IF EXISTS `owner_mailing_export_v`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `owner_mailing_export_v`  AS  select `l`.`id` AS `Lot`,`o`.`is_current` AS `Curr`,`o`.`last` AS `Last`,`o`.`first` AS `First`,`o`.`address` AS `Owner_Add`,`o`.`city` AS `Owner_City`,`o`.`state` AS `O_St`,`o`.`zip` AS `O_Zip`,`l`.`address` AS `Lot_Add`,`o`.`phone` AS `Phone`,`o`.`email` AS `email`,`o`.`buy_date` AS `buy_date`,(select sum(`fees`.`amount`) from `fees` where `fees`.`fk_lot_id` = `l`.`id`) AS `Total` from (`owner` `o` join `lot` `l`) where `o`.`fk_lot_id` = `l`.`id` and `o`.`is_current` = 1 order by (select sum(`fees`.`amount`) from `fees` where `fees`.`fk_lot_id` = `l`.`id`) ;
 
 --
 -- Indexes for dumped tables
@@ -2200,7 +2235,7 @@ ALTER TABLE `lot`
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 
 --
 -- Constraints for dumped tables
