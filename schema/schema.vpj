@@ -9,9 +9,13 @@
             Name="Source Files"
             Filters="*.py"
             GUID="{22231687-8737-49DF-9082-25D370E5818F}">
+            <F N="assessment.sql"/>
             <F N="ddl.sql"/>
             <F N="dml.sql"/>
+            <F N="expenses.sql"/>
             <F N="FeeCatchUp-117+.sql"/>
+            <F N="OwnerMailingExportWorksheet.sql"/>
+            <F N="views.sql"/>
         </Folder>
         <Folder
             Name="Other Files"
