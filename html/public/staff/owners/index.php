@@ -1,6 +1,7 @@
 
 <?php 
     require_once('../../../private/initialize.php');
+    require_once('../../../private/owner_functions.php');
 
     // Set defaults for local variables
     $search_mode = False;
@@ -173,6 +174,10 @@
                     echo 'False';
                 }
                 echo '<br />';
+
+                $function_string = get_mail_merge_info_by_lot(1);
+                echo '<br />';
+                // echo "Merge string " . $function_string;
 
                 echo '<hr />';
 
