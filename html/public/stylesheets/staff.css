@@ -15,7 +15,7 @@ header {
   height: 40px;
   margin: 0 0 10px 0;
   padding: 0;
-  background: #08F114;
+  background: #0033FF;
   color: white;
 }
 
@@ -57,7 +57,7 @@ footer {
   height: 20px;
   margin: 0 0 10px 0;
   padding: 10px 20px;
-  background: #08F114;
+  background: #0033FF;
   color: white;
   text-align: center;
 }
