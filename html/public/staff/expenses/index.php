@@ -1,7 +1,7 @@
 
 <?php require_once('../../../private/initialize.php'); ?>
 
-<?php $expense_set = find_all_expenses('2022'); ?>
+<?php $expense_set = find_all_expenses('2023'); ?>
 
 <?php $page_title = 'Manage Expenses'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
