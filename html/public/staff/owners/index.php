@@ -80,7 +80,6 @@
             $owner['owner_zip'] = $_POST['owner_zip'] ?? '';
             $owner['owner_notes'] = $_POST['owner_notes'] ?? '';
 
-
             $result = insert_new_owner($owner);
             if ($result === True) {
                 echo 'Submit returned True';
@@ -175,9 +174,8 @@
                 }
                 echo '<br />';
 
-                $function_string = get_mail_merge_info_by_lot(1);
+                get_mail_merge_info_by_lot(1);
                 echo '<br />';
-                // echo "Merge string " . $function_string;
 
                 echo '<hr />';
 
