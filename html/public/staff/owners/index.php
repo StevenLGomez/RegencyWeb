@@ -176,6 +176,8 @@
 
                 get_mail_merge_info_by_lot(1);
                 echo '<br />';
+                get_mail_merge_info_by_lot(2);
+                echo '<br />';
 
                 echo '<hr />';
 
