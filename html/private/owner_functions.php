@@ -38,38 +38,54 @@
     mysqli_free_result($lot_sum_result);
     // **************************************************************
 
-    if ($is_rental)
-    {
-        echo "Assessment Sum: " . $assessment_sum . " Lot SUM ". $lot_sum . " Lot #" . $lot_id . " is RENTAL Property\n";
-    }
-    else
-    {
-        echo "Assessment Sum: " . $assessment_sum . " Lot SUM " . $lot_sum . "Lot #" . $lot_id . " NOT rental property\n";
-    }
-    echo '<br />';
-
+    // Read the needed values from the owner table
     $query = "SELECT fk_lot_id, last, first, address, city, state, zip, phone, email FROM owner ";
     $query .= "WHERE fk_lot_id = '" . db_escape($db, $lot_id) . "' AND is_current = 1 ";
     $query .= "LIMIT 1;";
-    // echo $query;
 
-    $result = mysqli_query($db, $query);
-    // $result = mysqli_fetch_assoc($db, $query);
-    confirm_result_set($result);
+    $owner_result = mysqli_query($db, $query);
+    // $owner_result = mysqli_fetch_assoc($db, $query);
+    confirm_result_set($owner_result);
+    // **************************************************************
 
-    if ($result)
+    // Read the needed values from the lot table
+    $query = "SELECT id, address, city, state, zip, phone, email FROM lot ";
+    $query .= "WHERE id = " . db_escape($db, $lot_id);
+    $lot_result = mysqli_query($db, $query);
+    // confirm_result_set($lot_result);
+    $lot_row = mysqli_fetch_row($lot_result);
+    // **************************************************************
+
+    if ($owner_result)
     {
-        while ($row = mysqli_fetch_row($result))
+        while ($owner_row = mysqli_fetch_row($owner_result))
         {
-            $lot = $row[0];
-            $last = $row[1];
-            $first = $row[2];
-            $owner_add = $row[3];
-            $owner_city = $row[4];
-            $o_st = $row[5];
-            $o_zip = $row[6];
-            $phone = $row[7];
-            $email = $row[8];
+
+            if ($is_rental)
+            {
+                $owner_add = $owner_row[3];
+                $owner_city = $owner_row[4];
+                $o_st = $owner_row[5];
+                $o_zip = $owner_row[6];
+            }
+            else
+            {
+                $owner_add = $lot_row[1];
+                $owner_city = $lot_row[2];
+                $o_st = $lot_row[3];
+                $o_zip = $lot_row[4];
+
+                // $owner_add = 'Local address';
+                // $owner_city = 'Local city';
+                // $o_st = 'Local state';
+                // $o_zip = 'Local zip';
+            }
+
+            $lot = $owner_row[0];
+            $last = $owner_row[1];
+            $first = $owner_row[2];
+            $phone = $owner_row[7];
+            $email = $owner_row[8];
             $total = $assessment_sum;
             $due = $assessment_sum - $lot_sum;
 
