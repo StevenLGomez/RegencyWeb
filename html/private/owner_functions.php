@@ -14,13 +14,47 @@
 
     global $db;
 
-    $sql = "SELECT fk_lot_id, last, first, address, city, state, zip, phone, email FROM owner ";
-    $sql .= "WHERE fk_lot_id = '" . db_escape($db, $lot_id) . "' AND is_current = 1 ";
-    $sql .= "LIMIT 1;";
-    // echo $sql;
+    // Read the is_rental flag for this lot/owner to determine whether to use the default
+    // lot address or the owner's (absentee) address.
+    $query = "SELECT is_rental FROM owner WHERE fk_lot_id = '" . db_escape($db, $lot_id) . "' AND is_current = 1";
+    $is_rental_result = mysqli_query($db, $query);
+    // for PHP 8.1+ -> $is_rental = $is_rental_result->fetch_column();
+    $is_rental = $is_rental_result->fetch_row()[0];
+    mysqli_free_result($is_rental_result);
+    // **************************************************************
 
-    $result = mysqli_query($db, $sql);
-    // $result = mysqli_fetch_assoc($db, $sql);
+    // Read the total amount of all historical fee (assessment) charges (same value will apply to all lots)
+    $query = "SELECT SUM(amount) FROM assessment";
+    $assessment_sum_result = mysqli_query($db, $query);
+    $assessment_sum = $assessment_sum_result->fetch_row()[0];
+    mysqli_free_result($assessment_sum_result);
+    // **************************************************************
+
+    // Read the total amount of fees paid by this lot for all history
+    $query = "SELECT SUM(amount) FROM fees WHERE fk_lot_id = " . db_escape($db, $lot_id); 
+    echo $query;
+    $lot_sum_result = mysqli_query($db, $query);
+    $lot_sum = $lot_sum_result->fetch_row()[0];
+    mysqli_free_result($lot_sum_result);
+    // **************************************************************
+
+    if ($is_rental)
+    {
+        echo "Assessment Sum: " . $assessment_sum . " Lot SUM ". $lot_sum . " Lot #" . $lot_id . " is RENTAL Property\n";
+    }
+    else
+    {
+        echo "Assessment Sum: " . $assessment_sum . " Lot SUM " . $lot_sum . "Lot #" . $lot_id . " NOT rental property\n";
+    }
+    echo '<br />';
+
+    $query = "SELECT fk_lot_id, last, first, address, city, state, zip, phone, email FROM owner ";
+    $query .= "WHERE fk_lot_id = '" . db_escape($db, $lot_id) . "' AND is_current = 1 ";
+    $query .= "LIMIT 1;";
+    // echo $query;
+
+    $result = mysqli_query($db, $query);
+    // $result = mysqli_fetch_assoc($db, $query);
     confirm_result_set($result);
 
     if ($result)
@@ -36,8 +70,8 @@
             $o_zip = $row[6];
             $phone = $row[7];
             $email = $row[8];
-            $total = 'TOTAL';
-            $due = 'DUE';
+            $total = $assessment_sum;
+            $due = $assessment_sum - $lot_sum;
 
             $merge_string = '';
             $merge_string = $lot . ', ';
