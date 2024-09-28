@@ -38,6 +38,9 @@
             <fieldset>
                 <ul>
                     <li>
+                        <a href="<?php echo url_for('/staff/lots/index.php'); ?>">Lots</a>
+                    </li>
+                    <li>
                         <a href="<?php echo url_for('/staff/categories/index.php'); ?>">Categories</a>
                     </li>
                     <li>
