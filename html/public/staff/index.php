@@ -55,6 +55,9 @@
                     <li>
                         <a href="<?php echo url_for('/staff/owners/index.php'); ?>">Owners</a>
                     </li>
+                    <li>
+                        <a href="<?php echo url_for('/staff/assessments/index.php'); ?>">Assessments</a>
+                    </li>
                 </ul>
             </fieldset>
 
