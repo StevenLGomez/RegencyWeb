@@ -58,6 +58,9 @@
                     <li>
                         <a href="<?php echo url_for('/staff/assessments/index.php'); ?>">Assessments</a>
                     </li>
+                    <li>
+                        <a href="<?php echo url_for('/staff/mail_merge/index.php'); ?>">Mail Merge</a>
+                    </li>
                 </ul>
             </fieldset>
 

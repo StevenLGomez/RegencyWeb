@@ -5,7 +5,7 @@
   // Regency Estates Owner query statements ===================================
   // ==========================================================================
 
-  function get_mail_merge_info_by_lot($lot_id) {
+  function generate_mail_merge_csv($lot_id) {
 
     // ==========================================================================
     // Fields required for creating Mail Merge documents
