@@ -7,9 +7,9 @@
 
     <div id="content">
         <div id="regency-menu">
-            <h2>Mail Merge Generator</h2>
+            <h2>Mail Merge CSV Report</h2>
 
-            <?php generate_mail_merge_csv(1); ?>
+            <?php generate_mail_merge_csv(); ?>
 
         </div>
     </div>
