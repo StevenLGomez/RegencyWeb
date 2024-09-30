@@ -99,7 +99,7 @@
                 $merge_string .= $owner_row[7] . ', ';           // Owner's phone number
                 $merge_string .= $owner_row[8] . ', ';           // Owner's email
                 $merge_string .= $assessment_sum . ', ';         // Total assessment due from all lots
-                $merge_string .= $due_from_this_lot . ', ';      // Amount due from this lot (including late/missed payments
+                $merge_string .= $due_from_this_lot;             // Amount due from this lot (including late/missed payments
 
                 echo $merge_string . "<br />";
             }
