@@ -14,7 +14,7 @@
     // Lot, Last, First, Owner_Add, Owner_City, O_St, O_Zip, Lot_Add, Phone, email, Total, Due
     // ==========================================================================
 
-    // Create a opening marker
+    // Create an opening marker
     echo "VVVVVVVVVVVVVVVVVVVVVV  COPY INFORMATION BELOW THIS LINE VVVVVVVVVVVVVVVVVVVVVVVVVVVVVV<br />";
 
     // Create header line for CSV output

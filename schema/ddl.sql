@@ -106,6 +106,10 @@ ALTER TABLE lot ADD COLUMN city VARCHAR(50);
 ALTER TABLE lot ADD COLUMN state VARCHAR(50);
 ALTER TABLE lot ADD COLUMN zip VARCHAR(50);
 
+-- The following was added 2024-10-01 to allow adding payee name to fee payments
+ALTER TABLE fees ADD COLUMN payee VARCHAR(50);
+
+
 -- ----------------------------------------------------------------------------
 -- End of TABLEs --------------------------------------------------------------
 -- ----------------------------------------------------------------------------
