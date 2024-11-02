@@ -9,7 +9,7 @@
         $mi ='';
         $last ='';
         $phone ='';
-        $primary_email ='';
+        $email ='';
 
         $first_2 ='';
         $mi_2 ='';
@@ -49,7 +49,7 @@
             $mi = $owner['mi'];
             $last = $owner['last'];
             $phone = $owner['phone'];
-            $primary_email = $owner['email'];
+            $email = $owner['email'];
 
             $first_2 = $owner['first_2'];
             $mi_2 = $owner['mi_2'];
@@ -104,7 +104,7 @@
 
                 <tr>
                     <td><b>Email</b></td>
-                    <td><input type="text" name="primary_email" value="<?php echo htmlsc($email); ?>" /></td>
+                    <td><input type="text" name="email" value="<?php echo htmlsc($email); ?>" /></td>
                 </tr>
 
                 <th>Secondary Owner</th>
