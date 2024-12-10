@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 18, 2024 at 10:02 PM
+-- Generation Time: Dec 10, 2024 at 04:39 PM
 -- Server version: 10.3.17-MariaDB
 -- PHP Version: 7.4.11
 
@@ -268,7 +268,9 @@ INSERT INTO `deposit` (`id`, `fk_cat_id`, `dt`, `is_reconciled`, `amount`, `note
 (149, NULL, '2024-07-19', 0, '80.00', NULL, NULL, NULL),
 (150, NULL, '2024-11-01', 0, '400.00', NULL, NULL, NULL),
 (151, NULL, '2024-11-11', 0, '1070.00', NULL, NULL, NULL),
-(152, NULL, '2024-11-18', 0, '200.00', NULL, NULL, NULL);
+(152, NULL, '2024-11-18', 0, '200.00', NULL, NULL, NULL),
+(153, NULL, '2024-12-03', 0, '400.00', NULL, NULL, NULL),
+(154, NULL, '2024-12-11', 0, '240.00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1852,7 +1854,20 @@ INSERT INTO `fees` (`id`, `dt`, `ck_no`, `amount`, `fk_lot_id`, `fk_deposit_id`,
 (1535, '2024-11-09', 3523, '40.00', 31, 152, '', 'Degenhardt'),
 (1536, '2024-11-03', 155, '40.00', 32, 152, '', 'McCowen'),
 (1537, '2024-10-26', 1096, '40.00', 36, 152, '', 'Hristova'),
-(1538, '2024-11-08', 18877, '40.00', 46, 152, '', 'McCullough');
+(1538, '2024-11-08', 18877, '40.00', 46, 152, '', 'McCullough'),
+(1546, '2024-11-16', 8349, '40.00', 11, 153, '', 'Vossenkemper'),
+(1547, '2024-11-20', 6029, '40.00', 20, 153, '', 'Ziegler'),
+(1548, '2024-11-24', 2223, '40.00', 23, 153, '', 'Sullivan'),
+(1549, '2024-11-28', 1, '40.00', 33, 153, 'Money Order', 'Pak'),
+(1550, '2024-11-25', 2026, '40.00', 37, 153, '', 'Luketin'),
+(1551, '2024-11-18', 55, '40.00', 54, 153, '', 'Weaver'),
+(1552, '2024-11-29', 1003, '160.00', 67, 153, '', 'Rodriguez Benitez'),
+(1559, '2024-11-25', 5292, '40.00', 25, 154, '', 'Williams'),
+(1560, '2024-10-29', 1102, '40.00', 58, 154, '', 'Purnell'),
+(1561, '2024-11-26', 3510, '40.00', 59, 154, '', 'Grieb'),
+(1562, '2024-11-25', 3101, '40.00', 63, 154, '', 'White'),
+(1563, '2024-11-24', 1, '40.00', 65, 154, '', 'Matyi'),
+(1564, '2024-11-29', 9338, '40.00', 66, 154, '', 'Eck');
 
 -- --------------------------------------------------------
 
@@ -2079,7 +2094,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (98, 61, 'Rico', '', 'Carenza', '', '', '', '8 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
 (99, 62, 'Donald', '', 'Nanna', 'Dorothy', '', 'Nanna', '6 Ritz Court', 'Saint Peters', 'MO', '63303', '636-244-2435', 'nannadane@yahoo.com', NULL, NULL, '2003-02-07', 0, NULL, NULL),
 (100, 62, 'Ralph', '', 'Vance', 'Sharon', '', 'Vance', '6 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, '', NULL, NULL, '1990-01-01', 0, NULL, NULL),
-(101, 63, 'Thomas', 'S', 'White', 'Elizabeth', 'A', 'White', '4 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, 'buckeyenuts729@yahoo.com', NULL, 'gobucks1965@yahoo.com', '1990-01-01', 1, NULL, NULL),
+(101, 63, 'Thomas', 'S', 'White', 'Elizabeth', 'A', 'White', '4 Ritz Court', 'Saint Peters', 'MO', '63303', '314-795-9488', 'buckeyenuts729@yahoo.com', '314-795-9489', 'gobucks1965@yahoo.com', '1990-01-01', 1, NULL, NULL),
 (102, 64, 'Michael', 'F', 'Gardner', 'Connie', 'L', 'Gardner', '3263 Hyatt Court', 'Saint Peters', 'MO', '63303', '314-713-7299', NULL, NULL, NULL, '1990-01-01', 1, NULL, NULL),
 (103, 65, 'Mark', 'R', 'Lohrman', 'Clara', 'R', 'Lohrman', '3259 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, 'jiryis06@yahoo.com', NULL, NULL, '2007-03-02', 0, NULL, NULL),
 (104, 65, 'Geries', '', 'Shaheen', 'Amanda', '', 'Shaheen', '3259 Hyatt Court', 'Saint Peters', 'MO', '63303', '217-828-2220', 'jiryis06@yahoo.com', NULL, 'jiryis06@gmail.com', '2012-07-03', 0, NULL, NULL),
@@ -2129,7 +2144,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (148, 58, 'Benjamin', '', 'Suntrup', 'Courtney', '', 'Suntrup', '3275 Hyatt Court', 'Saint Peters', 'MO', '63303', '', 'ben.suntrup@gmail.com', '', '', '2019-08-16', 0, NULL, NULL),
 (149, 15, 'Jonathan', '', 'Hibbeler', '', '', '', '1172 Monza Drive', 'Saint Peters', 'MO', '63303', NULL, 'jon.hibbeler@gmail.com', NULL, NULL, '2020-03-25', 1, NULL, NULL),
 (150, 24, 'Andrea', '', 'Phillips', '', '', '', '3278 Hyatt Court', 'Saint Peters', 'MO', '63303', '636-875-3648', 'andrearuthphillips@gmail.com', '636-875-3684', NULL, '2020-10-09', 0, NULL, NULL),
-(151, 67, 'Samuel', 'Benitez Ebel', 'Rodriguez', 'Osiris', 'I', 'Morales', '1417 Westin Drive', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2020-08-07', 1, NULL, NULL),
+(151, 67, 'Ebel', 'Samuel', 'Rodriguez Benitez', 'Osiris', 'I', 'Morales', '1417 Westin Drive', 'Saint Peters', 'MO', '63303', '916-430-3374', 'ebel.17.samuel@gmail.com', NULL, NULL, '2020-08-07', 1, NULL, NULL),
 (152, 51, 'Timothy', 'A', 'Petrillo', 'Emily', 'L', 'Petrillo', '3220 Windwood Trails Drive', 'Saint Peters', 'MO', '63303', NULL, 'timpetrillo.tp@gmail.com', NULL, NULL, '2020-07-21', 1, NULL, NULL),
 (155, 21, 'Sandra', 'K', 'Darr', '', '', '', '3284 Hyatt Court', 'Saint Peters', 'MO', '63303', '314-703-9406', 'sandradarr@att.net', NULL, NULL, '2021-02-24', 1, NULL, NULL),
 (156, 60, 'Kimberly', 'M', 'Donihue', '', '', '', '10 Ritz Court', 'Saint Peters', 'MO', '63303', NULL, 'flourish@therapysecure.com', NULL, NULL, '2021-03-08', 1, NULL, NULL),
@@ -2138,7 +2153,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (162, 39, 'Elizabeth', '', 'Pagano', 'Paula', 'C', 'Pagano', '3251 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2021-09-10', 1, NULL, NULL),
 (164, 40, 'Jasbir', 'Singh', 'Thiara', '', '', '', '3253 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, 'jasbir.thiara@yahoo.com', NULL, NULL, '2020-12-29', 1, NULL, NULL),
 (175, 17, 'Jaime', 'Lee', 'Gilmet', 'Sean', 'Eric', 'Hoeh', '', '', '', '', '', '', '', '', '2024-05-23', 1, 0, NULL),
-(176, 59, 'Timothy', '', 'Grieb', 'Linda', '', 'Grieb', '', '', '', '', '', '', '', '', '2023-12-20', 1, 0, NULL),
+(176, 59, 'Timothy', '', 'Grieb', 'Linda', '', 'Grieb', '', '', '', '', '636-578-1549', 'timgrieb@hotmail.com', '', '', '2023-12-20', 1, 0, NULL),
 (177, 65, 'Matthew', 'J', 'Matyi', 'Jessica', '', 'Waller', '', '', '', '', '', '', '', '', '2023-08-04', 1, 0, NULL),
 (178, 3, 'Shane', '', 'Blackledge', 'Amber', '', 'Blackledge', '', '', '', '', '', '', '', '', '2022-10-25', 1, 0, NULL),
 (179, 9, 'Cole', 'Andrew', 'Metcalfe', 'Lindsay', '', 'Pallarito', '', '', '', '', '', '', '', '', '2022-06-08', 1, 0, NULL),
@@ -2154,7 +2169,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (189, 30, 'David', 'W', 'Mitchell', '', '', '', '', '', '', '', '', '', '', '', '1990-01-01', 0, 0, NULL),
 (190, 28, 'Marie-Therese', 'Cerre', 'Kish', '', '', '', '', '', '', '', '', '', '', '', '2024-06-27', 1, 0, NULL),
 (191, 54, 'Shannon', 'R', 'Weaver', '', '', '', '', '', '', '', '', 'sraeweaver@gmail.com', '', '', '2022-04-04', 1, 0, NULL),
-(192, 33, 'Chang', '', 'Pak', '', '', '', '', '', '', '', '', '', '', '', '2021-12-01', 1, 0, NULL),
+(192, 33, 'Chang', '', 'Pak', '', '', '', '', '', '', '', '314-225-9696', 'cpkoreoshi07@gmail.com', '', '', '2021-12-01', 1, 0, NULL),
 (193, 34, 'Rex', '', 'Anderson', 'Rachel', '', 'Anderson', '', '', '', '', '', '', '', '', '2022-08-01', 1, 0, NULL),
 (194, 55, 'Thomas', '', 'Keppler', '', '', '', '', '', '', '', '', '', '', '', '2022-02-15', 1, 0, NULL),
 (195, 58, 'Jamie', 'M', 'Purnell', 'Tyler', 'L', 'Purnell', '', '', '', '', '', '', '', '', '2022-08-02', 1, 0, NULL),
@@ -2268,7 +2283,7 @@ ALTER TABLE `expense`
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1539;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1565;
 
 --
 -- AUTO_INCREMENT for table `lot`

@@ -19,7 +19,8 @@
   function find_all_deposits() {
     global $db;
 
-    $sql = "SELECT * FROM deposit WHERE dt >= '2023-01-01' ORDER BY dt";
+    // $sql = "SELECT * FROM deposit WHERE dt >= '2023-01-01' ORDER BY dt";
+    $sql = "SELECT * FROM deposit ORDER BY dt";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
