@@ -69,12 +69,17 @@
         }
     ?>
 
+    <hr />
+    <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
+    <hr />
+
+    <b>Property Address:&nbsp;</b> <?php echo $property_address; ?>
+    <br />
+    <b>Lot #:&nbsp;</b> <?php echo $fk_lot_id; ?>
+    <hr />
+
     <div id="content">
         <div id="regency-menu">
-
-        <b>Property Address:&nbsp;</b> <?php echo $property_address; ?>
-        <br />
-        <b>Lot #:&nbsp;</b> <?php echo $fk_lot_id; ?>
 
         <form action="" method="post">
             <table class="list">
@@ -137,11 +142,6 @@
 
                 <th>Property Information</th>
                 <th></th>
-
-                <tr>
-                    <td><b>Property Address</b></td>
-                    <td><input type="text" name="property_address" value="<?php echo htmlsc($property_address); ?>" /></td>
-                </tr>
 
                 <tr>
                     <td><b>Lot #</b></td>
@@ -207,14 +207,11 @@
                 echo '<input type="submit" value="Apply Changes"/>';
             }
 
-            if ($create_new_owner)
+            if ($creating_new_owner)
             {
                 echo '<input type="submit" name="add_owner_from_form" value="Add Owner"/>';
             }
             ?>
-
-            <br />
-            <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
 
         </form>
         <!-- ============================================================ -->

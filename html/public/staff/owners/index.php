@@ -10,7 +10,7 @@
     $full_owner_form_required = False;
     $view_existing_owner = False;
     $edit_existing_owner = False;
-    $create_new_owner = False;
+    $creating_new_owner = False;
     $display_new_owner = False;
     $last_name = '';
 
@@ -44,7 +44,7 @@
 
         if (isset($_POST['create_owner'])) {
             $full_owner_form_required = True;
-            $create_new_owner = True;
+            $creating_new_owner = True;
 
             $page_title = 'Create New Owner';
         }
@@ -164,8 +164,8 @@
                 }
                 echo '<br />';
 
-                echo '$create_new_owner: '; 
-                if ($create_new_owner) {
+                echo '$creating_new_owner: '; 
+                if ($creating_new_owner) {
                     echo 'True';
                 }
                 else
@@ -244,7 +244,7 @@
 
             <form action="" method="post">
             <fieldset>
-                <h4>By Last Name</h4>
+                <h4>Search By Owner's Last Name</h4>
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
                     <label for "last_name">Last Name</label>

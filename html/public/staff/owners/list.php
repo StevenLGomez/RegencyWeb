@@ -3,6 +3,10 @@
     <!-- Owner list display sub-page - included when needed           -->
     <!-- ************************************************************ -->
 
+    <hr />
+    <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
+    <hr />
+
     <?php if ($searching_history) 
     {
         $owner_query = find_owners_by_lot($lot_id); 
@@ -60,10 +64,6 @@
     <?php } /* Bottom of while loop */ ?>
 
     <?php mysqli_free_result($owner_query); ?>
-
-    <br />
-    <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
-    <br />
 
     <!-- ============================================================ -->
 
