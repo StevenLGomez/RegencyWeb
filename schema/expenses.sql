@@ -59,5 +59,8 @@ INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
     ('2024-04-15',    0, 'Postmaster',                  256.00,   5, 'PO Box Renewal (debit)');
 COMMIT;
 
+-- 2024-12-20 Payment for mowing services
+INSERT INTO expense (dt, ck_no, payee, amount, fk_cat_id, note) VALUES ('2024-12-20', 0, 'Stripe Force Landscapes', 1375.00, 2, '11 mowings @ $125 (debit)');
+
 
 

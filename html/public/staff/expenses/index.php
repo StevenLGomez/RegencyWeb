@@ -11,10 +11,6 @@
             <h2>Expense History</h2>
 
             <hr />
-            <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/categories/index.php'); ?>">Create New Category</a>
-            </div>
-            <hr />
 
             <table class="list">
                 <tr>
@@ -23,7 +19,7 @@
                     <th>ck_no</th>
                     <th>Amount</th>
                     <th>Category</th>
-                    <th>&nbsp</th>
+                    <th>Note</th>
                 </tr>
 
                 <?php while($expense_row = mysqli_fetch_assoc($expense_set)) { ?>
@@ -34,7 +30,7 @@
                         <td><?php echo htmlsc($expense_row['ck_no']); ?></td>
                         <td><?php echo htmlsc($expense_row['amount']); ?></td>
                         <td><?php echo htmlsc($expense_row['fk_cat_id']); ?></td>
-                        <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . htmlsc(urlencode($expense_row['id']))); ?>">Edit</a></td>
+                        <td><?php echo htmlsc($expense_row['note']); ?></td>
                     </tr>
 
                 <?php } ?>
