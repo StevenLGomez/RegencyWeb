@@ -61,7 +61,6 @@ __Create Owner Form Layout__
 | Email                     | amlost@some.net  |
 |                           |                  |
 | __Property Information__  |                  |
-| Property Address          | 3759 Hyatt Court |
 | Lot #                     |                  |
 | Purchased (YYYY_MM_DD)    | 2022-05-01       |
 | Current Owner             | X                |
