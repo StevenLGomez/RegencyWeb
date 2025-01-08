@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 10, 2024 at 04:39 PM
+-- Generation Time: Jan 08, 2025 at 01:12 AM
 -- Server version: 10.3.17-MariaDB
 -- PHP Version: 7.4.11
 
@@ -270,7 +270,8 @@ INSERT INTO `deposit` (`id`, `fk_cat_id`, `dt`, `is_reconciled`, `amount`, `note
 (151, NULL, '2024-11-11', 0, '1070.00', NULL, NULL, NULL),
 (152, NULL, '2024-11-18', 0, '200.00', NULL, NULL, NULL),
 (153, NULL, '2024-12-03', 0, '400.00', NULL, NULL, NULL),
-(154, NULL, '2024-12-11', 0, '240.00', NULL, NULL, NULL);
+(154, NULL, '2024-12-11', 0, '240.00', NULL, NULL, NULL),
+(155, NULL, '2025-01-08', 0, '240.00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -573,7 +574,8 @@ INSERT INTO `expense` (`id`, `fk_cat_id`, `dt`, `ck_no`, `payee`, `amount`, `not
 (280, 5, '2024-04-15', 0, 'Postmaster', '256.00', 'PO Box Renewal (debit)'),
 (281, 6, '2024-10-14', 1308, 'MO Secretary of State', '15.50', 'Annual Registration Fee'),
 (282, 5, '2024-10-18', 0, 'Postmaster', '43.80', 'Postage Stamps (debit)'),
-(283, 5, '2024-10-23', 0, 'Postmaster', '48.40', 'Registered Letters (debit)');
+(283, 5, '2024-10-23', 0, 'Postmaster', '48.40', 'Registered Letters (debit)'),
+(285, 2, '2024-12-20', 0, 'Stripe Force Landscapes', '1375.00', '11 mowings @ $125 (debit)');
 
 -- --------------------------------------------------------
 
@@ -1867,7 +1869,10 @@ INSERT INTO `fees` (`id`, `dt`, `ck_no`, `amount`, `fk_lot_id`, `fk_deposit_id`,
 (1561, '2024-11-26', 3510, '40.00', 59, 154, '', 'Grieb'),
 (1562, '2024-11-25', 3101, '40.00', 63, 154, '', 'White'),
 (1563, '2024-11-24', 1, '40.00', 65, 154, '', 'Matyi'),
-(1564, '2024-11-29', 9338, '40.00', 66, 154, '', 'Eck');
+(1564, '2024-11-29', 9338, '40.00', 66, 154, '', 'Eck'),
+(1568, '2024-12-09', 6087, '80.00', 41, 155, '', NULL),
+(1569, '2024-12-28', 103, '80.00', 48, 155, '', NULL),
+(1570, '2024-12-20', 1001, '80.00', 62, 155, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -2154,7 +2159,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (164, 40, 'Jasbir', 'Singh', 'Thiara', '', '', '', '3253 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, 'jasbir.thiara@yahoo.com', NULL, NULL, '2020-12-29', 1, NULL, NULL),
 (175, 17, 'Jaime', 'Lee', 'Gilmet', 'Sean', 'Eric', 'Hoeh', '', '', '', '', '', '', '', '', '2024-05-23', 1, 0, NULL),
 (176, 59, 'Timothy', '', 'Grieb', 'Linda', '', 'Grieb', '', '', '', '', '636-578-1549', 'timgrieb@hotmail.com', '', '', '2023-12-20', 1, 0, NULL),
-(177, 65, 'Matthew', 'J', 'Matyi', 'Jessica', '', 'Waller', '', '', '', '', '', '', '', '', '2023-08-04', 1, 0, NULL),
+(177, 65, 'Matthew', 'J', 'Matyi', 'Jessica', '', 'Waller', '', '', '', '', '314-489-5960', 'mattmatyi@gmail.com', '636-544-9323', '', '2023-08-04', 1, 0, NULL),
 (178, 3, 'Shane', '', 'Blackledge', 'Amber', '', 'Blackledge', '', '', '', '', '', '', '', '', '2022-10-25', 1, 0, NULL),
 (179, 9, 'Cole', 'Andrew', 'Metcalfe', 'Lindsay', '', 'Pallarito', '', '', '', '', '', '', '', '', '2022-06-08', 1, 0, NULL),
 (180, 21, 'Gina', 'M', 'Rickman', '', '', '', '', '', '', '', '', '', '', '', '1990-01-01', 0, 0, NULL),
@@ -2173,7 +2178,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (193, 34, 'Rex', '', 'Anderson', 'Rachel', '', 'Anderson', '', '', '', '', '', '', '', '', '2022-08-01', 1, 0, NULL),
 (194, 55, 'Thomas', '', 'Keppler', '', '', '', '', '', '', '', '', '', '', '', '2022-02-15', 1, 0, NULL),
 (195, 58, 'Jamie', 'M', 'Purnell', 'Tyler', 'L', 'Purnell', '', '', '', '', '', '', '', '', '2022-08-02', 1, 0, NULL),
-(196, 62, 'Robert', 'A', 'Gardiner', 'Lindsay', '', 'Gardiner', '', '', '', '', '', '', '', '', '2022-09-26', 1, 0, NULL),
+(196, 62, 'Robert', 'A', 'Gardiner', 'Lindsay', '', 'Gardiner', '', '', '', '', '314-805-1253', 'rgardiner0117@gmail.com', '', '', '2022-09-26', 1, 0, NULL),
 (197, 43, 'Debbie', '', 'Imboden', '', '', '', '', '', '', '', '', '', '', '', '2003-09-15', 0, 0, NULL);
 
 -- --------------------------------------------------------
@@ -2277,13 +2282,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=284;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=286;
 
 --
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1565;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1571;
 
 --
 -- AUTO_INCREMENT for table `lot`
