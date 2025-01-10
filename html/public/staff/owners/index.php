@@ -137,49 +137,6 @@
         <div id="regency-menu">
             <h2>Owner Management</h2>
 
-            <?php
-
-            if ( $diagnostics_enabled) {
-                echo '<hr />';
-                echo '<!-- Show diagnostic information -->';
-                echo '<div>';
-
-                echo '$view_existing_owner: '; 
-                if ($view_existing_owner) {
-                    echo 'True';
-                }
-                else
-                {
-                    echo 'False';
-                }
-                echo '<br />';
-
-                echo '$edit_existing_owner: '; 
-                if ($edit_existing_owner) {
-                    echo 'True';
-                }
-                else
-                {
-                    echo 'False';
-                }
-                echo '<br />';
-
-                echo '$creating_new_owner: '; 
-                if ($creating_new_owner) {
-                    echo 'True';
-                }
-                else
-                {
-                    echo 'False';
-                }
-                echo '<br />';
-                echo '<hr />';
-
-                echo '<!-- End of diagnostic information -->';
-                echo '<!-- *************************** -->';
-                echo '</div>';
-            } ?>
-
         <!-- ============================================================ -->
         <!-- This is the beginning of the "Default Owner Page "           -->
         <!-- ============================================================ -->
