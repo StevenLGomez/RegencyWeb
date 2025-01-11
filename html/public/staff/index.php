@@ -1,20 +1,6 @@
+
 <?php 
     require_once('../../private/initialize.php'); 
-
-    if (is_post_request()) {
-
-        if (isset($_POST['diagnostic_setting'])) {
-
-            if ( (int)$_POST['diagnostic_setting'] === 1 ) {
-                $diagnostics_enabled = True;
-            }
-            else
-            {
-                $diagnostics_enabled = False;
-            }
-        }
-    }
-
 ?>
 
 <?php $page_title = 'Staff Menu'; ?>
@@ -52,13 +38,6 @@
                 </ul>
             </fieldset>
 
-            <form action="" method="post">
-            <fieldset>
-                Enable Diagnostic Output
-                <input type="hidden" name="diagnostic_setting" value="0" />
-                <button type = "submit">Apply</button>
-            </fieldset>
-            </form>
         </div>
     </div>
 
