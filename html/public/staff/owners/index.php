@@ -143,11 +143,10 @@
         <?php if ($search_mode) { ?>
 
             <!-- Start of Search Owner History section =================== -->
-
-            <!-- ============================================================ -->
-            <!-- Form for Searching by Address -->
-            <form action="" method="post">
             <fieldset>
+
+            <!-- Form for Searching by Address ============================== -->
+            <form action="" method="post">
                 <h4>Owner History</h4>
 
                 <!-- The ADDRESS pull down select item -->
@@ -165,14 +164,10 @@
                 <?php mysqli_free_result($address_query); ?>
                 <!-- END The ADDRESS pull down select item -->
 
-            </fieldset>
             </form>
-            <!-- ============================================================ -->
 
-            <!-- ============================================================ -->
-            <!-- Form for Searching by Lot # -->
+            <!-- Form for Searching by Lot # ================================ -->
             <form action="" method="post">
-            <fieldset>
 
                 <!-- The LOT pull down select item -->
                 <div class="actions"> 
@@ -188,20 +183,14 @@
                 </div>
                 <?php mysqli_free_result($lot_query); ?>
                 <!-- END The LOT pull down select item and button -->
-
-            </fieldset>
             </form>
-            <!-- ============================================================ -->
-
+            </fieldset>
             <!-- End of Search Property History Section ===================== -->
-            <hr />
 
-            <!-- ============================================================ -->
-            <!-- Form for Viewing existing owner by Last name -->
-
-            <form action="" method="post">
+            <!-- Form for finding existing owner by Last name -->
             <fieldset>
-                <h4>Search By Owner's Last Name</h4>
+            <form action="" method="post">
+                <h4>Find Owner By Last Name</h4>
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
                     <label for "last_name">Last Name</label>
@@ -210,39 +199,33 @@
                 </div>
                 <!-- END The Last Name Entry Box -->
 
-            </fieldset>
             </form>
+            </fieldset>
             <!-- ============================================================ -->
-            <hr />
 
-            <!-- ============================================================ -->
-            <!-- Form for Searching for Rental owners -->
-            <form action="" method="post">
+            <!-- Form for Searching for Rental owners ======================= -->
             <fieldset>
+            <form action="" method="post">
                 <h4>View Rentals</h4>
                 <div id="actions">
                     <input type="submit" name="view_rentals" value="View" />
                 </div>
-            </fieldset>
             </form>
+            </fieldset>
             <!-- ============================================================ -->
-            <hr />
 
-            <!-- ============================================================ -->
-            <!-- Form for Creating new owner-->
+            <!-- Form for Creating new owner ================================ -->
 
-            <form action="" method="post">
             <fieldset>
+            <form action="" method="post">
                 <!-- Create New Owner -->
-                <h4>New Owner</h4>
+                <h4>Create New Owner</h4>
                 <div class="actions"> 
                     <input type="submit" name="create_owner" value="Create" />
                 </div>
-            </fieldset>
-                <!-- END The Create New Owner Entry Box -->
-
             </form>
-            <!-- ============================================================ -->
+            </fieldset>
+            <!-- END The Create New Owner Entry Box -->
 
         <?php } /* if ($search_mode) */ ?>
 
