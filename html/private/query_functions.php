@@ -127,7 +127,7 @@
     global $db;
 
     $sql = "SELECT * FROM owner ";
-    $sql .= "WHERE last='" . db_escape($db, $last_name) . "' ";
+    $sql .= "WHERE last LIKE '" . db_escape($db, $last_name) . "%' ";
     $sql .= "LIMIT 1;";
     //echo $sql;
     $result = mysqli_query($db, $sql);
