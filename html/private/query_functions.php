@@ -31,7 +31,7 @@
   function find_all_fees() {
     global $db;
 
-    $sql = "SELECT * FROM fees WHERE dt >= '2023-01-01' ";
+    $sql = "SELECT * FROM fees WHERE dt >= '2024-01-01' ";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
@@ -127,7 +127,7 @@
     global $db;
 
     $sql = "SELECT * FROM owner ";
-    $sql .= "WHERE last='" . db_escape($db, $last_name) . "' ";
+    $sql .= "WHERE last LIKE '" . db_escape($db, $last_name) . "%' ";
     $sql .= "LIMIT 1;";
     //echo $sql;
     $result = mysqli_query($db, $sql);

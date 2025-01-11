@@ -31,7 +31,5 @@
     $db = db_connect();
     $errors = [];
 
-    $diagnostics_enabled = True;
-
 ?>
 
