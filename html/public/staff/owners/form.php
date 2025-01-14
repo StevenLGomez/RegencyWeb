@@ -73,10 +73,12 @@
     <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
     <hr />
 
-    <b>Property Address:&nbsp;</b> <?php echo $property_address; ?>
-    <br />
-    <b>Lot #:&nbsp;</b> <?php echo $fk_lot_id; ?>
-    <hr />
+    <?php if($edit_existing_owner) { ?> 
+        <b>Property Address:&nbsp;</b> <?php echo $property_address; ?>
+        <br />
+        <b>Lot #:&nbsp;</b> <?php echo $fk_lot_id; ?>
+        <hr />
+    <?php } ?>
 
     <div id="content">
         <div id="regency-menu">

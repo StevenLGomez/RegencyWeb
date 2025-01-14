@@ -26,7 +26,7 @@
     if (is_post_request())
     {
         // This group requires the Full Owner Form
-        if (isset($_POST['view_owner'])) {
+        if (isset($_POST['search_last_name'])) {
             $full_owner_form_required = True;
             $view_existing_owner = True;
             $requested_name = $_POST['last_name'];
@@ -147,11 +147,11 @@
 
             <!-- Form for Searching by Address ============================== -->
             <form action="" method="post">
-                <h4>Owner History</h4>
+                <h4>Show Owner History</h4>
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
-                    <label for "address_id">By Address:</label>
+                    <label for "address_id">Address:</label>
                     <select name="address_id" id="address_id">
 
                         <?php while($lot = mysqli_fetch_assoc($address_query)) { ?>
@@ -170,8 +170,8 @@
             <form action="" method="post">
 
                 <!-- The LOT pull down select item -->
-                <div class="actions"> 
-                    <label for "lot_number">By Lot#:</label>
+                <div class="actions> 
+                    <label for "lot_number">Lot ID:&nbsp&nbsp&nbsp</label>
                     <select name="lot_number" id="lot_number">
 
                         <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
@@ -187,15 +187,15 @@
             </fieldset>
             <!-- End of Search Property History Section ===================== -->
 
-            <!-- Form for finding existing owner by Last name -->
+            <!-- Form for searching owner's last name -->
             <fieldset>
             <form action="" method="post">
-                <h4>Find Owner By Last Name</h4>
+                <h4>Search By Last Name</h4>
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
-                    <label for "last_name">Last Name</label>
+                    <label for "last_name">Start Of Last Name</label>
                     <input type="text" id="last_name" name="last_name">
-                    <input type="submit" name="view_owner" value="View" />
+                    <input type="submit" name="search_last_name" value="Search" />
                 </div>
                 <!-- END The Last Name Entry Box -->
 

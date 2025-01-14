@@ -4,45 +4,38 @@
 ## Owner Management
 
 __Actions Supported: public/staff/owners/index.php__
-| Function          | type           | name              | value            |                       |
-| :----------       |  :----------   | :---------------- | :--------------- | :-------------------- |
-| __Owner History__ |                |                   |                  |                       |
-| By Address        |                |                   |                  |                       |
-| By Lot            |                |                   |                  |                       |
-|                   |                |                   |                  |                       |
-| __By Last Name__  |                |                   |                  |                       |
-| Enter Last Name   |                |                   |                  |                       |
-|                   |                |                   |                  |                       |
-| __View Rentals__  |                |                   |                  |                       |
-| View              |                |                   |                  |                       |
-|                   |                |                   |                  |                       |
-| __New Owner__     |                |                   |                  |                       |
-| Create            |                |                   |                  |                       |
-|                   |                |                   |                  |                       |
-|                   |                |                   |                  |                       |
-
-
-
-__Variables for public/staff/owners/index.php__
-| Function         | type           | name              | value            |                       |
-| :----------      |  :----------   | :---------------- | :--------------- | :-------------------- |
-| __Full View__    |                |                   |                  |                       |
-|                  | "text"         | "last_name"       |                  |                       |
-|                  | "input"        | view_owner        | View             |                       |
-|                  | "input"        | edit_owner        | Edit             |                       |
-|                  | "input"        | create_owner      | Create           |                       |
-| __View Rentals__ |                |                   |                  |                       |
-|                  | "input"        | view_rentals      | View Rentals     |                       |
-|                  |                |                   |                  |                       |
-| __Lot History__  |                |                   |                  |                       |
-|                  | "select"       | "address_id"      | "address_id"     |                       |
-|                  | "submit"       | "submit"          | Display History  |                       |
-|                  |                |                   |                  |                       |
-|                  |                |                   |                  |                       |
-
+| Function                | input type             | name                    | value                   |
+| :----------             |  :----------           | :----------------       | :---------------        |
+| __Show Owner History__  |                        |                         |                         |
+| Address:                | label for "address_id" | Address:                |                         |
+|                         | name="address_id"      | id="address_id"         |                         |
+|                         | input type="submit"    | name="submit"           | value="View By Address" |
+|                         |                        |                         |                         |
+| Lot ID:                 | label for "lot_number" | Lot ID:                 |                         |
+|                         | name="lot_number"      | id="lot_number"         |                         |
+|                         | input type="submit"    | name="submit"           | value="View By Lot"     |
+|                         |                        |                         |                         |
+| __Search By Last Name__ |                        |                         |                         |
+| Start of Last Name      | label for "last_name"  | Start Of Last Name      |                         |
+|                         | input type="text"      | id="last_name"          | name="last_name"        |
+|                         | input type="submit"    | name="search_last_name" | value="Search"          |
+|                         |                        |                         |                         |
+| __View Rentals__        |                        |                         |                         |
+|                         | input type="submit"    | name="view_rentals"     | value="View"            |
+|                         |                        |                         |                         |
+| __New Owner__           |                        |                         |                         |
+|                         | input type="submit"    | name="create_owner"     | value="Create"          |
+|                         |                        |                         |                         |
 
 ---
 
+__Owner Workflow__
+
+
+
+
+
+---
 __Create Owner Form Layout__
 
 | __Primary Owner__         |                  |
@@ -77,9 +70,6 @@ __Create Owner Form Layout__
 | __Action__                |                  |
 
 ---
-__Owner Workflow__
-
-
 
 
 __TODO List__   
