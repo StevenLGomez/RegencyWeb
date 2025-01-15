@@ -238,21 +238,17 @@
     return $result;
   }
 
-  function find_owner_by_id() {
-    // global $db;
+  function find_owner_by_id($id) {
+    global $db;
 
-    echo "In function";
-
-    //$sql = "SELECT * FROM owner ";
-    //$sql .= "WHERE id='" . db_escape($db, $id) . "' ";
-    //$sql .= "LIMIT 1;";
-
-    // $sql = "SELECT * FROM owner WHERE id = 57;";
+    $sql = "SELECT * FROM owner ";
+    $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+    $sql .= "LIMIT 1;";
     // echo $sql;
 
-    // $result = mysqli_query($db, $sql);
-    // confirm_result_set($result);
-    // return $result;
+     $result = mysqli_query($db, $sql);
+     confirm_result_set($result);
+     return $result;
   }
 
 

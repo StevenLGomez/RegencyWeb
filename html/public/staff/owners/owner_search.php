@@ -1,6 +1,6 @@
 
     <!-- ************************************************************ -->
-    <!-- Owner list display sub-page - included when needed           -->
+    <!-- Owner list display sub-page                                  -->
     <!-- ************************************************************ -->
 
     <hr />
@@ -22,9 +22,8 @@
 
         <tr>
             <td><b>ID:</b> <?php echo $owner['id']; ?></td>
-            <td><a class="action" href="<?php echo url_for('staff/owners/form.php?id=' . htmlsc(urlencode('7'))); ?>">test</a></td>
-            <td><a class="action" href="<?php echo url_for('staff/owners/form.php?id=' . htmlsc(urlencode($owner['$id']))); ?>">Vim</a></td>
-            <td><a class="action" href="<?php echo url_for('staff/owners/form.php?id=' . '57'); ?>">View</a></td>
+            <td><a class="action" href="<?php echo url_for('staff/owners/index.php?id=' . htmlsc(urlencode($owner['$id']))); ?>">Vim</a></td>
+            <td><a class="action" href="<?php echo url_for('staff/owners/index.php?id=' . '57'); ?>">View</a></td>
         </tr>
         <tr>
             <td><?php echo htmlsc($owner['first']); ?>    </td>

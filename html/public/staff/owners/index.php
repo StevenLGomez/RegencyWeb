@@ -75,7 +75,6 @@
             $owner['phone_2'] = $_POST['phone_2'] ?? '';
             $owner['email_2'] = $_POST['email_2'] ?? '';
 
-            // $owner['fk_lot_id'] = 39;
             $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
             $owner['buy_date'] = $_POST['buy_date'] ?? '';
             $owner['is_current'] = $_POST['is_current'] ?? '';
@@ -125,6 +124,29 @@
             $page_title = 'History By Lot';
         }
     } // END: if (is_post_request())
+    else
+    {
+        echo '<!-- index.php - no $_POST requests were entered -->';
+    }
+
+    if (is_get_request())
+    {
+        // $id = isset($_GET['id']) ? $_GET['id'] : '0';  // PHP < 7.0
+        $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
+
+        if ($owner_id > 0)
+        {
+            $full_owner_form_required = True;
+            $view_existing_owner = True;
+
+            // Don't create the default top level owner page
+            $top_level_owner_page = False;
+        }
+    }
+    else
+    {
+        echo '<!-- index.php - no $_GET requests were entered -->';
+    }
 
     // These queries create the lists for "View By Address" & "View By Lot"
     $address_query = create_address_list();
@@ -139,10 +161,10 @@
         <div id="regency-menu">
             <h2>Owner Management</h2>
 
-        <!-- ============================================================ -->
-        <!-- This is the beginning of the "Top Level Owner Page "         -->
-        <!-- ============================================================ -->
         <?php if ($top_level_owner_page) { ?>
+        <!-- ============================================================ -->
+        <!-- This is the beginning of the "Top Level Owner Page"          -->
+        <!-- ============================================================ -->
 
             <!-- Start of Search Owner History section =================== -->
             <fieldset>
@@ -217,7 +239,6 @@
             <!-- ============================================================ -->
 
             <!-- Form for Creating new owner ================================ -->
-
             <fieldset>
             <form action="" method="post">
                 <!-- Create New Owner -->
@@ -229,30 +250,31 @@
             </fieldset>
             <!-- END The Create New Owner Entry Box -->
 
+        <!-- ============================================================ -->
+        <!-- This is the bottom of the "Top Level Owner Page"             -->
+        <!-- ============================================================ -->
         <?php } /* END: if ($top_level_owner_page) */ ?>
 
-        <!-- ============================================================ -->
-        <!-- This is the bottom of the "Top Level Owner Page "            -->
-        <!-- ============================================================ -->
-
-        <!-- Owner Form display has been requested -->
         <?php if ($full_owner_form_required) 
         {
+            echo '<!-- Owner Form display has been requested -->';
             include('./form.php'); 
+            echo '<!-- Bottom of Owner Form include =============================== -->';
         } /* if ($full_owner_form_required) */ ?>
-        <!-- Bottom of Owner Form include =============================== -->
 
-        <!-- List of Owner Information has been requested -->
-        <?php if ($owner_list_required) { ?>
-            <?php include('./history_list.php'); ?>
-        <?php } /* if ($owner_list_required) */ ?>
-        <!-- ============================================================ -->
+        <?php if ($owner_list_required) 
+        {
+            echo '<!-- List of Owner Information has been requested -->';
+            include('./history_list.php'); 
+            echo '<!-- ============================================================ -->';
+        } /* if ($owner_list_required) */ ?>
 
-        <!-- Search of Owner Name has been requested -->
-        <?php if ($searching_owners) { ?>
-            <?php include('./owner_search.php'); ?>
-        <?php } /* if ($searching_owners) */ ?>
-        <!-- ============================================================ -->
+        <?php if ($searching_owners) 
+        {
+            echo '<!-- Search of Owner Name has been requested -->';
+            include('./owner_search.php'); 
+            echo '<!-- ============================================================ -->';
+        } /* if ($searching_owners) */ ?>
 
         </div>
     </div>
