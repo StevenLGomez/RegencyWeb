@@ -14,11 +14,11 @@
         echo '<h3>Owner History for: Lot # ' . $lot_id . ', ' . $property_address . '</h3>';
     } /* if ($searching_history) */  ?>
 
-    <?php if ($searching_rental_owners) 
+    <?php if ($searching_rentals) 
     {
         $owner_query = search_renting_owners(); 
         echo '<h3>Rental Property Information</h3>';
-    } /* if ($searching_rental_owners) */  ?>
+    } /* if ($searching_rentals) */  ?>
 
 
     <!-- For each item in list, loop to display the relevant information -->

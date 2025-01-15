@@ -1,7 +1,7 @@
 
 # Owner Management Requirements
 
-## Owner Management
+> $\_POST variables are **BOLD** in the following table
 
 __Actions Supported: public/staff/owners/index.php__
 | Function                | input type             | name                    | value                   |

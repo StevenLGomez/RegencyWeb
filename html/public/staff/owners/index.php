@@ -3,8 +3,8 @@
     require_once('../../../private/initialize.php');
     require_once('../../../private/owner_functions.php');
 
-    // Set defaults for local variables
-    $search_mode = False;
+    // Default is to display Top Level Owner Page
+    $top_level_owner_page = True;
 
     // Variables to control actions requiring Full Owner Form
     $full_owner_form_required = False;
@@ -14,9 +14,12 @@
     $display_new_owner = False;
     $last_name = '';
 
+    // Variables for searching Owner
+    $searching_owners = False;
+
     // Variables to control actions requiring Owner Information List
     $owner_list_required = False;
-    $searching_rental_owners = False;
+    $searching_rentals = False;
     $searching_history = False;
     $lot_id = '';
 
@@ -25,13 +28,16 @@
 
     if (is_post_request())
     {
+        // A $_POST has been made from the top level page, process the POSTed option
+        $top_level_owner_page = False;
+
         // This group requires the Full Owner Form
         if (isset($_POST['search_last_name'])) {
-            $full_owner_form_required = True;
-            $view_existing_owner = True;
+            // $full_owner_form_required = True;
+            $searching_owners = True;
             $requested_name = $_POST['last_name'];
 
-            $page_title = 'View Owner Information';
+            $page_title = 'Owner Search';
         }
 
         if (isset($_POST['edit_owner'])) {
@@ -39,14 +45,14 @@
             $edit_existing_owner = True;
             $requested_name = $_POST['last_name'];
 
-            $page_title = 'Edit Owner Information';
+            $page_title = 'Edit Owner Detail';
         }
 
         if (isset($_POST['create_owner'])) {
             $full_owner_form_required = True;
             $creating_new_owner = True;
 
-            $page_title = 'Create New Owner';
+            $page_title = 'Create Owner';
         }
         // End of group requiring the Full Owner Form
 
@@ -96,35 +102,31 @@
         // This group requires the queried list of owner information
         if (isset($_POST['view_rentals'])) {
             $owner_list_required = True;
-            $searching_rental_owners = True;
+            $searching_rentals = True;
 
             $page_title = 'Rental Properties';
         }
 
-        // Search history by address was requested
+        // Show Owner History - View By Address was selected
         if (isset($_POST['address_id'])) {
             $owner_list_required = True;
             $searching_history = True;
             $lot_id = $_POST['address_id'];
 
-            $page_title = 'Property History';
+            $page_title = 'History By Address';
         }
 
-        // Search history by lot number was requested
+        // Show Owner History - View By Lot was selected
         if (isset($_POST['lot_number'])) {
             $owner_list_required = True;
             $searching_history = True;
             $lot_id = $_POST['lot_number'];
 
-            $page_title = 'Property History';
+            $page_title = 'History By Lot';
         }
-    }
-    else
-    {
-        // If nothing was posted, this page returns to Search Mode
-        $search_mode = True;
-    }
+    } // END: if (is_post_request())
 
+    // These queries create the lists for "View By Address" & "View By Lot"
     $address_query = create_address_list();
     $lot_query = create_lot_list();
 
@@ -138,9 +140,9 @@
             <h2>Owner Management</h2>
 
         <!-- ============================================================ -->
-        <!-- This is the beginning of the "Default Owner Page "           -->
+        <!-- This is the beginning of the "Top Level Owner Page "         -->
         <!-- ============================================================ -->
-        <?php if ($search_mode) { ?>
+        <?php if ($top_level_owner_page) { ?>
 
             <!-- Start of Search Owner History section =================== -->
             <fieldset>
@@ -227,10 +229,10 @@
             </fieldset>
             <!-- END The Create New Owner Entry Box -->
 
-        <?php } /* if ($search_mode) */ ?>
+        <?php } /* END: if ($top_level_owner_page) */ ?>
 
         <!-- ============================================================ -->
-        <!-- This is the end of the "Default Owner Page " =============== -->
+        <!-- This is the bottom of the "Top Level Owner Page "            -->
         <!-- ============================================================ -->
 
         <!-- Owner Form display has been requested -->
@@ -242,8 +244,14 @@
 
         <!-- List of Owner Information has been requested -->
         <?php if ($owner_list_required) { ?>
-            <?php include('./list.php'); ?>
+            <?php include('./history_list.php'); ?>
         <?php } /* if ($owner_list_required) */ ?>
+        <!-- ============================================================ -->
+
+        <!-- Search of Owner Name has been requested -->
+        <?php if ($searching_owners) { ?>
+            <?php include('./owner_search.php'); ?>
+        <?php } /* if ($searching_owners) */ ?>
         <!-- ============================================================ -->
 
         </div>

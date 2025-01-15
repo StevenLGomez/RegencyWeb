@@ -27,11 +27,23 @@
         $owner_zip ='';
         $owner_notes ='';
 
+        $id = $_GET['id'] ?? '1';  // PHP > 7.0
+
+        echo "Owner ID: " . $id . " <br />";
+        $view_existing_owner = True;
+
         // Query existing information if viewing or editing - overwrites blank values above
         if ($view_existing_owner || $edit_existing_owner)
         {
-            $owner_set = find_owner_by_last($requested_name);
-            $owner = mysqli_fetch_assoc($owner_set);
+            echo "Parsing DB request A". "<br />";
+
+            // $owner_set = find_owner_by_last($requested_name);
+            // $owner_set = find_owner_by_id($id);
+            $owner_set = find_owner_by_id();
+            echo "Parsing DB request B" . "<br />";
+            // $owner = mysqli_fetch_assoc($owner_set);
+
+            echo "Parsing DB request C" . "<br />";
 
             // The queried set can be cleared since it is now in $owner
             mysqli_free_result($owner_set);

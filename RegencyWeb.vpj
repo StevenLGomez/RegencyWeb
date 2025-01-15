@@ -128,8 +128,9 @@
                     </Folder>
                     <Folder Name="owners">
                         <F N="html/public/staff/owners/form.php"/>
+                        <F N="html/public/staff/owners/history_list.php"/>
                         <F N="html/public/staff/owners/index.php"/>
-                        <F N="html/public/staff/owners/list.php"/>
+                        <F N="html/public/staff/owners/owner_search.php"/>
                     </Folder>
                     <F N="html/public/staff/index.php"/>
                 </Folder>
