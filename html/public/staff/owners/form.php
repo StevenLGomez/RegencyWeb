@@ -5,27 +5,27 @@
 
     <?php
         // Start by initializing all local variables as empty
-        $first ='';
-        $mi ='';
-        $last ='';
-        $phone ='';
-        $email ='';
-
-        $first_2 ='';
-        $mi_2 ='';
-        $last_2 ='';
-        $phone_2 ='';
-        $email_2 ='';
-
-        $fk_lot_id ='';
-        $buy_date ='';
-        $is_current ='0';
-        $is_rental ='0';
-        $owner_address ='';
-        $owner_city ='';
-        $owner_state ='';
-        $owner_zip ='';
-        $owner_notes ='';
+        // $first ='';
+        // $mi ='';
+        // $last ='';
+        // $phone ='';
+        // $email ='';
+        // 
+        // $first_2 ='';
+        // $mi_2 ='';
+        // $last_2 ='';
+        // $phone_2 ='';
+        // $email_2 ='';
+        // 
+        // $fk_lot_id ='';
+        // $buy_date ='';
+        // $is_current ='0';
+        // $is_rental ='0';
+        // $owner_address ='';
+        // $owner_city ='';
+        // $owner_state ='';
+        // $owner_zip ='';
+        // $owner_notes ='';
 
         // Query existing information if viewing or editing - overwrites blank values above
         if ($view_existing_owner || $edit_existing_owner)
@@ -45,27 +45,27 @@
             mysqli_free_result($property_set);
 
             // Populate the local variables with the values pulled from the queries made above
-            $first = $owner['first'];
-            $mi = $owner['mi'];
-            $last = $owner['last'];
-            $phone = $owner['phone'];
-            $email = $owner['email'];
+            // $first = $owner['first'];
+            // $mi = $owner['mi'];
+            // $last = $owner['last'];
+            // $phone = $owner['phone'];
+            // $email = $owner['email'];
 
-            $first_2 = $owner['first_2'];
-            $mi_2 = $owner['mi_2'];
-            $last_2 = $owner['last_2'];
-            $phone_2 = $owner['phone_2'];
-            $email_2 = $owner['email_2'];
+            // $first_2 = $owner['first_2'];
+            // $mi_2 = $owner['mi_2'];
+            // $last_2 = $owner['last_2'];
+            // $phone_2 = $owner['phone_2'];
+            // $email_2 = $owner['email_2'];
 
-            $fk_lot_id = $owner['fk_lot_id'];
-            $buy_date = $owner['buy_date'];
-            $is_current = $owner['is_current'];
-            $is_rental = $owner['is_rental'];
-            $owner_address = $owner['owner_address'];
-            $owner_city = $owner['owner_city'];
-            $owner_state = $owner['owner_state'];
-            $owner_zip = $owner['owner_zip'];
-            $owner_notes = $owner['owner_notes'];
+            // $fk_lot_id = $owner['fk_lot_id'];
+            // $buy_date = $owner['buy_date'];
+            // $is_current = $owner['is_current'];
+            // $is_rental = $owner['is_rental'];
+            // $owner_address = $owner['owner_address'];
+            // $owner_city = $owner['owner_city'];
+            // $owner_state = $owner['owner_state'];
+            // $owner_zip = $owner['owner_zip'];
+            // $owner_notes = $owner['owner_notes'];
         }
     ?>
 
@@ -86,80 +86,88 @@
         <form action="" method="post">
             <table class="list">
 
+                <!-- =========================================================== -->
+                <!-- Start of Primary Owner section                              -->
                 <th>Primary Owner</th>
                 <th></th>
 
                 <tr>
                     <td><b>First Name</b></td>
-                    <td><input type="text" name="first" value="<?php echo htmlsc($first); ?>" /></td>
+                    <td><input type="text" name="first" value="<?php echo htmlsc($owner['first']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Middle</b></td>
-                    <td><input type="text" name="mi" value="<?php echo htmlsc($mi); ?>" /></td>
+                    <td><input type="text" name="mi" value="<?php echo htmlsc($owner['mi']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Last Name</b></td>
-                    <td><input type="text" name="last" value="<?php echo htmlsc($last); ?>" /></td>
+                    <td><input type="text" name="last" value="<?php echo htmlsc($owner['last']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Phone</b></td>
-                    <td><input type="text" name="phone" value="<?php echo htmlsc($phone); ?>" /></td>
+                    <td><input type="text" name="phone" value="<?php echo htmlsc($owner['phone']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Email</b></td>
-                    <td><input type="text" name="email" value="<?php echo htmlsc($email); ?>" /></td>
+                    <td><input type="text" name="email" value="<?php echo htmlsc($owner['email']); ?>" /></td>
                 </tr>
+                <!-- =========================================================== -->
 
+                <!-- =========================================================== -->
+                <!-- Start of Secondary Owner section                            -->
                 <th>Secondary Owner</th>
                 <th></th>
 
                 <tr>
                     <td><b>First Name</b></td>
-                    <td><input type="text" name="first_2" value="<?php echo htmlsc($first_2); ?>" /></td>
+                    <td><input type="text" name="first_2" value="<?php echo htmlsc($owner['first_2']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Middle</b></td>
-                    <td><input type="text" name="mi_2" value="<?php echo htmlsc($mi_2); ?>" /></td>
+                    <td><input type="text" name="mi_2" value="<?php echo htmlsc($owner['mi_2']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Last Name</b></td>
-                    <td><input type="text" name="last_2" value="<?php echo htmlsc($last_2); ?>" /></td>
+                    <td><input type="text" name="last_2" value="<?php echo htmlsc($owner['last_2']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Phone</b></td>
-                    <td><input type="text" name="phone_2" value="<?php echo htmlsc($phone_2); ?>" /></td>
+                    <td><input type="text" name="phone_2" value="<?php echo htmlsc($owner['phone_2']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Email</b></td>
-                    <td><input type="text" name="email_2" value="<?php echo htmlsc($email_2); ?>" /></td>
+                    <td><input type="text" name="email_2" value="<?php echo htmlsc($owner['email_2']); ?>" /></td>
                 </tr>
+                <!-- =========================================================== -->
 
+                <!-- =========================================================== -->
+                <!-- Start of Property Information section                       -->
                 <th>Property Information</th>
                 <th></th>
 
                 <tr>
                     <td><b>Lot #</b></td>
-                    <td><input type="text" name="fk_lot_id" value="<?php echo htmlsc($fk_lot_id); ?>" /></td>
+                    <td><input type="text" name="fk_lot_id" value="<?php echo htmlsc($owner['fk_lot_id']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Purchased (YYYY-MM-DD)</b></td>
-                    <td><input type="text" name="buy_date" value="<?php echo htmlsc($buy_date); ?>" /></td>
+                    <td><input type="text" name="buy_date" value="<?php echo htmlsc($owner['buy_date']); ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Is Current Owner?</b></td>
                     <td>
                         <input type="hidden" name="is_current" value="0" />
-                        <input type="checkbox" name="is_current" value="1"<?php if($is_current == "1") {echo " checked";} ?> />
+                        <input type="checkbox" name="is_current" value="1"<?php if($owner['is_current'] == "1") {echo " checked";} ?> />
                     </td>
                 </tr>
 
@@ -167,7 +175,7 @@
                     <td><b>Is Rental?</b></td>
                     <td>
                         <input type="hidden" name="is_rental" value="0" />
-                        <input type="checkbox" name="is_rental" value="1"<?php if($is_rental == "1") {echo " checked";} ?> />
+                        <input type="checkbox" name="is_rental" value="1"<?php if($owner['is_rental'] == "1") {echo " checked";} ?> />
                     </td>
                 </tr>
 
@@ -176,28 +184,29 @@
 
                 <tr>
                     <td><b>Owner Address</b></td>
-                    <td><input type="text" name="owner_address" value="<?php if($is_rental == "1") {echo htmlsc($owner_address);} ?>" /></td>
+                    <td><input type="text" name="owner_address" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['owner_address']);} ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Owner City</b></td>
-                    <td><input type="text" name="owner_city" value="<?php if($is_rental == "1") {echo htmlsc($owner_city);} ?>" /></td>
+                    <td><input type="text" name="owner_city" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['owner_city']);} ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Owner State</b></td>
-                    <td><input type="text" name="owner_state" value="<?php if($is_rental == "1") {echo htmlsc($owner_state);} ?>" /></td>
+                    <td><input type="text" name="owner_state" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['owner_state']);} ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Owner Zip</b></td>
-                    <td><input type="text" name="owner_zip" value="<?php if($is_rental == "1") {echo htmlsc($owner_zip);} ?>" /></td>
+                    <td><input type="text" name="owner_zip" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['owner_zip']);} ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Notes</b></td>
-                    <td><input type="text" name="owner_notes" value="<?php echo htmlsc($owner_notes); ?>" /></td>
+                    <td><input type="text" name="owner_notes" value="<?php echo htmlsc($owner['notes']); ?>" /></td>
                 </tr>
+                <!-- =========================================================== -->
 
             </table>
 

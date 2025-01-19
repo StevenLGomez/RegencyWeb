@@ -23,9 +23,6 @@
     $searching_history = False;
     $lot_id = '';
 
-    // Default value for Page Title
-    $page_title = 'Search Owners';
-
     if (is_post_request())
     {
         // A $_POST has been made from the top level page, process the POSTed option
@@ -149,13 +146,21 @@
     }
 
     // These queries create the lists for "View By Address" & "View By Lot"
-    $address_query = create_address_list();
-    $lot_query = create_lot_list();
+    // $address_query = create_address_list();
+    // $lot_query = create_lot_list();
 
 ?>
+    <!-- ================================================================ -->
+    <!-- PHP logic ends here                                              -->
+    <!-- ================================================================ -->
 
-<!-- Include HTML header here, note $page_title must be previously defined -->
-<?php include(SHARED_PATH . '/header.php'); ?>
+    <!-- ================================================================ -->
+    <!-- HTML code begins here                                            -->
+    <!-- ================================================================ -->
+
+    <!-- Include HTML header here, NOTE $page_title must be defined first -->
+    $page_title = 'Search Owners';
+    <?php include(SHARED_PATH . '/header.php'); ?>
 
     <div id="content">
         <div id="regency-menu">
@@ -165,6 +170,9 @@
         <!-- ============================================================ -->
         <!-- This is the beginning of the "Top Level Owner Page"          -->
         <!-- ============================================================ -->
+
+        $address_query = create_address_list();
+        $lot_query = create_lot_list();
 
             <!-- Start of Search Owner History section =================== -->
             <fieldset>
