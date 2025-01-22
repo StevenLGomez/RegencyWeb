@@ -4,28 +4,28 @@
 > $\_POST variables are **BOLD** in the following table
 
 __Actions Supported: public/staff/owners/index.php__
-| Function                | input type             | name                    | value                   |
-| :----------             |  :----------           | :----------------       | :---------------        |
-| __Show Owner History__  |                        |                         |                         |
-| Address:                | label for "address_id" | Address:                |                         |
-|                         | name="address_id"      | id="address_id"         |                         |
-|                         | input type="submit"    | name="submit"           | value="View By Address" |
-|                         |                        |                         |                         |
-| Lot ID:                 | label for "lot_number" | Lot ID:                 |                         |
-|                         | name="lot_number"      | id="lot_number"         |                         |
-|                         | input type="submit"    | name="submit"           | value="View By Lot"     |
-|                         |                        |                         |                         |
-| __Search By Last Name__ |                        |                         |                         |
-| Start of Last Name      | label for "last_name"  | Start Of Last Name      |                         |
-|                         | input type="text"      | id="last_name"          | name="last_name"        |
-|                         | input type="submit"    | name="search_last_name" | value="Search"          |
-|                         |                        |                         |                         |
-| __View Rentals__        |                        |                         |                         |
-|                         | input type="submit"    | name="view_rentals"     | value="View"            |
-|                         |                        |                         |                         |
-| __New Owner__           |                        |                         |                         |
-|                         | input type="submit"    | name="create_owner"     | value="Create"          |
-|                         |                        |                         |                         |
+| Function                | input type             | name                          | value                   |
+| :----------             |  :----------           | :----------------             | :---------------        |
+| __Show Owner History__  |                        |                               |                         |
+| Address:                | label for "address_id" | Address:                      |                         |
+|                         | name="address_id"      | id="address_id"               |                         |
+|                         | input type="submit"    | name=**"submit"**             | value="View By Address" |
+|                         |                        |                               |                         |
+| Lot ID:                 | label for "lot_number" | Lot ID:                       |                         |
+|                         | name="lot_number"      | id="lot_number"               |                         |
+|                         | input type="submit"    | name=**"submit"**             | value="View By Lot"     |
+|                         |                        |                               |                         |
+| __Search By Last Name__ |                        |                               |                         |
+| Start of Last Name      | label for "last_name"  | Start Of Last Name            |                         |
+|                         | input type="text"      | id="last_name"                | name="last_name"        |
+|                         | input type="submit"    | name=**"search_last_name"**   | value="Search"          |
+|                         |                        |                               |                         |
+| __View Rentals__        |                        |                               |                         |
+|                         | input type="submit"    | name=**"view_rentals"**       | value="View"            |
+|                         |                        |                               |                         |
+| __New Owner__           |                        |                               |                         |
+|                         | input type="submit"    | name=**"add_owner"**          | value="Add"             |
+|                         |                        |                               |                         |
 
 ---
 

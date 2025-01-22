@@ -3,15 +3,15 @@
     require_once('../../../private/initialize.php');
     require_once('../../../private/owner_functions.php');
 
-    // Default is to display Top Level Owner Page
-    $top_level_owner_page = True;
+    // Default is to display Owner Main Menu Page
+    $owner_main_menu = True;
 
     // Variables to control actions requiring Full Owner Form
-    $full_owner_form_required = False;
-    $view_existing_owner = False;
-    $edit_existing_owner = False;
-    $creating_new_owner = False;
-    $display_new_owner = False;
+    $full_owner_form_required = False;  // Edit, create or add owner
+    $view_existing_owner = False;       // form.php
+    $edit_existing_owner = False;       // form.php
+    $creating_new_owner = False;        // index.php 
+    $display_new_owner = False;         // index.php 
     $last_name = '';
 
     // Variables for searching Owner
@@ -26,11 +26,10 @@
     if (is_post_request())
     {
         // A $_POST has been made from the top level page, process the POSTed option
-        $top_level_owner_page = False;
+        $owner_main_menu = False;
 
         // This group requires the Full Owner Form
         if (isset($_POST['search_last_name'])) {
-            // $full_owner_form_required = True;
             $searching_owners = True;
             $requested_name = $_POST['last_name'];
 
@@ -65,13 +64,13 @@
             $owner['last'] = $_POST['last'] ?? '';
             $owner['phone'] = $_POST['phone'] ?? '';
             $owner['email'] = $_POST['email'] ?? '';
-
+            
             $owner['first_2'] = $_POST['first_2'] ?? '';
             $owner['mi_2'] = $_POST['mi_2'] ?? '';
             $owner['last_2'] = $_POST['last_2'] ?? '';
             $owner['phone_2'] = $_POST['phone_2'] ?? '';
             $owner['email_2'] = $_POST['email_2'] ?? '';
-
+            
             $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
             $owner['buy_date'] = $_POST['buy_date'] ?? '';
             $owner['is_current'] = $_POST['is_current'] ?? '';
@@ -137,7 +136,7 @@
             $view_existing_owner = True;
 
             // Don't create the default top level owner page
-            $top_level_owner_page = False;
+            $owner_main_menu = False;
         }
     }
     else
@@ -159,20 +158,17 @@
     <!-- ================================================================ -->
 
     <!-- Include HTML header here, NOTE $page_title must be defined first -->
-    $page_title = 'Search Owners';
+    <?php $page_title = 'Search Owners'; ?>
     <?php include(SHARED_PATH . '/header.php'); ?>
 
     <div id="content">
         <div id="regency-menu">
             <h2>Owner Management</h2>
 
-        <?php if ($top_level_owner_page) { ?>
+        <?php if ($owner_main_menu) { ?>
         <!-- ============================================================ -->
-        <!-- This is the beginning of the "Top Level Owner Page"          -->
+        <!-- This is the beginning of the "Owner Main Menu Page"          -->
         <!-- ============================================================ -->
-
-        $address_query = create_address_list();
-        $lot_query = create_lot_list();
 
             <!-- Start of Search Owner History section =================== -->
             <fieldset>
@@ -186,6 +182,7 @@
                     <label for "address_id">Address:</label>
                     <select name="address_id" id="address_id">
 
+                        <?php $address_query = create_address_list(); ?>
                         <?php while($lot = mysqli_fetch_assoc($address_query)) { ?>
                             <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['address']); ?></option>
                         <?php } ?>
@@ -206,6 +203,7 @@
                     <label for "lot_number">Lot ID:&nbsp&nbsp&nbsp</label>
                     <select name="lot_number" id="lot_number">
 
+                        <?php $lot_query = create_lot_list(); ?>
                         <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
                             <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['id']); ?></option>
                         <?php } ?>
@@ -223,6 +221,7 @@
             <fieldset>
             <form action="" method="post">
                 <h4>Search By Last Name</h4>
+
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
                     <label for "last_name">Start Of Last Name</label>
@@ -239,6 +238,8 @@
             <fieldset>
             <form action="" method="post">
                 <h4>View Rentals</h4>
+
+                <!-- The View Rentals select button -->
                 <div id="actions">
                     <input type="submit" name="view_rentals" value="View" />
                 </div>
@@ -249,40 +250,39 @@
             <!-- Form for Creating new owner ================================ -->
             <fieldset>
             <form action="" method="post">
-                <!-- Create New Owner -->
-                <h4>Create New Owner</h4>
+                <h4>Add Owner</h4>
+
                 <div class="actions"> 
-                    <input type="submit" name="create_owner" value="Create" />
+                    <input type="submit" name="add_owner" value="Add" />
                 </div>
             </form>
             </fieldset>
-            <!-- END The Create New Owner Entry Box -->
 
         <!-- ============================================================ -->
-        <!-- This is the bottom of the "Top Level Owner Page"             -->
+        <!-- This is the bottom of the "Owner Main Menu Page"             -->
         <!-- ============================================================ -->
-        <?php } /* END: if ($top_level_owner_page) */ ?>
+        <?php } /* Bottom of: if ($owner_main_menu) */ ?>
 
         <?php if ($full_owner_form_required) 
         {
             echo '<!-- Owner Form display has been requested -->';
             include('./form.php'); 
             echo '<!-- Bottom of Owner Form include =============================== -->';
-        } /* if ($full_owner_form_required) */ ?>
+        } /* Bottom of: if ($full_owner_form_required) */ ?>
 
         <?php if ($owner_list_required) 
         {
             echo '<!-- List of Owner Information has been requested -->';
             include('./history_list.php'); 
             echo '<!-- ============================================================ -->';
-        } /* if ($owner_list_required) */ ?>
+        } /* Bottom of: if ($owner_list_required) */ ?>
 
         <?php if ($searching_owners) 
         {
             echo '<!-- Search of Owner Name has been requested -->';
             include('./owner_search.php'); 
             echo '<!-- ============================================================ -->';
-        } /* if ($searching_owners) */ ?>
+        } /* Bottom of: if ($searching_owners) */ ?>
 
         </div>
     </div>

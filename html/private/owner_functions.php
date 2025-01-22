@@ -46,14 +46,13 @@
       $errors = validate_owner($owner);
       if(!empty($errors))
       {
-          return $errors;
+          // return $errors;
       }
 
       // Insert logic to remove all previous 'current owner' tags if this addition
       // is the new 'current owner'.
       if ($owner['is_current'] == 1)
       {
-          //$sql = "UPDATE owner SET is_current = 0 WHERE fk_lot_id = 9;";
           $sql = "UPDATE owner ";
           $sql .= "SET is_current = 0 ";
           $sql .= "WHERE fk_lot_id = ";
@@ -229,7 +228,7 @@
     global $db;
 
     $sql = "SELECT * FROM owner ";
-    $sql .= "WHERE last LIKE '" . db_escape($db, $last_name) . "%' ";
+    $sql .= "WHERE last LIKE '" . "%" . db_escape($db, $last_name) . "%' ";
     $sql .= "ORDER BY last;";
     //$sql .= "LIMIT 1;";
     //echo $sql;
