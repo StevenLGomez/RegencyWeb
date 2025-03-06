@@ -4,30 +4,8 @@
     <!-- ************************************************************ -->
 
     <?php
-        // Start by initializing all local variables as empty
-        // $first ='';
-        // $mi ='';
-        // $last ='';
-        // $phone ='';
-        // $email ='';
-        // 
-        // $first_2 ='';
-        // $mi_2 ='';
-        // $last_2 ='';
-        // $phone_2 ='';
-        // $email_2 ='';
-        // 
-        // $fk_lot_id ='';
-        // $buy_date ='';
-        // $is_current ='0';
-        // $is_rental ='0';
-        // $owner_address ='';
-        // $owner_city ='';
-        // $owner_state ='';
-        // $owner_zip ='';
-        // $owner_notes ='';
 
-        // Query existing information if viewing or editing - overwrites blank values above
+        // Query existing information if viewing or editing - creates associative array
         if ($view_existing_owner || $edit_existing_owner)
         {
             $owner_set = find_owner_by_id($owner_id);
@@ -43,29 +21,6 @@
 
             // $property_set can be cleared, result is in $property_address
             mysqli_free_result($property_set);
-
-            // Populate the local variables with the values pulled from the queries made above
-            // $first = $owner['first'];
-            // $mi = $owner['mi'];
-            // $last = $owner['last'];
-            // $phone = $owner['phone'];
-            // $email = $owner['email'];
-
-            // $first_2 = $owner['first_2'];
-            // $mi_2 = $owner['mi_2'];
-            // $last_2 = $owner['last_2'];
-            // $phone_2 = $owner['phone_2'];
-            // $email_2 = $owner['email_2'];
-
-            // $fk_lot_id = $owner['fk_lot_id'];
-            // $buy_date = $owner['buy_date'];
-            // $is_current = $owner['is_current'];
-            // $is_rental = $owner['is_rental'];
-            // $owner_address = $owner['owner_address'];
-            // $owner_city = $owner['owner_city'];
-            // $owner_state = $owner['owner_state'];
-            // $owner_zip = $owner['owner_zip'];
-            // $owner_notes = $owner['owner_notes'];
         }
     ?>
 

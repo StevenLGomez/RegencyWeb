@@ -144,10 +144,6 @@
         echo '<!-- index.php - no $_GET requests were entered -->';
     }
 
-    // These queries create the lists for "View By Address" & "View By Lot"
-    // $address_query = create_address_list();
-    // $lot_query = create_lot_list();
-
 ?>
     <!-- ================================================================ -->
     <!-- PHP logic ends here                                              -->
@@ -253,7 +249,7 @@
                 <h4>Add Owner</h4>
 
                 <div class="actions"> 
-                    <input type="submit" name="add_owner" value="Add" />
+                    <input type="submit" name="create_owner" value="Add" />
                 </div>
             </form>
             </fieldset>
