@@ -3,12 +3,18 @@
 
 <html lang="en">
 	<head>
-		<title>Regency Estates Homeowners Association</title>
+		<title>Regency Jump Page</title>
 		<meta charset="utf-8">
 	</head>
 
 	<body>
-		<h1>Regency Estates: Coming Soon</h1>
-         <a href="./staff/index.php">Prototype Menu</a>
+		<h2>Regency Jump Page</h2>
+         <a href="./staff/index.php">Main Menu</a>
+         <hr />
+
+		<h2>Experimental Page</h2>
+         <a href="./experimental.php">Experimental Page</a>
+         <hr />
+
 	</body>
 </html>
