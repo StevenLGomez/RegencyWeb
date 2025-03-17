@@ -27,7 +27,7 @@
                         <a href="<?php echo url_for('/staff/fees/index.php'); ?>">Fees</a>
                     </li>
                     <li>
-                        <a href="<?php echo url_for('/staff/owners/index.php'); ?>">Owners</a>
+                        <a href="<?php echo url_for('/staff/owners/owner_index.php'); ?>">Owners</a>
                     </li>
                     <li>
                         <a href="<?php echo url_for('/staff/assessments/index.php'); ?>">Assessments</a>

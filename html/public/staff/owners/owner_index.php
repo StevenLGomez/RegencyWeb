@@ -8,10 +8,10 @@
 
     // Variables to control actions requiring Full Owner Form
     $full_owner_form_required = False;  // Edit, create or add owner
-    $view_existing_owner = False;       // form.php
-    $edit_existing_owner = False;       // form.php
-    $creating_new_owner = False;        // index.php 
-    $display_new_owner = False;         // index.php 
+    $view_existing_owner = False;       // owner_form.php
+    $edit_existing_owner = False;       // owner_form.php
+    $creating_new_owner = False;        // owner_index.php 
+    $display_new_owner = False;         // owner_index.php 
     $last_name = '';
 
     // Variables for searching Owner
@@ -124,7 +124,7 @@
     } // END: if (is_post_request())
     else
     {
-        echo '<!-- index.php - no $_POST requests were entered -->';
+        echo '<!-- owner_index.php - no $_POST requests were entered -->';
     }
 
     if (is_get_request())
@@ -143,7 +143,7 @@
     }
     else
     {
-        echo '<!-- index.php - no $_GET requests were entered -->';
+        echo '<!-- owner_index.php - no $_GET requests were entered -->';
     }
 
 ?>
@@ -163,115 +163,24 @@
         <div id="regency-menu">
             <h2>Owner Management</h2>
 
-        <?php if ($owner_main_menu) { ?>
-        <!-- ============================================================ -->
-        <!-- This is the beginning of the "Owner Main Menu Page"          -->
-        <!-- ============================================================ -->
-
-            <!-- Start of Search Owner History section =================== -->
-            <fieldset>
-
-            <!-- Form for Searching by Address ============================== -->
-            <form action="" method="post">
-                <h4>Show Owner History</h4>
-
-                <!-- The ADDRESS pull down select item -->
-                <div class="actions"> 
-                    <label for "address_id">Address:</label>
-                    <select name="address_id">
-
-                        <?php $address_query = create_address_list(); ?>
-                        <?php while($lot = mysqli_fetch_assoc($address_query)) { ?>
-                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['address']); ?></option>
-                        <?php } ?>
-
-                    </select>
-                    <input type="submit" name="submit" value="View By Address" />
-                </div>
-                <?php mysqli_free_result($address_query); ?>
-                <!-- END The ADDRESS pull down select item -->
-
-            </form>
-
-            <!-- Form for Searching by Lot # ================================ -->
-            <form action="" method="post">
-
-                <!-- The LOT pull down select item -->
-                <div class="actions> 
-                    <label for "lot_number">Lot ID:&nbsp&nbsp&nbsp</label>
-                    <select name="lot_number">
-
-                        <?php $lot_query = create_lot_list(); ?>
-                        <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
-                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['id']); ?></option>
-                        <?php } ?>
-
-                    </select>
-                    <input type="submit" name="submit" value="View By Lot" />
-                </div>
-                <?php mysqli_free_result($lot_query); ?>
-                <!-- END The LOT pull down select item and button -->
-            </form>
-            </fieldset>
-            <!-- End of Search Property History Section ===================== -->
-
-            <!-- Form for searching owner's last name -->
-            <fieldset>
-            <form action="" method="post">
-                <h4>Search By Last Name</h4>
-
-                <!-- The Last Name Entry Box -->
-                <div class="actions"> 
-                    <label for "last_name">Last Name Segment</label>
-                    <input type="text" name="last_name">
-                    <input type="submit" name="search_last_name" value="Search" />
-                </div>
-                <!-- END The Last Name Entry Box -->
-
-            </form>
-            </fieldset>
-            <!-- ============================================================ -->
-
-            <!-- Form for Searching for Rental owners ======================= -->
-            <fieldset>
-            <form action="" method="post">
-                <h4>View Rental Properties</h4>
-
-                <!-- The View Rentals select button -->
-                <div class="actions">
-                    <input type="submit" name="view_rentals" value="View Rentals" />
-                </div>
-            </form>
-            </fieldset>
-            <!-- ============================================================ -->
-
-            <!-- Form for Creating new owner ================================ -->
-            <fieldset>
-            <form action="" method="post">
-                <h4>Create New Owner</h4>
-
-                <div class="actions"> 
-                    <input type="submit" name="create_owner" value="Create Owner" />
-                </div>
-            </form>
-            </fieldset>
-
-        <!-- ============================================================ -->
-        <!-- This is the bottom of the "Owner Main Menu Page"             -->
-        <!-- ============================================================ -->
-        <?php } /* Bottom of: if ($owner_main_menu) */ ?>
+        <?php if ($owner_main_menu) 
+        {
+            echo '<!-- Owner Main Menu display -->';
+            include('./owner_menu.php'); 
+            echo '<!-- Bottom of Owner Main Menu =============================== -->';
+        } /* Bottom of: if ($owner_main_menu) */ ?>
 
         <?php if ($full_owner_form_required) 
         {
             echo '<!-- Owner Form display has been requested -->';
-            include('./form.php'); 
+            include('./owner_form.php'); 
             echo '<!-- Bottom of Owner Form include =============================== -->';
         } /* Bottom of: if ($full_owner_form_required) */ ?>
 
         <?php if ($owner_list_required) 
         {
             echo '<!-- List of Owner Information has been requested -->';
-            include('./history_list.php'); 
+            include('./owner_history.php'); 
             echo '<!-- ============================================================ -->';
         } /* Bottom of: if ($owner_list_required) */ ?>
 
