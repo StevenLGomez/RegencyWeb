@@ -3,8 +3,7 @@
     require_once('../../../private/initialize.php');
     require_once('../../../private/owner_functions.php');
 
-    // Default is to display Owner Main Menu Page
-    $owner_main_menu = True;
+    $page_title = 'Owner Management';
 
     // Variables to control actions requiring Full Owner Form
     $full_owner_form_required = False;  // Edit, create or add owner
@@ -18,17 +17,18 @@
     $searching_owners = False;
 
     // Variables to control actions requiring Owner Information List
-    $owner_list_required = False;
-    $searching_rentals = False;
+    // $owner_list_required = False;
     $searching_history = False;
     $lot_id = '';
 
     if (is_post_request())
     {
-        var_dump($_POST);
 
-        // A $_POST has been made from the top level page, process the POSTed option
-        $owner_main_menu = False;
+        // Variables to control actions requiring Owner Information List
+        // $owner_list_required = False;
+        $searching_rentals = False;
+
+        var_dump($_POST);
 
         // This group requires the Full Owner Form
         if (isset($_POST['search_last_name'])) {
@@ -98,15 +98,13 @@
 
         // This group requires the queried list of owner information
         if (isset($_POST['view_rentals'])) {
-            $owner_list_required = True;
-            $searching_rentals = True;
-
-            $page_title = 'Rental Properties';
+            $switch_action = 'ViewRentals';
+            $page_title = 'Rental Property Listing';
         }
 
         // Show Owner History - View By Address was selected
         if (isset($_POST['address_id'])) {
-            $owner_list_required = True;
+            // $owner_list_required = True;
             $searching_history = True;
             $lot_id = $_POST['address_id'];
 
@@ -115,20 +113,17 @@
 
         // Show Owner History - View By Lot was selected
         if (isset($_POST['lot_number'])) {
-            $owner_list_required = True;
+            // $owner_list_required = True;
             $searching_history = True;
             $lot_id = $_POST['lot_number'];
 
             $page_title = 'History By Lot';
         }
     } // END: if (is_post_request())
-    else
-    {
-        echo '<!-- owner_index.php - no $_POST requests were entered -->';
-    }
 
     if (is_get_request())
     {
+        var_dump($_GET);
         // $id = isset($_GET['id']) ? $_GET['id'] : '0';  // PHP < 7.0
         $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
 
@@ -136,14 +131,7 @@
         {
             $full_owner_form_required = True;
             $view_existing_owner = True;
-
-            // Don't create the default top level owner page
-            $owner_main_menu = False;
         }
-    }
-    else
-    {
-        echo '<!-- owner_index.php - no $_GET requests were entered -->';
     }
 
 ?>
@@ -156,19 +144,11 @@
     <!-- ================================================================ -->
 
     <!-- Include HTML header here, NOTE $page_title must be defined first -->
-    <?php $page_title = 'Search Owners'; ?>
     <?php include(SHARED_PATH . '/header.php'); ?>
 
     <div id="content">
         <div id="regency-menu">
-            <h2>Owner Management</h2>
-
-        <?php if ($owner_main_menu) 
-        {
-            echo '<!-- Owner Main Menu display -->';
-            include('./owner_menu.php'); 
-            echo '<!-- Bottom of Owner Main Menu =============================== -->';
-        } /* Bottom of: if ($owner_main_menu) */ ?>
+            <?php echo '<h2>' . $page_title . '</h2>'; ?>
 
         <?php if ($full_owner_form_required) 
         {
@@ -190,6 +170,19 @@
             include('./owner_search.php'); 
             echo '<!-- ============================================================ -->';
         } /* Bottom of: if ($searching_owners) */ ?>
+
+        <?php
+        switch ($switch_action)
+        {
+        case 'ViewRentals':
+            $searching_rentals = True;
+            include('./owner_history.php');
+            break;
+
+        default:
+            include('./owner_menu.php'); 
+        }
+        ?>
 
         </div>
     </div>
