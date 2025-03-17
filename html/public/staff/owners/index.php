@@ -25,6 +25,8 @@
 
     if (is_post_request())
     {
+        var_dump($_POST);
+
         // A $_POST has been made from the top level page, process the POSTed option
         $owner_main_menu = False;
 
@@ -176,7 +178,7 @@
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
                     <label for "address_id">Address:</label>
-                    <select name="address_id" id="address_id">
+                    <select name="address_id">
 
                         <?php $address_query = create_address_list(); ?>
                         <?php while($lot = mysqli_fetch_assoc($address_query)) { ?>
@@ -197,7 +199,7 @@
                 <!-- The LOT pull down select item -->
                 <div class="actions> 
                     <label for "lot_number">Lot ID:&nbsp&nbsp&nbsp</label>
-                    <select name="lot_number" id="lot_number">
+                    <select name="lot_number">
 
                         <?php $lot_query = create_lot_list(); ?>
                         <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
@@ -220,8 +222,8 @@
 
                 <!-- The Last Name Entry Box -->
                 <div class="actions"> 
-                    <label for "last_name">Start Of Last Name</label>
-                    <input type="text" id="last_name" name="last_name">
+                    <label for "last_name">Last Name Segment</label>
+                    <input type="text" name="last_name">
                     <input type="submit" name="search_last_name" value="Search" />
                 </div>
                 <!-- END The Last Name Entry Box -->
@@ -233,11 +235,11 @@
             <!-- Form for Searching for Rental owners ======================= -->
             <fieldset>
             <form action="" method="post">
-                <h4>View Rentals</h4>
+                <h4>View Rental Properties</h4>
 
                 <!-- The View Rentals select button -->
-                <div id="actions">
-                    <input type="submit" name="view_rentals" value="View" />
+                <div class="actions">
+                    <input type="submit" name="view_rentals" value="View Rentals" />
                 </div>
             </form>
             </fieldset>
@@ -246,10 +248,10 @@
             <!-- Form for Creating new owner ================================ -->
             <fieldset>
             <form action="" method="post">
-                <h4>Add Owner</h4>
+                <h4>Create New Owner</h4>
 
                 <div class="actions"> 
-                    <input type="submit" name="create_owner" value="Add" />
+                    <input type="submit" name="create_owner" value="Create Owner" />
                 </div>
             </form>
             </fieldset>
