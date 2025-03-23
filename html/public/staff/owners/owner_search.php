@@ -22,8 +22,13 @@
 
         <tr>
             <td><b>ID:</b> <?php echo $owner['id']; ?></td>
-            <td><a class="action" href="<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id']) ); ?>">View</a></td>
-            <td><a class="action" href="<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id']) ); ?>">Edit</a></td>
+            <td><a class="action" href=
+                "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&view_owner=1') ); ?>">
+                View</a></td>
+
+            <td><a class="action" href=
+                "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&edit_owner=1') ); ?>">
+                Edit</a></td>
         </tr>
         <tr>
             <td><?php echo htmlsc($owner['first']); ?>    </td>

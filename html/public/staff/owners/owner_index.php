@@ -26,8 +26,6 @@
         $searching_owners = False;
         $creating_new_owner = True;
 
-        var_dump($_POST);
-
         // Posted from owner_menu.php
         if (isset($_POST['search_last_name'])) {
             // $searching_owners = True;
@@ -36,15 +34,6 @@
 
             $page_title = 'Owner Search';
         }
-
-        // if (isset($_POST['edit_owner'])) {
-        //     $full_owner_form_required = True;
-        //     $edit_existing_owner = True;
-        //     $requested_name = $_POST['last_name'];
-        //
-        //     $page_title = 'Edit Owner Detail';
-        // }
-
         // Posted from owner_form.php
         if (isset($_POST['create_owner'])) {
             // $full_owner_form_required = True;
@@ -123,6 +112,27 @@
     if (is_get_request())
     {
         var_dump($_GET);
+
+        if (isset($_GET['view_owner'])) {
+            $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
+            $full_owner_form_required = True;
+
+            $page_title = 'View Owner Detail';
+
+            echo 'Received view_owner request for ID: ' . $owner_id;
+        }
+
+        if (isset($_GET['edit_owner'])) {
+            $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
+            $full_owner_form_required = True;
+
+            $page_title = 'Edit Owner Detail';
+
+            echo 'Received edit_owner request for ID: ' . $owner_id;
+        }
+
+
+        // var_dump($_GET);
         // $id = isset($_GET['id']) ? $_GET['id'] : '0';  // PHP < 7.0
         $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
 
