@@ -65,7 +65,7 @@
                     Value="http://devserver/RegencyWeb"/>
                 <Item
                     Name="LocalRoot"
-                    Value="/home/gomez/projects/RegencyWeb/html"/>
+                    Value="/var/www/html/RegencyWeb/html"/>
             </List>
         </List>
         <List Name="Xdebug Options">
@@ -96,7 +96,7 @@
                     Value="/var/www/html/RegencyWeb"/>
                 <Item
                     Name="LocalRoot"
-                    Value="/home/gomez/projects/RegencyWeb/html"/>
+                    Value="/var/www/html/RegencyWeb/html"/>
             </List>
         </List>
     </Config>
@@ -127,9 +127,10 @@
                         <F N="html/public/staff/fees/index.php"/>
                     </Folder>
                     <Folder Name="owners">
-                        <F N="html/public/staff/owners/form.php"/>
-                        <F N="html/public/staff/owners/history_list.php"/>
-                        <F N="html/public/staff/owners/index.php"/>
+                        <F N="html/public/staff/owners/owner_form.php"/>
+                        <F N="html/public/staff/owners/owner_history.php"/>
+                        <F N="html/public/staff/owners/owner_index.php"/>
+                        <F N="html/public/staff/owners/owner_menu.php"/>
                         <F N="html/public/staff/owners/owner_search.php"/>
                     </Folder>
                     <F N="html/public/staff/index.php"/>

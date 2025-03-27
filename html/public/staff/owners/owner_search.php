@@ -4,7 +4,7 @@
     <!-- ************************************************************ -->
 
     <hr />
-    <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
+    <a class="back-link" href="<?php echo url_for('/staff/owners/owner_index.php'); ?>">&laquo; Return to Menu</a>
     <hr />
     <?php echo "Owners with last name containing: " . "<b>" .$requested_name . "</b>"; ?>
     <hr />
@@ -22,8 +22,13 @@
 
         <tr>
             <td><b>ID:</b> <?php echo $owner['id']; ?></td>
-            <td><a class="action" href="<?php echo url_for('staff/owners/index.php?id=' . htmlsc($owner['id']) ); ?>">View</a></td>
-            <td><a class="action" href="<?php echo url_for('staff/owners/index.php?id=' . htmlsc($owner['id']) ); ?>">Edit</a></td>
+            <td><a class="action" href=
+                "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&view_owner=1') ); ?>">
+                View</a></td>
+
+            <td><a class="action" href=
+                "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&edit_owner=1') ); ?>">
+                Edit</a></td>
         </tr>
         <tr>
             <td><?php echo htmlsc($owner['first']); ?>    </td>

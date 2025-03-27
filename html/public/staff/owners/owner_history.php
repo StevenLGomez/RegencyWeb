@@ -4,7 +4,7 @@
     <!-- ************************************************************ -->
 
     <hr />
-    <a class="back-link" href="<?php echo url_for('/staff/owners/index.php'); ?>">&laquo; Return to Search</a>
+    <a class="back-link" href="<?php echo url_for('/staff/owners/owner_index.php'); ?>">&laquo; Return to Menu</a>
     <hr />
 
     <?php if ($searching_history) 
