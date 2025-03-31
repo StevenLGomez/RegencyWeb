@@ -162,12 +162,11 @@
 
             </table>
 
-            <!-- Provide submit buttons specific for selected action -->
             <br />
-            <?php
+            <?php // <!-- Provide submit buttons specific for selected action -->
             if($edit_existing_owner)
             {
-                echo '<input type="submit" value="Apply Changes"/>';
+                echo '<input type="submit" name="apply_owner_changes" value="Apply Changes"/>';
             }
 
             if ($creating_new_owner)
@@ -181,6 +180,4 @@
 
         </div>
     </div>
-
-
 

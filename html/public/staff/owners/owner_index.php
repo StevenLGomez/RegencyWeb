@@ -6,7 +6,6 @@
     $page_title = 'Owner Management';
 
     // Variables to control actions requiring Full Owner Form
-    // $view_existing_owner = False;       // owner_form.php TBD
     // $edit_existing_owner = False;       // owner_form.php TBD
     // $display_new_owner = False;         // owner_index.php 
     // $last_name = '';
@@ -23,6 +22,7 @@
     $searching_history = False;
     $searching_owners = False;
     $creating_new_owner = False;
+    $view_existing_owner = False;          // owner_form.php TBD
 
     if (is_post_request())
     {
@@ -125,6 +125,17 @@
 
             echo 'Received edit_owner request for ID: ' . $owner_id;
         }
+
+        if (isset($_GET['apply_owner_changes'])) {
+            $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
+            // $full_owner_form_required = True;
+
+            $page_title = 'Apply Owner Changes';
+
+            $switch_action = 'ApplyOwnerChanges';
+
+            echo 'Received apply_owner_changes request for ID: ' . $owner_id;
+        }
     }
 
 ?>
@@ -153,6 +164,7 @@
         // CreateOwner
         // ViewOwnerDetail
         // EditOwnerDetail
+        // ApplyOwnerChanges
 
         switch ($switch_action)
         {
@@ -185,6 +197,10 @@
         case 'EditOwnerDetail':
             $edit_existing_owner = True;
             include('./owner_form.php'); 
+            break;
+
+        case 'ApplyOwnerChanges':
+            echo 'ApplyOwnerChanges';
             break;
 
         default:
