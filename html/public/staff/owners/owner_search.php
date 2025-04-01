@@ -27,7 +27,7 @@
                 View</a></td>
 
             <td><a class="action" href=
-                "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&edit_owner=1') ); ?>">
+                "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&edit_existing_owner=1') ); ?>">
                 Edit</a></td>
         </tr>
         <tr>

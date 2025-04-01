@@ -6,29 +6,28 @@
     $page_title = 'Owner Management';
 
     // Variables to control actions requiring Full Owner Form
-    // $view_existing_owner = False;       // owner_form.php TBD
     // $edit_existing_owner = False;       // owner_form.php TBD
-    $display_new_owner = False;         // owner_index.php 
-    $last_name = '';
+    // $display_new_owner = False;         // owner_index.php 
+    // $last_name = '';
 
     // Variables to control actions requiring Owner Information List
     // $owner_list_required = False;
     // $searching_history = False;
-    $lot_id = '';
+    // $lot_id = '';
+
+    // Variables to control actions requiring Owner Information List
+    // $owner_list_required = False;
+    // $full_owner_form_required = False;  // Edit, create or add owner
+    $searching_rentals = False;
+    $searching_history = False;
+    $searching_owners = False;
+    $creating_new_owner = False;
+    $view_existing_owner = False;          // owner_form.php TBD
 
     if (is_post_request())
     {
-        // Variables to control actions requiring Owner Information List
-        // $owner_list_required = False;
-        // $full_owner_form_required = False;  // Edit, create or add owner
-        $searching_rentals = False;
-        $searching_history = False;
-        $searching_owners = False;
-        $creating_new_owner = True;
-
         // Posted from owner_menu.php
         if (isset($_POST['search_last_name'])) {
-            // $searching_owners = True;
             $requested_name = $_POST['last_name'];
             $switch_action = 'SearchOwners';
 
@@ -36,16 +35,12 @@
         }
         // Posted from owner_form.php
         if (isset($_POST['create_owner'])) {
-            // $full_owner_form_required = True;
-            // $creating_new_owner = True;
             $switch_action = 'CreateOwner';
             $page_title = 'Create Owner';
         }
 
         // This group supports actions request from the Owner Form
         if (isset($_POST['add_owner_from_form'])) {
-            $full_owner_form_required = True;
-            $display_new_owner = True;
 
             // Read the values posted from the form (recreate a local copy of $owner)
             $owner = [];
@@ -92,8 +87,6 @@
 
         // Show Owner History - View By Address was selected
         if (isset($_POST['address_id'])) {
-            // $owner_list_required = True;
-            // $searching_history = True;
             $lot_id = $_POST['address_id'];
             $switch_action = 'ShowOwnerHistory';
             $page_title = 'History By Address';
@@ -101,8 +94,6 @@
 
         // Show Owner History - View By Lot was selected
         if (isset($_POST['lot_number'])) {
-            // $owner_list_required = True;
-            // $searching_history = True;
             $lot_id = $_POST['lot_number'];
             $switch_action = 'ShowOwnerHistory';
             $page_title = 'History By Lot';
@@ -115,9 +106,11 @@
 
         if (isset($_GET['view_owner'])) {
             $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
-            $full_owner_form_required = True;
+            // $full_owner_form_required = True;
 
             $page_title = 'View Owner Detail';
+
+            $switch_action = 'ViewOwnerDetail';
 
             echo 'Received view_owner request for ID: ' . $owner_id;
         }
@@ -128,18 +121,20 @@
 
             $page_title = 'Edit Owner Detail';
 
+            $switch_action = 'EditOwnerDetail';
+
             echo 'Received edit_owner request for ID: ' . $owner_id;
         }
 
+        if (isset($_GET['apply_owner_changes'])) {
+            $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
+            // $full_owner_form_required = True;
 
-        // var_dump($_GET);
-        // $id = isset($_GET['id']) ? $_GET['id'] : '0';  // PHP < 7.0
-        $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
+            $page_title = 'Apply Owner Changes';
 
-        if ($owner_id > 0)
-        {
-            $full_owner_form_required = True;
-            // $view_existing_owner = True;
+            $switch_action = 'ApplyOwnerChanges';
+
+            echo 'Received apply_owner_changes request for ID: ' . $owner_id;
         }
     }
 
@@ -167,6 +162,9 @@
         // ShowOwnerHistory
         // SearchOwners
         // CreateOwner
+        // ViewOwnerDetail
+        // EditOwnerDetail
+        // ApplyOwnerChanges
 
         switch ($switch_action)
         {
@@ -186,9 +184,23 @@
             break;
 
         case 'CreateOwner':
-            $full_owner_form_required = True;
+            // $full_owner_form_required = True;
             $creating_new_owner = True;
             include('./owner_form.php'); 
+            break;
+
+        case 'ViewOwnerDetail':
+            $view_existing_owner = True; 
+            include('./owner_form.php'); 
+            break;
+
+        case 'EditOwnerDetail':
+            $edit_existing_owner = True;
+            include('./owner_form.php'); 
+            break;
+
+        case 'ApplyOwnerChanges':
+            echo 'ApplyOwnerChanges';
             break;
 
         default:

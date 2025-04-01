@@ -26,15 +26,11 @@
 
     <hr />
     <a class="back-link" href="<?php echo url_for('/staff/owners/owner_index.php'); ?>">&laquo; Return to Menu</a>
-    <b>&nbsp;Owner ID#:&nbsp;</b> <?php echo htmlsc($owner['id']); ?>
     <hr />
 
-    <?php if($edit_existing_owner) { ?> 
-        <b>Property Address:&nbsp;</b> <?php echo $property_address; ?>
-        <br />
-        <b>Lot #:&nbsp;</b> <?php echo $fk_lot_id; ?>
-        <hr />
-    <?php } ?>
+    <?php if($view_existing_owner || $edit_existing_owner) {  
+        echo '<b>Property Address:</b> ' . $property_address . '&nbsp&nbsp <b>Owner ID:</b> ' . htmlsc($owner['id']);
+        } ?>
 
     <div id="content">
         <div id="regency-menu">
@@ -166,12 +162,11 @@
 
             </table>
 
-            <!-- Provide submit buttons specific for selected action -->
             <br />
-            <?php
+            <?php // <!-- Provide submit buttons specific for selected action -->
             if($edit_existing_owner)
             {
-                echo '<input type="submit" value="Apply Changes"/>';
+                echo '<input type="submit" name="apply_owner_changes" value="Apply Changes"/>';
             }
 
             if ($creating_new_owner)
@@ -185,6 +180,4 @@
 
         </div>
     </div>
-
-
 
