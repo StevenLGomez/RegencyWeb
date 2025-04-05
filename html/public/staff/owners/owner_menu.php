@@ -59,7 +59,7 @@
                 <div class="actions"> 
                     <label for "last_name">Last Name Segment</label>
                     <input type="text" name="last_name">
-                    <input type="submit" name="search_last_name" value="Search" />
+                    <input type="submit" name="search_by_last_name" value="Search" />
                 </div>
                 <!-- END The Last Name Entry Box -->
 
@@ -80,13 +80,13 @@
             </fieldset>
             <!-- ============================================================ -->
 
-            <!-- Form for Creating new owner ================================ -->
+            <!-- Form for Creating New Owner ================================ -->
             <fieldset>
             <form action="" method="post">
                 <h4>Create New Owner</h4>
 
                 <div class="actions"> 
-                    <input type="submit" name="create_owner" value="Create Owner" />
+                    <input type="submit" name="show_create_owner_form" value="Create Owner" />
                 </div>
             </form>
             </fieldset>

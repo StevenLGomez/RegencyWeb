@@ -5,19 +5,8 @@
 
     $page_title = 'Owner Management';
 
-    // Variables to control actions requiring Full Owner Form
-    // $edit_existing_owner = False;       // owner_form.php TBD
-    // $display_new_owner = False;         // owner_index.php 
-    // $last_name = '';
-
     // Variables to control actions requiring Owner Information List
     // $owner_list_required = False;
-    // $searching_history = False;
-    // $lot_id = '';
-
-    // Variables to control actions requiring Owner Information List
-    // $owner_list_required = False;
-    // $full_owner_form_required = False;  // Edit, create or add owner
     $searching_rentals = False;
     $searching_history = False;
     $searching_owners = False;
@@ -27,55 +16,34 @@
     if (is_post_request())
     {
         // Posted from owner_menu.php
-        if (isset($_POST['search_last_name'])) {
+        if (isset($_POST['search_by_last_name'])) {
             $requested_name = $_POST['last_name'];
             $switch_action = 'SearchOwners';
 
             $page_title = 'Owner Search';
         }
+
         // Posted from owner_form.php
-        if (isset($_POST['create_owner'])) {
-            $switch_action = 'CreateOwner';
+        if (isset($_POST['show_create_owner_form'])) {
+            $switch_action = 'ShowCreateOwnerForm';
             $page_title = 'Create Owner';
         }
 
-        // This group supports actions request from the Owner Form
-        if (isset($_POST['add_owner_from_form'])) {
+        if (isset($_POST['apply_owner_changes_button'])) {
+            $owner_id = $_POST['id'] ?? '0';  // PHP > 7.0
+            $switch_action = 'ApplyOwnerChanges';
+            $page_title = 'Apply Owner Changes';
 
-            // Read the values posted from the form (recreate a local copy of $owner)
-            $owner = [];
-            $owner['first'] = $_POST['first'] ?? '';
-            $owner['mi'] = $_POST['mi'] ?? '';
-            $owner['last'] = $_POST['last'] ?? '';
-            $owner['phone'] = $_POST['phone'] ?? '';
-            $owner['email'] = $_POST['email'] ?? '';
-            
-            $owner['first_2'] = $_POST['first_2'] ?? '';
-            $owner['mi_2'] = $_POST['mi_2'] ?? '';
-            $owner['last_2'] = $_POST['last_2'] ?? '';
-            $owner['phone_2'] = $_POST['phone_2'] ?? '';
-            $owner['email_2'] = $_POST['email_2'] ?? '';
-            
-            $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
-            $owner['buy_date'] = $_POST['buy_date'] ?? '';
-            $owner['is_current'] = $_POST['is_current'] ?? '';
-            $owner['is_rental'] = $_POST['is_rental'] ?? '';
-            $owner['owner_address'] = $_POST['owner_address'] ?? '';
-            $owner['owner_city'] = $_POST['owner_city'] ?? '';
-            $owner['owner_state'] = $_POST['owner_state'] ?? '';
-            $owner['owner_zip'] = $_POST['owner_zip'] ?? '';
-            $owner['owner_notes'] = $_POST['owner_notes'] ?? '';
+            // echo 'Entered buy_date: ' . $owner['buy_date'];
+            echo 'apply_owner_changes_button request for ID: ' . $owner_id;
+        }
 
-            $result = insert_new_owner($owner);
-            if ($result === True) {
-                echo 'Submit returned True';
-                $new_id = mysqli_insert_id($db);
-            }
-            else
-            {
-                echo 'Submit returned False';
-                $errors = $result;
-            }
+        // Posted from owner_form.php when the Add Owner button is pressed
+        if (isset($_POST['add_owner_form_completed_button'])) {
+            $switch_action = 'AddNewOwnerToDb';
+            $page_title = 'Review new Owner';
+
+
         }
         // End of group of actions requested from the Owner Form
 
@@ -104,37 +72,29 @@
     {
         var_dump($_GET);
 
-        if (isset($_GET['view_owner'])) {
+        if (isset($_GET['view_owner_button'])) {
             $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
-            // $full_owner_form_required = True;
-
+            $switch_action = 'ViewOwnerDetail';
             $page_title = 'View Owner Detail';
 
-            $switch_action = 'ViewOwnerDetail';
-
-            echo 'Received view_owner request for ID: ' . $owner_id;
+            echo 'view_owner_button was pressed for ID: ' . $owner_id;
         }
 
-        if (isset($_GET['edit_owner'])) {
+        if (isset($_GET['edit_owner_button'])) {
             $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
-            $full_owner_form_required = True;
-
+            $switch_action = 'EditOwnerDetail';
             $page_title = 'Edit Owner Detail';
 
-            $switch_action = 'EditOwnerDetail';
-
-            echo 'Received edit_owner request for ID: ' . $owner_id;
+            echo 'edit_owner_button was pressed for ID: ' . $owner_id;
         }
 
-        if (isset($_GET['apply_owner_changes'])) {
+        if (isset($_GET['apply_owner_changes_button'])) {
             $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
-            // $full_owner_form_required = True;
-
+            $switch_action = 'ApplyOwnerChanges';
             $page_title = 'Apply Owner Changes';
 
-            $switch_action = 'ApplyOwnerChanges';
-
-            echo 'Received apply_owner_changes request for ID: ' . $owner_id;
+            // echo 'Entered buy_date: ' . $owner['buy_date'];
+            echo 'apply_owner_changes_button request for ID: ' . $owner_id;
         }
     }
 
@@ -156,16 +116,6 @@
 
         <?php
 
-        // Implemented Cases:
-        //
-        // ViewRentals
-        // ShowOwnerHistory
-        // SearchOwners
-        // CreateOwner
-        // ViewOwnerDetail
-        // EditOwnerDetail
-        // ApplyOwnerChanges
-
         switch ($switch_action)
         {
         case 'ViewRentals':
@@ -183,8 +133,7 @@
             include('./owner_search.php'); 
             break;
 
-        case 'CreateOwner':
-            // $full_owner_form_required = True;
+        case 'ShowCreateOwnerForm':
             $creating_new_owner = True;
             include('./owner_form.php'); 
             break;
@@ -200,7 +149,51 @@
             break;
 
         case 'ApplyOwnerChanges':
-            echo 'ApplyOwnerChanges';
+            $view_existing_owner = True; 
+            include('./owner_form.php'); 
+            break;
+
+        case 'AddNewOwnerToDb':
+
+            $view_existing_owner = True; 
+            // Read the values posted from the form (recreate a local copy of $owner)
+            $owner = [];
+            $owner['first'] = $_POST['first'] ?? '';
+            $owner['mi'] = $_POST['mi'] ?? '';
+            $owner['last'] = $_POST['last'] ?? '';
+            $owner['phone'] = $_POST['phone'] ?? '';
+            $owner['email'] = $_POST['email'] ?? '';
+            
+            $owner['first_2'] = $_POST['first_2'] ?? '';
+            $owner['mi_2'] = $_POST['mi_2'] ?? '';
+            $owner['last_2'] = $_POST['last_2'] ?? '';
+            $owner['phone_2'] = $_POST['phone_2'] ?? '';
+            $owner['email_2'] = $_POST['email_2'] ?? '';
+            
+            $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
+            $owner['buy_date'] = $_POST['buy_date'] ?? '';
+            $owner['is_current'] = $_POST['is_current'] ?? '';
+            $owner['is_rental'] = $_POST['is_rental'] ?? '';
+            $owner['owner_address'] = $_POST['owner_address'] ?? '';
+            $owner['owner_city'] = $_POST['owner_city'] ?? '';
+            $owner['owner_state'] = $_POST['owner_state'] ?? '';
+            $owner['owner_zip'] = $_POST['owner_zip'] ?? '';
+            $owner['owner_notes'] = $_POST['owner_notes'] ?? '';
+
+            $result = insert_new_owner($owner);
+            if ($result === True) {
+                // echo 'Submit returned True';
+                $new_id = mysqli_insert_id($db);
+            }
+            else
+            {
+                echo 'Submit returned False';
+                $errors = $result;
+            }
+
+            $owner_id = $new_id; 
+
+            include('./owner_form.php'); 
             break;
 
         default:

@@ -46,7 +46,7 @@
       $errors = validate_owner($owner);
       if(!empty($errors))
       {
-          // return $errors;
+          return $errors;
       }
 
       // Insert logic to remove all previous 'current owner' tags if this addition
@@ -100,10 +100,7 @@
       $sql .= "'" . db_escape($db, $owner['is_rental']) . "'";
       $sql .= ");";
 
-      echo $sql;
-
-      //return $sql;
-      //exit;
+      // echo $sql;
 
       // For INSERT statements $result is True or False
       $result = mysqli_query($db, $sql);
