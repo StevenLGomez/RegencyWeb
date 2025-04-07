@@ -23,11 +23,11 @@
         <tr>
             <td><b>ID:</b> <?php echo $owner['id']; ?></td>
             <td><a class="action" href=
-                "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&view_owner=1') ); ?>">
+                "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&view_owner_button=1') ); ?>">
                 View</a></td>
 
             <td><a class="action" href=
-                "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&edit_existing_owner=1') ); ?>">
+                "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&edit_owner_button=1') ); ?>">
                 Edit</a></td>
         </tr>
         <tr>

@@ -166,12 +166,12 @@
             <?php // <!-- Provide submit buttons specific for selected action -->
             if($edit_existing_owner)
             {
-                echo '<input type="submit" name="apply_owner_changes" value="Apply Changes"/>';
+                echo '<input type="submit" name="apply_owner_changes_button" value="Apply Changes"/>';
             }
 
             if ($creating_new_owner)
             {
-                echo '<input type="submit" name="add_owner_from_form" value="Add Owner"/>';
+                echo '<input type="submit" name="add_owner_form_completed_button" value="Add Owner"/>';
             }
             ?>
 
