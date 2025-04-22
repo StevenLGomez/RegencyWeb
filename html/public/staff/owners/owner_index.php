@@ -15,6 +15,8 @@
 
     if (is_post_request())
     {
+        var_dump($_POST);
+
         // Posted from owner_menu.php
         if (isset($_POST['search_by_last_name'])) {
             $requested_name = $_POST['last_name'];
@@ -30,12 +32,12 @@
         }
 
         if (isset($_POST['apply_owner_changes_button'])) {
-            $owner_id = $_POST['id'] ?? '0';  // PHP > 7.0
+            global $edited_owner_id;
+            $owner_id = $edited_owner_id;
             $switch_action = 'ApplyOwnerChanges';
             $page_title = 'Apply Owner Changes';
 
-            // echo 'Entered buy_date: ' . $owner['buy_date'];
-            echo 'apply_owner_changes_button request for ID: ' . $owner_id;
+            echo 'apply_owner_changes_button requested for ID: ' . $owner_id;
         }
 
         // Posted from owner_form.php when the Add Owner button is pressed
@@ -43,9 +45,7 @@
             $switch_action = 'AddNewOwnerToDb';
             $page_title = 'Review new Owner';
 
-
         }
-        // End of group of actions requested from the Owner Form
 
         // This group requires the queried list of owner information
         if (isset($_POST['view_rentals'])) {
@@ -88,14 +88,6 @@
             echo 'edit_owner_button was pressed for ID: ' . $owner_id;
         }
 
-        if (isset($_GET['apply_owner_changes_button'])) {
-            $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
-            $switch_action = 'ApplyOwnerChanges';
-            $page_title = 'Apply Owner Changes';
-
-            // echo 'Entered buy_date: ' . $owner['buy_date'];
-            echo 'apply_owner_changes_button request for ID: ' . $owner_id;
-        }
     }
 
 ?>

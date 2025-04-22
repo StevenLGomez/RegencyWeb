@@ -21,6 +21,13 @@
 
             // $property_set can be cleared, result is in $property_address
             mysqli_free_result($property_set);
+
+            // If editing an owner, remember the owner ID in a global variable
+            if ($edit_existing_owner)
+            {
+                $edited_owner_id =  $owner['id'];
+                // global $edited_owner_id;
+            }
         }
     ?>
 
@@ -29,6 +36,7 @@
     <hr />
 
     <?php if($view_existing_owner || $edit_existing_owner) {  
+        // Display this information if this owner already exists
         echo '<b>Property Address:</b> ' . $property_address . '&nbsp&nbsp <b>Owner ID:</b> ' . htmlsc($owner['id']);
         } ?>
 
