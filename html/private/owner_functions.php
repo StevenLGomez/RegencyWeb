@@ -40,7 +40,7 @@
     return $result;
   }
 
-  function insert_new_owner($owner) {
+  function create_new_owner($owner) {
       global $db;
 
       $errors = validate_owner($owner);

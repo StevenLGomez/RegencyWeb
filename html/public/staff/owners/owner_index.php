@@ -172,7 +172,7 @@
             $owner['owner_zip'] = $_POST['owner_zip'] ?? '';
             $owner['owner_notes'] = $_POST['owner_notes'] ?? '';
 
-            $result = insert_new_owner($owner);
+            $result = create_new_owner($owner);
             if ($result === True) {
                 // echo 'Submit returned True';
                 $new_id = mysqli_insert_id($db);
