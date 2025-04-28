@@ -22,12 +22,6 @@
             // $property_set can be cleared, result is in $property_address
             mysqli_free_result($property_set);
 
-            // If editing an owner, remember the owner ID in a global variable
-            if ($edit_existing_owner)
-            {
-                $edited_owner_id =  $owner['id'];
-                // global $edited_owner_id;
-            }
         }
     ?>
 
@@ -44,12 +38,24 @@
         <div id="regency-menu">
 
         <form action="" method="post">
+
             <table class="list">
 
                 <!-- =========================================================== -->
                 <!-- Start of Primary Owner section                              -->
+
                 <th>Primary Owner</th>
-                <th></th>
+                <?php if($view_existing_owner || $edit_existing_owner) {  
+                    // Include the ID of the current table row as hidden element
+                    // it is required in the $_POST so that the correct ID is used
+                    // when updating the DB table 
+                    ?>
+                    <th><input type="hidden" name="id" value="<?php echo htmlsc($owner['id']); ?>"</th>
+                <?php }
+                else
+                {
+                    echo "<th></th>";
+                } ?>
 
                 <tr>
                     <td><b>First Name</b></td>

@@ -32,8 +32,9 @@
         }
 
         if (isset($_POST['apply_owner_changes_button'])) {
-            global $edited_owner_id;
-            $owner_id = $edited_owner_id;
+            // global $edited_owner_id;
+            // $owner_id = $edited_owner_id;
+            $owner_id = $_POST['id'];
             $switch_action = 'ApplyOwnerChanges';
             $page_title = 'Apply Owner Changes';
 
@@ -92,7 +93,7 @@
 
 ?>
     <!-- ================================================================ -->
-    <!-- PHP logic ends here                                              -->
+    <!-- $_GET & $_POST logic ends here                                   -->
     <!-- ================================================================ -->
 
     <!-- ================================================================ -->
@@ -141,13 +142,39 @@
             break;
 
         case 'ApplyOwnerChanges':
+
+            // Read the values posted from the form (recreate a local copy of $owner)
+            $owner = [];
+            $owner['first'] = $_POST['first'] ?? '';
+            $owner['mi'] = $_POST['mi'] ?? '';
+            $owner['last'] = $_POST['last'] ?? '';
+            $owner['phone'] = $_POST['phone'] ?? '';
+            $owner['email'] = $_POST['email'] ?? '';
+            
+            $owner['first_2'] = $_POST['first_2'] ?? '';
+            $owner['mi_2'] = $_POST['mi_2'] ?? '';
+            $owner['last_2'] = $_POST['last_2'] ?? '';
+            $owner['phone_2'] = $_POST['phone_2'] ?? '';
+            $owner['email_2'] = $_POST['email_2'] ?? '';
+            
+            $owner['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
+            $owner['buy_date'] = $_POST['buy_date'] ?? '';
+            $owner['is_current'] = $_POST['is_current'] ?? '';
+            $owner['is_rental'] = $_POST['is_rental'] ?? '';
+            $owner['owner_address'] = $_POST['owner_address'] ?? '';
+            $owner['owner_city'] = $_POST['owner_city'] ?? '';
+            $owner['owner_state'] = $_POST['owner_state'] ?? '';
+            $owner['owner_zip'] = $_POST['owner_zip'] ?? '';
+            $owner['owner_notes'] = $_POST['owner_notes'] ?? '';
+
+            update_existing_owner($owner_id, $owner);
+
             $view_existing_owner = True; 
             include('./owner_form.php'); 
             break;
 
         case 'AddNewOwnerToDb':
 
-            $view_existing_owner = True; 
             // Read the values posted from the form (recreate a local copy of $owner)
             $owner = [];
             $owner['first'] = $_POST['first'] ?? '';
@@ -185,6 +212,7 @@
 
             $owner_id = $new_id; 
 
+            $view_existing_owner = True; 
             include('./owner_form.php'); 
             break;
 
