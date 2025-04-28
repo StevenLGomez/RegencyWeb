@@ -118,6 +118,10 @@
       }
   }
 
+  function update_existing_owner($id, $owner) {
+      echo 'function update_existing_owner, owner ID: ' . $id;
+  }
+
   function generate_mail_merge_csv() {
 
       global $db;
