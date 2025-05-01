@@ -120,6 +120,79 @@
 
   function update_existing_owner($id, $owner) {
       echo 'function update_existing_owner, owner ID: ' . $id;
+      global $db;
+
+      $errors = validate_owner($owner);
+      if(!empty($errors))
+      {
+          return $errors;
+      }
+
+      // Insert logic to remove all previous 'current owner' tags if this addition
+      // is the new 'current owner'.
+      if ($owner['is_current'] == 1)
+      {
+          $sql = "UPDATE owner ";
+          $sql .= "SET is_current = 0 ";
+          $sql .= "WHERE fk_lot_id = ";
+          $sql .= db_escape($db, (int)$owner['fk_lot_id']);
+          $sql .= ";";
+
+          $is_current_result = mysqli_query($db, $sql);
+
+          if ($is_current_result) {
+              echo 'Clearing of old is_current succeded';
+          }
+          else
+          {
+              // Cleanup failed !
+              echo 'Clearing is_current Failed :(';
+              echo mysqli_error($db);
+              db_disconnect($db);
+              exit;
+          }
+      }
+
+      // Create UPDATE query for these modifications
+      $sql = "UPDATE owner SET ";
+      $sql .=  "first = '" . db_escape($db, $owner['first']) . "'";
+      $sql .= ",mi = '" . db_escape($db, $owner['mi']) . "'";
+      $sql .= ",last = '" . db_escape($db, $owner['last']) . "'";
+      $sql .= ",first_2 = '" . db_escape($db, $owner['first_2']) . "'";
+      $sql .= ",mi_2 = '" . db_escape($db, $owner['mi_2']) . "'";
+      $sql .= ",last_2 = '" . db_escape($db, $owner['last_2']) . "'";
+      $sql .= ",phone = '" . db_escape($db, $owner['phone']) . "'";
+      $sql .= ",email = '" . db_escape($db, $owner['email']) . "'";
+      $sql .= ",phone_2 = '" . db_escape($db, $owner['phone_2']) . "'";
+      $sql .= ",email_2 = '" . db_escape($db, $owner['email_2']) . "'";
+      $sql .= ",buy_date = '" . db_escape($db, $owner['buy_date']) . "'";
+      $sql .= ",is_current = '" . db_escape($db, $owner['is_current']) . "'";
+      $sql .= ",is_rental = '" . db_escape($db, $owner['is_rental']) . "'";
+
+      $sql .= ",owner_address = '" . db_escape($db, $owner['owner_address']) . "'";
+      $sql .= ",owner_city = '" . db_escape($db, $owner['owner_city']) . "'";
+      $sql .= ",owner_state = '" . db_escape($db, $owner['owner_state']) . "'";
+      $sql .= ",owner_zip = '" . db_escape($db, $owner['owner_zip']) . "'";
+
+      $sql .= ",owner_notes = '" . db_escape($db, $owner['owner_notes']) . "'";
+
+      $sql .= "WHERE id = " . db_escape($db, (int)$owner['id']);
+      $sql .= ";";
+
+      echo $sql;
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
   function generate_mail_merge_csv() {

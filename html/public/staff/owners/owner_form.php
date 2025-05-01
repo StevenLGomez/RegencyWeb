@@ -46,7 +46,7 @@
 
                 <th>Primary Owner</th>
                 <?php if($view_existing_owner || $edit_existing_owner) {  
-                    // Include the ID of the current table row as hidden element
+                    // Include the ID of the current table row as a hidden element.
                     // it is required in the $_POST so that the correct ID is used
                     // when updating the DB table 
                     ?>
@@ -125,8 +125,8 @@
                 </tr>
 
                 <tr>
-                    <td><b>Purchased (YYYY-MM-DD)</b></td>
-                    <td><input type="text" name="buy_date" value="<?php echo htmlsc($owner['buy_date']); ?>" /></td>
+                    <td><b>Purchase Date (YYYY-MM-DD)</b></td>
+                    <td><input type="text" placeholder="YYYY-MM-DD" name="buy_date" value="<?php echo htmlsc($owner['buy_date']); ?>" /></td>
                 </tr>
 
                 <tr>
@@ -177,7 +177,7 @@
             </table>
 
             <br />
-            <?php // <!-- Provide submit buttons specific for selected action -->
+            <?php // <!-- Provide submit buttons specific to selected action -->
             if($edit_existing_owner)
             {
                 echo '<input type="submit" name="apply_owner_changes_button" value="Apply Changes"/>';

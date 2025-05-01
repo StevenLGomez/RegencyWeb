@@ -15,7 +15,7 @@
 
     if (is_post_request())
     {
-        var_dump($_POST);
+        // var_dump($_POST);
 
         // Posted from owner_menu.php
         if (isset($_POST['search_by_last_name'])) {
@@ -71,7 +71,7 @@
 
     if (is_get_request())
     {
-        var_dump($_GET);
+        // var_dump($_GET);
 
         if (isset($_GET['view_owner_button'])) {
             $owner_id = $_GET['id'] ?? '0';  // PHP > 7.0
@@ -90,15 +90,9 @@
         }
 
     }
+    // $_GET & $_POST logic ends here
 
 ?>
-    <!-- ================================================================ -->
-    <!-- $_GET & $_POST logic ends here                                   -->
-    <!-- ================================================================ -->
-
-    <!-- ================================================================ -->
-    <!-- HTML code begins here                                            -->
-    <!-- ================================================================ -->
 
     <!-- Include HTML header here, NOTE $page_title must be defined first -->
     <?php include(SHARED_PATH . '/header.php'); ?>
@@ -171,6 +165,7 @@
 
             $view_existing_owner = True; 
             include('./owner_form.php'); 
+
             break;
 
         case 'AddNewOwnerToDb':
