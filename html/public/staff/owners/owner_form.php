@@ -150,22 +150,22 @@
 
                 <tr>
                     <td><b>Owner Address</b></td>
-                    <td><input type="text" name="owner_address" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['owner_address']);} ?>" /></td>
+                    <td><input type="text" name="owner_address" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['address']);} ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Owner City</b></td>
-                    <td><input type="text" name="owner_city" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['owner_city']);} ?>" /></td>
+                    <td><input type="text" name="owner_city" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['city']);} ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Owner State</b></td>
-                    <td><input type="text" name="owner_state" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['owner_state']);} ?>" /></td>
+                    <td><input type="text" name="owner_state" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['state']);} ?>" /></td>
                 </tr>
 
                 <tr>
                     <td><b>Owner Zip</b></td>
-                    <td><input type="text" name="owner_zip" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['owner_zip']);} ?>" /></td>
+                    <td><input type="text" name="owner_zip" value="<?php if($owner['is_rental'] == "1") {echo htmlsc($owner['zip']);} ?>" /></td>
                 </tr>
 
                 <tr>
