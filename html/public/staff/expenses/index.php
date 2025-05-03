@@ -60,7 +60,7 @@
                 // Expense categories: 2 (mowing) -> 9 (supplies)
 
                 $start_year = 2004;   // First year included in original database conversions.
-                $latest_year = 2024;  // Current year  TODO investigate method to automate this date.
+                $latest_year = 2025;  // Current year  TODO investigate method to automate this date.
 
                 ?>
 
