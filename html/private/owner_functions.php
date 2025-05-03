@@ -29,7 +29,7 @@
     return $result;
   }
 
-  function search_renting_owners() {
+  function search_rental_properties() {
     global $db;
 
     $sql = "SELECT * FROM owner ";
