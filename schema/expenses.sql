@@ -67,4 +67,6 @@ INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
     ('2025-04-07', 1309, 'State Farm',                 1634.00,   4, 'Liability Insurance'),
     ('2025-04-15',    0, 'Postmaster',                  268.00,   5, 'PO Box auto renewal (debit)');
 
+INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
+    ('2025-05-03', 0, 'Stripe Force Landscapes',       125.00,   2, 'Mowing (debit)');
 
