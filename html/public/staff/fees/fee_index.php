@@ -5,8 +5,18 @@
 
       $page_title = 'Fee Management';
 
-      $subject_set = find_all_fees();
+      if (is_post_request())
+      {
+          var_dump($_POST);
 
+        // Show Owner History - View By Lot was selected
+        if (isset($_POST['lot_number'])) {
+            $lot_id = $_POST['lot_number'];
+            $switch_action = 'ShowOwnerHistory';
+            $page_title = 'History By Lot';
+        }
+
+      }
 ?>
 
 <?php include(SHARED_PATH . '/header.php'); ?>
@@ -16,8 +26,25 @@
             <?php echo '<h2>' . $page_title . '</h2>'; ?>
 
 
+            <?php
+
+            switch ($switch_action)
+            {
+            case 'DoSomethingCool':
+                echo "Doing something cool\n";
+                break;
+
+            default:
+                include('./fee_menu.php');
+
+            }
+            ?>
+
 
             <!-- Original content -->
+            <hr />
+            <hr />
+            <hr />
             <hr />
             <div class="actions"> 
                 <a class="action" href="<?php echo url_for('/staff/fees/index.php'); ?>">Create New Fee Entry</a>
@@ -37,7 +64,8 @@
                     <th>&nbsp</th>
                 </tr>
 
-                <?php while($subject = mysqli_fetch_assoc($subject_set)) { ?>
+                <?php $fee_set = find_all_fees(); ?>
+                <?php while($subject = mysqli_fetch_assoc($fee_set)) { ?>
 
                     <tr>
                         <td><?php echo htmlsc($subject['id']); ?></td>
@@ -55,7 +83,7 @@
 
             </table>
 
-            <?php mysqli_free_result($subject_set); ?>
+            <?php mysqli_free_result($fee_set); ?>
 
         </div>
     </div>

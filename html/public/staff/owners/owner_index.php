@@ -78,7 +78,7 @@
             $switch_action = 'ViewOwnerDetail';
             $page_title = 'View Owner Detail';
 
-            echo 'view_owner_button was pressed for ID: ' . $owner_id;
+            // echo 'view_owner_button was pressed for ID: ' . $owner_id;
         }
 
         if (isset($_GET['edit_owner_button'])) {
@@ -86,7 +86,7 @@
             $switch_action = 'EditOwnerDetail';
             $page_title = 'Edit Owner Detail';
 
-            echo 'edit_owner_button was pressed for ID: ' . $owner_id;
+            // echo 'edit_owner_button was pressed for ID: ' . $owner_id;
         }
 
     }
