@@ -1,4 +1,6 @@
+
 <?php
+
 function url_for($script_path)
 {
     // add the leading '/' if not present

@@ -1,15 +1,23 @@
 
-<?php require_once('../../../private/initialize.php'); ?>
+<?php 
+      require_once('../../../private/initialize.php'); 
+      require_once('../../../private/fee_functions.php');
 
-<?php $subject_set = find_all_fees(); ?>
+      $page_title = 'Fee Management';
 
-<?php $page_title = 'Manage Fees'; ?>
+      $subject_set = find_all_fees();
+
+?>
+
 <?php include(SHARED_PATH . '/header.php'); ?>
 
     <div id="content">
         <div id="regency-menu">
-            <h2>Fee History</h2>
+            <?php echo '<h2>' . $page_title . '</h2>'; ?>
 
+
+
+            <!-- Original content -->
             <hr />
             <div class="actions"> 
                 <a class="action" href="<?php echo url_for('/staff/fees/index.php'); ?>">Create New Fee Entry</a>
