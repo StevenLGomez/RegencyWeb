@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2025 at 04:25 PM
+-- Generation Time: May 14, 2025 at 01:28 PM
 -- Server version: 10.3.17-MariaDB
 -- PHP Version: 7.4.11
 
@@ -272,7 +272,9 @@ INSERT INTO `deposit` (`id`, `fk_cat_id`, `dt`, `is_reconciled`, `amount`, `note
 (153, NULL, '2024-12-03', 0, '400.00', NULL, NULL, NULL),
 (154, NULL, '2024-12-11', 0, '240.00', NULL, NULL, NULL),
 (155, NULL, '2025-01-08', 0, '240.00', NULL, NULL, NULL),
-(156, NULL, '2025-02-06', 0, '160.00', NULL, NULL, NULL);
+(156, NULL, '2025-02-06', 0, '160.00', NULL, NULL, NULL),
+(157, NULL, '2025-05-07', 0, '40.00', NULL, NULL, NULL),
+(158, NULL, '2025-05-12', 0, '200.00', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -578,7 +580,8 @@ INSERT INTO `expense` (`id`, `fk_cat_id`, `dt`, `ck_no`, `payee`, `amount`, `not
 (283, 5, '2024-10-23', 0, 'Postmaster', '48.40', 'Registered Letters (debit)'),
 (285, 2, '2024-12-20', 0, 'Stripe Force Landscapes', '1375.00', '11 mowings @ $125 (debit)'),
 (288, 4, '2025-04-07', 1309, 'State Farm', '1634.00', 'Liability Insurance'),
-(289, 5, '2025-04-15', 0, 'Postmaster', '268.00', 'PO Box auto renewal (debit)');
+(289, 5, '2025-04-15', 0, 'Postmaster', '268.00', 'PO Box auto renewal (debit)'),
+(291, 2, '2025-05-03', 0, 'Stripe Force Landscapes', '125.00', 'Mowing (debit)');
 
 -- --------------------------------------------------------
 
@@ -1878,7 +1881,9 @@ INSERT INTO `fees` (`id`, `dt`, `ck_no`, `amount`, `fk_lot_id`, `fk_deposit_id`,
 (1570, '2024-12-20', 1001, '80.00', 62, 155, '', 'Gardiner'),
 (1574, '2025-01-06', 135, '40.00', 3, 156, '', 'Blackledge'),
 (1575, '2025-01-07', 5090, '40.00', 51, 156, '', 'Petrillo'),
-(1576, '2025-02-04', 290, '80.00', 60, 156, '', 'Donihue');
+(1576, '2025-02-04', 290, '80.00', 60, 156, '', 'Donihue'),
+(1578, '2025-04-25', 166326, '40.00', 38, 157, 'Investors Title FILE 784780', 'Title Company'),
+(1580, '2025-05-10', 0, '200.00', 43, 158, 'Cash Payment', 'Daugherty');
 
 -- --------------------------------------------------------
 
@@ -2061,7 +2066,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (54, 34, 'Huso', '', 'Osmankovic', 'Minka', '', 'Osmankovic', '3258 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2005-06-03', 0, NULL, NULL),
 (55, 34, 'Chris', '', 'Gunn', 'Katrina', '', 'Gunn', '3258 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL),
 (56, 34, '', '', 'Security Title Insurance Agency LLC', '', '', '', '3258 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL),
-(57, 35, 'Steven', 'L', 'Gomez', '', '', '', '3256 Hyatt Court', 'Saint Peters', 'MO', '63303', '636-448-2015', 'steve_gomez@usa.net', NULL, NULL, '1990-01-01', 1, NULL, 'Need to update purchase date.'),
+(57, 35, 'Steven', 'L', 'Gomez', '', '', '', '', '', '', '', '636-448-2015', 'steve_gomez@usa.net', '', '', '2001-06-01', 1, 0, 'Need to update purchase date.'),
 (58, 36, 'Kris', '', 'Hristova', '', '', '', '3254 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, 'krishristova0@gmail.com', NULL, NULL, '2005-03-15', 1, NULL, NULL),
 (59, 36, 'Jeremy', '', 'Johnston', 'Jessica', '', 'Johnston', '3254 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, '', NULL, NULL, NULL, 0, NULL, NULL),
 (60, 37, 'Lester', 'L', 'Luketin', 'Ida', 'J', 'Luketin', '3252 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, 'idaluketin@sbcglobal.net', NULL, NULL, '1990-01-01', 1, NULL, NULL),
@@ -2149,7 +2154,7 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (142, 24, 'Matthew', '', 'Menendez', 'Caroline', 'K', 'Menendez', '3278 Hyatt Court', 'Saint Peters', 'MO', '63303', NULL, NULL, NULL, NULL, '2017-12-14', 0, NULL, NULL),
 (143, 55, 'David', '', 'Whitlock', 'Jessica', '', 'Whitlock', '1848 Char Street', 'Arnold', 'MO', '63028', NULL, 'mrdavidwhitlock@gmail.com', NULL, NULL, '2018-03-16', 0, NULL, NULL),
 (144, 68, 'Clifford', 'D', 'Gibson', 'Bridget', 'A', 'Roth', '1409 Westin Drive', 'Saint Peters', 'MO', '63303', '636-295-0723', 'gibsoncg1@gmail.com', NULL, 'broth137@gmail.com', '2018-04-09', 1, NULL, NULL),
-(145, 43, 'Melinda', '', 'Daugherty', '', '', '', '1424 Westin', 'Saint Peters', 'MO', '63303', '', NULL, NULL, NULL, '2019-06-24', 1, NULL, NULL),
+(145, 43, 'Melinda', '', 'Daugherty', 'Mike', '', 'McMeans', '', '', '', '', '314-624-7329', 'mindydaugherty@yahoo.com', '314-478-9155', '', '2019-06-24', 1, 0, ''),
 (146, 30, 'Rachel', 'Marie', 'Mizera', 'Benjamin', 'Joseph', 'Mizera', '3266 Hyatt Court', 'Saint Peters', 'MO', '63303', '636-699-0935', 'rachelhunt710@gmail.com', '', '', '2019-06-12', 1, NULL, NULL),
 (147, 31, 'Frank', '', 'Degenhardt', '', '', '', '3264 Hyatt Court', 'Saint Peters', 'MO', '63303', '', 'degenhardt.frank@yahoo.com', '', '', '2019-06-13', 1, NULL, NULL),
 (148, 58, 'Benjamin', '', 'Suntrup', 'Courtney', '', 'Suntrup', '3275 Hyatt Court', 'Saint Peters', 'MO', '63303', '', 'ben.suntrup@gmail.com', '', '', '2019-08-16', 0, NULL, NULL),
@@ -2186,8 +2191,9 @@ INSERT INTO `owner` (`id`, `fk_lot_id`, `first`, `mi`, `last`, `first_2`, `mi_2`
 (195, 58, 'Jamie', 'M', 'Purnell', 'Tyler', 'L', 'Purnell', '', '', '', '', '', '', '', '', '2022-08-02', 1, 0, NULL),
 (196, 62, 'Robert', 'A', 'Gardiner', 'Lindsay', '', 'Gardiner', '', '', '', '', '314-805-1253', 'rgardiner0117@gmail.com', '', '', '2022-09-26', 1, 0, NULL),
 (197, 43, 'Debbie', '', 'Imboden', '', '', '', '', '', '', '', '', '', '', '', '2003-09-15', 0, 0, NULL),
-(198, 35, '', '', 'Lincoln', '', '', '', '', '', '', '', '', '', '', '', '2024-01-01', 0, 0, NULL),
-(199, 38, 'Milko', '', 'Buzov', 'Krasimira', '', 'Buzova', '', '', '', '', '636-725-9600', 'Milko777@icloud.com', '', '', '2025-04-25', 1, 0, NULL);
+(198, 35, 'Michael', 'R', 'Wehrli', 'Dana', 'C', 'Wehrli', '', '', '', '', '', '', '', '', '1999-06-01', 0, 0, ''),
+(199, 38, 'Milko', '', 'Buzov', 'Krasimira', '', 'Buzova', '', '', '', '', '636-725-9600', 'Milko777@icloud.com', '', '', '2025-04-25', 1, 0, NULL),
+(200, 35, 'Greg', '', 'Vossenkemper', 'Amy', '', 'Vossenkemper', '', '', '', '', '', '', '', '', '1996-07-01', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -2290,13 +2296,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=290;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=292;
 
 --
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1577;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1581;
 
 --
 -- AUTO_INCREMENT for table `lot`
@@ -2308,7 +2314,7 @@ ALTER TABLE `lot`
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 
 --
 -- Constraints for dumped tables
