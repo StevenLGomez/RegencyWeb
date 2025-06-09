@@ -27,12 +27,6 @@ __Actions Supported: public/staff/owners/index.php__
 |                         | input type="submit"    | name=**"create_owner"**       | (Button) value="Add"             |
 |                         |                        |                               |                                  |
 
----
-
-__Owner Workflow__
-
-
-
 
 
 ---
@@ -72,11 +66,131 @@ __Create Owner Form Layout__
 ---
 
 
+__Owner Workflow__
+
+__Owner Pages workflow__
+
+| __owner_index.php__     |                        |                               |                     |                   |    |
+| :----------             | :-------               | :---                          | :---                | :---              | :--- |
+|                         |                        |                               |                     |                   |      |
+| __$\_POST__             | YES --->               | 'search_by_last_name'         | YES                 | $switch_action    |      |
+| NO                      |                        | NO                            |                     | 'Search Owners'   |      |
+| |                       |                        | |                             |                     |                   |      |
+| |                       |                        | |                             |                     | $page_title       |      |
+| |                       |                        | |                             |                     | 'Owner Search'    |      |
+| |                       |                        | V                             |                     |                   |      |
+| |                       |                        | 'show_create_owner_form'      | YES                 | $switch_action    |      |
+| |                       |                        | NO                            |                     | 'ShowCreateOwnerForm' |      |
+| |                       |                        | |                             |                     |                   |      |
+| |                       |                        | |                             |                     | $page_title       |      |
+| |                       |                        | |                             |                     | 'Create Owner'    |      |
+| |                       |                        | V                             |                     |                   |      |
+| |                       |                        | 'apply_owner_changes_button'  | YES                 | $switch_action    |      |
+| |                       |                        | NO                            |                     | 'ApplyOwnerChanges' |      |
+| |                       |                        | |                             |                     |                   |      |
+| |                       |                        | |                             |                     | $page_title       |      |
+| |                       |                        | |                             |                     | 'Apply Owner Changes' |      |
+| |                       |                        | V                             |                     |                   |      |
+| |                       |                        | 'add_owner_complete_button'   | YES                 | $switch_action    |      |
+| |                       |                        | NO                            |                     | 'AddNewOwnerToDB' |      |
+| |                       |                        | |                             |                     |                   |      |
+| |                       |                        | |                             |                     | $page_title       |      |
+| |                       |                        | |                             |                     | 'Review New Owner' |      |
+| |                       |                        | V                             |                     |                   |      |
+| |                       |                        | 'view_rentals'                | YES                 | $switch_action    |      |
+| |                       |                        | NO                            |                     | 'ViewRentals'     |      |
+| |                       |                        | |                             |                     |                   |      |
+| |                       |                        | |                             |                     | $page_title       |      |
+| |                       |                        | |                             |                     | 'Rental Properties' |      |
+| |                       |                        | V                             |                     |                   |      |
+| |                       |                        | 'address_id'                  | YES                 | $switch_action    |      |
+| |                       |                        | NO                            |                     | 'ShowOwnerHistory" |      |
+| |                       |                        | |                             |                     |                   |      |
+| |                       |                        | |                             |                     | $page_title       |      |
+| |                       |                        | |                             |                     | 'History By Address' |      |
+| |                       |                        | V                             |                     |                   |      |
+| |                       |                        | 'lot_number'                  | YES                 | $switch_action    |      |
+| |                       |                        | NO                            |                     | 'ShowOwnerHistory" |      |
+| |                       |                        | |                             |                     |                   |      |
+| |                       |                        | |                             |                     | $page_title       |      |
+| |                       |                        | |                             |                     | 'History By Lot'  |      |
+| |                       |                        | |                             |                     |                   |      |
+| |                       |                        | > --->                        | ---->               | --->              | ---V |
+| |                       |                        |                               |                     |                   |      |
+| V                       |                        |                               |                     |                   |      |
+| $\_GET                  | YES --->               | 'view_owner_button'           | YES                 | $switch_action    |      |
+| NO                      |                        | NO                            |                     | 'ViewOwnerDetail' |      |
+|                         |                        | |                             |                     |                   |      |
+|                         |                        | |                             |                     | $page_title       |      |
+|                         |                        | |                             |                     | 'View Owner Detail' |      |
+|                         |                        | V                             |                     |                   |      |
+|                         |                        | 'edit_owner_button'           | YES                 | $switch_action    |      |
+|                         |                        | NO                            |                     | 'EditOwnerDetail' |      |
+|                         |                        | |                             |                     |                   |      |
+|                         |                        | |                             |                     | $page_title       |      |
+|                         |                        | |                             |                     | 'Edit Owner Detail' |      |
+|                         |                        | |                             |                     |                   |      |
+|                         |                        | > --->                        | ---->               | --->              | ---V |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+|                         |                        |                               |                     |                   |      |
+
+
+---
 __TODO List__   
 - [X] Create logic to handle current owner cancellation when entering a new one.
 - [ ] Review Owner Variables currently used
 - [ ] Document Owner workflow
 - [ ] Determine missing requirements
+---
 
 
 
