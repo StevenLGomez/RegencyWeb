@@ -8,6 +8,11 @@
     <a class="back-link" href="<?php echo url_for('/staff/owners/owner_index.php'); ?>">&laquo; Return to Menu</a>
     <hr />
 
+    <?php
+        $property_address = get_address_for_lot($lot_id);
+        echo '<h3>Payment History for: Lot # ' . $lot_id . ', ' . $property_address . '</h3>';
+    ?>
+
         <table class="list">
             <tr>
                 <th>ID</th>
@@ -21,7 +26,7 @@
                 <th>&nbsp</th>
             </tr>
 
-            <?php $fee_set = find_fees_by_lot('35'); ?>
+            <?php $fee_set = find_fees_by_lot($lot_id); ?>
             <?php while($subject = mysqli_fetch_assoc($fee_set)) { ?>
 
                 <tr>
