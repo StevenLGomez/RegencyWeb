@@ -185,7 +185,7 @@
 
             if ($creating_new_owner)
             {
-                echo '<input type="submit" name="add_owner_form_completed_button" value="Add Owner"/>';
+                echo '<input type="submit" name="add_owner_complete_button" value="Add Owner"/>';
             }
             ?>
 

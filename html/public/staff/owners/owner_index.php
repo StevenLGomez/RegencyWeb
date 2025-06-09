@@ -42,7 +42,7 @@
         }
 
         // Posted from owner_form.php when the Add Owner button is pressed
-        if (isset($_POST['add_owner_form_completed_button'])) {
+        if (isset($_POST['add_owner_complete_button'])) {
             $switch_action = 'AddNewOwnerToDb';
             $page_title = 'Review new Owner';
 
@@ -51,7 +51,7 @@
         // This group requires the queried list of owner information
         if (isset($_POST['view_rentals'])) {
             $switch_action = 'ViewRentals';
-            $page_title = 'Rental Property Listing';
+            $page_title = 'Rental Properties';
         }
 
         // Show Owner History - View By Address was selected

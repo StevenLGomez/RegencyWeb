@@ -9,7 +9,7 @@
       {
           var_dump($_POST);
 
-        // Show Owner History - View By Lot was selected
+        // Fee Management - View By Lot was selected
         if (isset($_POST['lot_number'])) {
             $lot_id = $_POST['lot_number'];
             $switch_action = 'ShowOwnerHistory';
