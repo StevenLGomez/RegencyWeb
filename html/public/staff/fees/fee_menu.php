@@ -1,7 +1,7 @@
 
 
         <!-- ============================================================ -->
-        <!-- This is the beginning of the "Fee Main Menu Page"          -->
+        <!-- This is the beginning of the "Fee Menu Page"                 -->
         <!-- ============================================================ -->
 
             <!-- Start of Search Fee History section =================== -->
@@ -13,12 +13,14 @@
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
-                    <label for "address_id">Address:</label>
-                    <select name="address_id">
+                    <label for "fees_by_address">Address:</label>
+                    <select name="fees_by_address">
 
-                        <?php $address_query = create_address_list(); ?>
+                        <?php $address_query = create_lot_list('address'); ?>
                         <?php while($lot = mysqli_fetch_assoc($address_query)) { ?>
-                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['address']); ?></option>
+                            <option value="<?php echo htmlsc($lot['id']); ?>">
+                            <?php echo htmlsc($lot['address']) . ' (' . htmlsc($lot['id']) . ')';?>
+                            </option>
                         <?php } ?>
 
                     </select>
@@ -34,12 +36,14 @@
 
                 <!-- The LOT pull down select item -->
                 <div class="actions> 
-                    <label for "lot_number">Lot ID:&nbsp&nbsp&nbsp</label>
-                    <select name="lot_number">
+                    <label for "fees_by_lot">Lot ID:&nbsp&nbsp&nbsp</label>
+                    <select name="fees_by_lot">
 
-                        <?php $lot_query = create_lot_list(); ?>
+                        <?php $lot_query = create_lot_list('id'); ?>
                         <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
-                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['id']); ?></option>
+                            <option value="<?php echo htmlsc($lot['id']); ?>">
+                            <?php echo htmlsc($lot['id']) . ' (' . htmlsc($lot['address']) . ')'; ?>
+                            </option>
                         <?php } ?>
 
                     </select>
@@ -51,19 +55,32 @@
             </fieldset>
             <!-- End of Search Property History Section ===================== -->
 
-            <!-- Form for Creating New Fee ================================ -->
+            <!-- Form for Listing Undeposited Fees ========================== -->
             <fieldset>
             <form action="" method="post">
-                <h4>Create New Fee</h4>
+                <h4>List Undeposited Fees</h4>
+
+                <!-- The View Undeposited Fees button -->
+                <div class="actions">
+                    <input type="submit" name="list_undeposited_fees" value="View List" />
+                </div>
+            </form>
+            </fieldset>
+            <!-- ============================================================ -->
+
+            <!-- Form for Entering New Fee ================================ -->
+            <fieldset>
+            <form action="" method="post">
+                <h4>Enter New Fee</h4>
 
                 <div class="actions"> 
-                    <input type="submit" name="show_create_owner_form" value="Create Fee" />
+                    <input type="submit" name="enter_new_fee" value="Enter New Fee" />
                 </div>
             </form>
             </fieldset>
 
         <!-- ============================================================ -->
-        <!-- This is the bottom of the "Fee Main Menu Page"             -->
+        <!-- This is the bottom of the "Fee Menu Page"                    -->
         <!-- ============================================================ -->
  
 

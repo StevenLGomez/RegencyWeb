@@ -29,25 +29,26 @@
 
   // Lots         =============================================================
 
-  function create_lot_list() {
+  function create_lot_list($sort_field) {
     global $db;
 
-    $sql = "SELECT id FROM lot ORDER BY id";
+    // $sql = "SELECT id FROM lot ORDER BY id";
+    $sql = "SELECT * FROM lot ORDER BY ". $sort_field;
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
   }
 
-  function create_address_list() {
-    global $db;
-
-    $sql = "SELECT * FROM lot ORDER BY address";
-    //echo $sql;
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    return $result;
-  }
+//  function create_address_list() {  // UNUSED - superceded by create_lot_list($sort_field)
+//    global $db;
+//
+//    $sql = "SELECT * FROM lot ORDER BY address";
+//    //echo $sql;
+//    $result = mysqli_query($db, $sql);
+//    confirm_result_set($result);
+//    return $result;
+//  }
 
   function find_address_by_lot_id($lot_id) {
       global $db;

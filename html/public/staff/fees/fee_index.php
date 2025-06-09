@@ -7,13 +7,40 @@
 
       if (is_post_request())
       {
-          var_dump($_POST);
+          // var_dump($_POST);
+
+        // Fee Management - View By Address was selected
+        if (isset($_POST['fees_by_address'])) {
+            $lot_id = $_POST['fees_by_address'];
+            $switch_action = 'ShowFeeHistory';
+            $page_title = 'History By Address';
+
+            // echo "fees_by_address selected " . $lot_id;
+        }
 
         // Fee Management - View By Lot was selected
-        if (isset($_POST['lot_number'])) {
-            $lot_id = $_POST['lot_number'];
-            $switch_action = 'ShowOwnerHistory';
+        if (isset($_POST['fees_by_lot'])) {
+            $lot_id = $_POST['fees_by_lot'];
+            $switch_action = 'ShowFeeHistory';
             $page_title = 'History By Lot';
+
+            // echo "fees_by_address selected" . $lot_id;
+        }
+
+        // Fee Management - List undeposited fees selected
+        if (isset($_POST['list_undeposited_fees'])) {
+            $switch_action = 'ListUndepositedFees';
+            $page_title = 'Undeposited Fees';
+
+            // echo "list_undeposited_fees";
+        }
+
+        // Fee Management - List undeposited fees selected
+        if (isset($_POST['enter_new_fee'])) {
+            $switch_action = 'EnterNewFee';
+            $page_title = 'Enter New Fee';
+
+            // echo "enter_new_fee";
         }
 
       }
@@ -30,8 +57,16 @@
 
             switch ($switch_action)
             {
-            case 'DoSomethingCool':
-                echo "Doing something cool\n";
+            case 'ShowFeeHistory':
+                echo "Doing ShowFeeHistory\n";
+                break;
+
+            case 'ListUndepositedFees':
+                echo "Doing ListUndepositedFees\n";
+                break;
+
+            case 'EnterNewFee':
+                echo "Doing EnterNewFee\n";
                 break;
 
             default:
@@ -42,14 +77,10 @@
 
 
             <!-- Original content -->
-            <hr />
-            <hr />
-            <hr />
-            <hr />
-            <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/fees/index.php'); ?>">Create New Fee Entry</a>
-            </div>
-            <hr />
+            <br />
+            <br />
+            <br />
+            <br />
 
             <table class="list">
                 <tr>

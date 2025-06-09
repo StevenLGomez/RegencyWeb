@@ -15,9 +15,11 @@
                     <label for "address_id">Address:</label>
                     <select name="address_id">
 
-                        <?php $address_query = create_address_list(); ?>
+                        <?php $address_query = create_lot_list('address'); ?>
                         <?php while($lot = mysqli_fetch_assoc($address_query)) { ?>
-                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['address']); ?></option>
+                            <option value="<?php echo htmlsc($lot['id']); ?>">
+                            <?php echo htmlsc($lot['address']) . ' (' . htmlsc($lot['id']) . ')';?>
+                            </option>
                         <?php } ?>
 
                     </select>
@@ -36,9 +38,11 @@
                     <label for "lot_number">Lot ID:&nbsp&nbsp&nbsp</label>
                     <select name="lot_number">
 
-                        <?php $lot_query = create_lot_list(); ?>
+                        <?php $lot_query = create_lot_list('id'); ?>
                         <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
-                            <option value="<?php echo htmlsc($lot['id']); ?>"><?php echo htmlsc($lot['id']); ?></option>
+                            <option value="<?php echo htmlsc($lot['id']); ?>">
+                            <?php echo htmlsc($lot['id']) . ' (' . htmlsc($lot['address']) . ')'; ?>
+                            </option>
                         <?php } ?>
 
                     </select>
