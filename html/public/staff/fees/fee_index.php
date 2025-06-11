@@ -65,7 +65,7 @@
                 break;
 
             case 'EnterNewFee':
-                echo "Doing EnterNewFee\n";
+                include('./fee_form.php');
                 break;
 
             default:
