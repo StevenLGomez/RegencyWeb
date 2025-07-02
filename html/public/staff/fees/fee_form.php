@@ -12,42 +12,43 @@
 
             <table class="list">
 
-                <th>Enter Fee Payment Information</th>
+                <th>Enter Payment Information</th>
+                <th></th>
 
                 <!-- Row for date of payment -->
                 <tr>
                     <td><b>Date of Payment</b></td>
-                    <td><input type="text" placeholder="YYYY-MM-DD" name="dt" value="<?php echo htmlsc('Yesterday'); ?>" /></td>
+                    <td><input type="text" placeholder="YYYY-MM-DD" name="dt" value="<?php echo htmlsc(''); ?>" /></td>
                 </tr>
             
                 <!-- Row for payee last name -->
                 <tr>
                     <td><b>Payee</b></td>
-                    <td><input type="text" placeholder="Payees Last Name" name="payee" value="<?php echo htmlsc('Einstein'); ?>" /></td>
+                    <td><input type="text" placeholder="Payees Last Name" name="payee" value="<?php echo htmlsc(''); ?>" /></td>
                 </tr>
             
                 <!-- Row for lot/address of payee -->
                 <tr>
                     <td><b>Lot/Address</b></td>
-                    <td><input type="text" name="fk_lot_id" value="<?php echo htmlsc('1234'); ?>" /></td>
+                    <td><input type="text" name="fk_lot_id" value="<?php echo htmlsc(''); ?>" /></td>
                 </tr>
             
                 <!-- Row for check number -->
                 <tr>
-                    <td><b>Chk #</b></td>
-                    <td><input type="text" placeholder="Leave blank if cash payment" name="ck_no" value="<?php echo htmlsc('12345'); ?>" /></td>
+                    <td><b>Check #</b></td>
+                    <td><input type="text" placeholder="Leave blank if cash payment" name="ck_no" value="<?php echo htmlsc(''); ?>" /></td>
                 </tr>
             
                 <!-- Row for payment amount -->
                 <tr>
                     <td><b>Payment</b></td>
-                    <td><input type="text" name="amount" value="<?php echo htmlsc('23.50'); ?>" /></td>
+                    <td><input type="text" name="amount" value="<?php echo htmlsc(''); ?>" /></td>
                 </tr>
             
                 <!-- Row for notes about this fee payment -->
                 <tr>
                     <td><b>Note</b></td>
-                    <td><input type="text" name="note" value="<?php echo htmlsc('Now hear this!'); ?>" /></td>
+                    <td><input type="text" name="note" value="<?php echo htmlsc(''); ?>" /></td>
                 </tr>
 
             </table>
