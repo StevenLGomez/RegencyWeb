@@ -41,6 +41,8 @@
   function add_new_fee_to_db($fee) {
       global $db;
 
+      // echo "db_escape test: " . db_escape($db, "Howdy Y'all") . "\n";
+
       $sql =  "INSERT INTO fees " ;
       $sql .= "(dt, payee, fk_lot_id, ck_no, amount, note) VALUES (";
       // $sql .= "'" . db_escape($db, $fee['dt']) . "', ";
