@@ -6,11 +6,11 @@
       $page_title = 'Fee Management';  // Default value
 
       $edit_existing_fee = False;
-      $create_new_fee = False;
+      $add_new_fee_to_db = False;
 
       if (is_post_request())
       {
-        var_dump($_POST);
+        // var_dump($_POST);
 
         // Fee Management - View By Address was selected
         if (isset($_POST['fees_by_address'])) {
@@ -34,7 +34,7 @@
             $page_title = 'Undeposited Fees';
         }
 
-        // Fee Management - Enter new fee selected
+        // Enter new fee selected from fee_menu.php
         if (isset($_POST['enter_new_fee'])) {
             $switch_action = 'EnterNewFee';
             $page_title = 'Enter New Fee';
@@ -49,14 +49,14 @@
 
         if (isset($_POST['add_fee_complete_button'])) {
             $fee_id = $_POST['id'];
-            $switch_action = 'EnterNewFee';
+            $switch_action = 'AddFeeToDb';
             $page_title = 'Here Is The New Fee';
         }
       }
 
     if (is_get_request())
     {
-        var_dump($_POST);
+        // var_dump($_POST);
 
         if (isset($_GET['edit_fee_button']))
         {
@@ -93,7 +93,24 @@
             case 'EnterNewFee':
                 $page_title = 'Enter New Fee';
                 $create_new_fee = True;
-                create_new_fee($fee) {
+
+                // Create fee array
+                // $fee = [];
+                // $fee['id'] = $_POST['id'] ?? '';
+                // $fee['dt'] = $_POST['dt'] ?? '';
+                // $fee['payee'] = $_POST['payee'] ?? '';
+                // $fee['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
+                // $fee['ck_no'] = $_POST['ck_no'] ?? '';
+                // $fee['amount'] = $_POST['amount'] ?? '';
+                // $fee['note'] = $_POST['note'] ?? '';
+
+                include('./fee_form.php');
+                break;
+
+            case 'AddFeeToDb':
+                $page_title = 'View New Fee';
+                $create_new_fee = True;
+                add_new_fee_to_db($fee);
                 include('./fee_form.php');
                 break;
 

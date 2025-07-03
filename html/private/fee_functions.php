@@ -38,10 +38,31 @@
       return $result;
   }
 
-  function create_new_fee($fee) {
+  function add_new_fee_to_db($fee) {
       global $db;
 
-      echo 'Function: create_new_fee';
+      $sql =  "INSERT INTO fees " ;
+      $sql .= "(dt, payee, fk_lot_id, ck_no, amount, note) VALUES (";
+      // $sql .= "'" . db_escape($db, $fee['dt']) . "', ";
+      $sql .= "'" . $fee['dt'] . "', ";
+      // $sql .= "'" . db_escape($db, $owner['first']) . "',";
+      $sql .= "'" . db_escape($db, $fee['payee'])   . "',";
+      $sql .= db_escape($db, (int)$fee['fk_lot_id'])   . ",";
+      // $sql .= db_escape($db, (int)$owner['fk_lot_id']) . ",";
+      $sql .= db_escape($db, (int)$fee['ck_no']) . ", ";
+      $sql .= db_escape($db, (float)$fee['amount']) . ", ";
+      $sql .= "'" . db_escape($db, $fee['note']) . "'";
+      $sql .= ");";
+
+      echo $sql;
+                // $fee = [];
+                // $fee['id'] = $_POST['id'] ?? '';
+                // $fee['dt'] = $_POST['dt'] ?? '';
+                // $fee['payee'] = $_POST['payee'] ?? '';
+                // $fee['fk_lot_id'] = $_POST['fk_lot_id'] ?? '';
+                // $fee['ck_no'] = $_POST['ck_no'] ?? '';
+                // $fee['amount'] = $_POST['amount'] ?? '';
+                // $fee['note'] = $_POST['note'] ?? '';
 
   }
 
