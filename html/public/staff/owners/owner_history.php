@@ -35,8 +35,6 @@
             <td><a class="action" href=
                 "<?php echo url_for('staff/owners/owner_index.php?id=' . htmlsc($owner['id'] . '&edit_owner_button=1') ); ?>">
                 Edit</a></td>
-
-
         </tr>
         <tr>
             <td><?php echo htmlsc($owner['first']); ?>    </td>

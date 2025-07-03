@@ -124,6 +124,11 @@
                         <F N="html/public/staff/expenses/index.php"/>
                     </Folder>
                     <Folder Name="fees">
+                        <F N="html/public/staff/fees/fee_form.php"/>
+                        <F N="html/public/staff/fees/fee_history.php"/>
+                        <F N="html/public/staff/fees/fee_index.php"/>
+                        <F N="html/public/staff/fees/fee_menu.php"/>
+                        <F N="html/public/staff/fees/fee_pending.php"/>
                         <F N="html/public/staff/fees/index.php"/>
                     </Folder>
                     <Folder Name="owners">
