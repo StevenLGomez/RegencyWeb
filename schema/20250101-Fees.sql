@@ -35,6 +35,17 @@ INSERT INTO deposit (id, dt, is_reconciled) VALUES(158, '2025-05-12', 0); -- Dep
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, payee, note) VALUES('2025-05-10', 0, 200,  43, 158,  'Daugherty', 'Cash Payment');
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 158) WHERE id = 158;
 
+-- 2025-06-06 Deposit 159
+INSERT INTO deposit (id, dt, is_reconciled) VALUES(159, '2025-06-06', 0); -- Deposit 159
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, payee, note) VALUES('2025-06-05', 452, 200,  5, 159,  'Brown', '');
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 159) WHERE id = 159;
+
+-- 2025-07-22 Deposit 160
+INSERT INTO deposit (id, dt, is_reconciled) VALUES(160, '2025-07-22', 0); -- Deposit 160
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, payee, note) VALUES('2025-06-16', 6988, 40, 30, 160,  'Title Company', 'City Title Co. CTY-01628-25');
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 160) WHERE id = 160;
+
+
 
 
 
