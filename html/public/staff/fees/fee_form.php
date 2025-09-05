@@ -25,10 +25,10 @@
                             value="<?php echo htmlsc($fee['dt']); ?>" /></td>
                     </tr>
                 
-                    <!-- Row for payee last name -->
+                    <!-- Row for payer last name -->
                     <tr>
-                        <td><b>Payee</b></td>
-                        <td><input type="text" placeholder="Payees Last Name" name="payee"
+                        <td><b>Received From</b></td>
+                        <td><input type="text" placeholder="Payer Last Name" name="payee"
                             value="<?php echo htmlsc($fee['payee']); ?>" /></td>
                     </tr>
                 
@@ -48,7 +48,7 @@
                 
                     <!-- Row for payment amount -->
                     <tr>
-                        <td><b>Payment</b></td>
+                        <td><b>Amount</b></td>
                         <td><input type="text" name="amount" 
                             value="<?php echo htmlsc($fee['amount']); ?>" /></td>
                     </tr>
@@ -56,7 +56,7 @@
                     <!-- Row for notes about this fee payment -->
                     <tr>
                         <td><b>Note</b></td>
-                        <td><input type="text" name="note" 
+                        <td><input type="text" placeholder="Cash Payment or TC Ref" name="note" 
                             value="<?php echo htmlsc($fee['note']); ?>" /></td>
                     </tr>
 

@@ -143,5 +143,6 @@
                 <F N="html/public/index.php"/>
             </Folder>
         </Folder>
+        <F N="gendocs.sh"/>
     </Files>
 </Project>
