@@ -1,4 +1,8 @@
 
+<?php
+    require_once ('../../../private/shared/property_select.php');
+?>
+
     <!-- ************************************************************ -->
     <!-- Fee form sub-page                                            -->
     <!-- ************************************************************ -->
@@ -32,13 +36,19 @@
                             value="<?php echo htmlsc($fee['payee']); ?>" /></td>
                     </tr>
                 
+                    <!-- Testing 1, 2, 3 .... -->
+                    <tr>
+                        <td>Column 1</td>
+                        <td>Column 2</td>
+                    </tr>
+
                     <!-- Row for lot/address of payee -->
                     <tr>
-                        <td><b>Lot/Address</b></td>
+                        <td><b>Lot #</b></td>
                         <td><input type="text" name="fk_lot_id" 
                             value="<?php echo htmlsc($fee['fk_lot_id']); ?>" /></td>
                     </tr>
-                
+
                     <!-- Row for check number -->
                     <tr>
                         <td><b>Check #</b></td>
@@ -49,7 +59,7 @@
                     <!-- Row for payment amount -->
                     <tr>
                         <td><b>Amount</b></td>
-                        <td><input type="text" name="amount" 
+                        <td><input type="text" placeholder="$00.00" name="amount" 
                             value="<?php echo htmlsc($fee['amount']); ?>" /></td>
                     </tr>
                 
