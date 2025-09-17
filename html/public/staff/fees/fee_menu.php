@@ -1,8 +1,17 @@
 
+<?php
+    require_once ('../../../private/shared/property_select.php');
+?>
 
         <!-- ============================================================ -->
         <!-- This is the beginning of the "Fee Menu Page"                 -->
         <!-- ============================================================ -->
+
+            <?php
+                // Create a PropertySelector object
+                $property_selector = new PropertySelector(); 
+            ?>
+                <?php // $property_selector->select_by_lot(); ?>
 
             <!-- Start of Search Fee History section =================== -->
             <fieldset>
@@ -49,7 +58,6 @@
                     </select>
                     <input type="submit" name="submit" value="View By Lot" />
                 </div>
-                <?php mysqli_free_result($lot_query); ?>
                 <!-- END The LOT pull down select item and button -->
             </form>
             </fieldset>
