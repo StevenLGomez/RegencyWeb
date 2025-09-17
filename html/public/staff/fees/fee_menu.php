@@ -47,14 +47,7 @@
                 <div class="actions> 
                     <label for "fees_by_lot">Lot ID:&nbsp&nbsp&nbsp</label>
                     <select name="fees_by_lot">
-
-                        <?php $lot_query = create_lot_list('id'); ?>
-                        <?php while($lot = mysqli_fetch_assoc($lot_query)) { ?>
-                            <option value="<?php echo htmlsc($lot['id']); ?>">
-                            <?php echo htmlsc($lot['id']) . ' (' . htmlsc($lot['address']) . ')'; ?>
-                            </option>
-                        <?php } ?>
-
+                        <?php $property_selector->select_by_lot(); ?>
                     </select>
                     <input type="submit" name="submit" value="View By Lot" />
                 </div>
