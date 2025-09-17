@@ -7,6 +7,11 @@
     <!-- Fee form sub-page                                            -->
     <!-- ************************************************************ -->
 
+    <?php
+        // Create a PropertySelector object
+        $property_selector = new PropertySelector(); 
+    ?>
+
     <hr />
     <a class="back-link" href="<?php echo url_for('/staff/fees/fee_index.php'); ?>">&laquo; Return to Menu</a>
     <hr />
@@ -36,17 +41,14 @@
                             value="<?php echo htmlsc($fee['payee']); ?>" /></td>
                     </tr>
                 
-                    <!-- Testing 1, 2, 3 .... -->
-                    <tr>
-                        <td>Column 1</td>
-                        <td>Column 2</td>
-                    </tr>
-
                     <!-- Row for lot/address of payee -->
                     <tr>
-                        <td><b>Lot #</b></td>
-                        <td><input type="text" name="fk_lot_id" 
-                            value="<?php echo htmlsc($fee['fk_lot_id']); ?>" /></td>
+                    <td><label for="fk_lot_id"><b>Lot #</b></label></td>
+                        <td>
+                            <select id="fk_lot_id" name="fk_lot_id">
+                                <?php $property_selector->select_by_address(); ?>
+                            </select>
+                        </td>
                     </tr>
 
                     <!-- Row for check number -->

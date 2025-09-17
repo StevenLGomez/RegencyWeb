@@ -11,7 +11,6 @@
                 // Create a PropertySelector object
                 $property_selector = new PropertySelector(); 
             ?>
-                <?php // $property_selector->select_by_lot(); ?>
 
             <!-- Start of Search Fee History section =================== -->
             <fieldset>
