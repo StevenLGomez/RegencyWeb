@@ -24,18 +24,10 @@
                 <div class="actions"> 
                     <label for "fees_by_address">Address:</label>
                     <select name="fees_by_address">
-
-                        <?php $address_query = create_lot_list('address'); ?>
-                        <?php while($lot = mysqli_fetch_assoc($address_query)) { ?>
-                            <option value="<?php echo htmlsc($lot['id']); ?>">
-                            <?php echo htmlsc($lot['address']) . ' (' . htmlsc($lot['id']) . ')';?>
-                            </option>
-                        <?php } ?>
-
+                        <?php $property_selector->select_by_address(); ?>
                     </select>
                     <input type="submit" name="submit" value="View By Address" />
                 </div>
-                <?php mysqli_free_result($address_query); ?>
                 <!-- END The ADDRESS pull down select item -->
 
             </form>
