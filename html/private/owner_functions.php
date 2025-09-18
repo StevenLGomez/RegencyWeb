@@ -100,10 +100,12 @@
       $sql .= "'" . db_escape($db, $owner['is_rental']) . "'";
       $sql .= ");";
 
-      // echo $sql;
+      echo $sql;
 
       // For INSERT statements $result is True or False
       $result = mysqli_query($db, $sql);
+
+      echo $result;
 
       if ($result) {
           return True;

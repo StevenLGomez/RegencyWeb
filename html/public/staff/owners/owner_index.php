@@ -1,6 +1,7 @@
 
 <?php 
     require_once('../../../private/initialize.php');
+    require_once ('../../../private/lot_functions.php');
     require_once('../../../private/owner_functions.php');
 
     $page_title = 'Owner Management';

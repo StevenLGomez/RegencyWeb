@@ -7,7 +7,6 @@
 
   function validate_fee_entry($fee_entry) {
       global $db;
-
   }
 
   function find_all_fees() {
@@ -31,13 +30,13 @@
   function find_undeposited_fees() {
       global $db;
 
-      // $sql = "SELECT * FROM fees WHERE (fk_deposit_id = NULL OR fk_deposit_id = 0) dt >= '2024-01-01' ORDER BY dt";
-      // $sql = "SELECT * FROM fees WHERE fk_deposit_id = '' AND dt >= '2011-01-01' ORDER BY dt";
-      $sql = "SELECT * FROM fees WHERE dt >= '2011-01-01' AND dt <= '2011-12-31' ORDER BY dt";
+      $sql = 'SELECT * FROM fees WHERE (fk_deposit_id IS NULL OR fk_deposit_id = "") AND dt >= "2023-10-17" ORDER BY dt';
       $result = mysqli_query($db, $sql);
       return $result;
   }
 
+  // INSERT INTO fees (dt, payee, fk_lot_id, ck_no, amount, note) VALUES ('2025-09-17', 'Gomez',35,3569, 50, 'Best resident'); 
+  // Reports: #1364 - Field 'id' doesn't have a default value
   function add_new_fee_to_db($fee) {
       global $db;
 
