@@ -62,6 +62,9 @@ CREATE TABLE fees(
     FOREIGN KEY(fk_deposit_id) REFERENCES deposit(id) 
     ) DEFAULT CHARACTER SET utf8 ENGINE=InnoDB;
 
+-- 20250929 Statement to add 'deposited' column to fees table
+ALTER TABLE fees ADD COLUMN deposited BOOLEAN DEFAULT FALSE;
+
 DROP TABLE IF EXISTS owner;
 CREATE TABLE owner(
     id INTEGER NOT NULL AUTO_INCREMENT,
