@@ -171,17 +171,6 @@
           db_disconnect($db);
           exit;
       }
-
-
-
-
-
-
-
-
-
-
-
   }
 
   function generate_mail_merge_csv() {
@@ -194,7 +183,7 @@
     // ==========================================================================
 
     // Create an opening marker
-    echo "VVVVVVVVVVVVVVVVVVVVVV  COPY INFORMATION BELOW THIS LINE VVVVVVVVVVVVVVVVVVVVVVVVVVVVVV<br />";
+    echo "VVV  COPY INFORMATION BELOW THIS LINE VVV<br />";
 
     // Create header line for CSV output
     echo "Lot, Last, First, Owner_Add, Owner_City, O_St, O_Zip, Lot_Add, Phone, email, Total, Due<br />";
@@ -284,7 +273,7 @@
             }
         }
     }
-    echo "^^^^^^^^^^^^^^^^^^^^^^  COPY INFORMATION ABOVE THIS LINE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^<br />";
+    echo "^^^  COPY INFORMATION ABOVE THIS LINE ^^^<br />";
 }
 
   function find_owner_by_last($last_name) {
