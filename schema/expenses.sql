@@ -82,6 +82,12 @@ INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
 INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
     ('2025-10-14', 0, 'Missouri Secretary of State',     15.55,   6, 'Annual Filing Fee');
 
+INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
+    ('2025-10-15',    0, 'Postmaster',                   46.80,   5, 'Postage Stamps (debit)');
+
+INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
+    ('2025-10-17', 0, 'Stripe Force Landscapes',       125.00,   2, 'Mowing (debit)');
+
 
 
 
