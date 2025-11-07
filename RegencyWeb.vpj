@@ -148,6 +148,9 @@
                 <F N="html/public/index.php"/>
             </Folder>
         </Folder>
+        <Folder Name="schema">
+            <F N="schema/20251101-Fees.sql"/>
+        </Folder>
         <F N="gendocs.sh"/>
     </Files>
 </Project>
