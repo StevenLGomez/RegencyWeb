@@ -38,8 +38,6 @@
             $owner_id = $_POST['id'];
             $switch_action = 'ApplyOwnerChanges';
             $page_title = 'Apply Owner Changes';
-
-            echo 'apply_owner_changes_button requested for ID: ' . $owner_id;
         }
 
         // Posted from owner_form.php when the Add Owner button is pressed
