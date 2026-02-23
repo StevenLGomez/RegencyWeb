@@ -1,13 +1,9 @@
 
-
-
     <!-- ************************************************************ -->
     <!-- Create & display list of UNdeposited fee entries             -->
     <!-- ************************************************************ -->
 
-    <hr />
-    <a class="back-link" href="<?php echo url_for('/staff/fees/fee_index.php'); ?>">&laquo; Return to Menu</a>
-    <hr />
+    <?php include '../../../private/shared/include_backlink.php'; ?>
 
     <div id="content">
         <div id=""regency-menu">

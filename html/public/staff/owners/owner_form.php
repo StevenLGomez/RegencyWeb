@@ -25,9 +25,7 @@
         }
     ?>
 
-    <hr />
-    <a class="back-link" href="<?php echo url_for('/staff/owners/owner_index.php'); ?>">&laquo; Return to Menu</a>
-    <hr />
+    <?php include '../../../private/shared/include_backlink.php'; ?>
 
     <?php if($view_existing_owner || $edit_existing_owner) {  
         // Display this information if this owner already exists

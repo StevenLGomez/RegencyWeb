@@ -4,9 +4,10 @@
 
   // Fees         =============================================================
 
-
   function validate_fee_entry($fee_entry) {
       global $db;
+
+      // TBD
   }
 
   function find_all_fees() {
@@ -53,6 +54,19 @@
       echo $sql;
 
   }
+
+  function find_fees_by_year($year) {
+      global $db;
+
+      $sql = "SELECT address FROM lot ";
+      $sql .= "WHERE id = '" . db_escape($db, $lot_id) . "' ";
+      $sql .= "LIMIT 1";
+      // echo $sql;
+      $result = mysqli_query($db, $sql);
+      confirm_result_set($result);
+      return $result;
+  }
+
 
 
 ?>

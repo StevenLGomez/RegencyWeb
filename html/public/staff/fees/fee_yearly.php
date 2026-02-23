@@ -1,14 +1,9 @@
 
-
-    <!-- ************************************************************ -->
-    <!-- Owner list display sub-page - included when needed           -->
-    <!-- ************************************************************ -->
-
     <?php include '../../../private/shared/include_backlink.php'; ?>
 
     <?php
-        $property_address = get_address_for_lot($lot_id);
-        echo '<h3>Payment History for: Lot # ' . $lot_id . ', ' . $property_address . '</h3>';
+        // $property_address = get_address_for_lot($lot_id);
+        echo '<h3>Fee History for: ' . $requested_year . '</h3>';
     ?>
 
         <table class="list">
@@ -24,7 +19,10 @@
                 <th>&nbsp</th>
             </tr>
 
-            <?php $fee_set = find_fees_by_lot($lot_id); ?>
+            <?php 
+                $fee_selector = new FeeSelector();
+                $fee_set = fee_selector->select_by_year($requested_year); 
+            ?>
             <?php while($fee = mysqli_fetch_assoc($fee_set)) { ?>
 
                 <tr>

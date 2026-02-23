@@ -29,6 +29,13 @@
             $switch_action = 'ShowFeesByLot';
         }
 
+        // Fee Management - View By Year was selected
+        if (isset($_POST['fees_by_year'])) {
+            $page_title = 'Fees By Year';
+            $requested_year = $_POST['fees_by_year'];
+            $switch_action = 'ShowFeesByYear';
+        }
+
         // Fee Management - List undeposited fees selected
         if (isset($_POST['list_undeposited_fees'])) {
             $switch_action = 'ListUndepositedFees';
@@ -85,6 +92,10 @@
 
             case 'ShowFeesByLot':
                 include('./fee_history.php');
+                break;
+
+            case 'ShowFeesByYear':
+                include('./fee_yearly.php');
                 break;
 
             case 'ListUndepositedFees':
