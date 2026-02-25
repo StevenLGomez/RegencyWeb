@@ -89,8 +89,9 @@ INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
     ('2025-10-17', 0, 'Stripe Force Landscapes',       125.00,   2, 'Mowing (debit)');
 
 INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
+    ('2025-10-15',    0, 'Office Depot',                 16.61,   5, 'Office Supplies (debit card)');
+
+INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
     ('2025-12-24', 0, 'Stripe Force Landscapes',       125.00,   2, 'Mowing (debit)');
-
-
 
 
