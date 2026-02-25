@@ -1,7 +1,7 @@
 
 <?php require_once('../../../private/initialize.php'); ?>
 
-<?php $expense_set = find_all_expenses('2023'); // The parameter is the 'start' year ?>
+<?php $expense_set = find_all_expenses('2025'); // The parameter is the 'start' year ?>
 
 <?php $page_title = 'Manage Expenses'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
@@ -11,6 +11,8 @@
             <h2>Expense History</h2>
 
             <hr />
+
+            <h3>Expenses By Year</h3>
 
             <table class="list">
                 <tr>
@@ -38,7 +40,8 @@
             </table>
 
             <?php mysqli_free_result($expense_set); ?>
-            <br /><hr /><br />
+            <br /><hr />
+            <h3>Expense Categories - Yearly Totals</h3>
 
             <table class="list">
                 <tr>
