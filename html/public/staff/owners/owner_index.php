@@ -57,14 +57,14 @@
         if (isset($_POST['address_id'])) {
             $lot_id = $_POST['address_id'];
             $switch_action = 'ShowOwnerHistory';
-            $page_title = 'History By Address';
+            $page_title = 'Owner History By Address';
         }
 
         // Show Owner History - View By Lot was selected
         if (isset($_POST['lot_number'])) {
             $lot_id = $_POST['lot_number'];
             $switch_action = 'ShowOwnerHistory';
-            $page_title = 'History By Lot';
+            $page_title = 'Owner History By Lot';
         }
     } // END: if (is_post_request())
 

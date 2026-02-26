@@ -3,7 +3,9 @@
     <!-- Owner list display sub-page - included when needed           -->
     <!-- ************************************************************ -->
 
-    <?php include '../../../private/shared/include_backlink.php'; ?>
+    <hr />
+    <a class="back-link" href="<?php echo url_for('/staff/owners/owner_index.php'); ?>">&laquo; Return to Menu</a>
+    <hr />
 
     <?php if ($searching_history) 
     {

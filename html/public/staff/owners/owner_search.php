@@ -7,7 +7,6 @@
     <a class="back-link" href="<?php echo url_for('/staff/owners/owner_index.php'); ?>">&laquo; Return to Menu</a>
     <hr />
     <?php echo "Owners with last name containing: " . "<b>" .$requested_name . "</b>"; ?>
-    <hr />
 
     <?php if ($searching_owners) 
     {

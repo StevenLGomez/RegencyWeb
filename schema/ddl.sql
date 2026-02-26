@@ -64,6 +64,8 @@ CREATE TABLE fees(
 
 -- 20250929 Statement to add 'deposited' column to fees table
 ALTER TABLE fees ADD COLUMN deposited BOOLEAN DEFAULT FALSE;
+-- 20260225 Statement to add 'fk_owner_id' column (for assigning payee from list)
+ALTER TABLE fees ADD fk_owner_id INT DEFAULT NULL;
 
 DROP TABLE IF EXISTS owner;
 CREATE TABLE owner(
