@@ -96,6 +96,9 @@ ALTER TABLE owner ADD COLUMN is_rental BOOLEAN;
 ALTER TABLE owner ADD COLUMN notes VARCHAR(50);
 ALTER TABLE owner DROP COLUMN is_in_subdv;
 
+-- 20260225 Alter owner table to extend length of notes column to 500 chars
+ALTAR TABLE owner ALTER COLUMN notes VARCHAR (500);
+
 -- Added 2024-07-25 for tracking total fee amount as sum of all assessments.
 DROP TABLE IF EXISTS assessment;
 CREATE TABLE assessment(
