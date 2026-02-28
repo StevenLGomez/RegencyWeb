@@ -1,10 +1,11 @@
 
+    <?php include ('../../../private/shared/fee_select.php'); ?>
+
     <hr />
     <a class="back-link" href="<?php echo url_for('/staff/fees/fee_index.php'); ?>">&laquo; Return to Menu</a>
     <hr />
 
     <?php
-        // $property_address = get_address_for_lot($lot_id);
         echo '<h3>Fee History for: ' . $requested_year . '</h3>';
     ?>
 
@@ -22,8 +23,9 @@
             </tr>
 
             <?php 
+                // Create the selector object and fetch the set
                 $fee_selector = new FeeSelector();
-                $fee_set = fee_selector->select_by_year($requested_year); 
+                $fee_set = $fee_selector->select_by_year($requested_year);
             ?>
             <?php while($fee = mysqli_fetch_assoc($fee_set)) { ?>
 
@@ -40,7 +42,6 @@
                         "<?php echo url_for('/staff/fees/fee_index.php?id=' . htmlsc($fee['id'] . '&edit_fee_button=1') ); ?>">
                         Edit</a></td>
                 </tr>
-
             <?php } ?>
 
         </table>

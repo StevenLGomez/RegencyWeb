@@ -15,10 +15,10 @@
 
             <!-- Start of Search Fee History section =================== -->
             <fieldset>
+            <h4>Show Fee History</h4>
 
             <!-- Form for Searching by Address ============================== -->
             <form action="" method="post">
-                <h4>Show Fee History</h4>
 
                 <!-- The ADDRESS pull down select item -->
                 <div class="actions"> 
@@ -46,6 +46,7 @@
             </form>
 
             <!-- Form for Searching by years # ================================ -->
+            <br />
             <form action="" method="post">
 
                 <!-- The Year pull down select item -->
@@ -84,7 +85,6 @@
                 </div>
                 <!-- END The LOT pull down select item and button -->
             </form>
-
 
             </fieldset>
             <!-- End of Search Property History Section ===================== -->

@@ -55,15 +55,20 @@
 
   }
 
+  // Deprecate?
   function find_fees_by_year($year) {
       global $db;
 
-      $sql = "SELECT address FROM lot ";
-      $sql .= "WHERE id = '" . db_escape($db, $lot_id) . "' ";
+      echo 'function find_fees_by_year';
+
+      $sql = "SELECT * FROM fees ";
+      $sql .= "WHERE year = '" . db_escape($db, $year) . "' ";
       $sql .= "LIMIT 1";
-      // echo $sql;
+
+      echo $sql;
+
       $result = mysqli_query($db, $sql);
-      confirm_result_set($result);
+      // confirm_result_set($result);
       return $result;
   }
 
