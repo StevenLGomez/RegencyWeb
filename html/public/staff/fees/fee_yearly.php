@@ -6,7 +6,13 @@
     <hr />
 
     <?php
-        echo '<h3>Fee History for: ' . $requested_year . '</h3>';
+        // Create the selector object and fetch the set
+        $fee_selector = new FeeSelector();
+        $fee_set = $fee_selector->select_by_year($requested_year);
+        $fee_count = $fee_selector->fee_count_for_year($requested_year);
+
+        // Output heading information
+        echo '<h3>Fee History for: ' . $requested_year . ' - Total entries found: ' . $fee_count . '</h3>';
     ?>
 
         <table class="list">
@@ -22,11 +28,6 @@
                 <th>&nbsp</th>
             </tr>
 
-            <?php 
-                // Create the selector object and fetch the set
-                $fee_selector = new FeeSelector();
-                $fee_set = $fee_selector->select_by_year($requested_year);
-            ?>
             <?php while($fee = mysqli_fetch_assoc($fee_set)) { ?>
 
                 <tr>
