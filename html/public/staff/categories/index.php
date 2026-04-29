@@ -9,12 +9,6 @@
         <div id="regency-menu">
             <h2>Budget Categories</h2>
 
-            <hr />
-            <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/categories/index.php'); ?>">Create New Category</a>
-            </div>
-            <hr />
-
             <table class="list">
                 <tr>
                     <th>ID</th>

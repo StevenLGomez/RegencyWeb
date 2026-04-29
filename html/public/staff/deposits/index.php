@@ -9,12 +9,6 @@
         <div id="regency-menu">
             <h2>Deposit History</h2>
 
-            <hr />
-            <div class="actions"> 
-                <a class="action" href="<?php echo url_for('/staff/deposits/index.php'); ?>">Create New Deposit</a>
-            </div>
-            <hr />
-
             <table class="list">
                 <tr>
                     <th>ID</th>

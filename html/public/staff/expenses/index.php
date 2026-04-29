@@ -8,9 +8,7 @@
 
     <div id="content">
         <div id="regency-menu">
-            <h2>Expense History</h2>
-
-            <hr />
+            <h2>Expense History</h2> <hr />
 
             <h3>Expenses By Year</h3>
 
