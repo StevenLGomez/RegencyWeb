@@ -37,6 +37,7 @@
   }
 
   // INSERT INTO fees (dt, payee, fk_lot_id, ck_no, amount, note) VALUES ('2025-09-17', 'Gomez',35,3569, 50, 'Best resident'); 
+  // INSERT INTO fees (dt, payee, fk_lot_id, ck_no, amount, note) VALUES ('2026-05-02', 'Gomez',35,6021, 50, 'Test of entering new fee'); 
   // Reports: #1364 - Field 'id' doesn't have a default value
   function add_new_fee_to_db($fee) {
       global $db;
