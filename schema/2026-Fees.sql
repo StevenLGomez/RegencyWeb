@@ -11,11 +11,24 @@
 -- Entered manually to track deposits that were actually made in the mean time to prevent
 -- hanging on to checks for too long.
 
--- 2026-00-00 Deposit 165
-INSERT INTO deposit (id, dt, is_reconciled) VALUES(165, '2025-11-07', 0); -- Deposit 165
+-- 2026-02-23 Deposit 165
+INSERT INTO deposit (id, dt, is_reconciled) VALUES(165, '2026-02-23', 0); -- Deposit 165
 
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, payee, note) VALUES('2025-12-25',   3457,  50, 59, 165, 'Grieb',  '');
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, payee, note) VALUES('2025-12-30',    144,  50, 65, 165, 'Matyi',  '');
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, payee, note) VALUES('2025-12-15',   5096,  40, 42, 165, '',  'Main Street Renewal LLC');
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 165) WHERE id = 165;
+
+-- 2026-04-28 Deposit 166
+INSERT INTO deposit (id, dt, is_reconciled) VALUES(166, '2026-04-28', 0); -- Deposit 166
+INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, payee, note) VALUES('2026-04-09',   550030984,  50, 49, 166, 'Continental Title',  '');
+UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 166) WHERE id = 166;
+
+
+
+
+
+
+
 
 

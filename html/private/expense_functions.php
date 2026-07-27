@@ -7,7 +7,7 @@
     global $db;
 
     // $sql = "SELECT * FROM expense WHERE dt > '2023-01-01' ";
-    $sql = "SELECT * FROM expense WHERE dt > " . "'" . $year . "-01-01' ";
+    $sql = "SELECT * FROM expense WHERE dt > " . "'" . $year . "-01-01' " . "ORDER BY dt";
     //echo $sql;
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
