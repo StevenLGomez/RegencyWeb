@@ -18,4 +18,5 @@ password = secret
 ```
 gumzip backup.gz
 ```
-
+* Stand alone backup
+mysqldump --user=<USER> --password=<PASSWORD> --result-file=./regencydb.sql regencydb
