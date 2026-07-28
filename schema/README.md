@@ -18,5 +18,13 @@ password = secret
 ```
 gumzip backup.gz
 ```
-* Stand alone backup
+
+* Stand alone backup   
+```
 mysqldump --user=<USER> --password=<PASSWORD> --result-file=./regencydb.sql regencydb
+```
+* Import into mysql/mariadb (the following command will prompt for a password)   
+```
+mysql --user=<USER> --password regencydb < regencydb.sql
+```
+ 
