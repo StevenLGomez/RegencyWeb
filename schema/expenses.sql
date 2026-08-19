@@ -112,4 +112,7 @@ INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
 INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
     ('2026-07-27', 0, 'Stripe Force Landscapes',       250.00,   2, 'Mowing (debit)');
 
+INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
+    ('2026-08-19', 0, 'Stripe Force Landscapes',       250.00,   2, 'Mowing (debit)');
+
 
