@@ -29,4 +29,5 @@ INSERT INTO `assessment` (yr, amount, note) VALUES
  (2024, 40.00, '');
 
 INSERT INTO assessment (yr, amount, note) VALUES (2025, 50.00, ''); -- 2025 entry
+INSERT INTO assessment (yr, amount, note) VALUES (2026, 50.00, ''); -- 2026 entry
 
