@@ -121,3 +121,6 @@ INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
 INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
     ('2026-10-14',    0, 'Stripe Force Landscapes',     250.00,   2, 'Mowing (debit)'),
     ('2026-10-14', 1311, 'Missouri Secretary of State',  15.50,   6, 'Annual Filing Fee (e-check)');
+
+INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
+    ('2026-10-29',    0, 'Office Depot',   75.55,   5, 'Print Supplies (debit card)');
