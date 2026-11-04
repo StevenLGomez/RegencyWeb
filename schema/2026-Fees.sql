@@ -30,7 +30,7 @@ INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, payee, note) VALUE
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 167) WHERE id = 167;
 
 -- 2026-11-02 Deposit 168
-INSERT INTO deposit (id, dt, is_reconciled) VALUES(168, '2026-07-28', 0); -- Deposit 168
+INSERT INTO deposit (id, dt, is_reconciled) VALUES(168, '2026-11-02', 0); -- Deposit 168
 INSERT INTO fees(dt, ck_no, amount, fk_lot_id, fk_deposit_id, payee, note) VALUES('2026-10-13',  36696,  40, 42, 168, '',  'Main Street Renewal LLC');
 UPDATE deposit SET amount = (SELECT SUM(amount) FROM fees WHERE fk_deposit_id = 168) WHERE id = 168;
 
