@@ -124,3 +124,7 @@ INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
 
 INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
     ('2026-10-29',    0, 'Office Depot',   75.55,   5, 'Print Supplies (debit card)');
+
+INSERT INTO `expense` (dt, ck_no, payee, amount, fk_cat_id, note) VALUES
+    ('2026-11-07',    0, 'Postmaster',                  49.20,   5, 'Postage stamps (debit)');
+
